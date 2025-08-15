@@ -1,91 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARIA | AIソロシンガー</title>
+
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-sV6F9N2d7L+NsxDgJMAoVVQvtc7/y5Sp5yX59sNNo4DpF0JlCG9IosMPU49zCaZ53SDD9cuv5SdPsvy3dtDr0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-sV6F9N2d7L+NsxDgJMAoVVQvtc7/y5Sp5yX59sNNo4DpF0JlCG9IosMPU49zCaZ53SDD9cuv5SdPsvy3dtDr0A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <!-- 既存のサイトCSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- ヘッダー固定化とSNSアイコン用の最小上書きCSS（既存CSSの上に置く） -->
-  <style>
-    /* ヘッダーをスクロール時も常に表示 */
-    .navbar {
-      position: sticky; /* 常時固定表示。必要なら fixed に変更可 */
-      top: 0;
-      z-index: 1000;
-      background: rgba(0,0,0,0.6); /* 透過背景で視認性UP */
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
-    }
-    .navbar .container {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav a {
-      display: inline-block;
-      padding: 8px 10px;
-    }
-    /* ヘッダー右側のSNSアイコン */
-    .social-links-header {
-      display: flex;
-      gap: 12px;
-      margin-left: auto;
-      align-items: center;
-    }
-    .social-links-header a {
-      font-size: 1.2rem;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      transition: transform .15s ease, opacity .15s ease;
-      opacity: 0.9;
-      color: inherit; /* テーマ色に追従 */
-    }
-    .social-links-header a:hover { transform: translateY(-1px); opacity: 1; }
-    .social-links-header i { pointer-events: none; }
-
-    /* スマホ最適化 */
-    @media (max-width: 768px) {
-      .social-links-header a { font-size: 1.35rem; width: 36px; height: 36px; }
-      .nav a { padding: 10px 8px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <!-- ヘッダー（1つだけ） -->
   <header class="navbar" role="banner">
     <div class="container">
-      <!-- ロゴは常にトップへ -->
+      <!-- ロゴ -->
       <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
 
-      <!-- ナビゲーション -->
+      <!-- ナビ -->
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
         <a href="blog.html">ブログ</a>
       </nav>
 
-      <!-- SNSアイコン（固定ヘッダーに常時表示） -->
+      <!-- SNS（右端常設） -->
       <div class="social-links-header" aria-label="SNSリンク">
+        <!-- X は互換性のため fa-twitter を採用（環境により fa-x-twitter が出ない場合があるため） -->
         <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <i class="fab fa-x-twitter"></i>
+          <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
         <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <i class="fab fa-tiktok"></i>
+          <i class="fab fa-tiktok" aria-hidden="true"></i>
         </a>
         <a href="https://www.youtube.com/@NexusAria" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fab fa-youtube"></i>
+          <i class="fab fa-youtube" aria-hidden="true"></i>
         </a>
         <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
+          <i class="fab fa-instagram" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -174,7 +135,7 @@
     <div class="container">
       <p>© 2025 ARIA. All rights reserved.</p>
       <div class="social-links" aria-label="SNSリンク">
-        <a href="https://x.com/NexusAria" aria-label="X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="https://x.com/NexusAria" aria-label="X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
         <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
         <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
       </div>
@@ -182,6 +143,5 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <!-- ※ 多言語自動リンク書き換えスクリプトは削除 -->
 </body>
 </html>
