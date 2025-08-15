@@ -13,7 +13,7 @@
 <body>
   <header class="navbar" role="banner">
     <div class="container">
-      <!-- 初期値は / にしておき、下のスクリプトで言語に応じて置き換え -->
+      <!-- ロゴは常にトップへ -->
       <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
@@ -113,16 +113,6 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-
-  <!-- 言語に応じてロゴのリンクをその言語ホームへ調整（EN:/, JA:/ja/, ZH:/zh/） -->
-  <script>
-    (function () {
-      var lang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
-      var langHome = { en: '/', ja: '/ja/', zh: '/zh/' };
-      var home = langHome[lang] || '/';
-      var logo = document.querySelector('.logo');
-      if (logo) logo.setAttribute('href', home);
-    })();
-  </script>
+  <!-- ※ 多言語自動リンク書き換えスクリプトは削除 -->
 </body>
 </html>
