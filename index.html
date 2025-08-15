@@ -2,22 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | AIソロシンガー</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome（SRIを外して確実に読み込む） -->
+  <!-- Font Awesome（現在問題なさそうなのでそのまま） -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-sV6F9N2d7L+NsxDgJMAoVVQvtc7/y5Sp5yX59sNNo4DpF0JlCG9IosMPU49zCaZ53SDD9cuv5SdPsvy3dtDr0A=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
-  <!-- サイトCSS（同階層のstyle.cssを参照） -->
-  <link rel="stylesheet" href="./style.css" />
+  <!-- サイトCSS：/assets/css/style.css を読み込む -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <!-- ヘッダー -->
@@ -34,7 +35,6 @@
 
       <!-- SNS（右端） -->
       <div class="social-links-header" aria-label="SNSリンク">
-        <!-- X は環境互換性を優先して fa-twitter を使用 -->
         <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
           <i class="fa-brands fa-twitter" aria-hidden="true"></i>
         </a>
@@ -101,7 +101,7 @@
     </div>
   </section>
 
-  <!-- Latest News / Blog Teaser Section -->
+  <!-- Blog Teaser -->
   <section class="blog-teaser">
     <div class="container">
       <h2>ブログ</h2>
