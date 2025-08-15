@@ -1,46 +1,52 @@
-:root{
-  --primary:#1DB954;
-  --bg:#0f0d21;
-  --card:#1a1736;
-  --text:#fff;
-  --muted:#b3b3b3;
-}
+/* ==== 緊急復旧ブロック：ヘッダー固定＋ヒーロー＋ボタン＋SNS ==== */
 
-html,body{margin:0;padding:0;font-family:'Poppins','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.container{width:90%;max-width:1200px;margin:0 auto}
-
-/* ===== Navbar ===== */
+/* ヘッダー（固定＆見えるように背景とブラー） */
 .navbar{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(0,0,0,.6);backdrop-filter:blur(6px)
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(0,0,0,.6);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
-.navbar .container{display:flex;align-items:center;gap:16px;padding:12px 0}
-.logo{font-weight:700;text-decoration:none;color:var(--primary);font-size:1.4rem}
-.nav{margin-left:auto;display:flex;gap:16px}
-.nav a{color:var(--text);text-decoration:none;padding:8px 10px}
-.nav a:hover{color:var(--primary)}
-.social-links-header{display:flex;gap:12px;align-items:center}
-.social-links-header a{color:#fff;font-size:1.25rem;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;opacity:.95;transition:transform .15s,opacity .15s}
-.social-links-header a:hover{transform:translateY(-1px);opacity:1}
+.navbar .container{ display:flex; align-items:center; gap:16px; }
+.nav{ margin-left:auto; display:flex; gap:16px; }
+.nav a{ display:inline-block; padding:8px 10px; }
 
-/* ===== Hero ===== */
-.hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(0,0,0,.2)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,13,33,.6),rgba(15,13,33,.8))}
-.hero-content{position:relative;z-index:1;max-width:800px;padding:0 20px}
-.hero-content h1{font-size:2.6rem;margin:0 0 .8rem}
-.hero-content p{color:var(--muted);margin:0 0 1.6rem}
-.cta-buttons{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;border-radius:30px;color:#fff;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.3)}
-.btn.spotify{background:#1DB954}.btn.apple{background:#A3AAAE}.btn.amazon{background:#FF9900}.btn.youtube{background:#FF0000}
+/* ヒーロー（背景が無くても高さを確保） */
+.hero{ position:relative; min-height:88vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+.hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(15,13,33,.6),rgba(15,13,33,.8)); }
+.hero-content{ position:relative; z-index:1; max-width:800px; padding:0 20px; }
+.hero-content h1{ font-size:2.6rem; margin:0 0 .8rem; }
+.hero-content p{ color:#b3b3b3; margin:0 0 1.6rem; }
 
-/* ===== Sections ===== */
-.features,.blog-teaser{background:var(--card);padding:4rem 0}
-.features h2,.blog-teaser h2{text-align:center;font-size:2rem;margin:0 0 1.5rem}
-.cards{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center}
-.card{background:#221f44;border-radius:12px;padding:2rem;flex:1 1 280px;max-width:350px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
-.card h3{margin:0 0 .5rem;color:var(--primary)}
-.card p{color:var(--muted)}
-.music{padding:4rem 0;text-align:center}
-.music h2{font-size:2rem;margin:0 0 1rem}
-.music p{color:var(--muted);margin:0 0 2rem}
-.stream-links{display:flex;flex-wrap:wrap;
+/* その場しのぎでも画像が出るよう、背景指定をここで強制（パスは必要に応じて差し替え） */
+.hero{
+  background: url('assets/images/hero.png') center/cover no-repeat;
+}
+/* ↑ もし hero.jpg が無ければ、存在する画像名・パスに変えてね
+   例: assets/images/hero.png / assets/img/hero.webp など */
+
+/* CTAボタン（ヒーロー内） */
+.cta-buttons{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+.btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1.25rem; border-radius:30px; color:#fff; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,.3); }
+.btn.spotify{ background:#1DB954; } .btn.apple{ background:#A3AAAE; }
+.btn.amazon{ background:#FF9900; } .btn.youtube{ background:#FF0000; }
+
+/* 「楽曲を聴く」セクションのボタン（消えないよう強制） */
+.stream-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+.stream-link{ display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem; border-radius:30px; color:#fff; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,.3); }
+.stream-link.spotify{ background:#1DB954; } .stream-link.apple{ background:#A3AAAE; }
+.stream-link.amazon{ background:#FF9900; } .stream-link.youtube{ background:#FF0000; }
+
+/* ヘッダー右端のSNSアイコン */
+.social-links-header{ display:flex; gap:12px; align-items:center; }
+.social-links-header a{ color:#fff; font-size:1.25rem; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; opacity:.95; transition:transform .15s,opacity .15s; }
+.social-links-header a:hover{ transform:translateY(-1px); opacity:1; }
+
+/* モバイル最適化 */
+@media (max-width:768px){
+  .navbar .container{ flex-wrap:wrap; gap:8px; padding:.6rem 0; }
+  .logo{ font-size:1.2rem; }
+  .nav{ order:2; width:100%; margin-left:0; justify-content:center; }
+  .social-links-header{ order:3; width:100%; justify-content:center; }
+  .hero-content h1{ font-size:2rem; }
+  .hero-content p{ font-size:1rem; }
+}
