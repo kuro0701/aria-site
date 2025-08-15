@@ -151,3 +151,20 @@ html,body{
   .hero-content p{ font-size:1rem; }
   .cards,.teaser-posts{ flex-direction:column; align-items:center; }
 }
+/* Header SNS icons */
+.social-links-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.social-links-header a {
+  color: var(--text-color, #ffffff);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.social-links-header a:hover {
+  color: var(--primary-color, #1DB954);
+}
