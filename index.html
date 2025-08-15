@@ -8,20 +8,19 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome（SRIを外して確実に読み込む） -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-sV6F9N2d7L+NsxDgJMAoVVQvtc7/y5Sp5yX59sNNo4DpF0JlCG9IosMPU49zCaZ53SDD9cuv5SdPsvy3dtDr0A=="
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
-  <!-- 既存のサイトCSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- サイトCSS（同階層のstyle.cssを参照） -->
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <!-- ヘッダー（1つだけ） -->
+  <!-- ヘッダー -->
   <header class="navbar" role="banner">
     <div class="container">
       <!-- ロゴ -->
@@ -33,20 +32,20 @@
         <a href="blog.html">ブログ</a>
       </nav>
 
-      <!-- SNS（右端常設） -->
+      <!-- SNS（右端） -->
       <div class="social-links-header" aria-label="SNSリンク">
-        <!-- X は互換性のため fa-twitter を採用（環境により fa-x-twitter が出ない場合があるため） -->
+        <!-- X は環境互換性を優先して fa-twitter を使用 -->
         <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <i class="fa-brands fa-twitter" aria-hidden="true"></i>
         </a>
         <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <i class="fab fa-tiktok" aria-hidden="true"></i>
+          <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
         </a>
         <a href="https://www.youtube.com/@NexusAria" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fab fa-youtube" aria-hidden="true"></i>
+          <i class="fa-brands fa-youtube" aria-hidden="true"></i>
         </a>
         <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram" aria-hidden="true"></i>
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -59,10 +58,10 @@
       <h1>未来の歌声、今ここに</h1>
       <p>デジタル空間から舞い降りたAIソロシンガーARIAの世界へようこそ。</p>
       <div class="cta-buttons">
-        <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener noreferrer" class="btn spotify"><i class="fab fa-spotify" aria-hidden="true"></i> Spotify</a>
-        <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener noreferrer" class="btn apple"><i class="fab fa-apple" aria-hidden="true"></i> Apple&nbsp;Music</a>
-        <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener noreferrer" class="btn amazon"><i class="fab fa-amazon" aria-hidden="true"></i> Amazon&nbsp;Music</a>
-        <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener noreferrer" class="btn youtube"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube&nbsp;Music</a>
+        <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener noreferrer" class="btn spotify"><i class="fa-brands fa-spotify" aria-hidden="true"></i> Spotify</a>
+        <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener noreferrer" class="btn apple"><i class="fa-brands fa-apple" aria-hidden="true"></i> Apple&nbsp;Music</a>
+        <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener noreferrer" class="btn amazon"><i class="fa-brands fa-amazon" aria-hidden="true"></i> Amazon&nbsp;Music</a>
+        <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener noreferrer" class="btn youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube&nbsp;Music</a>
       </div>
     </div>
   </section>
@@ -94,10 +93,10 @@
       <h2>楽曲を聴く</h2>
       <p>最新リリースやプレイリストをお好みのプラットフォームでお楽しみください。</p>
       <div class="stream-links">
-        <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener noreferrer" class="stream-link spotify"><i class="fab fa-spotify" aria-hidden="true"></i> Spotify</a>
-        <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener noreferrer" class="stream-link apple"><i class="fab fa-apple" aria-hidden="true"></i> Apple&nbsp;Music</a>
-        <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener noreferrer" class="stream-link amazon"><i class="fab fa-amazon" aria-hidden="true"></i> Amazon&nbsp;Music</a>
-        <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener noreferrer" class="stream-link youtube"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube&nbsp;Music</a>
+        <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener noreferrer" class="stream-link spotify"><i class="fa-brands fa-spotify" aria-hidden="true"></i> Spotify</a>
+        <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener noreferrer" class="stream-link apple"><i class="fa-brands fa-apple" aria-hidden="true"></i> Apple&nbsp;Music</a>
+        <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener noreferrer" class="stream-link amazon"><i class="fa-brands fa-amazon" aria-hidden="true"></i> Amazon&nbsp;Music</a>
+        <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener noreferrer" class="stream-link youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube&nbsp;Music</a>
       </div>
     </div>
   </section>
@@ -135,13 +134,14 @@
     <div class="container">
       <p>© 2025 ARIA. All rights reserved.</p>
       <div class="social-links" aria-label="SNSリンク">
-        <a href="https://x.com/NexusAria" aria-label="X (Twitter)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-        <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-        <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://x.com/NexusAria" aria-label="X (Twitter)"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- 任意: 追加JS -->
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
