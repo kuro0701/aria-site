@@ -1,52 +1,361 @@
-/* ==== 緊急復旧ブロック：ヘッダー固定＋ヒーロー＋ボタン＋SNS ==== */
-
-/* ヘッダー（固定＆見えるように背景とブラー） */
-.navbar{
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(0,0,0,.6);
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+/* Root variables for easy theme control */
+:root {
+  --primary-color: #1db954; /* Spotify green tone for accents */
+  --secondary-color: #5d2e8c; /* Purple hue reminiscent of ARIA's digital vibe */
+  --background-color: #0f0d21; /* Deep navy background for contrast */
+  --card-background: #1a1736;
+  --text-color: #ffffff;
+  --muted-color: #b3b3b3;
+  --hover-opacity: 0.85;
 }
-.navbar .container{ display:flex; align-items:center; gap:16px; }
-.nav{ margin-left:auto; display:flex; gap:16px; }
-.nav a{ display:inline-block; padding:8px 10px; }
 
-/* ヒーロー（背景が無くても高さを確保） */
-.hero{ position:relative; min-height:88vh; display:flex; align-items:center; justify-content:center; text-align:center; }
-.hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(15,13,33,.6),rgba(15,13,33,.8)); }
-.hero-content{ position:relative; z-index:1; max-width:800px; padding:0 20px; }
-.hero-content h1{ font-size:2.6rem; margin:0 0 .8rem; }
-.hero-content p{ color:#b3b3b3; margin:0 0 1.6rem; }
-
-/* その場しのぎでも画像が出るよう、背景指定をここで強制（パスは必要に応じて差し替え） */
-.hero{
-  background: url('assets/images/hero.png') center/cover no-repeat;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
-/* ↑ もし hero.jpg が無ければ、存在する画像名・パスに変えてね
-   例: assets/images/hero.png / assets/img/hero.webp など */
 
-/* CTAボタン（ヒーロー内） */
-.cta-buttons{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
-.btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.75rem 1.25rem; border-radius:30px; color:#fff; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,.3); }
-.btn.spotify{ background:#1DB954; } .btn.apple{ background:#A3AAAE; }
-.btn.amazon{ background:#FF9900; } .btn.youtube{ background:#FF0000; }
+/* Utility */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 
-/* 「楽曲を聴く」セクションのボタン（消えないよう強制） */
-.stream-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
-.stream-link{ display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem; border-radius:30px; color:#fff; text-decoration:none; box-shadow:0 4px 10px rgba(0,0,0,.3); }
-.stream-link.spotify{ background:#1DB954; } .stream-link.apple{ background:#A3AAAE; }
-.stream-link.amazon{ background:#FF9900; } .stream-link.youtube{ background:#FF0000; }
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.navbar .nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+.navbar .nav a:hover, .navbar .nav a.active {
+  color: var(--primary-color);
+}
 
-/* ヘッダー右端のSNSアイコン */
-.social-links-header{ display:flex; gap:12px; align-items:center; }
-.social-links-header a{ color:#fff; font-size:1.25rem; width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; opacity:.95; transition:transform .15s,opacity .15s; }
-.social-links-header a:hover{ transform:translateY(-1px); opacity:1; }
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('../images/hero.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-color);
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(15,13,33,0.6) 0%, rgba(15,13,33,0.8) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--muted-color);
+}
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: var(--hover-opacity);
+}
+/* Specific button colors */
+.btn.spotify { background-color: #1DB954; }
+.btn.apple { background-color: #A3AAAE; }
+.btn.amazon { background-color: #FF9900; }
+.btn.youtube { background-color: #FF0000; }
+.btn.line { background-color: #00B900; }
+.btn.secondary { background-color: var(--secondary-color); }
 
-/* モバイル最適化 */
-@media (max-width:768px){
-  .navbar .container{ flex-wrap:wrap; gap:8px; padding:.6rem 0; }
-  .logo{ font-size:1.2rem; }
-  .nav{ order:2; width:100%; margin-left:0; justify-content:center; }
-  .social-links-header{ order:3; width:100%; justify-content:center; }
-  .hero-content h1{ font-size:2rem; }
-  .hero-content p{ font-size:1rem; }
+/* Features Section */
+.features {
+  padding: 4rem 0;
+  background: var(--card-background);
+}
+.features h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.card {
+  background: #221f44;
+  border-radius: 12px;
+  padding: 2rem;
+  flex: 1 1 280px;
+  max-width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+.card p {
+  font-size: 0.9rem;
+  color: var(--muted-color);
+}
+
+/* Music Section */
+.music {
+  padding: 4rem 0;
+  background: var(--background-color);
+  text-align: center;
+}
+.music h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.music p {
+  margin-bottom: 2rem;
+  color: var(--muted-color);
+}
+.stream-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.stream-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.stream-link:hover {
+  transform: translateY(-2px);
+  opacity: var(--hover-opacity);
+}
+.stream-link.spotify { background-color: #1DB954; }
+.stream-link.apple { background-color: #A3AAAE; }
+.stream-link.amazon { background-color: #FF9900; }
+.stream-link.youtube { background-color: #FF0000; }
+.stream-link.line { background-color: #00B900; }
+
+/* Blog Teaser Section */
+.blog-teaser {
+  padding: 4rem 0;
+  background: var(--card-background);
+  text-align: center;
+}
+.blog-teaser h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.blog-teaser p {
+  margin-bottom: 2rem;
+  color: var(--muted-color);
+}
+.teaser-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.teaser-post {
+  background: #221f44;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 280px;
+  max-width: 350px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+.teaser-post h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+.teaser-post p {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: var(--muted-color);
+}
+.read-more {
+  align-self: flex-start;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.read-more:hover {
+  color: #00e676;
+}
+.blog-button-container {
+  margin-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  background: #0c0a1f;
+  padding: 2rem 0;
+}
+.footer p {
+  margin: 0;
+  color: var(--muted-color);
+}
+.footer .social-links {
+  margin-top: 1rem;
+}
+.footer .social-links a {
+  color: var(--muted-color);
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.footer .social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Blog hero */
+.blog-hero {
+  position: relative;
+  height: 40vh;
+  background: url('../images/blog_header.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.blog-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(15,13,33,0.6) 0%, rgba(15,13,33,0.8) 100%);
+  z-index: 1;
+}
+.blog-hero-content {
+  position: relative;
+  z-index: 2;
+}
+.blog-hero-content h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.blog-hero-content p {
+  margin-top: 0.5rem;
+  color: var(--muted-color);
+}
+
+/* Blog list */
+.blog-list {
+  padding: 4rem 0;
+  background: var(--background-color);
+}
+.blog-list .post {
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #221f44;
+  padding-bottom: 2rem;
+}
+.blog-list .post h2 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+.blog-list .post-date {
+  font-size: 0.85rem;
+  color: var(--muted-color);
+  margin-bottom: 1rem;
+}
+.blog-list .post p {
+  font-size: 1rem;
+  color: var(--muted-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .teaser-posts {
+    flex-direction: column;
+  }
+  .nav a {
+    margin-left: 1rem;
+  }
 }
