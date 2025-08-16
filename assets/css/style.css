@@ -1042,3 +1042,16 @@ body.page-blog::before {
   color: #ffffff; /* ホバーで純白にしてアクセント */
   text-decoration: underline;
 }
+/* 見出しの色を白系に統一 */
+body.page-blog h1,
+body.page-blog h2,
+body.page-blog h3 {
+  color: #f0f0f0 !important;
+}
+
+/* タイトルリンクならさらに強制 */
+body.page-blog h2 a,
+body.page-blog h3 a {
+  color: #f0f0f0 !important;
+  text-decoration: none;
+}
