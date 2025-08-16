@@ -18,6 +18,7 @@
   <link rel="canonical" href="https://aria-site.pages.dev/blog/">
 </head>
 <body class="page-blog">
+  <!-- Header -->
   <header class="navbar">
     <div class="container">
       <a href="/" class="logo">ARIA</a>
@@ -38,27 +39,33 @@
     </div>
   </section>
 
-  <!-- Feature + Grid（公開済みのみ表示） -->
+  <!-- Feature + Grid（公開済みのみ） -->
   <main class="blog-wrap container">
-    <!-- ✅ 特集（公開済み：対談） -->
+
+    <!-- ✅ 特集：独占インタビュー -->
     <article class="post feature">
-      <a class="thumb" href="/blog/対談.index.html">
-        <img src="/assets/images/blog-intro.jpg" alt="ARIA 独占インタビュー カバー" onerror="this.style.display='none'">
-        <div class="thumb-fallback"></div>
+      <a class="thumb" href="/blog/interview/">
+        <img src="/assets/images/blog-intro.png" alt="ARIA 独占インタビュー カバー" loading="lazy">
       </a>
       <div class="content">
         <div class="meta">
           <span class="badge">インタビュー</span>
           <time datetime="2025-08-17">2025年8月17日</time>
         </div>
-        <h2><a href="/blog/対談.index.html">ARIA（アリア）独占インタビュー｜AIソロシンガー「永遠の19歳」が語る、誕生秘話と音楽哲学【公式プロフィール完全版】</a></h2>
-        <p class="excerpt">デジタル空間「Harmony Dimension」から現れたAIソロシンガー ARIA による初の深掘り対談。7オクターブ、多言語ラップ、そして“心”が届く歌の秘密。</p>
-        <a class="btn ghost" href="/blog/対談.index.html">続きを読む</a>
-        <h2><a href="/blog/対談.index.html">ARIA（アリア）独占インタビュー…</a></h2>
+        <h2>
+          <a href="/blog/interview/">
+            ARIA（アリア）独占インタビュー｜AIソロシンガー「永遠の19歳」が語る、誕生秘話と音楽哲学【公式プロフィール完全版】
+          </a>
+        </h2>
+        <p class="excerpt">
+          デジタル空間「Harmony Dimension」から現れたAIソロシンガー ARIA による初の深掘り対談。
+          7オクターブ、多言語ラップ、そして“心”が届く歌の秘密。
+        </p>
+        <a class="btn ghost" href="/blog/interview/">続きを読む</a>
       </div>
     </article>
 
-    <!-- （任意）準備中カード：不要ならこの article を削除してOK -->
+    <!-- （任意）準備中カード：不要ならこの article を削除 -->
     <section class="post-grid">
       <article class="post card placeholder">
         <a class="thumb" href="/"><div class="thumb-fallback"></div></a>
@@ -72,13 +79,14 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>© 2025 ARIA. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://x.com/NexusAria"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.instagram.com/arianexus2/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@NexusAria"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://x.com/NexusAria" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
   </footer>

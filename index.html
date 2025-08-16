@@ -26,7 +26,7 @@
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
         <a href="#story">ストーリー</a>
-        <a href="blog.html">ブログ</a>
+        <a href="/blog/">ブログ</a>
       </nav>
 
       <div class="social-links-header" aria-label="SNSリンク">
@@ -128,7 +128,7 @@
 
       <div class="story-cta">
         <a href="#music" class="btn glass listen"><i class="fa-brands fa-youtube"></i> 楽曲を聴く</a>
-        <a href="blog.html" class="btn glass follow">制作ノートを見る</a>
+        <a href="/blog/" class="btn glass follow">ブログを見る</a>
       </div>
     </div>
   </div>
@@ -233,47 +233,21 @@
     </div>
   </section>
 
-  <!-- Blog -->
-<section class="blog" id="blog">
+<!-- Blog（動的人気記事） -->
+<section class="blog" id="blog" aria-label="Blog">
   <div class="container">
     <h2>Blog</h2>
-    <p>制作の裏側や最新ニュースをシェアしています。</p>
+    <p>最新の読み物から人気の特集まで。</p>
 
-    <!-- 特集記事 -->
-    <div class="blog-feature">
-      <a href="/blog" class="feature-link">
-        <img src="assets/images/blog-feature.jpg" alt="Featured blog post">
-        <div class="feature-content">
-          <h3>🎤 ARIA制作の舞台裏</h3>
-          <p>AI歌姫ARIAの楽曲制作プロセスや最新インスピレーションを紹介。</p>
-          <span class="btn">続きを読む</span>
-        </div>
-      </a>
+    <div id="popular-posts" class="popular-grid" aria-live="polite">
+      <!-- JS がカードを注入 -->
+      <div class="card-skeleton"></div>
+      <div class="card-skeleton"></div>
+      <div class="card-skeleton"></div>
     </div>
 
-    <!-- 最新記事カード -->
-    <div class="blog-grid">
-      <a href="/blog" class="blog-card">
-        <img src="assets/images/blog1.jpg" alt="Blog post 1">
-        <div class="card-content">
-          <h4>最新リリース解説</h4>
-          <p>新曲のテーマや歌詞の背景に迫ります。</p>
-        </div>
-      </a>
-      <a href="/blog" class="blog-card">
-        <img src="assets/images/blog2.jpg" alt="Blog post 2">
-        <div class="card-content">
-          <h4>技術の裏側</h4>
-          <p>音声合成とAI技術の秘密を解説。</p>
-        </div>
-      </a>
-      <a href="/blog" class="blog-card">
-        <img src="assets/images/blog3.jpg" alt="Blog post 3">
-        <div class="card-content">
-          <h4>イベント告知</h4>
-          <p>最新のライブ・コラボ・配信情報をお届け。</p>
-        </div>
-      </a>
+    <div class="blog-cta">
+      <a href="/blog/" class="btn secondary">ブログ一覧へ</a>
     </div>
   </div>
 </section>
