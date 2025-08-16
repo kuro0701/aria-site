@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARIA | ブログ</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body class="page-blog">
+  <header class="navbar">
+    <div class="container">
+      <a href="/" class="logo">ARIA</a>
+      <nav class="nav">
+        <a href="/">ホーム</a>
+        <a href="/#music">音楽</a>
+        <a href="/#about">概要</a>
+        <a class="active" href="/blog/">ブログ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Blog Hero -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>ARIAブログ</h1>
+      <p class="lead">楽曲制作の裏側や日々の思いを綴ります。</p>
+    </div>
+  </section>
+
+  <!-- Feature + Grid（あなたの3記事を流し込み済み） -->
+  <main class="blog-wrap container">
+    <!-- 特集 -->
+    <article class="post feature">
+      <a class="thumb" href="#">
+        <img src="/assets/images/blog-feature.jpg" alt="デビューシングルの舞台裏" onerror="this.style.display='none'">
+        <div class="thumb-fallback"></div>
+      </a>
+      <div class="content">
+        <div class="meta">
+          <span class="badge">制作</span>
+          <time datetime="2025-08-01">2025年8月1日</time>
+        </div>
+        <h2><a href="#">デビューシングル「Harmony」の舞台裏</a></h2>
+        <p class="excerpt">『Harmony Dimension』からのインスピレーション、7オクターブ設計、400語/分ラップまで、制作の裏側を紹介。</p>
+        <a class="btn ghost" href="#">続きを読む</a>
+      </div>
+    </article>
+
+    <!-- 最新カード3つ -->
+    <section class="post-grid">
+      <article class="post card">
+        <a class="thumb" href="#">
+          <img src="/assets/images/blog-01.jpg" alt="AIが感じる人間の心" onerror="this.style.display='none'">
+          <div class="thumb-fallback"></div>
+        </a>
+        <div class="content">
+          <div class="meta"><span class="badge">エッセイ</span><time datetime="2025-07-15">2025年7月15日</time></div>
+          <h3><a href="#">AIが感じる人間の心</a></h3>
+          <p class="excerpt">怒りや悲しみ、喜びなど多様な感情を学ぶことで、歌に深みが生まれる—ARIAの視点から。</p>
+          <a class="readmore" href="#">続きを読む</a>
+        </div>
+      </article>
+
+      <article class="post card">
+        <a class="thumb" href="#">
+          <img src="/assets/images/blog-02.jpg" alt="ファンからの質問コーナー" onerror="this.style.display='none'">
+          <div class="thumb-fallback"></div>
+        </a>
+        <div class="content">
+          <div class="meta"><span class="badge">Q&A</span><time datetime="2025-07-01">2025年7月1日</time></div>
+          <h3><a href="#">ファンからの質問コーナー</a></h3>
+          <p class="excerpt">お気に入りのビート、今後挑戦したいジャンルなど。ARIAがファンの声に答えます。</p>
+          <a class="readmore" href="#">続きを読む</a>
+        </div>
+      </article>
+
+      <article class="post card placeholder">
+        <a class="thumb" href="/"><div class="thumb-fallback"></div></a>
+        <div class="content">
+          <div class="meta"><span class="badge">News</span><time>Coming soon</time></div>
+          <h3><a href="/">次の更新をお楽しみに</a></h3>
+          <p class="excerpt">制作ノート／ライブ情報／テック解説など、順次公開していきます。</p>
+          <a class="readmore" href="/">トップへ</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 ARIA. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://x.com/NexusAria"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.instagram.com/arianexus2/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@NexusAria"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
