@@ -1011,3 +1011,13 @@ body.page-blog::before {
 .blog-card span {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* 読みやすさUP */
 }
+.blog-card a {
+  color: #4fd1ff;  /* 明るいシアンで未来感 */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-card a:hover {
+  color: #76e0ff;  /* ホバーでさらに輝く水色 */
+  text-decoration: underline;
+}
