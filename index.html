@@ -4,12 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | AIソロシンガー</title>
-
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Site CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>
@@ -58,10 +54,7 @@
           <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="stream-link amazon"><i class="fa-brands fa-amazon"></i> Amazon&nbsp;Music</a>
         </div>
         <div class="feature-embed">
-          <iframe width="100%" height="360" style="border-radius:12px"
-            src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0"
-            title="YouTube Music player" frameborder="0" loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+          <iframe width="100%" height="360" style="border-radius:12px" src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
         </div>
       </div>
     </div>
@@ -87,53 +80,25 @@
     </div>
   </section>
 
-  <!-- About / Features (略: 既存のまま) -->
-  <section class="features" id="about" aria-labelledby="about-title">
-    <div class="container">
-      <div class="about-head">
-        <div>
-          <h2 id="about-title">ARIAについて</h2>
-          <p class="about-catch">ARIAは、AIの透明さと人の温度を両立する歌声です。</p>
-        </div>
-        <ul class="about-badges">
-          <li>7 Octaves</li><li>Multilingual</li><li>Realtime AI Vocal</li>
-        </ul>
-      </div>
-      <div class="cards">
-        <article class="card"><h3>秒間400語でも崩れない発音</h3><p>高速ラップ域でも子音が潰れにくいボイスデザイン。日本語/英語/多言語に最適化。</p></article>
-        <article class="card"><h3>7オクターブ × 長尺ブレス</h3><p>低域の芯と高域の透明感。ロングトーンでも揺れを抑えた安定ピッチ。</p></article>
-        <article class="card"><h3>AIだけど、温度がある</h3><p>ファンの声を学習し、応答の言い回しや息遣いに“人の温度”を残すキャラクタ設計。</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Music tabs (略: 既存のまま) -->
+  <!-- Music（タブ切替は既存のままでOK） -->
   <section class="music" id="music">
     <div class="container">
       <h2>楽曲を聴く</h2>
       <p>最新リリースやプレイリストをお好みのプラットフォームでお楽しみください。</p>
-      <div class="player-tabs" role="tablist">
+      <div class="player-tabs" role="tablist" aria-label="Music players">
         <button class="tab active" data-target="#ytm" aria-selected="true">YouTube&nbsp;Music</button>
         <button class="tab" data-target="#apple" aria-selected="false">Apple&nbsp;Music</button>
         <button class="tab" data-target="#sp" aria-selected="false">Spotify</button>
       </div>
       <div class="feature-embed" style="margin-top:1.25rem">
         <div id="ytm" class="pane active" role="tabpanel">
-          <iframe width="100%" height="360"
-            src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0"
-            title="YouTube Music player" frameborder="0" loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+          <iframe width="100%" height="360" src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
         </div>
         <div id="apple" class="pane" role="tabpanel">
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
-            frameborder="0" height="360" style="width:100%; overflow:hidden; border-radius:12px"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-            src="https://embed.music.apple.com/us/album/crypto-assets/1832883743"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="360" style="width:100%; overflow:hidden; border-radius:12px" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/crypto-assets/1832883743"></iframe>
         </div>
         <div id="sp" class="pane" role="tabpanel">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/35Qg34OoHMYtN8bINpZNfi"
-            width="100%" height="200" frameborder="0" loading="lazy"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/35Qg34OoHMYtN8bINpZNfi" width="100%" height="200" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
         </div>
       </div>
     </div>
@@ -180,55 +145,31 @@
     </div>
   </footer>
 
-  <!-- Main JS（スムーススクロール等があれば） -->
   <script defer src="/assets/js/main.js"></script>
 
-  <!-- Blog Popular Loader -->
+  <!-- Popular posts loader -->
   <script>
   (async () => {
     const grid = document.getElementById('popular-posts');
     if (!grid) return;
-
-    async function loadPosts() {
-      try {
-        const r = await fetch('/blog/posts.json', { cache:'no-store' });
-        if (r.ok) return r.json();
-        throw 0;
-      } catch {
-        const r2 = await fetch('blog/posts.json', { cache:'no-store' }).catch(()=>null);
-        if (r2 && r2.ok) return r2.json();
-        return [];
-      }
+    async function load() {
+      try { const r = await fetch('/blog/posts.json',{cache:'no-store'}); if(r.ok) return r.json(); throw 0; }
+      catch { const r2 = await fetch('blog/posts.json',{cache:'no-store'}).catch(()=>null); if(r2&&r2.ok) return r2.json(); return []; }
     }
-
-    const posts = await loadPosts();
-    if (!Array.isArray(posts) || posts.length === 0) {
-      grid.innerHTML = `<p style="opacity:.8">まだ記事がありません。</p>`;
-      return;
-    }
-
-    const top = posts.slice().sort((a,b)=>{
-      const v=(b.views||0)-(a.views||0);
-      if(v!==0) return v;
-      return new Date(b.date||0)-new Date(a.date||0);
-    }).slice(0,3);
-
+    const posts = await load();
+    if (!Array.isArray(posts) || posts.length === 0) { grid.innerHTML = `<p style="opacity:.8">まだ記事がありません。</p>`; return; }
+    const top = posts.slice().sort((a,b)=> (b.views||0)-(a.views||0) || (new Date(b.date)-new Date(a.date))).slice(0,3);
     const safe = s => (s||'').replace(/"/g,'&quot;');
     const badge = t => (t&&t.length?`<span class="badge">${t[0]}</span>`:'');
-
     grid.innerHTML = top.map(p=>`
-      <a class="blog-card" href="${p.url||'/blog/'}">
+      <a class="blog-card" href="${p.url}">
         <div class="thumb">
-          <img src="${p.cover||'/assets/images/blog-fallback.jpg'}" alt="${safe(p.title)}"
-               loading="lazy" onerror="this.style.display='none'">
+          <img src="${p.cover}" alt="${safe(p.title)}" loading="lazy" onerror="this.style.display='none'">
           <div class="thumb-fallback"></div>
         </div>
         <div class="card-content">
-          <div class="meta">
-            ${badge(p.tags)}
-            <time datetime="${p.date||''}">${(p.date||'').replace(/-/g,'/')}</time>
-          </div>
-          <h4>${p.title||'Untitled'}</h4>
+          <div class="meta">${badge(p.tags)}<time datetime="${p.date}">${p.date.replace(/-/g,'/')}</time></div>
+          <h4>${p.title}</h4>
           <p class="excerpt">${p.excerpt||''}</p>
         </div>
       </a>
