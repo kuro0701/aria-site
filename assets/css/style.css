@@ -285,3 +285,23 @@ html,body{
   z-index: 3;
   pointer-events: auto;
 }
+/* --- 強制クリック通し（暫定デバッグ用） --- */
+.feature-release,
+.feature-grid,
+.feature-copy,
+.feature-embed,
+.feature-embed iframe {
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* 背景・オーバーレイは完全無効化 */
+.hero-overlay,
+.feature-release::before,
+.feature-release .feature-bg {
+  pointer-events: none !important;
+}
+
+/* 念のためナビの上に被らないよう余白を確保（被り対策） */
+.feature-release { padding-top: 7rem; }
