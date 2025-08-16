@@ -305,3 +305,24 @@ html,body{
 
 /* 念のためナビの上に被らないよう余白を確保（被り対策） */
 .feature-release { padding-top: 7rem; }
+
+/* タブ切替 */
+.player-tabs{ display:flex; gap:.5rem; flex-wrap:wrap; }
+.player-tabs .tab{
+  appearance:none; border:none; cursor:pointer;
+  padding:.55rem .9rem; border-radius:999px; font-weight:700;
+  background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.22); color:#fff;
+  transition:transform .15s ease, opacity .15s ease;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.player-tabs .tab:hover{ transform:translateY(-1px); opacity:.9; }
+.player-tabs .tab.active{ box-shadow:0 0 18px rgba(160,32,240,.35); }
+
+/* パネルの表示/非表示 */
+.pane{ display:none; }
+.pane.active{ display:block; }
+
+/* クリック妨害を防止（背景は無効、プレイヤーは有効） */
+.feature-embed, .feature-embed iframe{ position:relative; z-index:3; pointer-events:auto; }
+.hero-overlay, .feature-release::before, .feature-release .feature-bg{ pointer-events:none; }

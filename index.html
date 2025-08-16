@@ -122,21 +122,48 @@
     <h2>楽曲を聴く</h2>
     <p>最新リリースやプレイリストをお好みのプラットフォームでお楽しみください。</p>
 
-    <div class="stream-links">
-      <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener noreferrer" class="stream-link spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
-      <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener noreferrer" class="stream-link apple"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
-      <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener noreferrer" class="stream-link amazon"><i class="fa-brands fa-amazon"></i> Amazon&nbsp;Music</a>
-      <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener noreferrer" class="stream-link youtube"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
+    <!-- プラットフォーム切替タブ -->
+    <div class="player-tabs" role="tablist" aria-label="Music players">
+      <button class="tab active" data-target="#ytm" role="tab" aria-selected="true">YouTube&nbsp;Music</button>
+      <button class="tab" data-target="#apple" role="tab" aria-selected="false">Apple&nbsp;Music</button>
+      <button class="tab" data-target="#sp" role="tab" aria-selected="false">Spotify</button>
     </div>
 
-    <!-- Spotify埋め込み -->
-    <div class="feature-embed" style="margin-top: 1.5rem;">
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/artist/35Qg34OoHMYtN8bINpZNfi"
-        width="100%" height="152" frameborder="0" loading="lazy"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-      </iframe>
+    <!-- 埋め込み本体 -->
+    <div class="feature-embed" style="margin-top:1.25rem">
+      <!-- YouTube Music（チャンネルの“アップロード動画”プレイリスト） -->
+      <div id="ytm" class="pane active" role="tabpanel" aria-labelledby="YouTube Music">
+        <iframe width="100%" height="360"
+          src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0"
+          title="YouTube Music player" frameborder="0" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen">
+        </iframe>
+      </div>
+
+      <!-- Apple Music（ご指定のアルバム） -->
+      <div id="apple" class="pane" role="tabpanel" aria-labelledby="Apple Music">
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+          frameborder="0" height="360" style="width:100%; overflow:hidden; border-radius:12px"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/album/crypto-assets/1832883743">
+        </iframe>
+      </div>
+
+      <!-- Spotify（任意。不要ならタブとここを削除OK） -->
+      <div id="sp" class="pane" role="tabpanel" aria-labelledby="Spotify">
+        <iframe style="border-radius:12px"
+          src="https://open.spotify.com/embed/artist/35Qg34OoHMYtN8bINpZNfi"
+          width="100%" height="200" frameborder="0" loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- ストリーミング直リンク -->
+    <div class="stream-links" style="margin-top:1rem">
+      <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="stream-link youtube"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
+      <a href="https://music.apple.com/us/album/crypto-assets/1832883743" target="_blank" rel="noopener" class="stream-link apple"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
+      <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener" class="stream-link spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
     </div>
   </div>
 </section>
@@ -183,5 +210,21 @@
 
   <!-- 任意: 追加JS -->
   <script defer src="assets/js/main.js"></script>
+  <script>
+    // タブ切替
+    document.querySelectorAll('.player-tabs .tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // ボタンのactive切替
+        document.querySelectorAll('.player-tabs .tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+  
+        // パネルのactive切替
+        const target = btn.getAttribute('data-target');
+        document.querySelectorAll('.feature-embed .pane').forEach(p => p.classList.remove('active'));
+        const pane = document.querySelector(target);
+        if (pane) pane.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
