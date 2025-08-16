@@ -535,3 +535,111 @@ body{ padding-bottom: 0; }
 
 /* SNSセクションは高さをコンテンツ依存に */
 .social{ min-height: auto; }
+/* ==== Blog Section ==== */
+.blog {
+  padding: 80px 20px;
+  background: #0f0d21;
+  color: #fff;
+  text-align: center;
+}
+
+.blog h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.blog p {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+/* 特集記事 */
+.blog-feature {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.blog-feature img {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.feature-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+}
+
+.feature-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  text-align: left;
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.feature-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.feature-content p {
+  margin-bottom: 10px;
+}
+
+.feature-content .btn {
+  background: #7b5cff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* 最新記事カード */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: #1a1633;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.card-content {
+  padding: 15px;
+  text-align: left;
+}
+
+.card-content h4 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.card-content p {
+  color: #aaa;
+  font-size: 0.95rem;
+}
