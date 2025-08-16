@@ -271,3 +271,17 @@ html,body{
   .feature-release{ min-height: 70vh; }
   .feature-title{ font-size: 1.8rem; }
 }
+/* クリック妨害を防ぐ：装飾オーバーレイはイベント無効化 */
+.hero-overlay,
+.feature-release::before,
+.feature-release .feature-bg {
+  pointer-events: none;
+}
+
+/* 埋め込みは必ず上に＆クリック可能 */
+.feature-embed,
+.feature-embed iframe {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
