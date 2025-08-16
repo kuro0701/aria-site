@@ -917,3 +917,62 @@ body{ padding-bottom: 0; }
 .post .content, .blog-hero, .post h2, .post h3 {
   letter-spacing: 0.01em;
 }
+/* ==== BLOG: カードの縦潰れ・縦書き化対策（強制一列） ==== */
+
+/* カードは常に「画像→テキスト」の1カラムにする */
+.post.card{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+}
+
+/* 画像はカードの先頭に全幅で配置、一定の高さでトリミング */
+.post.card .thumb{
+  grid-column: 1 / -1;
+}
+.post.card .thumb img,
+.post.card .thumb .thumb-fallback{
+  width: 100%;
+  height: 180px;          /* お好みで 160–220px */
+  object-fit: cover;
+}
+
+/* テキスト側は幅制限を外す（「max-width: 68ch」などを無効化） */
+.post.card .content{
+  max-width: none !important;
+}
+
+/* 念のため “横書き” を明示（どこかで継承されていた時の保険） */
+.post.card .content,
+.post.card .content *{
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  white-space: normal;
+}
+
+/* グリッドの各列幅を確保：広い画面でも極細列が生まれないように */
+.post-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 列の最小幅を明示 */
+  gap: 16px;
+}
+@media (max-width: 1024px){
+  .post-grid{ grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+}
+@media (max-width: 640px){
+  .post-grid{ grid-template-columns: 1fr; }
+}
+
+/* 見出し・本文は行数で切って整える（任意） */
+.post.card h3{
+  margin: .35rem 0 .25rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.post.card .excerpt{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
