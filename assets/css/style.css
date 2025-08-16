@@ -1021,3 +1021,24 @@ body.page-blog::before {
   color: #76e0ff;  /* ホバーでさらに輝く水色 */
   text-decoration: underline;
 }
+.blog-card h3,
+.blog-card p,
+.blog-hero h1,
+.blog-hero p {
+  color: #f0f0f0; /* 柔らかい白で読みやすい */
+}
+
+.blog-card a,
+.post .readmore,
+.post .btn {
+  color: #4fd1ff; /* シアンで未来感をプラス */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-card a:hover,
+.post .readmore:hover,
+.post .btn:hover {
+  color: #ffffff; /* ホバーで純白にしてアクセント */
+  text-decoration: underline;
+}
