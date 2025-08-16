@@ -995,3 +995,19 @@ body.page-blog::before {
   background: rgba(10, 10, 30, 0.6); /* 濃紺の透明レイヤー */
   z-index: -1;
 }
+/* ブログカード全体 */
+.blog-card {
+  background: rgba(15, 15, 35, 0.8);  /* 半透明の濃紺で背景を透かす */
+  backdrop-filter: blur(8px);          /* 背景をぼかしてガラス風 */
+  -webkit-backdrop-filter: blur(8px);  /* Safari対策 */
+  border-radius: 16px;                 /* 角丸を大きめに */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* カードに浮遊感 */
+  color: #fff;                         /* 文字は白基調 */
+}
+
+/* タイトルや本文の文字にシャドウ追加 */
+.blog-card h2,
+.blog-card p,
+.blog-card span {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* 読みやすさUP */
+}
