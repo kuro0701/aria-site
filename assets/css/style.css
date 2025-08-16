@@ -844,3 +844,76 @@ body{ padding-bottom: 0; }
   border-radius: 0.5rem;
   font-size: 0.7rem;
 }
+/* ===== Blog 可読性・レイアウト安定パッチ ===== */
+
+/* 1) ページの最大幅をきっちり設定（広すぎ対策） */
+.container,
+.blog-wrap.container,
+.page-blog .navbar .container,
+.blog-hero .container {
+  max-width: 1120px; /* お好みで 1040〜1200 */
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* 2) 文字のコントラストとレンダリングを安定化 */
+.page-blog {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 3) 見出し・本文のサイズを画面幅に応じてclamp（デカ画面で巨大化しすぎない） */
+.blog-hero h1 { font-size: clamp(24px, 2.2vw, 36px); }
+.blog-hero .lead { font-size: clamp(14px, 1.2vw, 18px); }
+
+.post h2 { font-size: clamp(18px, 1.6vw, 26px); }
+.post h3 { font-size: clamp(16px, 1.3vw, 22px); }
+.post .excerpt,
+.post .content { font-size: clamp(14px, 1.05vw, 16.5px); line-height: 1.55; }
+
+/* 4) 行の長さ（measure）を制御：一行が長すぎると“潰れて”見える */
+.post .content { max-width: 68ch; }           /* 本文は68字程度で折り返す */
+.post.feature .content { max-width: 60ch; }   /* 特集は少し短めで締まる */
+
+/* 5) テキストの折返しを賢く */
+.post h2 a, .post h3 a {
+  text-wrap: balance;  /* 見出しの改行を綺麗に */
+}
+.post .excerpt {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 本文プレビューは3行で切る */
+}
+
+/* 6) グリッドが広い画面で伸びすぎないよう列幅を下限指定 */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr)); /* 1カラムの最小幅を確保 */
+  gap: 16px;
+}
+
+/* 7) カード内のサムネ高さを固定して比率崩れを防止 */
+.post.card .thumb .thumb-fallback { height: 180px; }
+.post.card .thumb img { height: 180px; object-fit: cover; }
+
+/* 8) 特集の左右バランス：テキストが横に広がり過ぎないように */
+.post.feature {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.8fr);
+  align-items: stretch;
+}
+@media (max-width: 1024px){
+  .post.feature { grid-template-columns: 1fr; }
+  .post .content { max-width: none; } /* タブレット以下は幅制限を解除 */
+}
+
+/* 9) 画像がギラついて文字が霞む場合の軽い影（必要ならコメントアウト） */
+.post .content h2, .post .content h3 {
+  text-shadow: 0 0 1px rgba(0,0,0,.15);
+}
+
+/* 10) ほんの少しだけ文字を締めて、にじみ軽減（日本語は0〜0.02em程度が無難） */
+.post .content, .blog-hero, .post h2, .post h3 {
+  letter-spacing: 0.01em;
+}
