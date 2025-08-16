@@ -480,16 +480,17 @@ html,body{
   .social-cards{ grid-template-columns: 1fr; }
   .social-title{ font-size:1.8rem; }
 }
-/* 既存のfooterに absolute/fixed があれば削除 */
+:root{ --footer-h: 88px; }   /* フッター高さを調整 */
 
-/* ==== Sticky Footer 基本形 ==== */
-html, body { height: 100%; }
 body {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: var(--footer-h); /* フッター分だけ余白確保 */
 }
+
 .footer {
-  margin-top: auto;
-  position: relative;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: var(--footer-h);
+  z-index: 1000;
+  background: #0c0a1f; 
+  display: flex; align-items: center; justify-content: center;
 }
