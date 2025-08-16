@@ -494,3 +494,44 @@ body {
   background: #0c0a1f; 
   display: flex; align-items: center; justify-content: center;
 }
+/* ===== Revert to normal footer flow ===== */
+
+/* 1) 以前の fixed/sticky 由来を無効化 */
+:root { --footer-h: initial; }
+html, body { height: auto !important; }
+body {
+  /* sticky/fixed対策で付けたものを消す */
+  display: block !important;
+  flex-direction: initial !important;
+  min-height: auto !important;
+  padding-bottom: 0 !important;
+}
+
+/* 2) フッターは通常フローで表示（SNSの直下に来る） */
+.footer{
+  position: static !important;   /* fixed/absolute を打ち消し */
+  margin-top: 0 !important;
+  height: auto !important;
+  bottom: auto !important;
+  left: auto !important; right: auto !important;
+  z-index: 0 !important;
+  padding: 24px 0;               /* お好みで */
+  background: #0c0a1f;           /* 既存テーマ色に合わせてOK */
+}
+
+/* 3) SNSの余白が大きすぎる場合は縮める */
+.social{
+  min-height: auto !important;   /* 以前の 88vh/100vh を無効化 */
+  padding-bottom: 2rem;          /* 余白は控えめに */
+}
+/* Blog teaserの空白を最小限に（出す場合） */
+.blog-teaser { padding: 2.5rem 0; } /* デフォルトの4remが広いなら調整 */
+
+/* 念のため：フッターは通常フローに */
+.footer{ position: static; margin-top: 0; height: auto; }
+
+/* 念のため：以前のfixed用の下余白を無効化 */
+body{ padding-bottom: 0; }
+
+/* SNSセクションは高さをコンテンツ依存に */
+.social{ min-height: auto; }
