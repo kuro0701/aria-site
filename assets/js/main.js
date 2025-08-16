@@ -81,3 +81,66 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 })();
+<script>
+/* ==== Blog Popular cards (posts.json から自動描画) ==== */
+(async () => {
+  const grid = document.getElementById('popular-posts');
+  if (!grid) return;
+
+  async function loadPosts() {
+    // まず絶対パスで取得（本番ホスティング向け）
+    try {
+      const r = await fetch('/blog/posts.json', { cache: 'no-store' });
+      if (r.ok) return r.json();
+      throw new Error('abs path not found');
+    } catch {
+      // ローカル検証用に相対パスも試す
+      const r2 = await fetch('blog/posts.json', { cache: 'no-store' }).catch(()=>null);
+      if (r2 && r2.ok) return r2.json();
+      return [];
+    }
+  }
+
+  const posts = await loadPosts();
+  if (!Array.isArray(posts) || posts.length === 0) {
+    grid.innerHTML = `<p style="opacity:.8">まだ記事がありません。</p>`;
+    return;
+  }
+
+  // 人気順（views desc）→日付 desc
+  const top = posts
+    .slice()
+    .sort((a, b) => {
+      const v = (b.views || 0) - (a.views || 0);
+      if (v !== 0) return v;
+      return new Date(b.date || 0) - new Date(a.date || 0);
+    })
+    .slice(0, 3);
+
+  const toBadge = tags => (tags && tags.length ? `<span class="badge">${tags[0]}</span>` : '');
+  const safe = s => (s || '').replace(/"/g,'&quot;');
+
+  const html = top.map(p => `
+    <a class="blog-card" href="${p.url || '/blog/'}">
+      <div class="thumb">
+        <img src="${p.cover || '/assets/images/blog-fallback.jpg'}"
+             alt="${safe(p.title)}" loading="lazy"
+             onerror="this.style.display='none'">
+        <div class="thumb-fallback"></div>
+      </div>
+      <div class="card-content">
+        <div class="meta">
+          ${toBadge(p.tags)}
+          <time datetime="${p.date || ''}">
+            ${(p.date || '').replace(/-/g,'/')}
+          </time>
+        </div>
+        <h4>${p.title || 'Untitled'}</h4>
+        <p class="excerpt">${p.excerpt || ''}</p>
+      </div>
+    </a>
+  `).join('');
+
+  grid.innerHTML = html;
+})();
+</script>
