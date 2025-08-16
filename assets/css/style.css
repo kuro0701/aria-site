@@ -976,3 +976,22 @@ body{ padding-bottom: 0; }
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+/* ブログ背景 */
+body.page-blog {
+  background: url("/assets/images/blog-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* 読みやすさ用のオーバーレイ */
+body.page-blog::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 30, 0.6); /* 濃紺の透明レイヤー */
+  z-index: -1;
+}
