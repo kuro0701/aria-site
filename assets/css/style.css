@@ -480,3 +480,16 @@ html,body{
   .social-cards{ grid-template-columns: 1fr; }
   .social-title{ font-size:1.8rem; }
 }
+/* 既存のfooterに absolute/fixed があれば削除 */
+
+/* ==== Sticky Footer 基本形 ==== */
+html, body { height: 100%; }
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  margin-top: auto;
+  position: relative;
+}
