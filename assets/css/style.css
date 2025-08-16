@@ -174,3 +174,100 @@ html,body{
   border-radius:16px;
   box-shadow:0 0 60px rgba(160,32,240,.18), 0 0 80px rgba(0,255,255,.12);
 }
+/* ===== Latest Release (PCビジュアル) ===== */
+.feature-release{
+  position: relative;
+  min-height: 88vh; /* ヒーローより少し短めで流れを作る */
+  display: flex;
+  align-items: center;
+  overflow: clip;
+  background: #0f0d21; /* フォールバック */
+}
+
+/* 背景画像：今回のアートを全幅で */
+.feature-release .feature-bg{
+  position: absolute; inset: 0;
+  background: url('../images/section-latest-pc.png') center/cover no-repeat;
+  filter: saturate(1.05) contrast(1.02);
+  z-index: 0;
+}
+
+/* 読みやすさ確保のため、右側を強めにグラデで暗くする */
+.feature-release::before{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15,13,33,.85) 0%,
+    rgba(15,13,33,.65) 30%,
+    rgba(15,13,33,.45) 55%,
+    rgba(15,13,33,.30) 70%,
+    rgba(15,13,33,.20) 100%
+  );
+  z-index: 1;
+}
+
+.feature-grid{
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* 右側に余白を残して“UIが映る”見せ方 */
+  align-items: center;
+  gap: 3rem;
+  padding-top: 6rem;  /* ナビ固定分の余白 */
+  padding-bottom: 4rem;
+}
+
+/* コピーのカード（グラスモーフィズム） */
+.feature-copy{
+  max-width: 640px;
+  padding: 1.5rem 1.8rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35), 0 0 80px rgba(160,32,240,.18);
+}
+
+.feature-title{
+  margin: 0 0 .25rem;
+  font-size: 2.2rem;
+  letter-spacing: .02em;
+  text-shadow: 0 0 20px rgba(160,32,240,.28), 0 0 10px rgba(0,255,255,.18);
+}
+
+.feature-lead{
+  margin: .25rem 0 1.25rem;
+  color: var(--muted);
+}
+
+/* 既存の .stream-links / .stream-link を再利用 */
+.feature-copy .row{ justify-content: flex-start; }
+
+.feature-embed{
+  margin-top: 1.25rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+/* レスポンシブ */
+@media (max-width: 1100px){
+  .feature-grid{
+    grid-template-columns: 1fr;
+  }
+  .feature-copy{
+    margin: 0 auto;
+  }
+  .feature-release::before{
+    background: linear-gradient(
+      180deg,
+      rgba(15,13,33,.85) 0%,
+      rgba(15,13,33,.55) 40%,
+      rgba(15,13,33,.25) 100%
+    );
+  }
+}
+@media (max-width: 768px){
+  .feature-release{ min-height: 70vh; }
+  .feature-title{ font-size: 1.8rem; }
+}
