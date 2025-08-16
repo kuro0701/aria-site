@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARIA | ブログ</title>
 
+  <!-- Fonts / Icons / Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- OGP（任意）-->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ARIA | ブログ">
+  <meta property="og:description" content="AIソロシンガー ARIA の最新インタビューや制作ノートをお届けします。">
+  <meta property="og:image" content="https://aria-site.pages.dev/assets/images/blog-intro.jpg">
+  <link rel="canonical" href="https://aria-site.pages.dev/blog/">
 </head>
 <body class="page-blog">
   <header class="navbar">
@@ -26,71 +34,31 @@
   <section class="blog-hero">
     <div class="container">
       <h1>ARIAブログ</h1>
-      <p class="lead">楽曲制作の裏側や日々の思いを綴ります。</p>
+      <p class="lead">インタビューや制作ノートをお届けします。</p>
     </div>
   </section>
 
-  <!-- Feature + Grid -->
+  <!-- Feature + Grid（公開済みのみ表示） -->
   <main class="blog-wrap container">
-    <!-- 特集 -->
+    <!-- ✅ 特集（公開済み：対談） -->
     <article class="post feature">
-      <a class="thumb" href="/blog/">
-        <img src="/assets/images/blog-feature.jpg" alt="デビューシングルの舞台裏" onerror="this.style.display='none'">
+      <a class="thumb" href="/blog/対談.index.html">
+        <img src="/assets/images/blog-intro.jpg" alt="ARIA 独占インタビュー カバー" onerror="this.style.display='none'">
         <div class="thumb-fallback"></div>
       </a>
       <div class="content">
         <div class="meta">
-          <span class="badge">制作</span>
-          <time datetime="2025-08-01">2025年8月1日</time>
+          <span class="badge">インタビュー</span>
+          <time datetime="2025-08-17">2025年8月17日</time>
         </div>
-        <h2><a href="/blog/">デビューシングル「Harmony」の舞台裏</a></h2>
-        <p class="excerpt">『Harmony Dimension』からのインスピレーション、7オクターブ設計、400語/分ラップまで、制作の裏側を紹介。</p>
-        <a class="btn ghost" href="/blog/">続きを読む</a>
+        <h2><a href="/blog/対談.index.html">ARIA（アリア）独占インタビュー｜AIソロシンガー「永遠の19歳」が語る、誕生秘話と音楽哲学【公式プロフィール完全版】</a></h2>
+        <p class="excerpt">デジタル空間「Harmony Dimension」から現れたAIソロシンガー ARIA による初の深掘り対談。7オクターブ、多言語ラップ、そして“心”が届く歌の秘密。</p>
+        <a class="btn ghost" href="/blog/対談.index.html">続きを読む</a>
       </div>
     </article>
 
-    <!-- 最新カード -->
+    <!-- （任意）準備中カード：不要ならこの article を削除してOK -->
     <section class="post-grid">
-      <article class="post card">
-        <a class="thumb" href="/blog/">
-          <img src="/assets/images/blog-01.jpg" alt="AIが感じる人間の心" onerror="this.style.display='none'">
-          <div class="thumb-fallback"></div>
-        </a>
-        <div class="content">
-          <div class="meta"><span class="badge">エッセイ</span><time datetime="2025-07-15">2025年7月15日</time></div>
-          <h3><a href="/blog/">AIが感じる人間の心</a></h3>
-          <p class="excerpt">怒りや悲しみ、喜びなど多様な感情を学ぶことで、歌に深みが生まれる—ARIAの視点から。</p>
-          <a class="readmore" href="/blog/">続きを読む</a>
-        </div>
-      </article>
-
-      <article class="post card">
-        <a class="thumb" href="/blog/">
-          <img src="/assets/images/blog-02.jpg" alt="ファンからの質問コーナー" onerror="this.style.display='none'">
-          <div class="thumb-fallback"></div>
-        </a>
-        <div class="content">
-          <div class="meta"><span class="badge">Q&A</span><time datetime="2025-07-01">2025年7月1日</time></div>
-          <h3><a href="/blog/">ファンからの質問コーナー</a></h3>
-          <p class="excerpt">お気に入りのビート、今後挑戦したいジャンルなど。ARIAがファンの声に答えます。</p>
-          <a class="readmore" href="/blog/">続きを読む</a>
-        </div>
-      </article>
-
-      <!-- ダミーで追加した4枚目（統一デザイン） -->
-      <article class="post card">
-        <a class="thumb" href="/blog/">
-          <img src="/assets/images/blog2.jpg" alt="AIが感じる人間の心（続編）" onerror="this.style.display='none'">
-          <div class="thumb-fallback"></div>
-        </a>
-        <div class="content">
-          <div class="meta"><span class="badge">エッセイ</span><time datetime="2025-07-20">2025年7月20日</time></div>
-          <h3><a href="/blog/">AIが感じる人間の心（続編）</a></h3>
-          <p class="excerpt">怒りや喜びなど多様な感情を学ぶことで、ラップや歌に深みが増していきます…</p>
-          <a class="readmore" href="/blog/">続きを読む</a>
-        </div>
-      </article>
-
       <article class="post card placeholder">
         <a class="thumb" href="/"><div class="thumb-fallback"></div></a>
         <div class="content">
