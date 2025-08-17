@@ -4,241 +4,301 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | AIソロシンガー</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="description" content="AIソロシンガー ARIA の公式サイト。最新曲、動画、ブログ、SNS をスマホでも快適に。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome (brands) for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-S+V7m7b5o8XoFz0m6w0o3f5wQyX6I9t2+5LypYpZrT2M0p8cQqkzWw3y1rR0Cw0kE1q2mH8oYF3m5yqJHq4ykg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ===============
+       Design Tokens
+    =============== */
+    :root {
+      --max-w: 1120px;
+      --radius: 16px;
+      --header-h: 64px;
+      --space-1: clamp(6px, 1.3vw, 10px);
+      --space-2: clamp(10px, 1.8vw, 14px);
+      --space-3: clamp(14px, 2.4vw, 20px);
+      --space-4: clamp(18px, 3.0vw, 28px);
+      --space-5: clamp(24px, 3.6vw, 36px);
+      --fs-sm: clamp(12px, 1.6vw, 14px);
+      --fs-md: clamp(14px, 1.9vw, 16px);
+      --fs-lg: clamp(18px, 2.6vw, 24px);
+      --fs-xl: clamp(24px, 4.6vw, 40px);
+      --fs-xxl: clamp(28px, 6.4vw, 56px);
+      --brand: #7c5cff;
+      --brand-2: #00d4ff;
+      --text: #0f1222;
+      --text-dim: #44475a;
+      --bg: #ffffff;
+      --bg-soft: #f6f7fb;
+      --border: #e6e8f0;
+      --shadow: 0 10px 30px rgba(15, 18, 34, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #e8e9ee;
+        --text-dim: #a5a7b6;
+        --bg: #0f1116;
+        --bg-soft: #12141b;
+        --border: #222532;
+        --shadow: 0 10px 30px rgba(0,0,0,0.45);
+        --brand: #9b87ff;
+      }
+    }
+
+    /* ===============
+       Base / Reset
+    =============== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Poppins, "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(124,92,255,0.15), transparent 60%),
+                  radial-gradient(1200px 600px at 90% -10%, rgba(0,212,255,0.15), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, video { display: block; max-width: 100%; height: auto; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .container { width: min(100% - 24px, var(--max-w)); margin-inline: auto; }
+
+    /* ===============
+       Header / Nav
+    =============== */
+    header.site-header {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
+    .logo { font-weight: 800; letter-spacing: 0.6px; font-size: 20px; color: var(--text); display:flex; align-items:center; gap:10px; }
+    .logo-badge { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; font-weight:700; font-size:12px; }
+
+    nav.primary-nav { display: flex; align-items: center; gap: var(--space-3); }
+    nav.primary-nav a { color: var(--text); font-size: var(--fs-md); font-weight:600; opacity:0.9; }
+    nav.primary-nav a:hover { opacity:1; }
+
+    .social { display: flex; align-items: center; gap: 12px; margin-left: var(--space-3); }
+    .social a { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: var(--bg-soft); color: var(--text); border:1px solid var(--border); box-shadow: var(--shadow); }
+    .social a:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(124,92,255,0.12); }
+    .social i { font-size: 18px; line-height: 1; }
+
+    .nav-group { display:flex; align-items:center; gap: var(--space-3); }
+
+    /* Mobile toggle */
+    .nav-toggle { display:none; border:1px solid var(--border); background: var(--bg); color: var(--text); width:42px; height:42px; border-radius:12px; }
+
+    @media (max-width: 880px) {
+      .nav-toggle { display:grid; place-items:center; }
+      nav.primary-nav { position: fixed; inset: calc(var(--header-h) + 8px) 12px auto 12px; background: var(--bg); border:1px solid var(--border); border-radius: 16px; padding: 12px; box-shadow: var(--shadow); display: none; flex-direction: column; gap: 8px; }
+      nav.primary-nav a { padding: 10px 12px; border-radius: 10px; background: var(--bg-soft); width: 100%; }
+      body.nav-open nav.primary-nav { display: flex; }
+      .social { display:none; }
+    }
+
+    /* ===============
+       Hero
+    =============== */
+    .hero { padding: clamp(32px, 7vw, 72px) 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-5); align-items: center; }
+    .hero h1 { font-size: var(--fs-xxl); line-height: 1.15; margin: 0 0 var(--space-3); letter-spacing: .3px; }
+    .hero p { font-size: var(--fs-lg); color: var(--text-dim); margin: 0 0 var(--space-4); }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 18px; border-radius: 12px; border:1px solid var(--border); background: var(--bg-soft); color: var(--text); font-weight:700; text-decoration:none; box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; border: none; }
+    .btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+    .hero-visual { border-radius: 24px; overflow:hidden; border:1px solid var(--border); box-shadow: var(--shadow); background: var(--bg-soft); aspect-ratio: 4 / 3; }
+
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===============
+       Sections
+    =============== */
+    section { padding: clamp(28px, 6vw, 56px) 0; }
+    .section-title { font-size: var(--fs-xl); margin: 0 0 var(--space-3); }
+    .section-desc { color: var(--text-dim); margin: 0 0 var(--space-4); }
+
+    /* Music Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; overflow: clip; box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr auto; }
+    .card-cover { aspect-ratio: 1 / 1; background: var(--bg-soft); }
+    .card-body { padding: 14px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .meta { font-size: var(--fs-sm); color: var(--text-dim); }
+    .card .btn-row { display:flex; gap:10px; padding: 12px 14px; }
+
+    /* Responsive Video */
+    .ratio { position: relative; width: 100%; border-radius: 16px; overflow: hidden; border:1px solid var(--border); box-shadow: var(--shadow); background: var(--bg-soft); }
+    .ratio::before { content: ""; display: block; padding-top: 56.25%; }
+    .ratio > iframe, .ratio > video { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* Footer */
+    footer { padding: 28px 0 40px; color: var(--text-dim); border-top: 1px solid var(--border); }
+
+    /* Larger touch targets on mobile */
+    @media (max-width: 480px) {
+      a, button { min-height: 44px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="navbar" role="banner">
-    <div class="container">
-      <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
-      <nav class="nav" aria-label="メインメニュー">
-        <a href="#music">音楽</a>
-        <a href="#story">ストーリー</a>
-        <a href="/blog/">ブログ</a>
-      </nav>
-      <div class="social-links-header" aria-label="SNSリンク">
-        <a href="https://x.com/NexusAria" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/@NexusAria" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/" aria-label="トップページへ">
+        <span class="logo-badge">AR</span>
+        <span>ARIA</span>
+      </a>
+
+      <div class="nav-group">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開閉" title="メニュー">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="site-nav" class="primary-nav" aria-label="メインメニュー">
+          <a href="#music">音楽</a>
+          <a href="/blog.html">ブログ</a>
+          <a href="/interview/">プロフィール</a>
+        </nav>
+
+        <div class="social" aria-label="SNSリンク">
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X">
+            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" role="region" aria-label="ARIA Hero">
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">ARIA</h1>
-      <p class="hero-sub">Future's Voice</p>
-      <div class="cta-buttons">
-        <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="btn glass listen"><i class="fa-brands fa-youtube"></i> Listen Now</a>
-        <a href="https://x.com/NexusAria" target="_blank" rel="noopener" class="btn glass follow"><i class="fa-brands fa-x-twitter"></i> Follow</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Release -->
-  <section class="feature-release" id="latest">
-    <div class="feature-bg" aria-hidden="true"></div>
-    <div class="container feature-grid">
-      <div class="feature-copy">
-        <h2 class="feature-title">Latest Release</h2>
-        <p class="feature-lead">デジタル×ドリームが交差するネオ・ポップ。<br>ARIAの最新トラックをお好みのプラットフォームで。</p>
-        <div class="stream-links row">
-          <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="stream-link youtube"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
-          <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="stream-link apple"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
-          <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener" class="stream-link spotify"><i class="fa-brands fa-spotify"></i> Spotify</a>
-          <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="stream-link amazon"><i class="fa-brands fa-amazon"></i> Amazon&nbsp;Music</a>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>7オクターブ × 多言語ラップ。<br>AIソロシンガー <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent;">ARIA</span></h1>
+          <p>スマホでもPCでも“違和感ゼロ”。最新曲、歌詞、動画、ブログをひとつの場所で。</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#music"><i class="fa-solid fa-play"></i> 楽曲を聴く</a>
+            <a class="btn" href="/blog.html"><i class="fa-solid fa-book-open"></i> ブログへ</a>
+          </div>
         </div>
-        <div class="feature-embed">
-          <iframe width="100%" height="360" style="border-radius:12px" src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- 任意の画像や動画を配置。例：-->
+          <img src="/assets/img/hero.jpg" alt="ARIA のビジュアル" loading="lazy" />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Story -->
-  <section class="story" id="story" role="region" aria-label="ARIAのストーリー">
-    <div class="story-bg" aria-hidden="true"></div>
-    <div class="container story-grid">
-      <div class="story-copy">
-        <h2 class="story-title">ARIAの世界</h2>
-        <p class="story-lead">未来都市のノイズと、天使の羽根の残光。<br>ARIAは「人とAIのあいだ」に生まれた、歌うインターフェース。</p>
-        <ul class="story-points">
-          <li><h3>誕生</h3><p>都市のデータから集めた“息づかい”を学習し、ひとつの歌声として結晶化。</p></li>
-          <li><h3>Voice Design</h3><p>繊細なブレス、7オクターブのレンジ、グラスのような共鳴。ネオンの海で響くための“透明な強さ”。</p></li>
-          <li><h3>Vision</h3><p>テクノロジーと物語をつなぎ、誰かの一日をやさしく塗り替える音楽を。</p></li>
-        </ul>
-        <div class="story-cta">
-          <a href="#music" class="btn glass listen"><i class="fa-brands fa-youtube"></i> 楽曲を聴く</a>
-          <a href="/blog/" class="btn glass follow">ブログを見る</a>
+    <!-- Music -->
+    <section id="music">
+      <div class="container">
+        <h2 class="section-title">最新曲</h2>
+        <p class="section-desc">配信リンクや歌詞ページへワンタップで移動できます。</p>
+        <div class="grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <img class="card-cover" src="/assets/img/covers/digital-harmony.jpg" alt="Digital Harmony ジャケット" loading="lazy" />
+            <div class="card-body">
+              <h3>Digital Harmony (Ver.2)</h3>
+              <div class="meta">2025 • Single</div>
+            </div>
+            <div class="btn-row">
+              <a class="btn" href="/lyrics/digital-harmony-v2.html">歌詞</a>
+              <a class="btn" href="https://music.youtube.com/" target="_blank" rel="noopener">YouTube Music</a>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="card">
+            <img class="card-cover" src="/assets/img/covers/neon-dreams.jpg" alt="Neon Dreams ジャケット" loading="lazy" />
+            <div class="card-body">
+              <h3>Neon Dreams (Ver.1)</h3>
+              <div class="meta">2025 • Single</div>
+            </div>
+            <div class="btn-row">
+              <a class="btn" href="/lyrics/neon-dreams-v1.html">歌詞</a>
+              <a class="btn" href="https://open.spotify.com/" target="_blank" rel="noopener">Spotify</a>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article class="card">
+            <img class="card-cover" src="/assets/img/covers/eternal-bond.jpg" alt="Eternal Bond ジャケット" loading="lazy" />
+            <div class="card-body">
+              <h3>ETERNAL BOND</h3>
+              <div class="meta">2025 • Single</div>
+            </div>
+            <div class="btn-row">
+              <a class="btn" href="/lyrics/eternal-bond.html">歌詞</a>
+              <a class="btn" href="https://music.apple.com/" target="_blank" rel="noopener">Apple Music</a>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Music（タブ切替は既存のままでOK） -->
-  <section class="music" id="music">
+    <!-- Video -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">MV / ライブ</h2>
+        <p class="section-desc">YouTube 埋め込みはアスペクト比を固定し、どの画面でも綺麗に表示されます。</p>
+        <div class="ratio">
+          <!-- 差し替え：YouTube の埋め込み URL -->
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
-      <h2>楽曲を聴く</h2>
-      <p>最新リリースやプレイリストをお好みのプラットフォームでお楽しみください。</p>
-      <div class="player-tabs" role="tablist" aria-label="Music players">
-        <button class="tab active" data-target="#ytm" aria-selected="true">YouTube&nbsp;Music</button>
-        <button class="tab" data-target="#apple" aria-selected="false">Apple&nbsp;Music</button>
-        <button class="tab" data-target="#sp" aria-selected="false">Spotify</button>
-      </div>
-      <div class="feature-embed" style="margin-top:1.25rem">
-        <div id="ytm" class="pane active" role="tabpanel">
-          <iframe width="100%" height="360" src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
-        </div>
-        <div id="apple" class="pane" role="tabpanel">
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="360" style="width:100%; overflow:hidden; border-radius:12px" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/crypto-assets/1832883743"></iframe>
-        </div>
-        <div id="sp" class="pane" role="tabpanel">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/35Qg34OoHMYtN8bINpZNfi" width="100%" height="200" frameborder="0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog: 人気記事（posts.json から） -->
-  <section class="blog" id="blog" aria-label="Blog">
-    <div class="container">
-      <h2>Blog</h2>
-      <p>最新の読み物から人気の特集まで。</p>
-      <div id="popular-posts" class="popular-grid" aria-live="polite">
-        <div class="card-skeleton"></div><div class="card-skeleton"></div><div class="card-skeleton"></div>
-      </div>
-      <div class="blog-cta"><a href="/blog/" class="btn secondary">ブログ一覧へ</a></div>
-    </div>
-  </section>
-
-  <!-- Social -->
-  <section class="social" id="social" aria-label="SNS & Community">
-    <div class="social-bg" aria-hidden="true"></div>
-    <div class="container social-grid">
-      <div class="social-copy">
-        <h2 class="social-title">つながろう</h2>
-        <p class="social-lead">最新の楽曲、制作の舞台裏、ライブ情報をSNSで発信中。</p>
-        <div class="social-cards">
-          <a class="s-card yt" href="https://www.youtube.com/@NexusAria" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i><div><strong>YouTube</strong><span>MV・ライブ・Shorts</span></div></a>
-          <a class="s-card x" href="https://x.com/NexusAria" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i><div><strong>X</strong><span>最新情報・雑感</span></div></a>
-          <a class="s-card ig" href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><div><strong>Instagram</strong><span>ビジュアル・日常</span></div></a>
-          <a class="s-card tiktok" href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i><div><strong>TikTok</strong><span>短尺クリップ</span></div></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <p>© 2025 ARIA. All rights reserved.</p>
-      <div class="social-links" aria-label="SNSリンク">
-        <a href="https://x.com/NexusAria" aria-label="X (Twitter)"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      </div>
+      <small>© <span id="y"></span> ARIA / Aria Nexus. All rights reserved.</small>
     </div>
   </footer>
 
-  <script defer src="/assets/js/main.js"></script>
-
-  <!-- Popular posts loader (絶対パス化 + 防弾) -->
   <script>
-  (async () => {
-    const grid = document.getElementById('popular-posts');
-    if (!grid) return;
+    // 年号自動
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // --- utilities ----------------------------------------------------------
-    const ABS_BASE = '/';
-    const toAbs = (url) => {
-      if (!url) return '/blog/';
-      // 既に http(s) ならそのまま
-      if (/^https?:\/\//i.test(url)) return url;
-      // 先頭が / ならそのまま
-      if (url.startsWith('/')) return url;
-      // "blog/..." のような相対 → "/blog/..."
-      if (url.startsWith('blog/')) return '/' + url;
-      // slug だけが来た場合を想定して "/blog/slug/"
-      if (!url.includes('/')) return '/blog/' + url.replace(/\.html?$/,'') + '/';
-      // それ以外の相対はルート相対に
-      return ABS_BASE + url.replace(/^\.?\//,'');
-    };
-
-    const absImg = (src) => {
-      if (!src) return '/assets/images/noimage.png';
-      if (/^https?:\/\//i.test(src)) return src;
-      if (src.startsWith('/')) return src;
-      return '/' + src.replace(/^\.?\//,'');
-    };
-
-    const fDate = (iso) => {
-      if (!iso) return '';
-      try { return iso.replace(/-/g,'/'); } catch { return iso; }
-    };
-
-    // --- load posts.json ----------------------------------------------------
-    async function load() {
-      try {
-        const r = await fetch('/blog/posts.json', { cache: 'no-store' });
-        if (r.ok) return r.json();
-        throw 0;
-      } catch {
-        const r2 = await fetch('blog/posts.json', { cache: 'no-store' }).catch(()=>null);
-        if (r2 && r2.ok) return r2.json();
-        return [];
-      }
-    }
-
-    const posts = await load();
-    if (!Array.isArray(posts) || posts.length === 0) {
-      grid.innerHTML = `<p style="opacity:.8">まだ記事がありません。</p>`;
-      return;
-    }
-
-    // 表示順：views desc → date desc
-    const top = posts
-      .slice()
-      .sort((a, b) => (b.views || 0) - (a.views || 0) || (new Date(b.date) - new Date(a.date)))
-      .slice(0, 3);
-
-    const esc = (s='') => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-
-    grid.innerHTML = top.map(p => {
-      const url = toAbs(p.url || p.permalink || p.slug || '');
-      const cover = absImg(p.cover || p.image);
-      const tag = (p.tags && p.tags.length) ? `<span class="badge">${esc(p.tags[0])}</span>` : '';
-      return `
-        <a class="blog-card" href="${url}">
-          <div class="thumb">
-            <img src="${cover}" alt="${esc(p.title || '')}" loading="lazy" onerror="this.style.display='none'">
-            <div class="thumb-fallback"></div>
-          </div>
-          <div class="card-content">
-            <div class="meta">${tag}<time datetime="${esc(p.date || '')}">${esc(fDate(p.date || ''))}</time></div>
-            <h4>${esc(p.title || '')}</h4>
-            <p class="excerpt">${esc(p.excerpt || '')}</p>
-          </div>
-        </a>
-      `;
-    }).join('');
-
-    // --- 防弾: 既存の誤クリック処理を無効化 -------------------------------
-    document.querySelectorAll('.blog-card').forEach(el => {
-      el.onclick = null;
-      el.removeAttribute('onclick');
-      el.removeAttribute('data-href');
-      // 親要素側に誤ったデリゲーションがある場合の予防
-      el.addEventListener('click', (e) => {
-        // a 自身の href 以外に書き換えようとする JS をブロック
-        if (e.defaultPrevented) return;
-      });
+    // モバイルメニュー開閉
+    const toggle = document.querySelector('.nav-toggle');
+    const body = document.body;
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      body.classList.toggle('nav-open');
     });
-  })();
+
+    // メニューから遷移したら自動で閉じる
+    document.getElementById('site-nav')?.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.tagName === 'A') {
+        document.body.classList.remove('nav-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
   </script>
 </body>
 </html>
