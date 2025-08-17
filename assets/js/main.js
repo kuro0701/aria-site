@@ -1,8 +1,8 @@
 /* ========================================================================
-   ARIA Website - main.js (mobile-friendly, single source of truth)
+   ARIA Website - main.js (v2 hotfix)
    - Navbar effects
    - Smooth anchors
-   - Mobile drawer (hamburger) open/close with focus trap
+   - Mobile drawer (auto-build if missing)
    - Player tabs
    - Popular posts loader
    ======================================================================== */
@@ -20,11 +20,9 @@
       const navbar = $('.navbar');
       const applyNavBG = () => {
         if (!navbar) return;
-        if (window.scrollY > 10) {
-          navbar.style.background = 'rgba(15, 13, 33, 0.9)';
-        } else {
-          navbar.style.background = 'rgba(0, 0, 0, 0.6)';
-        }
+        navbar.style.background = (window.scrollY > 10)
+          ? 'rgba(15, 13, 33, 0.9)'
+          : 'rgba(0, 0, 0, 0.6)';
       };
       applyNavBG();
       window.addEventListener('scroll', applyNavBG, { passive: true });
@@ -36,81 +34,90 @@
         const target = document.querySelector(href);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
-  
       $$('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
           const href = a.getAttribute('href');
           if (!href || href === '#' || !href.startsWith('#')) return;
           e.preventDefault();
           smoothScroll(href);
-          // もしモバイルドロワー内のリンクなら閉じる
-          if (a.closest('#mobileMenu')) closeDrawer();
+          if (a.closest('#mobileMenu')) closeDrawer(); // モバイルメニュー内なら閉じる
         });
       });
   
       /* -----------------------------
-         3) Mobile drawer (hamburger)
+         3) Mobile drawer (auto-build)
          ----------------------------- */
-      const drawer  = $('#mobileMenu');       // <nav id="mobileMenu" ...>
-      const openBtn = $('.menu-toggle');      // <button class="menu-toggle">
-      const closeBtn= $('.menu-close');       // <button class="menu-close">
+      const openBtn = $('.menu-toggle');
   
-      // フォーカストラップ用
+      function ensureDrawer() {
+        let drawer = $('#mobileMenu');
+        if (!drawer) {
+          drawer = document.createElement('nav');
+          drawer.id = 'mobileMenu';
+          drawer.className = 'nav-drawer';
+          drawer.setAttribute('aria-label', 'モバイルメニュー');
+          drawer.setAttribute('hidden', '');
+          drawer.innerHTML = `
+            <div class="nav-drawer__inner">
+              <button class="menu-close" aria-label="メニューを閉じる">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <ul class="nav-drawer__links">
+                <li><a href="#music">音楽</a></li>
+                <li><a href="#story">ストーリー</a></li>
+                <li><a href="/blog/">ブログ</a></li>
+              </ul>
+              <div class="nav-drawer__social">
+                <a href="https://x.com/NexusAria" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@NexusAria" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(drawer);
+        }
+        return drawer;
+      }
+  
+      const drawer = ensureDrawer();
+      const closeBtn = drawer.querySelector('.menu-close');
       let lastFocused = null;
-      const getFocusable = () =>
-        $$('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])', drawer)
-          .filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
   
       function openDrawer() {
-        if (!drawer) return;
-        // hiddenが付いていたら除去（古い実装との互換）
-        drawer.removeAttribute('hidden');
+        drawer.removeAttribute('hidden');           // 古い実装互換
         drawer.classList.add('is-open');
         document.body.style.overflow = 'hidden';
         openBtn?.setAttribute('aria-expanded', 'true');
-        // 画面上端へ（「下にスワイプしないと出ない」症状の回避）
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);                      // 画面上に固定
         lastFocused = document.activeElement;
-        // 少し待ってからフォーカスをクローズボタンへ
-        setTimeout(() => {
-          (closeBtn || getFocusable()[0] || drawer).focus?.();
-        }, 120);
+        setTimeout(() => (closeBtn || drawer).focus?.(), 120);
       }
-  
       function closeDrawer() {
-        if (!drawer) return;
         drawer.classList.remove('is-open');
         document.body.style.overflow = '';
         openBtn?.setAttribute('aria-expanded', 'false');
-        // トランジション後にhiddenを戻す（アクセシビリティ配慮）
         setTimeout(() => drawer.setAttribute('hidden', ''), 250);
-        // 元のフォーカス復帰
         setTimeout(() => lastFocused?.focus?.(), 10);
       }
   
       openBtn?.addEventListener('click', openDrawer);
       closeBtn?.addEventListener('click', closeDrawer);
-  
-      // オーバーレイ（黒い部分）クリックで閉じる
-      drawer?.addEventListener('click', (e) => {
-        if (e.target === drawer) closeDrawer();
-      });
-  
-      // Escで閉じる
+      drawer.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeDrawer();
-        // フォーカストラップ（Tab循環）
-        if (drawer?.classList.contains('is-open') && e.key === 'Tab') {
-          const f = getFocusable();
-          if (f.length === 0) return;
+        // フォーカストラップ
+        if (drawer.classList.contains('is-open') && e.key === 'Tab') {
+          const f = $$('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])', drawer)
+            .filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
+          if (!f.length) return;
           const first = f[0], last = f[f.length - 1];
-          if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault(); last.focus();
-          } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault(); first.focus();
-          }
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         }
       });
+      // デスクトップに戻ったら閉じておく
+      window.addEventListener('resize', () => { if (window.innerWidth > 900) closeDrawer(); });
   
       /* -----------------------------
          4) Player tabs
@@ -121,16 +128,15 @@
         btn.addEventListener('click', () => {
           tabs.forEach(t => t.classList.remove('active'));
           btn.classList.add('active');
-          const targetSel = btn.dataset.target;
           panes.forEach(p => p.classList.remove('active'));
-          const target = targetSel ? $(targetSel) : null;
+          const target = btn.dataset.target ? $(btn.dataset.target) : null;
           target?.classList.add('active');
         });
       });
     });
   
     /* -----------------------------
-       5) Popular posts loader (single source)
+       5) Popular posts loader
        ----------------------------- */
     (async () => {
       const grid = document.getElementById('popular-posts');
@@ -144,23 +150,14 @@
         if (!url.includes('/')) return '/blog/' + url.replace(/\.html?$/,'') + '/';
         return '/' + url.replace(/^\.?\//,'');
       };
-  
       const absImg = (src) => {
         if (!src) return '/assets/images/noimage.png';
         if (/^https?:\/\//i.test(src)) return src;
         if (src.startsWith('/')) return src;
         return '/' + src.replace(/^\.?\//,'');
       };
-  
-      const esc = (s='') => String(s)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/"/g,'&quot;');
-  
-      const fDate = (iso) => {
-        if (!iso) return '';
-        try { return iso.replace(/-/g,'/'); } catch { return iso; }
-      };
+      const esc = (s='') => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+      const fDate = (iso) => iso ? iso.replace(/-/g,'/') : '';
   
       async function load() {
         try {
@@ -180,9 +177,7 @@
           grid.innerHTML = `<p style="opacity:.8">まだ記事がありません。</p>`;
           return;
         }
-  
-        const top = posts
-          .slice()
+        const top = posts.slice()
           .sort((a,b) => (b.views||0)-(a.views||0) || (new Date(b.date)-new Date(a.date)))
           .slice(0,3);
   
