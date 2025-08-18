@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- ほんの少しだけフォールバック用のスタイル（既存CSSがあればそのままでOK） -->
   <style>
     .blog-hero{padding:48px 0}
     .post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
@@ -91,18 +90,20 @@
     const feature = document.getElementById('feature');
     const grid = document.getElementById('grid');
 
+    // ======= 設定：フォールバック画像（リポジトリに有る /assets/images/blog-intro.png を利用） =======
+    const FALLBACK_IMG = '/assets/images/blog-intro.png';
+
     // ========== utils ==========
     const toAbs = (url) => {
       if (!url) return '/blog/';
-      if (/^https?:\/\//i.test(url)) return url; // already absolute
-      if (url.startsWith('/')) return url;       // root abs
-      // slug だけのとき
+      if (/^https?:\/\//i.test(url)) return url;
+      if (url.startsWith('/')) return url;
       const slug = url.replace(/^\.?\//,'').replace(/index\.html?$/,'');
       return '/blog/' + (slug.endsWith('/') ? slug : slug + '/');
     };
 
     const absImg = (src) => {
-      if (!src) return '/assets/images/noimage.png';
+      if (!src) return FALLBACK_IMG;
       if (/^https?:\/\//i.test(src)) return src;
       if (src.startsWith('/')) return src;
       return '/' + src.replace(/^\.?\//,'');
@@ -122,18 +123,16 @@
       return `${y}-${m}-${day}`;
     };
 
-    // ========== load posts.json（/blog/ と 相対 の両対応） ==========
+    // ========== posts.json 読み込み ==========
     async function loadPosts() {
-      const urls = ['/blog/posts.json', 'posts.json'];
-      for (const u of urls) {
+      for (const u of ['/blog/posts.json', 'posts.json']) {
         try {
           const r = await fetch(u, { cache: 'no-store' });
           if (!r.ok) continue;
           const data = await r.json();
-          // data が配列/オブジェクトどちらでも対応
           if (Array.isArray(data)) return data;
           if (Array.isArray(data.items)) return data.items;
-        } catch(e) { /* try next */ }
+        } catch(e) {}
       }
       return [];
     }
@@ -150,23 +149,27 @@
 
     const raw = await loadPosts();
     if (!Array.isArray(raw) || raw.length === 0) {
-      console.warn('posts.json が空/取得不可');
       feature.innerHTML = '<div class="content" style="padding:16px"><p>まだ記事がありません。</p></div>';
       grid.innerHTML = '';
       return;
     }
 
     // 並び替え（date 降順）
-    const posts = raw
-      .map(normalize)
-      .sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+    const posts = raw.map(normalize)
+                     .sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+
+    // ========== 共通：画像エラーハンドラ ==========
+    const onImgErr = (el) => {
+      try { el.onerror = null; el.src = FALLBACK_IMG; } catch(_) {}
+    };
 
     // ========== Feature（最新1件） ==========
     const latest = posts[0];
     feature.innerHTML = `
       <a class="thumb" href="${latest.url}">
-        <img src="${latest.cover}" alt="${esc(latest.title)}" loading="lazy" onerror="this.style.display='none'">
-        <div class="thumb-fallback"></div>
+        <img src="${latest.cover}" alt="${esc(latest.title)}"
+             loading="lazy" decoding="async" width="1200" height="675"
+             onerror="this.onerror=null; this.src='${FALLBACK_IMG}'">
       </a>
       <div class="content">
         <div class="meta"><span class="badge">${esc(latest.tag)}</span>
@@ -182,8 +185,9 @@
     grid.innerHTML = rest.map(p => `
       <article class="post card">
         <a class="thumb" href="${p.url}">
-          <img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" onerror="this.style.display='none'">
-          <div class="thumb-fallback"></div>
+          <img src="${p.cover}" alt="${esc(p.title)}"
+               loading="lazy" decoding="async" width="1200" height="675"
+               onerror="this.onerror=null; this.src='${FALLBACK_IMG}'">
         </a>
         <div class="content">
           <div class="meta"><span class="badge">${esc(p.tag)}</span>
@@ -195,11 +199,9 @@
       </article>
     `).join('');
 
-    // クリック系の属性を念のため無効化
-    [feature, grid].forEach(root => {
-      root.querySelectorAll('[onclick],[data-href]').forEach(el => {
-        el.onclick = null; el.removeAttribute('onclick'); el.removeAttribute('data-href');
-      });
+    // 念のため：既に描画済みのIMGにもエラーハンドラ付与
+    document.querySelectorAll('.post .thumb img').forEach(img => {
+      img.addEventListener('error', () => onImgErr(img), { once:true });
     });
   })();
   </script>
