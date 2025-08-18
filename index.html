@@ -268,49 +268,39 @@
 
   <script defer src="/assets/js/main.js?v=strong1"></script>
   <script>
-    // ページ離脱のフェード（軽い演出）
-    window.addEventListener('beforeunload', () => document.body.classList.add('fade-out'));
-    // PWA: Service Worker 登録
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    }
-  </script>
-  <script>
     (async () => {
       const root = document.getElementById('popular-posts');
       if (!root) return;
     
-      // ローディング消し
-      const clearSkeleton = () => root.querySelectorAll('.card-skeleton').forEach(n => n.remove());
+      // フォールバック画像 & 簡易キャッシュバスター
+      const FALLBACK = '/assets/images/blog-intro.png';
+      const VER = 'v=20250818';
     
-      // パス整形 & 画像フォールバック
+      // ユーティリティ
       const toAbs = (url='') => {
         if (/^https?:\/\//i.test(url)) return url;
         if (url.startsWith('/')) return url;
         const slug = url.replace(/^\.?\//,'').replace(/index\.html?$/,'');
         return '/blog/' + (slug.endsWith('/') ? slug : slug + '/');
       };
+      const addVer = (p) => p + (p.includes('?') ? '' : `?${VER}`);
       const absImg = (src) => {
-        if (!src) return '/assets/images/noimage.png';
-        if (/^https?:\/\//i.test(src)) return src;
-        if (src.startsWith('/')) return src;
-        return '/' + src.replace(/^\.?\//,'');
+        const s = src
+          ? (/^https?:\/\//i.test(src) ? src : (src.startsWith('/') ? src : '/' + src.replace(/^\.?\//,'')))
+          : FALLBACK;
+        return addVer(s);
       };
-      const esc = s => String(s||'')
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
         .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       const fDate = (iso='') => {
         const d = new Date(iso); if (isNaN(d)) return esc(iso);
         return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
       };
     
-      // posts.json 読み込み（/blog/ と相対の両対応）
+      // posts.json 読み込み
       async function load() {
         for (const u of ['/blog/posts.json', 'blog/posts.json']) {
-          try {
-            const r = await fetch(u, { cache: 'no-store' });
-            if (r.ok) return r.json();
-          } catch(e) {}
+          try { const r = await fetch(u, { cache:'no-store' }); if (r.ok) return r.json(); } catch {}
         }
         return [];
       }
@@ -328,18 +318,22 @@
         .sort((a,b) => new Date(b.date||0) - new Date(a.date||0))
         .slice(0,3);
     
-        clearSkeleton();
+        // スケルトン消し
+        root.querySelectorAll('.card-skeleton').forEach(n => n.remove());
     
         if (list.length === 0) {
           root.innerHTML = '<p>記事がまだありません。</p>';
           return;
         }
     
+        // 描画（失敗時は必ずフォールバックへ）
         root.innerHTML = list.map(p => `
           <article class="p-card">
             <a class="thumb" href="${p.url}" style="display:block;position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,#1b1f32,#101325);border-radius:12px;overflow:hidden">
-              <img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" width="1200" height="675"
-                   style="width:100%;height:100%;object-fit:cover" onerror="this.remove()">
+              <img src="${p.cover}" alt="${esc(p.title)}"
+                   loading="lazy" decoding="async" width="1200" height="675"
+                   style="width:100%;height:100%;object-fit:cover"
+                   onerror="this.onerror=null; this.src='${addVer(FALLBACK)}'">
             </a>
             <div class="content" style="padding:10px 2px">
               <div class="meta" style="font-size:.85rem;opacity:.8;display:flex;gap:10px;align-items:center">
@@ -352,11 +346,9 @@
           </article>
         `).join('');
       } catch (e) {
-        clearSkeleton();
+        root.querySelectorAll('.card-skeleton').forEach(n => n.remove());
         console.error(e);
-        root.innerHTML = `
-          <article class="p-card"><div class="content"><p>ブログを読み込めませんでした。</p>
-          <p><a href="/blog/">ブログ一覧を見る</a></p></div></article>`;
+        root.innerHTML = '<p>ブログを読み込めませんでした。<a href="/blog/">一覧を見る</a></p>';
       }
     })();
     </script>
