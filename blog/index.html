@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  // （任意）コンセントモードの初期値
+  // 必要に応じて UI で同意を得たら 'update' で書き換えます。
+  // gtag('consent','default',{
+  //   ad_user_data: 'denied',
+  //   ad_personalization: 'denied',
+  //   ad_storage: 'denied',
+  //   analytics_storage: 'granted' // 解析のみ既定で許可するなら 'granted'
+  // });
+
+  gtag('js', new Date());
+
+  // pages.dev（開発）だけデバッグON、かつクロスドメイン計測
+  const isDev = location.hostname.endsWith('pages.dev');
+  gtag('config', 'G-3Z6FZB7SW7', {
+    debug_mode: isDev,
+    linker: { domains: ['arianexus.org','aria-site.pages.dev'] }
+  });
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | ブログ</title>

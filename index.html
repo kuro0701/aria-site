@@ -4,20 +4,88 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | AIソロシンガー</title>
+  <meta name="description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、ストーリー、SNS、ブログ情報をお届けします。" />
+  <link rel="canonical" href="https://arianexus.org/" />
 
-  <!-- Fonts & Icons -->
+  <!-- Language alternates -->
+  <link rel="alternate" hreflang="ja" href="https://arianexus.org/"/>
+  <link rel="alternate" hreflang="en" href="https://arianexus.org/en/"/>
+  <link rel="alternate" hreflang="zh" href="https://arianexus.org/zh/"/>
+  <link rel="alternate" hreflang="x-default" href="https://arianexus.org/"/>
+
+  <!-- Preconnect/DNS Prefetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="dns-prefetch" href="//i.ytimg.com">
+  <link rel="dns-prefetch" href="//www.youtube.com">
+  <link rel="dns-prefetch" href="//embed.music.apple.com">
+  <link rel="dns-prefetch" href="//open.spotify.com">
+
+  <!-- Icons / PWA -->
+  <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ARIA">
+  <meta property="og:title" content="ARIA | AIソロシンガー">
+  <meta property="og:description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、ストーリー、SNS、ブログ情報をお届けします。">
+  <meta property="og:url" content="https://arianexus.org/">
+  <meta property="og:image" content="https://arianexus.org/assets/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ARIA | AIソロシンガー">
+  <meta name="twitter:description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、ストーリー、SNS、ブログ情報をお届けします。">
+  <meta name="twitter:image" content="https://arianexus.org/assets/img/og.jpg">
+
+  <!-- Google Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- ヘッダー表示安定のための最小ホットフィックス（任意：消してもOK） -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    const isDev = location.hostname.endsWith('pages.dev');
+    gtag('config', 'G-3Z6FZB7SW7', {
+      debug_mode: isDev,
+      linker: { domains: ['arianexus.org','aria-site.pages.dev'] }
+    });
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "ARIA",
+    "alternateName": "ARIA Nexus",
+    "genre": ["Hyperpop","J-pop","AI singer"],
+    "url": "https://arianexus.org/",
+    "image": "https://arianexus.org/assets/img/og.jpg",
+    "sameAs": [
+      "https://x.com/NexusAria",
+      "https://www.youtube.com/@NexusAria",
+      "https://www.instagram.com/arianexus2/",
+      "https://www.tiktok.com/@arianexus"
+    ]
+  }
+  </script>
+
+  <!-- 最小限のUIヘルパー（ヘッダ/ドロワーが動く用） -->
   <style>
     .navbar{position:sticky;top:0;z-index:3000;}
     .navbar .container{display:flex;align-items:center;gap:12px;}
     .navbar .nav{margin-left:auto;display:flex;gap:20px;white-space:nowrap;}
     .social-links-header{margin-left:8px;display:flex;gap:14px;}
     .menu-toggle{display:none;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;}
+      background:rgba(255,255,255,.08);color:inherit;align-items:center;justify-content:center;}
     @media (max-width:900px){
       .navbar .nav,.navbar .social-links-header{display:none !important;}
       .menu-toggle{display:inline-flex !important;}
@@ -26,7 +94,6 @@
       .navbar .nav,.navbar .social-links-header{display:flex !important;}
       .menu-toggle{display:none !important;}
     }
-    /* ドロワーの基本 */
     .nav-drawer{position:fixed;inset:0;z-index:3200;display:grid;grid-template-columns:min(86vw,320px) 1fr;
       opacity:0;pointer-events:none;transition:opacity .2s ease;background:rgba(8,10,22,.55);backdrop-filter:blur(6px);}
     .nav-drawer.is-open{opacity:1;pointer-events:auto;}
@@ -34,38 +101,30 @@
       border-right:1px solid rgba(255,255,255,.16);box-shadow:0 10px 40px rgba(0,0,0,.45);
       padding:16px 18px;transform:translateX(-100%);transition:transform .25s ease;position:relative;}
     .nav-drawer.is-open .nav-drawer__inner{transform:translateX(0);}
-    .menu-close{position:absolute;top:12px;right:12px;appearance:none;border:0;background:transparent;color:#fff;font-size:1.5rem;cursor:pointer;}
+    .menu-close{position:absolute;top:12px;right:12px;appearance:none;border:0;background:transparent;font-size:1.5rem;cursor:pointer;}
     .nav-drawer__links{list-style:none;margin:48px 0 12px;padding:0;display:grid;gap:10px;}
-    .nav-drawer__links a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:#fff;
+    .nav-drawer__links a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;
       background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-weight:700;}
     .nav-drawer__social{display:flex;gap:14px;font-size:1.35rem;margin-top:8px;}
-    /* 埋め込みの比率対応 */
     .feature-embed{position:relative;aspect-ratio:16/9;height:auto;}
     .feature-embed iframe{position:absolute;inset:0;width:100% !important;height:100% !important;border:0;}
     .hero{min-height:100dvh;}
+    .fade-out{opacity:0;transition:opacity .18s ease;}
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header class="navbar" role="banner">
     <div class="container">
-      <!-- ハンバーガー（左） -->
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="メニューを開く">
         <i class="fa-solid fa-bars"></i>
       </button>
-
-      <!-- ロゴ -->
       <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
-
-      <!-- PCナビ -->
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
         <a href="#story">ストーリー</a>
         <a href="/blog/">ブログ</a>
       </nav>
-
-      <!-- PC用SNS -->
       <div class="social-links-header" aria-label="SNSリンク">
         <a href="https://x.com/NexusAria" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
@@ -112,7 +171,7 @@
     <div class="container feature-grid">
       <div class="feature-copy">
         <h2 class="feature-title">Latest Release</h2>
-        <p class="feature-lead">デジタル×ドリームが交差するネオ・ポップ。<br>ARIAの最新トラックをお好みのプラットフォームで。</p>
+        <p class="feature-lead">デジタル×ドリームが交差するネオ・ポップ。ARIAの最新トラックをお好みのプラットフォームで。</p>
         <div class="stream-links row">
           <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="stream-link youtube"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
           <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="stream-link apple"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
@@ -132,7 +191,7 @@
     <div class="container story-grid">
       <div class="story-copy">
         <h2 class="story-title">ARIAの世界</h2>
-        <p class="story-lead">未来都市のノイズと、天使の羽根の残光。<br>ARIAは「人とAIのあいだ」に生まれた、歌うインターフェース。</p>
+        <p class="story-lead">未来都市のノイズと、天使の羽根の残光。ARIAは「人とAIのあいだ」に生まれた、歌うインターフェース。</p>
         <ul class="story-points">
           <li><h3>誕生</h3><p>都市のデータから集めた“息づかい”を学習し、ひとつの歌声として結晶化。</p></li>
           <li><h3>Voice Design</h3><p>繊細なブレス、7オクターブのレンジ、グラスのような共鳴。ネオンの海で響くための“透明な強さ”。</p></li>
@@ -170,7 +229,7 @@
     </div>
   </section>
 
-  <!-- Blog: 人気記事 -->
+  <!-- Blog -->
   <section class="blog" id="blog" aria-label="Blog">
     <div class="container">
       <h2>Blog</h2>
@@ -211,7 +270,14 @@
     </div>
   </footer>
 
-  <!-- JS（キャッシュ回避のためバージョン付き推奨） -->
-  <script defer src="/assets/js/main.js?v=fix3"></script>
+  <script defer src="/assets/js/main.js?v=strong1"></script>
+  <script>
+    // ページ離脱のフェード（軽い演出）
+    window.addEventListener('beforeunload', () => document.body.classList.add('fade-out'));
+    // PWA: Service Worker 登録
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    }
+  </script>
 </body>
 </html>

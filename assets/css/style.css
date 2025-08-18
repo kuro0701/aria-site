@@ -1476,3 +1476,33 @@ document.addEventListener('DOMContentLoaded', () => {
   .navbar .nav{ gap:20px; white-space:nowrap; }
   .menu-toggle{ display:none !important; }
 }
+/* 既存のスタイルがある場合は、そのまま使い続けてOK。
+   下記は“上書きしても破綻しない”最小プレースホルダです。 */
+
+   :root {
+    --bg: #0b0f1a;
+    --fg: #ffffff;
+    --muted: #cbd5e1;
+    --glass: rgba(255,255,255,.08);
+    --glass-bd: rgba(255,255,255,.16);
+  }
+  
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Poppins,'Noto Sans JP',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:24px}
+  .hero{display:grid;place-items:center;text-align:center;padding:72px 16px;position:relative}
+  .hero-title{font-size:56px;margin:0 0 8px}
+  .hero-sub{opacity:.85;margin:0 0 20px}
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:10px 14px;border-radius:12px;border:1px solid var(--glass-bd)}
+  .btn.glass{background:var(--glass)}
+  .row{display:flex;flex-wrap:wrap;gap:10px}
+  .feature-grid,.story-grid,.social-grid{display:block}
+  .stream-link{display:inline-flex;align-items:center;gap:.5em;padding:8px 12px;border-radius:10px;border:1px solid var(--glass-bd);background:var(--glass)}
+  .popular-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .card-skeleton{height:140px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.02),rgba(255,255,255,.06));border-radius:14px}
+  .footer{border-top:1px solid var(--glass-bd);margin-top:48px}
+  .social-links{display:flex;gap:12px}
+  @media (max-width:900px){
+    .popular-grid{grid-template-columns:1fr}
+    .hero-title{font-size:40px}
+  }
