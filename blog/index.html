@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- Google tag (gtag.js) -->
-<script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
-<script data-cfasync="false">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3Z6FZB7SW7');
-</script>
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
+  <script data-cfasync="false">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3Z6FZB7SW7');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARIA | ブログ</title>
+  <meta name="description" content="ARIAのブログ。最新リリースや制作の裏側、マスタリングの考え方などをお届けします。">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
   <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- ほんの少しだけフォールバック用のスタイル（既存CSSがあればそのままでOK） -->
+  <style>
+    .blog-hero{padding:48px 0}
+    .post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+    .post.card,.post.feature{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
+    .post.feature{display:grid;grid-template-columns:minmax(280px,38%) 1fr}
+    .post .thumb{display:block;position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,#1b1f32,#101325)}
+    .post .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .post .content{padding:16px}
+    .post .meta{font-size:.85rem;opacity:.8;margin-bottom:6px;display:flex;gap:10px;align-items:center}
+    .badge{display:inline-block;font-size:.75rem;padding:.2em .6em;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+    .post h2,.post h3{margin:.2em 0 .4em;font-size:1.2rem}
+    .post.feature h2{font-size:1.5rem}
+    .excerpt{opacity:.9}
+    .btn.ghost{display:inline-block;margin-top:8px;padding:.6em 1em;border:1px solid rgba(255,255,255,.3);border-radius:999px;text-decoration:none}
+    .card-skeleton{height:180px;border-radius:16px;background:linear-gradient(90deg,#1b1f32 0%,#202544 50%,#1b1f32 100%);background-size:200% 100%;animation:sh 1.4s infinite}
+    @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    @media (max-width: 880px){.post.feature{grid-template-columns:1fr}}
+  </style>
 </head>
 <body class="page-blog">
   <header class="navbar">
@@ -57,9 +79,9 @@
     <div class="container">
       <p>© 2025 ARIA. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://x.com/NexusAria"><i class="fa-brands fa-twitter"></i></a>
-        <a href="https://www.instagram.com/arianexus2/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@NexusAria"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://x.com/NexusAria" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.instagram.com/arianexus2/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@NexusAria" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
   </footer>
@@ -69,17 +91,14 @@
     const feature = document.getElementById('feature');
     const grid = document.getElementById('grid');
 
-    // -------- utils: 絶対パス化・エスケープ ---------------------------------
+    // ========== utils ==========
     const toAbs = (url) => {
       if (!url) return '/blog/';
-      if (/^https?:\/\//i.test(url)) return url;      // 既に http(s)
-      if (url.startsWith('/')) return url;            // 既に絶対パス
-      if (url.startsWith('blog/')) return '/' + url;  // blog/xxx → /blog/xxx
-      if (!url.includes('/')) {                       // slugのみ → /blog/slug/
-        const slug = url.replace(/\.html?$/,'');
-        return '/blog/' + slug + (slug.endsWith('/') ? '' : '/');
-      }
-      return '/' + url.replace(/^\.?\//,'');          // それ以外はルート相対に
+      if (/^https?:\/\//i.test(url)) return url; // already absolute
+      if (url.startsWith('/')) return url;       // root abs
+      // slug だけのとき
+      const slug = url.replace(/^\.?\//,'').replace(/index\.html?$/,'');
+      return '/blog/' + (slug.endsWith('/') ? slug : slug + '/');
     };
 
     const absImg = (src) => {
@@ -94,84 +113,93 @@
       .replace(/"/g,'&quot;').replace(/>/g,'&gt;');
 
     const fDate = (iso='') => {
-      try { return String(iso).replace(/-/g,'/'); } catch { return iso; }
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (isNaN(d)) return String(iso);
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const day = String(d.getDate()).padStart(2,'0');
+      return `${y}-${m}-${day}`;
     };
 
-    // -------- posts.json 読み込み（ルート/相対の両対応） ---------------------
-    async function load() {
-      try {
-        const r = await fetch('/blog/posts.json', { cache: 'no-store' });
-        if (r.ok) return r.json();
-        throw 0;
-      } catch {
-        const r2 = await fetch('posts.json', { cache: 'no-store' }).catch(()=>null);
-        if (r2 && r2.ok) return r2.json();
-        return [];
+    // ========== load posts.json（/blog/ と 相対 の両対応） ==========
+    async function loadPosts() {
+      const urls = ['/blog/posts.json', 'posts.json'];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'no-store' });
+          if (!r.ok) continue;
+          const data = await r.json();
+          // data が配列/オブジェクトどちらでも対応
+          if (Array.isArray(data)) return data;
+          if (Array.isArray(data.items)) return data.items;
+        } catch(e) { /* try next */ }
       }
+      return [];
     }
 
-    const posts = await load();
+    // 任意のキーを吸収して正規化
+    const normalize = (p={}) => ({
+      url: toAbs(p.url || p.permalink || p.slug || ''),
+      title: p.title || '',
+      date: p.date || p.published || p.publishDate || '',
+      excerpt: p.excerpt || p.description || p.summary || '',
+      cover: absImg(p.thumbnail || p.cover || p.image || ''),
+      tag: Array.isArray(p.tags) ? p.tags[0] : (p.tag || p.category || '記事')
+    });
 
-    if (!Array.isArray(posts) || posts.length === 0) {
-      feature.innerHTML = '<p>まだ記事がありません。</p>';
+    const raw = await loadPosts();
+    if (!Array.isArray(raw) || raw.length === 0) {
+      console.warn('posts.json が空/取得不可');
+      feature.innerHTML = '<div class="content" style="padding:16px"><p>まだ記事がありません。</p></div>';
       grid.innerHTML = '';
       return;
     }
 
-    // -------- 並び順：日付降順 ---------------------------------------------
-    const sorted = posts.slice().sort((a,b)=> new Date(b.date||0) - new Date(a.date||0));
+    // 並び替え（date 降順）
+    const posts = raw
+      .map(normalize)
+      .sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
 
-    // -------- フィーチャー（親 a で全体は包まない） -------------------------
-    const latest = sorted[0];
-    const latestUrl   = toAbs(latest.url || latest.permalink || latest.slug || '');
-    const latestCover = absImg(latest.cover || latest.image);
-    const latestTag   = (latest.tags && latest.tags[0]) ? latest.tags[0] : '記事';
-
+    // ========== Feature（最新1件） ==========
+    const latest = posts[0];
     feature.innerHTML = `
-      <a class="thumb" href="${latestUrl}">
-        <img src="${latestCover}" alt="${esc(latest.title||'')}" loading="lazy" onerror="this.style.display='none'">
+      <a class="thumb" href="${latest.url}">
+        <img src="${latest.cover}" alt="${esc(latest.title)}" loading="lazy" onerror="this.style.display='none'">
         <div class="thumb-fallback"></div>
       </a>
       <div class="content">
-        <div class="meta"><span class="badge">${esc(latestTag)}</span>
-          <time datetime="${esc(latest.date||'')}">${esc(fDate(latest.date||''))}</time></div>
-        <h2><a href="${latestUrl}">${esc(latest.title||'')}</a></h2>
-        <p class="excerpt">${esc(latest.excerpt||'')}</p>
-        <a class="btn ghost" href="${latestUrl}">続きを読む</a>
+        <div class="meta"><span class="badge">${esc(latest.tag)}</span>
+          ${latest.date ? `<time datetime="${esc(latest.date)}">${esc(fDate(latest.date))}</time>` : ''}</div>
+        <h2><a href="${latest.url}">${esc(latest.title)}</a></h2>
+        ${latest.excerpt ? `<p class="excerpt">${esc(latest.excerpt)}</p>` : ''}
+        <a class="btn ghost" href="${latest.url}">続きを読む</a>
       </div>
     `;
 
-    // -------- 残りカード（各要素に個別リンク） ------------------------------
-    const rest = sorted.slice(1);
-    grid.innerHTML = rest.map(p => {
-      const url   = toAbs(p.url || p.permalink || p.slug || '');
-      const cover = absImg(p.cover || p.image);
-      const tag   = (p.tags && p.tags[0]) ? p.tags[0] : '記事';
-      return `
-        <article class="post card">
-          <a class="thumb" href="${url}">
-            <img src="${cover}" alt="${esc(p.title||'')}" loading="lazy" onerror="this.style.display='none'">
-            <div class="thumb-fallback"></div>
-          </a>
-          <div class="content">
-            <div class="meta"><span class="badge">${esc(tag)}</span>
-              <time datetime="${esc(p.date||'')}">${esc(fDate(p.date||''))}</time></div>
-            <h3><a href="${url}">${esc(p.title||'')}</a></h3>
-            <p class="excerpt">${esc(p.excerpt||'')}</p>
-            <a class="readmore" href="${url}">続きを読む</a>
-          </div>
-        </article>
-      `;
-    }).join('');
+    // ========== Grid（残り） ==========
+    const rest = posts.slice(1);
+    grid.innerHTML = rest.map(p => `
+      <article class="post card">
+        <a class="thumb" href="${p.url}">
+          <img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" onerror="this.style.display='none'">
+          <div class="thumb-fallback"></div>
+        </a>
+        <div class="content">
+          <div class="meta"><span class="badge">${esc(p.tag)}</span>
+            ${p.date ? `<time datetime="${esc(p.date)}">${esc(fDate(p.date))}</time>` : ''}</div>
+          <h3><a href="${p.url}">${esc(p.title)}</a></h3>
+          ${p.excerpt ? `<p class="excerpt">${esc(p.excerpt)}</p>` : ''}
+          <a class="readmore" href="${p.url}">続きを読む</a>
+        </div>
+      </article>
+    `).join('');
 
-    // -------- 防弾: 誤った onclick / data-href を無効化 ---------------------
+    // クリック系の属性を念のため無効化
     [feature, grid].forEach(root => {
-      root.querySelectorAll('.post, .card, a.thumb, h2 a, h3 a, a.readmore, a.btn')
-        .forEach(el => {
-          el.onclick = null;
-          el.removeAttribute('onclick');
-          el.removeAttribute('data-href');
-        });
+      root.querySelectorAll('[onclick],[data-href]').forEach(el => {
+        el.onclick = null; el.removeAttribute('onclick'); el.removeAttribute('data-href');
+      });
     });
   })();
   </script>
