@@ -275,5 +275,90 @@
       navigator.serviceWorker.register('/sw.js').catch(()=>{});
     }
   </script>
+  <script>
+    (async () => {
+      const root = document.getElementById('popular-posts');
+      if (!root) return;
+    
+      // ローディング消し
+      const clearSkeleton = () => root.querySelectorAll('.card-skeleton').forEach(n => n.remove());
+    
+      // パス整形 & 画像フォールバック
+      const toAbs = (url='') => {
+        if (/^https?:\/\//i.test(url)) return url;
+        if (url.startsWith('/')) return url;
+        const slug = url.replace(/^\.?\//,'').replace(/index\.html?$/,'');
+        return '/blog/' + (slug.endsWith('/') ? slug : slug + '/');
+      };
+      const absImg = (src) => {
+        if (!src) return '/assets/images/noimage.png';
+        if (/^https?:\/\//i.test(src)) return src;
+        if (src.startsWith('/')) return src;
+        return '/' + src.replace(/^\.?\//,'');
+      };
+      const esc = s => String(s||'')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      const fDate = (iso='') => {
+        const d = new Date(iso); if (isNaN(d)) return esc(iso);
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      };
+    
+      // posts.json 読み込み（/blog/ と相対の両対応）
+      async function load() {
+        for (const u of ['/blog/posts.json', 'blog/posts.json']) {
+          try {
+            const r = await fetch(u, { cache: 'no-store' });
+            if (r.ok) return r.json();
+          } catch(e) {}
+        }
+        return [];
+      }
+    
+      try {
+        const raw = await load();
+        const list = (Array.isArray(raw) ? raw : raw.items || []).map(p => ({
+          url: toAbs(p.url || p.permalink || p.slug || ''),
+          title: p.title || '',
+          date: p.date || p.published || '',
+          excerpt: p.excerpt || p.description || '',
+          cover: absImg(p.thumbnail || p.cover || p.image || ''),
+          tag: Array.isArray(p.tags) ? p.tags[0] : (p.tag || p.category || '記事')
+        }))
+        .sort((a,b) => new Date(b.date||0) - new Date(a.date||0))
+        .slice(0,3);
+    
+        clearSkeleton();
+    
+        if (list.length === 0) {
+          root.innerHTML = '<p>記事がまだありません。</p>';
+          return;
+        }
+    
+        root.innerHTML = list.map(p => `
+          <article class="p-card">
+            <a class="thumb" href="${p.url}" style="display:block;position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,#1b1f32,#101325);border-radius:12px;overflow:hidden">
+              <img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" width="1200" height="675"
+                   style="width:100%;height:100%;object-fit:cover" onerror="this.remove()">
+            </a>
+            <div class="content" style="padding:10px 2px">
+              <div class="meta" style="font-size:.85rem;opacity:.8;display:flex;gap:10px;align-items:center">
+                <span class="badge" style="display:inline-block;font-size:.75rem;padding:.15em .6em;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)">${esc(p.tag)}</span>
+                ${p.date ? `<time datetime="${esc(p.date)}">${fDate(p.date)}</time>` : ''}
+              </div>
+              <h3 style="margin:.2em 0 .3em;font-size:1.05rem"><a href="${p.url}">${esc(p.title)}</a></h3>
+              ${p.excerpt ? `<p class="excerpt" style="opacity:.9">${esc(p.excerpt)}</p>` : ''}
+            </div>
+          </article>
+        `).join('');
+      } catch (e) {
+        clearSkeleton();
+        console.error(e);
+        root.innerHTML = `
+          <article class="p-card"><div class="content"><p>ブログを読み込めませんでした。</p>
+          <p><a href="/blog/">ブログ一覧を見る</a></p></div></article>`;
+      }
+    })();
+    </script>
 </body>
 </html>
