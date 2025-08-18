@@ -50,13 +50,9 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    const isDev = location.hostname.endsWith('pages.dev');
-    gtag('config', 'G-3Z6FZB7SW7', {
-      debug_mode: isDev,
-      linker: { domains: ['arianexus.org','aria-site.pages.dev'] }
-    });
+    gtag('config', 'G-3Z6FZB7SW7');
   </script>
 
   <!-- Structured Data -->
