@@ -44,11 +44,11 @@
   <meta property="og:title" content="ARIA | AIソロシンガー">
   <meta property="og:description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、歌詞、ストーリー、ブログ情報をお届けします。">
   <meta property="og:url" content="https://arianexus.org/">
-  <meta property="og:image" content="https://arianexus.org/assets/img/og.jpg">
+  <meta property="og:image" content="/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ARIA | AIソロシンガー">
   <meta name="twitter:description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、歌詞、ストーリー、ブログ情報をお届けします。">
-  <meta name="twitter:image" content="https://arianexus.org/assets/img/og.jpg">
+  <meta name="twitter:image" content="/assets/img/og.jpg">
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
@@ -154,7 +154,7 @@
       <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
-        <a href="#lyrics">歌詞</a> <!-- ★ 追加：歌詞リンク -->
+        <a href="/songs/digital-angel/">歌詞</a> <!-- ← 修正：歌詞ページへ遷移 -->
         <a href="#story">ストーリー</a>
         <a href="/blog/">ブログ</a>
       </nav>
@@ -173,7 +173,7 @@
       <button class="menu-close" aria-label="メニューを閉じる"><i class="fa-solid fa-xmark"></i></button>
       <ul class="nav-drawer__links">
         <li><a href="#music">音楽</a></li>
-        <li><a href="#lyrics">歌詞</a></li>  <!-- ★ 追加：歌詞 -->
+        <li><a href="/songs/digital-angel/">歌詞</a></li>  <!-- ← 修正：歌詞ページへ -->
         <li><a href="#story">ストーリー</a></li>
         <li><a href="/blog/">ブログ</a></li>
       </ul>
@@ -198,10 +198,19 @@
     </div>
   </section>
 
-  <!-- ★ 新：ヒーロー直下の“大型”歌詞セクション -->
+  <!-- ★ ヒーロー直下の“大型”歌詞セクション -->
   <section class="lyrics-feature" id="lyrics" aria-label="歌詞">
     <div class="inner">
-      <img src="/assets/images/digital-angel2-og.png" alt="DIGITAL ANGEL ジャケット" class="cover" width="720" height="720" loading="lazy" decoding="async">
+      <!-- 画像：存在しない場合は og.jpg にフォールバック -->
+      <img
+        src="/assets/images/digital-angel2-og.png"
+        srcset="/assets/images/digital-angel2-og.png 800w, /assets/img/og.jpg 400w"
+        sizes="(max-width: 900px) 100vw, 360px"
+        alt="DIGITAL ANGEL ジャケット"
+        class="cover"
+        width="720" height="720" loading="lazy" decoding="async"
+        onerror="this.onerror=null; this.src='/assets/img/og.jpg'; this.srcset='/assets/img/og.jpg 800w';"
+      >
       <div>
         <h3>歌詞：DIGITAL ANGEL</h3>
         <div class="meta">Harmony Dimension / ARIA</div>
@@ -310,7 +319,6 @@
     // Drawer toggle
     const btnOpen = document.querySelector('.menu-toggle');
     const drawer = document.getElementById('mobileMenu');
-    const drawerInner = drawer?.querySelector('.nav-drawer__inner');
     const btnClose = drawer?.querySelector('.menu-close');
 
     function openDrawer(){drawer?.classList.add('is-open');drawer?.removeAttribute('hidden');btnOpen?.setAttribute('aria-expanded','true')}
