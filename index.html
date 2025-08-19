@@ -240,10 +240,10 @@
         <h2 class="feature-title">Latest Release</h2>
         <p class="feature-lead">デジタル×ドリームが交差するネオ・ポップ。ARIAの最新トラックをお好みのプラットフォームで。</p>
         <div class="stream-links row">
-          <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-youtube"></i> YouTube Music</a>
-          <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-apple"></i> Apple Music</a>
+          <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
+          <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
           <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-spotify"></i> Spotify</a>
-          <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-amazon"></i> Amazon Music</a>
+          <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-amazon"></i> Amazon&nbsp;Music</a>
         </div>
         <div class="feature-embed" style="margin-top:1.25rem">
           <iframe src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
@@ -352,7 +352,7 @@
           : FALLBACK;
         return addVer(s);
       };
-      const esc = s => String(s||'').replace(/[&<>"']/g, m => ({'&':'&','<':'>','>':'>','"':'"',"'":'''}[m]));
+      const esc = s => String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',\"'\":\"&#39;\"}[m]));
       const fDate = (iso='') => {
         const d = new Date(iso); if (isNaN(d)) return esc(iso);
         return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
