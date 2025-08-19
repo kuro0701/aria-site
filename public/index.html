@@ -15,7 +15,7 @@
     <div class="container nav-row">
       <!-- Logo -->
       <a class="logo" href="/" aria-label="トップページへ">
-        <!-- Simple ‘A’ mark SVG (仮) -->
+        <!-- Aマーク（仮） -->
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path fill="url(#g)" d="M12 2l9.5 20h-3.1l-2.2-4.8H7.8L5.6 22H2.5L12 2zm0 5.1L8.9 13h6.2L12 7.1z"/>
           <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#7aa7ff"/><stop offset="100%" stop-color="#c7d2ff"/></linearGradient></defs>
@@ -33,28 +33,31 @@
         <a href="#contact">お問い合わせ</a>
       </nav>
 
-      <!-- Right cluster -->
-      <div class="right">
+      <!-- Right cluster（Dockカード） -->
+      <div class="right dock">
         <a class="cta" href="#listen" aria-label="楽曲を聴く">
-          <!-- play icon -->
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M8 5v14l11-7z"/></svg>
           聴く
         </a>
 
+        <span class="sep" aria-hidden="true"></span>
+
         <div class="social" aria-label="SNSリンク">
-          <a href="https://x.com/" aria-label="X">
+          <a class="iconbtn" href="https://x.com/" aria-label="X">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M4 4l7.4 8.1L4.6 20H8l5.2-6 4.9 6H20l-7-8.6L19.2 4H16l-4.7 5.4L6.8 4z"/></svg>
           </a>
-          <a href="https://www.youtube.com/" aria-label="YouTube">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M23 7.5s-.2-1.7-.8-2.5c-.8-.9-1.7-.9-2.1-1C16.8 3.7 12 3.7 12 3.7h0s-4.8 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.8 1 7.5 1 7.5S.8 9.6.8 11.7v.6C.8 14.4 1 16.5 1 16.5s.2 1.7.8 2.5c.8.9 1.9.8 2.4.9 1.8.2 7.8.3 7.8.3s4.8 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.8.8-2.5.8-2.5s.2-2.1.2-4.2v-.6c0-2.1-.2-4.2-.2-4.2zM9.8 14.8V7.9l6.1 3.5-6.1 3.4z"/></svg>
+          <a class="iconbtn" href="https://www.youtube.com/" aria-label="YouTube">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M23 7.5s-.2-1.7-.8-2.5c-.8-.9-1.7-.9-2.1-1C16.8 3.7 12 3.7 12 3.7s-4.8 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.8 1 7.5 1 7.5s-.2 2.1-.2 4.2v.6c0 2.1.2 4.2.2 4.2s.2 1.7.8 2.5c.8.9 1.9.8 2.4.9C6 19.9 12 20 12 20s4.8 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.8.8-2.5.8-2.5s.2-2.1.2-4.2v-.6c0-2.1-.2-4.2-.2-4.2zM9.8 14.8V7.9l6.1 3.5-6.1 3.4z"/></svg>
           </a>
-          <a href="https://www.tiktok.com/" aria-label="TikTok">
+          <a class="iconbtn" href="https://www.tiktok.com/" aria-label="TikTok">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M18.7 7.3a6.8 6.8 0 0 1-3.2-1V16a5 5 0 1 1-5-5 5 5 0 0 1 1.4.2V9.6a7 7 0 1 0 7 7V9.2a8 8 0 0 0 3 1V7.8a6 6 0 0 1-3.2-.5z"/></svg>
           </a>
-          <a href="https://www.instagram.com/" aria-label="Instagram">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M12 2.2c3 0 3.4 0 4.6.1 1.1.1 1.8.2 2.5.5.7.3 1.3.7 1.9 1.3.6.6 1 . 1.2 1.3 1.9.3.7.4 1.4.5 2.5.1 1.2.1 1.6.1 4.6s0 3.4-.1 4.6c-.1 1.1-.2 1.8-.5 2.5-.3.7-.7 1.3-1.3 1.9-.6.6-1.2 1-1.9 1.3-.7.3-1.4.4-2.5.5-1.2.1-1.6.1-4.6.1s-3.4 0-4.6-.1c-1.1-.1-1.8-.2-2.5-.5a5 5 0 0 1-1.9-1.3 5 5 0 0 1-1.3-1.9c-.3-.7-.4-1.4-.5-2.5C2.2 15.4 2.2 15 2.2 12s0-3.4.1-4.6c.1-1.1.2-1.8.5-2.5.3-.7.7-1.3 1.3-1.9s1.2-1 1.9-1.3c.7-.3 1.4-.4 2.5-.5C8.6 2.2 9 2.2 12 2.2zm0 1.8c-3 0-3.3 0-4.5.1-.9.1-1.4.2-1.8.4-.5.2-.9.5-1.3.9-.4.4-.7.8-.9 1.3-.2.4-.3.9-.4 1.8-.1 1.2-.1 1.5-.1 4.5s0 3.3.1 4.5c.1.9.2 1.4.4 1.8.2.5.5.9.9 1.3.4.4.8.7 1.3.9.4.2.9.3 1.8.4 1.2.1 1.5.1 4.5.1s3.3 0 4.5-.1c.9-.1 1.4-.2 1.8-.4.5-.2.9-.5 1.3-.9.4-.4.7-.8.9-1.3.2-.4.3-.9.4-1.8.1-1.2.1-1.5.1-4.5s0-3.3-.1-4.5c-.1-.9-.2-1.4-.4-1.8-.2-.5-.5-.9-.9-1.3-.4-.4-.8-.7-1.3-.9-.4-.2-.9-.3-1.8-.4-1.2-.1-1.5-.1-4.5-.1zm0 3.1A6.9 6.9 0 1 1 5.1 14 6.9 6.9 0 0 1 12 7.1zm0 11.5a4.6 4.6 0 1 0-4.6-4.6 4.6 4.6 0 0 0 4.6 4.6zm6.1-11.9a1.2 1.2 0 1 0-1.2-1.2 1.2 1.2 0 0 0 1.2 1.2z"/></svg>
+          <a class="iconbtn" href="https://www.instagram.com/" aria-label="Instagram">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#dfe6ff" d="M12 2.2c3 0 3.4 0 4.6.1 1.1.1 1.8.2 2.5.5.7.3 1.3.7 1.9 1.3.6.6 1 . 1.2 1.3 1.9.3.7.4 1.4.5 2.5.1 1.2.1 1.6.1 4.6s0 3.4-.1 4.6c-.1 1.1-.2 1.8-.5 2.5-.3.7-.7 1.3-1.3 1.9-.6.6-1.2 1-1.9 1.3-.7.3-1.4.4-2.5.5-1.2.1-1.6.1-4.6.1s-3.4 0-4.6-.1c-1.1-.1-1.8-.2-2.5-.5a5 5 0 0 1-1.9-1.3 5 5 0 0 1-1.3-1.9c-.3-.7-.4-1.4-.5-2.5C2.2 15.4 2.2 15 2.2 12s0-3.4.1-4.6c.1-1.1.2-1.8.5-2.5.3-.7.7-1.3 1.3-1.9s1.2-1 1.9-1.3c.7-.3 1.4-.4 2.5-.5C8.6 2.2 9 2.2 12 2.2zm0 1.8c-3 0-3.3 0-4.5.1-.9.1-1.4.2-1.8.4-.5.2-.9.5-1.3.9-.4.4-.7.8-.9 1.3-.2.4-.3.9-.4 1.8-.1 1.2-.1 1.5-.1 4.5s0 3.3.1 4.5c.1.9.2 1.4.4 1.8.2.5.5.9.9 1.3.4.4.8.7 1.3.9.4.2.9.3 1.8.4 1.2.1 1.5.1 4.5.1s3.3 0 4.5-.1c.9-.1 1.4-.2 1.8-.4.5-.2.9-.5 1.3-.9.4-.4.7-.8.9-1.3.2-.4.3-.9.4-1.8.1-1.2.1-1.5.1-4.5s0-3.3-.1-4.5c-.1-.9-.2-1.4-.4-1.8-.2-.5-.5-.9-.9-1.3-.4-.4-.8-.7-1.3-.9-.4-.2-.9-.3-1.8-.4-1.2-.1-1.5-.1-4.5-.1z"/></svg>
           </a>
         </div>
+
+        <span class="sep hide-mobile" aria-hidden="true"></span>
 
         <!-- Lang switch -->
         <div class="lang">
@@ -90,39 +93,15 @@
     </div>
   </header>
 
-  <!-- ======= 以下は動作確認用の仮ヒーロー。後で置き換え ======= -->
-  <main class="container" style="padding:48px 0 120px;">
-    <h1 style="font-size: clamp(28px,3.2vw,44px); line-height:1.15; margin: 24px 0 8px;">
-      一人で、千人分。<span style="color:var(--brand)">ARIA</span>
-    </h1>
+  <!-- ======= 仮ヒーロー（後で置き換え） ======= -->
+  <main class="container hero">
+    <h1 class="hero-title">一人で、千人分。<span class="brand">ARIA</span></h1>
     <p class="muted">Dolby AtmosネイティブのAIソロシンガー。多言語×7オクターブ×立体フック。</p>
-    <p style="opacity:.4; font-size:13px;">※この下は仮置き。まずはヘッダーの見た目・動線を確認してください。</p>
-    <section id="music" style="height:60vh; border:1px dashed var(--stroke); border-radius:16px; display:grid; place-items:center; margin-top:24px;">
-      <div style="opacity:.6">（楽曲セクション仮）</div>
+    <section id="music" class="placeholder">
+      <div>（楽曲セクション仮）</div>
     </section>
   </main>
 
-  <script>
-    // 言語メニュー
-    const langBtn = document.querySelector('.lang-btn');
-    const langMenu = document.getElementById('lang-menu');
-    langBtn.addEventListener('click', () => {
-      const expanded = langBtn.getAttribute('aria-expanded') === 'true';
-      langBtn.setAttribute('aria-expanded', String(!expanded));
-      langMenu.style.display = expanded ? 'none' : 'block';
-    });
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.lang')) { langMenu.style.display = 'none'; langBtn.setAttribute('aria-expanded','false'); }
-    });
-
-    // ハンバーガー＆ドロワー
-    const hamb = document.getElementById('hamb');
-    const drawer = document.getElementById('drawer');
-    hamb.addEventListener('click', () => {
-      const open = hamb.getAttribute('aria-expanded') === 'true';
-      hamb.setAttribute('aria-expanded', String(!open));
-      drawer.style.display = open ? 'none' : 'block';
-    });
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
