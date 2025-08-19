@@ -134,6 +134,29 @@
     /* 旧“小さな歌詞帯”がもし存在しても非表示にして重複回避 */
     .lyrics-inject{display:none !important}
   </style>
+
+  <!-- Hotfix: Latest Release section looked too dark -->
+  <style id="hotfix-release-dark">
+    .feature-release{
+      padding:clamp(28px,4vw,48px) 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)) !important;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      opacity: 1 !important;
+      filter: none !important;
+      isolation: isolate;
+    }
+    .feature-release::before,
+    .feature-release::after{
+      content: none !important;
+      display: none !important;
+    }
+    .feature-release iframe{
+      filter: none !important;
+      mix-blend-mode: normal !important;
+    }
+  </style>
+
 </head>
 <body>
   <header class="navbar" role="banner">
