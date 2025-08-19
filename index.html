@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
   <script data-cfasync="false">
     window.dataLayer = window.dataLayer || [];
@@ -16,13 +15,11 @@
   <meta name="description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、歌詞、ストーリー、ブログ情報をお届けします。" />
   <link rel="canonical" href="https://arianexus.org/" />
 
-  <!-- Language alternates -->
   <link rel="alternate" hreflang="ja" href="https://arianexus.org/"/>
   <link rel="alternate" hreflang="en" href="https://arianexus.org/en/"/>
   <link rel="alternate" hreflang="zh" href="https://arianexus.org/zh/"/>
   <link rel="alternate" hreflang="x-default" href="https://arianexus.org/"/>
 
-  <!-- Preconnect/DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="//www.googletagmanager.com">
@@ -32,13 +29,11 @@
   <link rel="dns-prefetch" href="//embed.music.apple.com">
   <link rel="dns-prefetch" href="//open.spotify.com">
 
-  <!-- Icons / PWA -->
   <link rel="icon" href="/assets/icons/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#0b0f1a" />
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ARIA">
   <meta property="og:title" content="ARIA | AIソロシンガー">
@@ -50,13 +45,10 @@
   <meta name="twitter:description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、歌詞、ストーリー、ブログ情報をお届けします。">
   <meta name="twitter:image" content="/assets/img/og.jpg">
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <!-- 既存のグローバルCSS（ある場合） -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- ===== 最小UIヘルパー（ナビ/ドロワー用） ===== -->
   <style>
     :root{--container:1200px}
     .navbar{position:sticky;top:0;z-index:3000;background:rgba(8,10,22,.8);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
@@ -100,7 +92,6 @@
     .container{max-width:var(--container);margin:0 auto;padding:0 16px}
   </style>
 
-  <!-- ===== 新：歌詞“大型”セクション（このページ内で完結） ===== -->
   <style>
     .lyrics-feature{
       position:relative;
@@ -145,7 +136,6 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="navbar" role="banner">
     <div class="container">
       <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="メニューを開く">
@@ -154,7 +144,7 @@
       <a href="/" class="logo" aria-label="トップページへ">ARIA</a>
       <nav class="nav" aria-label="メインメニュー">
         <a href="#music">音楽</a>
-        <a href="/songs/digital-angel/">歌詞</a> <!-- ← 修正：歌詞ページへ遷移 -->
+        <a href="/songs/digital-angel/">歌詞</a>
         <a href="#story">ストーリー</a>
         <a href="/blog/">ブログ</a>
       </nav>
@@ -167,13 +157,12 @@
     </div>
   </header>
 
-  <!-- Mobile drawer menu -->
   <nav id="mobileMenu" class="nav-drawer" aria-label="モバイルメニュー" hidden>
     <div class="nav-drawer__inner">
       <button class="menu-close" aria-label="メニューを閉じる"><i class="fa-solid fa-xmark"></i></button>
       <ul class="nav-drawer__links">
         <li><a href="#music">音楽</a></li>
-        <li><a href="/songs/digital-angel/">歌詞</a></li>  <!-- ← 修正：歌詞ページへ -->
+        <li><a href="/songs/digital-angel/">歌詞</a></li>
         <li><a href="#story">ストーリー</a></li>
         <li><a href="/blog/">ブログ</a></li>
       </ul>
@@ -186,7 +175,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero" role="region" aria-label="ARIA Hero">
     <div class="hero-content">
       <h1 class="hero-title">ARIA</h1>
@@ -198,10 +186,8 @@
     </div>
   </section>
 
-  <!-- ★ ヒーロー直下の“大型”歌詞セクション -->
   <section class="lyrics-feature" id="lyrics" aria-label="歌詞">
     <div class="inner">
-      <!-- 画像：存在しない場合は og.jpg にフォールバック -->
       <img
         src="/assets/images/digital-angel2-og.png"
         srcset="/assets/images/digital-angel2-og.png 800w, /assets/img/og.jpg 400w"
@@ -225,17 +211,16 @@
     </div>
   </section>
 
-  <!-- Release Feature -->
   <section class="feature-release" aria-label="Latest Release">
     <div class="container">
       <div class="feature-copy">
         <h2 class="feature-title">Latest Release</h2>
         <p class="feature-lead">デジタル×ドリームが交差するネオ・ポップ。ARIAの最新トラックをお好みのプラットフォームで。</p>
         <div class="stream-links row">
-          <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-youtube"></i> YouTube&nbsp;Music</a>
-          <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-apple"></i> Apple&nbsp;Music</a>
+          <a href="https://music.youtube.com/channel/UCOkM2BzpkKhV0TZ-GDRzCsw" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-youtube"></i> YouTube Music</a>
+          <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-apple"></i> Apple Music</a>
           <a href="https://open.spotify.com/intl-ja/artist/35Qg34OoHMYtN8bINpZNfi" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-spotify"></i> Spotify</a>
-          <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-amazon"></i> Amazon&nbsp;Music</a>
+          <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank" rel="noopener" class="btn glass"><i class="fa-brands fa-amazon"></i> Amazon Music</a>
         </div>
         <div class="feature-embed" style="margin-top:1.25rem">
           <iframe src="https://www.youtube.com/embed/videoseries?list=UUOkM2BzpkKhV0TZ-GDRzCsw&rel=0" title="YouTube Music player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"></iframe>
@@ -244,7 +229,6 @@
     </div>
   </section>
 
-  <!-- Story -->
   <section class="story" id="story" role="region" aria-label="ARIAのストーリー">
     <div class="container">
       <div class="story-copy">
@@ -263,7 +247,6 @@
     </div>
   </section>
 
-  <!-- Music -->
   <section class="music" id="music">
     <div class="container">
       <h2>楽曲を聴く</h2>
@@ -274,7 +257,6 @@
     </div>
   </section>
 
-  <!-- Blog (簡易ローダー。なければ無視される) -->
   <section class="blog" id="blog" aria-label="Blog">
     <div class="container">
       <h2>Blog</h2>
@@ -286,7 +268,6 @@
     </div>
   </section>
 
-  <!-- Social -->
   <section class="social" id="social" aria-label="SNS & Community">
     <div class="container">
       <div class="social-copy">
@@ -302,7 +283,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer" role="contentinfo">
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-top:1px solid rgba(255,255,255,.08)">
       <p style="margin:0">© 2025 ARIA. All rights reserved.</p>
@@ -314,7 +294,6 @@
     </div>
   </footer>
 
-  <!-- ===== JS: モバイルメニュー & ブログ簡易ローダー ===== -->
   <script>
     // Drawer toggle
     const btnOpen = document.querySelector('.menu-toggle');
@@ -350,7 +329,7 @@
           : FALLBACK;
         return addVer(s);
       };
-      const esc = s => String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      const esc = s => String(s||'').replace(/[&<>"']/g, m => ({'&':'&','<':'>','>':'>','"':'"',"'":'''}[m]));
       const fDate = (iso='') => {
         const d = new Date(iso); if (isNaN(d)) return esc(iso);
         return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
