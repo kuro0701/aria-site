@@ -350,3 +350,63 @@ nav.primary a:focus-visible{
   transform: translateY(-1px);
   border-color: rgba(255,255,255,.26);
 }
+/* === Always-on glass header === */
+.site-header {
+  background: rgba(15,15,20,0.65);
+  backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+/* === Dock常時表示 + ネオン感 === */
+.right.dock {
+  display: flex;
+  gap: 0.75rem;
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: rgba(20,20,30,0.6);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.06), 
+              0 0 25px rgba(120,150,255,0.2);
+  animation: dock-float 6s ease-in-out infinite;
+}
+
+/* アイコンボタンの常時発光 */
+.right.dock a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(120,150,255,0.35);
+  box-shadow: 0 0 8px rgba(120,150,255,0.25);
+  transition: all .35s ease;
+}
+.right.dock a:hover {
+  border-color: rgba(180,200,255,0.8);
+  box-shadow: 0 0 15px rgba(140,170,255,0.6);
+  transform: scale(1.08);
+}
+
+/* 呼吸する光を紫青系に変更 */
+.right.dock::before{
+  content:""; position:absolute; inset:-4px; border-radius:22px;
+  background: radial-gradient(circle at 30% 30%, rgba(150,130,255,.25), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(80,200,255,.2), transparent 60%);
+  filter: blur(14px);
+  animation: dock-breathe 6s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes dock-breathe{
+  0%  { opacity:.3; transform: scale(1);}
+  50% { opacity:.7; transform: scale(1.05);}
+  100%{ opacity:.3; transform: scale(1);}
+}
+
+/* 浮遊感 */
+@keyframes dock-float{
+  0%,100% { transform: translateY(0);}
+  50%     { transform: translateY(-3px);}
+}
