@@ -3,30 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "postcss src/styles/index.css -o public/assets/css/style.css",
-    "watch:css": "postcss -w src/styles/index.css -o public/assets/css/style.css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kuro0701/aria-site.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/kuro0701/aria-site/issues"
-  },
-  "homepage": "https://github.com/kuro0701/aria-site#readme",
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "cssnano": "^7.1.0",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "postcss-import": "^16.1.1"
-  },
   "dependencies": {
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
@@ -143,5 +119,31 @@
     "yaml": "^2.8.1",
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss src/styles/index.css -o public/assets/css/style.css --map",
+    "watch:css": "postcss src/styles/index.css -o public/assets/css/style.css --map --watch",
+    "build:css:prod": "cross-env NODE_ENV=production postcss src/styles/index.css -o public/assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuro0701/aria-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kuro0701/aria-site/issues"
+  },
+  "homepage": "https://github.com/kuro0701/aria-site#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^10.0.0",
+    "cssnano": "^7.1.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
   }
 }

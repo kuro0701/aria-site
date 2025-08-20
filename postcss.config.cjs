@@ -1,7 +1,10 @@
+// postcss.config.cjs
 module.exports = {
   plugins: [
     require('postcss-import'),
     require('autoprefixer'),
-    require('cssnano')({ preset: 'default' })
-  ]
+    ...(process.env.NODE_ENV === 'production'
+      ? [require('cssnano')({ preset: 'default' })]
+      : [])
+  ],
 };
