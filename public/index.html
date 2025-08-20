@@ -29,25 +29,11 @@
   <link rel="preload" as="image" href="/assets/img/aria-hero.png" imagesizes="100vw">
 </head>
 <body class="body--cosmic">
-  <!-- 共通ヘッダー（パーシャル） -->
+  <!-- 共通ヘッダー -->
   <div data-include="/partials/header.html"></div>
 
-  <!-- ================= Hero (background image + overlay text) ================= -->
-  <!-- 画像パスは style の --hero 変数で指定。今は /assets/img/aria-hero.png -->
-  <!-- 全体表示にしたいので hero--fit を適用（カバー表示なら hero--cover に変更） -->
-  <section class="hero-visual hero--fit" style="--hero: url('/assets/img/aria-hero.png');" aria-label="Hero visual">
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content container">
-      <h1 class="hero-title">一人で、千人分。<span class="brand">ARIA</span></h1>
-      <p class="muted hero-lead">Dolby Atmos ネイティブのAIソロシンガー。多言語 × 7オクターブ × 立体フック。</p>
-
-      <!-- CTA帯（後でプレイヤーに差し替え） -->
-      <div class="card hero-cta">
-        （ここに YouTube / Spotify / Apple Music 等の埋め込みを配置）
-      </div>
-    </div>
-  </section>
+  <!-- 共通ヒーロー（今回追加） -->
+  <div data-include="/partials/hero.html"></div>
 
   <!-- ================= Main ================= -->
   <main>
@@ -77,9 +63,9 @@
     </section>
   </main>
 
-  <!-- Scripts（パーシャル読込／既存のメインJS） -->
+  <!-- JS -->
   <script src="/assets/js/includes.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
-  <noscript>JavaScript を有効にするとヘッダー等の共通部品が読み込まれます。</noscript>
+  <noscript>JavaScript を有効にすると共通部品（ヘッダー/ヒーロー）が読み込まれます。</noscript>
 </body>
 </html>
