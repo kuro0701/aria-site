@@ -1,0 +1,3 @@
+@layer tokens, base, components, sections, utilities, legacy;
+/* 将来ここに分割ファイルを足していく。今は互換のため legacy のみ */
+@import "./_legacy.css" layer(legacy);
