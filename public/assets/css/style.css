@@ -139,6 +139,23 @@ header.site-header::after{
 .site-header.shrink .logo-mark{ width:24px; height:24px; }
 .site-header.shrink .dock{ transform: translateY(-1px) scale(0.985); }
 
+/* Logo: Aria Nexus brand text (gradient like the left "A") */
+.logo-text--nexus{
+  font-weight: 700;
+  letter-spacing: .06em;
+  font-size: 16px;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* グラデ文字 */
+  white-space: nowrap;
+}
+
+/* （万一残っていても）ヘッダー内 tagline は隠す */
+.logo-card .tagline{ display:none; }
+
+
 /* ===== Hero (background image + overlay) ===== */
 .hero-visual{
   position: relative; isolation: isolate;

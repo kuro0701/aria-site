@@ -1,16 +1,20 @@
+<!-- public/partials/header.html -->
 <header class="site-header" role="banner">
   <div class="container nav-row">
 
     <!-- Logo Card -->
     <a class="logo card logo-card" href="/" aria-label="トップページへ">
       <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-mark">
-        <defs><linearGradient id="g" x1="0" x2="1">
-          <stop offset="0%" stop-color="#8fb0ff"/><stop offset="100%" stop-color="#d8d6ff"/>
-        </linearGradient></defs>
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0%" stop-color="#8fb0ff"/><stop offset="100%" stop-color="#d8d6ff"/>
+          </linearGradient>
+        </defs>
         <path fill="url(#g)" d="M12 2l9.5 20h-3.1l-2.2-4.8H7.8L5.6 22H2.5L12 2zm0 5.1L8.9 13h6.2L12 7.1z"/>
       </svg>
-      <span class="logo-text">ARIA</span>
-      <span class="tagline">一人で、千人分。</span>
+      <!-- ← ここを Aria Nexus に -->
+      <span class="logo-text logo-text--nexus">Aria&nbsp;Nexus</span>
+      <!-- tagline はヘッダーでは非表示に（ヒーローで主役化） -->
     </a>
 
     <!-- Nav Card (PC) -->
