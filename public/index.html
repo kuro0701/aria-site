@@ -25,55 +25,62 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- (任意) Google Analytics が必要ならIDを設定して有効化
-  <script data-cfasync="false" async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
-  <script data-cfasync="false">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3Z6FZB7SW7');
-  </script>
-  -->
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="/assets/img/aria-hero.png" imagesizes="100vw">
 </head>
 <body class="body--cosmic">
   <!-- 共通ヘッダー（パーシャル） -->
   <div data-include="/partials/header.html"></div>
 
-  <!-- ================= Main ================= -->
-  <main class="container hero">
-    <h1 class="hero-title">一人で、千人分。<span class="brand">ARIA</span></h1>
-    <p class="muted">Dolby Atmos ネイティブのAIソロシンガー。多言語 × 7オクターブ × 立体フック。</p>
+  <!-- ================= Hero (image only) ================= -->
+  <section class="hero-visual" aria-label="Hero visual">
+    <picture class="hero-img">
+      <!-- PNGのみ（将来 avif/webp 追加可） -->
+      <img src="/assets/img/aria-hero.png" alt="" width="3840" height="1920" decoding="async" fetchpriority="high">
+    </picture>
 
-    <!-- Listen target（ヘッダーの「聴く」CTAがここへスクロール） -->
-    <section id="listen" class="placeholder" aria-label="楽曲を聴く" style="margin-top:28px;">
-      <!-- 埋め込みプレイヤーや配信リンク群を後で差し込む想定 -->
-      <div class="card" style="padding:18px; border-radius:16px;">
-        <div style="opacity:.9">（ここに YouTube / Spotify / Apple Music 等の埋め込みを配置）</div>
+    <!-- 光の被せ（読みやすさ確保） -->
+    <div class="hero-overlay"></div>
+
+    <!-- テキスト -->
+    <div class="hero-content container">
+      <h1 class="hero-title">一人で、千人分。<span class="brand">ARIA</span></h1>
+      <p class="muted">Dolby Atmos ネイティブのAIソロシンガー。多言語 × 7オクターブ × 立体フック。</p>
+
+      <!-- CTA帯（後でプレイヤーに差し替え） -->
+      <div class="card hero-cta">
+        （ここに YouTube / Spotify / Apple Music 等の埋め込みを配置）
       </div>
+    </div>
+  </section>
+
+  <!-- ================= Main ================= -->
+  <main>
+    <section id="listen" class="placeholder container" aria-label="楽曲を聴く" style="margin-top:40px;">
+      <!-- 上のCTAに集約するならこのセクションは削ってOK -->
     </section>
 
-    <!-- ナビのアンカー用の薄いプレースホルダー群（後で各セクションを実装） -->
-    <section id="music" class="placeholder" aria-label="楽曲" style="margin-top:56px;">
+    <section id="music" class="placeholder container" aria-label="楽曲" style="margin-top:56px;">
       <h2>楽曲</h2>
       <p class="muted">最新曲や人気曲をここに並べます。</p>
     </section>
 
-    <section id="lyrics" class="placeholder" aria-label="歌詞" style="margin-top:56px;">
+    <section id="lyrics" class="placeholder container" aria-label="歌詞" style="margin-top:56px;">
       <h2>歌詞</h2>
       <p class="muted">各曲の歌詞ページへ誘導します。</p>
     </section>
 
-    <section id="story" class="placeholder" aria-label="ストーリー" style="margin-top:56px;">
+    <section id="story" class="placeholder container" aria-label="ストーリー" style="margin-top:56px;">
       <h2>ストーリー</h2>
       <p class="muted">ARIA の世界観・設定・人物像などを深掘り。</p>
     </section>
 
-    <section id="blog" class="placeholder" aria-label="ブログ" style="margin-top:56px;">
+    <section id="blog" class="placeholder container" aria-label="ブログ" style="margin-top:56px;">
       <h2>ブログ</h2>
       <p class="muted">最新記事をここに表示。</p>
     </section>
 
-    <section id="contact" class="placeholder" aria-label="お問い合わせ" style="margin-top:56px;">
+    <section id="contact" class="placeholder container" aria-label="お問い合わせ" style="margin-top:56px;">
       <h2>お問い合わせ</h2>
       <p class="muted">コラボや取材依頼などの窓口。</p>
     </section>
