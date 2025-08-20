@@ -32,20 +32,15 @@
   <!-- 共通ヘッダー（パーシャル） -->
   <div data-include="/partials/header.html"></div>
 
-  <!-- ================= Hero (image only) ================= -->
-  <section class="hero-visual" aria-label="Hero visual">
-    <picture class="hero-img">
-      <!-- PNGのみ（将来 avif/webp 追加可） -->
-      <img src="/assets/img/aria-hero.png" alt="" width="3840" height="1920" decoding="async" fetchpriority="high">
-    </picture>
-
-    <!-- 光の被せ（読みやすさ確保） -->
+  <!-- ================= Hero (background image + overlay text) ================= -->
+  <!-- 画像パスは style の --hero 変数で指定。今は /assets/img/aria-hero.png -->
+  <!-- 全体表示にしたいので hero--fit を適用（カバー表示なら hero--cover に変更） -->
+  <section class="hero-visual hero--fit" style="--hero: url('/assets/img/aria-hero.png');" aria-label="Hero visual">
     <div class="hero-overlay"></div>
 
-    <!-- テキスト -->
     <div class="hero-content container">
       <h1 class="hero-title">一人で、千人分。<span class="brand">ARIA</span></h1>
-      <p class="muted">Dolby Atmos ネイティブのAIソロシンガー。多言語 × 7オクターブ × 立体フック。</p>
+      <p class="muted hero-lead">Dolby Atmos ネイティブのAIソロシンガー。多言語 × 7オクターブ × 立体フック。</p>
 
       <!-- CTA帯（後でプレイヤーに差し替え） -->
       <div class="card hero-cta">
@@ -56,10 +51,6 @@
 
   <!-- ================= Main ================= -->
   <main>
-    <section id="listen" class="placeholder container" aria-label="楽曲を聴く" style="margin-top:40px;">
-      <!-- 上のCTAに集約するならこのセクションは削ってOK -->
-    </section>
-
     <section id="music" class="placeholder container" aria-label="楽曲" style="margin-top:56px;">
       <h2>楽曲</h2>
       <p class="muted">最新曲や人気曲をここに並べます。</p>
