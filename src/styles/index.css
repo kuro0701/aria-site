@@ -8,5 +8,5 @@
 
 /* 互換用：今のstyle.cssをそのまま最後に。分割が進んだら中身を減らしていけばOK */
 @import "./_legacy.css"     layer(legacy);
-@import "./styles/_cosmic.css";
+@import "./_cosmic.css";
 
