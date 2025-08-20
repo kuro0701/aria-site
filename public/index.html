@@ -29,6 +29,7 @@
   <link rel="preload" as="image" href="/assets/img/aria-hero.png" imagesizes="100vw">
 </head>
 <body class="body--cosmic">
+  <canvas id="cosmic-bg" class="cosmic-canvas" aria-hidden="true"></canvas>
   <!-- 共通ヘッダー -->
   <div data-include="/partials/header.html"></div>
 
@@ -68,9 +69,7 @@
   <script src="/assets/js/main.js" defer></script>
   <noscript>JavaScript を有効にすると共通部品（ヘッダー/ヒーロー）が読み込まれます。</noscript>
   
-<body class="body--cosmic">
   + <!-- 背景: Harmony Dimension 粒子（ARIA用） -->
-  + <canvas id="cosmic-bg" class="cosmic-canvas" aria-hidden="true"></canvas>
   
   
   <!-- 共通ヘッダー -->
@@ -80,6 +79,5 @@
   - <script src="/assets/js/main.js" defer></script>
   + <script src="/assets/js/includes.js" defer></script>
   + <!-- 粒子アニメーション本体（main.jsより前でも後でもOK） -->
-  + <script src="/assets/js/cosmic-particles.js" defer></script>
   + <script src="/assets/js/main.js" defer></script>
 </html>
