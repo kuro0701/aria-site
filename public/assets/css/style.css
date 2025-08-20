@@ -1,728 +1,232 @@
-/* ========== Base ========== */
-:root {
-  --bg: #0b0b10;
-  --fg: #ffffff;
-  --muted:#a9afbf;
-  --brand:#7aa7ff;
-  --glass: rgba(15,15,22,0.55);
-  --stroke: rgba(255,255,255,0.12);
-}
-
-* { box-sizing: border-box; }
-html, body {
-  margin:0; padding:0;
-  background: var(--bg); color: var(--fg);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-}
-a { color: inherit; text-decoration: none; }
-.container { width: min(1200px, 92%); margin-inline: auto; }
-.muted { color: var(--muted); }
-
-/* ========== Header ========== */
-header.site-header {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: saturate(140%) blur(8px);
-  background: var(--glass);
-  border-bottom: 1px solid var(--stroke);
-}
-.nav-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center; gap: 16px;
-  padding: 12px 0;
-}
-
-/* Logo */
-.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.08em; }
-.logo svg { width: 28px; height: 28px; }
-.tagline { display:none; color: var(--muted); font-size: 12px; margin-left: 6px; }
-
-/* Nav */
-nav.primary {
-  justify-self: center;
-  display: none;
-  gap: 20px;
-  font-size: 14px;
-}
-nav.primary a { padding: 8px 10px; border-radius: 10px; color:#e7ebff; }
-nav.primary a:hover, .cta:hover { background: rgba(122,167,255,0.12); }
-
-/* Right cluster */
-.right {
-  display: flex; align-items: center; gap: 10px;
-}
-.cta {
-  padding: 8px 12px; border: 1px solid var(--stroke);
-  border-radius: 999px; font-weight: 600; font-size: 13px;
-  display:inline-flex; align-items:center; gap:8px;
-}
-.social { display: none; gap: 10px; }
-.icon { width: 20px; height: 20px; display:inline-block; }
-.lang { position: relative; }
-.lang-btn {
-  padding: 8px 10px; border-radius: 10px; border:1px solid var(--stroke);
-  background: transparent; color: var(--fg); font: inherit; cursor: pointer;
-}
-.lang-menu {
-  position: absolute; right: 0; top: calc(100% + 8px);
-  background: #12131a; border:1px solid var(--stroke); border-radius: 12px;
-  display: none; min-width: 160px; overflow: hidden;
-}
-.lang-menu a { display:block; padding:10px 12px; color:#e6e6f3; }
-.lang-menu a:hover { background: rgba(255,255,255,0.06); }
-
-/* Hamburger */
-.hamb { display: inline-flex; flex-direction: column; gap:4px; border:1px solid var(--stroke); padding:8px; border-radius:10px; background:transparent; }
-.hamb span { width:20px; height:2px; background:#dfe6ff; display:block; }
-
-/* Mobile drawer */
-.drawer {
-  display: none;
-  border-top:1px solid var(--stroke);
-  background:#0f1118;
-}
-.drawer a {
-  display:block; padding:14px 8px; border-bottom:1px solid var(--stroke); color:#e7ebff;
-}
-
-/* ========== Responsive ========== */
-@media (min-width: 840px) {
-  .tagline { display:inline; }
-  nav.primary { display: inline-flex; }
-  .social { display: inline-flex; }
-  .hamb { display: none; }
-  .drawer { display: none !important; }
-}
-/* --- Dock card --- */
-.right.dock {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px;           /* コンパクト */
-  background: rgba(20,22,30,0.55);
-  backdrop-filter: saturate(140%) blur(8px);
-  border: 1px solid var(--stroke);
-  border-radius: 16px;    /* 14〜16pxが綺麗 */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-}
-
-/* CTA をアイコンボタンの高さに合わせる */
-.cta {
-  height: 36px; padding: 0 12px;
-  border-radius: 999px; display:inline-flex; align-items:center; gap:8px;
-  border: 1px solid var(--stroke);
-  transition: transform .15s ease, background-color .15s ease;
-}
-.cta:focus-visible { outline: 2px solid rgba(122,167,255,.6); outline-offset: 2px; }
-.cta:hover { background: rgba(122,167,255,0.12); transform: translateY(-1px); }
-
-/* アイコンボタンの統一 */
-.iconbtn {
-  width: 36px; height: 36px;
-  display: inline-grid; place-items: center;
-  border-radius: 10px; border: 1px solid var(--stroke);
-  transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
-}
-.iconbtn:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
-.iconbtn:focus-visible { outline: 2px solid rgba(122,167,255,.6); outline-offset: 2px; }
-
-.icon { width: 18px; height: 18px; }
-
-/* 薄いセパレータ */
-.sep {
-  width: 1px; height: 26px; background: rgba(255,255,255,0.10);
-  margin: 0 2px;
-}
-
-/* 言語ボタンをDock調に */
-.lang-btn {
-  height: 36px; padding: 0 10px;
-  border-radius: 10px; border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.02); color: var(--fg);
-  cursor: pointer;
-  transition: background-color .15s ease, transform .15s ease;
-}
-.lang-btn:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
-
-/* メニューのカード感を強化 */
-.lang-menu {
-  position: absolute; right: 0; top: calc(100% + 8px);
-  background: #10121a; border:1px solid var(--stroke);
-  border-radius: 12px; overflow: hidden; display: none; min-width: 180px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-}
-.lang-menu a { display:block; padding:12px 14px; color:#e6e6f3; font-size:14px; }
-.lang-menu a:hover { background: rgba(122,167,255,0.12); }
-
-/* モバイル：Dockは隠してハンバーガー優先 */
-@media (max-width: 839px) {
-  .sep.hide-mobile { display: none; }
-  .social { display: none !important; }
-  .lang { display: none; }
-  .right.dock { padding: 4px 4px 4px 6px; gap: 6px; }
-  .cta { height: 34px; }
-}
-/* ====== Brand tuning ====== */
+/* ========== Design tokens ========== */
 :root{
-  --brand:#7aa7ff;
-  --brand-2:#c7d2ff;
-  --glass: rgba(16,18,26,0.55);
-  --glass-strong: rgba(16,18,26,0.72);
-  --stroke: rgba(255,255,255,0.12);
+  --bg-1:#0a0f1f;     /* deep navy */
+  --bg-2:#1a103f;     /* cosmic purple */
+  --halo-1:rgba(122,167,255,0.10); /* cyan glow */
+  --halo-2:rgba(199,160,255,0.09); /* violet glow */
+  --fg:#f4f6ff;
+  --muted:#aeb6d5;
+  --brand:#8fb0ff;
+  --brand-2:#d8d6ff;
+  --glass: rgba(22,26,38,0.78);
+  --glass-strong: rgba(16,22,34,0.92);
+  --stroke: rgba(255,255,255,0.14);
+  --stroke-strong: rgba(150,170,255,0.35);
+  --shadow-1: 0 20px 40px rgba(0,0,0,0.45);
 }
 
-/* ====== Always-on glass header + gradient hairline ====== */
+/* ========== Base ========== */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  color:var(--fg);
+  font-family:'Poppins','Noto Sans JP',ui-sans-serif,system-ui,-apple-system,"Hiragino Sans","Noto Sans JP","Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background:
+    radial-gradient(1200px 600px at 20% 0%, var(--halo-1), transparent 60%),
+    radial-gradient(1200px 600px at 80% 100%, var(--halo-2), transparent 60%),
+    linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  min-height:100vh;
+}
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(1200px,92%); margin-inline:auto; }
+.muted{ color:var(--muted); }
+
+h1,h2,h3{
+  color:#f0f4ff;
+  text-shadow: 0 0 10px rgba(180,200,255,0.25);
+}
+
+/* ========== Header (3カード構成) ========== */
 header.site-header{
-  position: sticky; top:0; z-index:60;
-  background: var(--glass);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid transparent; /* 擬似要素で髪の毛ライン */
-}
-header.site-header::after{
-  content:"";
-  position:absolute; inset:auto 0 -1px 0; height:1px;
-  background: linear-gradient(90deg,
-    rgba(122,167,255,.15), rgba(255,255,255,.06), rgba(199,210,255,.15));
-  pointer-events:none;
-}
-
-/* ====== Dock（常時ガラス+微光輪） ====== */
-.right.dock{
-  position: relative;
-  display:flex; align-items:center; gap:8px;
-  padding:6px;
-  background: var(--glass-strong);
-  border:1px solid var(--stroke);
-  border-radius:16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.22);
-}
-.right.dock::before{
-  /* 縁のネオン光輪（超控えめ） */
-  content:""; position:absolute; inset:-2px; border-radius:18px;
-  background: radial-gradient(120% 120% at 100% 0%,
-    rgba(122,167,255,.22) 0%, rgba(122,167,255,0) 46%),
-              radial-gradient(120% 120% at 0% 100%,
-    rgba(199,210,255,.18) 0%, rgba(199,210,255,0) 40%);
-  filter: blur(8px);
-  z-index:-1;
-}
-
-/* すべて36pxグリッドで揃える */
-.cta{ height:36px; padding:0 12px; border:1px solid var(--stroke);
-  border-radius:999px; display:inline-flex; align-items:center; gap:8px;
-  font-weight:600; font-size:13px;
-  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
-}
-.iconbtn{ width:36px; height:36px; display:inline-grid; place-items:center;
-  border:1px solid var(--stroke); border-radius:10px;
-  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
-}
-.icon{ width:18px; height:18px; }
-.lang-btn{ height:36px; padding:0 10px; border:1px solid var(--stroke);
-  border-radius:10px; background:rgba(255,255,255,.02);
-  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
-}
-.cta:hover, .iconbtn:hover, .lang-btn:hover{ background: rgba(255,255,255,.06); transform: translateY(-1px); }
-.cta:focus-visible, .iconbtn:focus-visible, .lang-btn:focus-visible{
-  outline:2px solid rgba(122,167,255,.6); outline-offset:2px;
-}
-.sep{ width:1px; height:26px; background:rgba(255,255,255,.10); margin:0 2px; }
-
-/* ====== ナビの“今っぽい”アンダーライン ====== */
-nav.primary a{
-  position: relative;
-}
-nav.primary a::after{
-  content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
-  opacity:0; transform: translateY(4px) scaleX(.6);
-  transition: opacity .2s ease, transform .2s ease;
-  border-radius:2px;
-}
-nav.primary a:hover::after,
-nav.primary a:focus-visible::after,
-nav.primary a.is-active::after{ opacity:1; transform: translateY(0) scaleX(1); }
-
-/* ====== スクロール時に微縮小 ====== */
-.site-header.shrink .nav-row{ padding: 8px 0; }
-.site-header.shrink .right.dock{ transform: translateY(-1px); }
-.site-header.shrink .logo svg{ width:24px; height:24px; }
-.site-header.shrink .tagline{ opacity:.8; }
-
-/* ====== モバイル調整 ====== */
-@media (max-width:839px){
-  .social{ display:none !important; }
-  .lang{ display:none; }
-  .right.dock{ padding:4px 4px 4px 6px; gap:6px; }
-  .cta{ height:34px; }
-}
-
-/* ====== Reduce motion ====== */
-@media (prefers-reduced-motion: reduce){
-  .cta, .iconbtn, .lang-btn, .right.dock{ transition: none !important; }
-  nav.primary a::after{ transition: none !important; }
-}
-/* ヘッダー本体：背景と同化しないようガラス+ノイズを常時表示 */
-header.site-header{
-  position: sticky; top:0; z-index:60;
-  background: var(--glass);
-  backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid transparent;
-  /* 微ノイズ風（コスト低い擬似） */
-  background-image:
-    radial-gradient(1200px 200px at 50% -40px, rgba(122,167,255,0.12), rgba(0,0,0,0) 60%),
-    radial-gradient(600px 120px at 50% -30px, rgba(199,210,255,0.10), rgba(0,0,0,0) 55%);
-}
-
-/* 下端ヘアラインをグラデ＋微シマーに */
-header.site-header::after{
-  content:"";
-  position:absolute; inset:auto 0 -1px 0; height:1px; overflow:hidden;
-  background: linear-gradient(90deg,
-    rgba(122,167,255,.28), rgba(255,255,255,.08), rgba(199,210,255,.28));
-  mask: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  animation: hairline-scan 8s linear infinite;
-}
-@keyframes hairline-scan{
-  0%  { filter: brightness(100%); }
-  50% { filter: brightness(140%); }
-  100%{ filter: brightness(100%); }
-}
-.right.dock{
-  position: relative;
-  display:flex; align-items:center; gap:8px;
-  padding:6px 6px;
-  background: rgba(16,18,26,0.82);          /* ← 少し濃く */
-  border:1px solid rgba(255,255,255,0.18);  /* ← 少し強め */
-  border-radius:16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.28);
-}
-.right.dock::before{  /* 外側ごく薄いネオングロウ */
-  content:""; position:absolute; inset:-2px; border-radius:18px;
-  background: radial-gradient(120% 120% at 100% 0%,
-    rgba(122,167,255,.22) 0%, rgba(122,167,255,0) 46%),
-              radial-gradient(120% 120% at 0% 100%,
-    rgba(199,210,255,.18) 0%, rgba(199,210,255,0) 40%);
-  filter: blur(10px);
-  z-index:-1;
-}
-.right.dock::after{   /* 内側のかすかなハイライト */
-  content:""; position:absolute; inset:1px; border-radius:15px;
-  pointer-events:none;
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0));
-}
-/* ベースを明るめにして常時視認 */
-nav.primary a{
-  color:#eef1ff;            /* 明るめ */
-  opacity:0.95;
-}
-
-/* 常時うっすら下線（薄） */
-nav.primary a::before{
-  content:""; position:absolute; left:10px; right:10px; bottom:8px; height:1px;
-  background: linear-gradient(90deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-  border-radius:1px; opacity:.6;
-}
-
-/* 既存の派手下線は“上”に重ねる（ホバーで増える） */
-nav.primary a::after{
-  content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
-  opacity:.0; transform: translateY(4px) scaleX(.6);
-  transition: opacity .2s ease, transform .2s ease;
-  border-radius:2px;
-}
-nav.primary a:hover::after,
-nav.primary a:focus-visible::after,
-nav.primary a.is-active::after{
-  opacity:1; transform: translateY(0) scaleX(1);
-}
-
-/* 文字自体もほんの少し輝度UP */
-nav.primary a:hover,
-nav.primary a:focus-visible{
-  text-shadow: 0 0 8px rgba(122,167,255,.25);
-}
-.cta, .iconbtn, .lang-btn{
-  background: rgba(255,255,255,.03);            /* 常時うっすら塗る */
-  border:1px solid rgba(255,255,255,.18);
-}
-.cta:hover, .iconbtn:hover, .lang-btn:hover{
-  background: rgba(255,255,255,.09);
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.26);
-}
-/* === Always-on glass header === */
-.site-header {
-  background: rgba(15,15,20,0.65);
-  backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-}
-
-/* === Dock常時表示 + ネオン感 === */
-.right.dock {
-  display: flex;
-  gap: 0.75rem;
-  position: relative;
-  padding: 6px 14px;
-  border-radius: 16px;
-  background: rgba(20,20,30,0.6);
-  backdrop-filter: blur(16px);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.06), 
-              0 0 25px rgba(120,150,255,0.2);
-  animation: dock-float 6s ease-in-out infinite;
-}
-
-/* アイコンボタンの常時発光 */
-.right.dock a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(120,150,255,0.35);
-  box-shadow: 0 0 8px rgba(120,150,255,0.25);
-  transition: all .35s ease;
-}
-.right.dock a:hover {
-  border-color: rgba(180,200,255,0.8);
-  box-shadow: 0 0 15px rgba(140,170,255,0.6);
-  transform: scale(1.08);
-}
-
-/* 呼吸する光を紫青系に変更 */
-.right.dock::before{
-  content:""; position:absolute; inset:-4px; border-radius:22px;
-  background: radial-gradient(circle at 30% 30%, rgba(150,130,255,.25), transparent 60%),
-              radial-gradient(circle at 70% 70%, rgba(80,200,255,.2), transparent 60%);
-  filter: blur(14px);
-  animation: dock-breathe 6s ease-in-out infinite;
-  z-index:-1;
-}
-@keyframes dock-breathe{
-  0%  { opacity:.3; transform: scale(1);}
-  50% { opacity:.7; transform: scale(1.05);}
-  100%{ opacity:.3; transform: scale(1);}
-}
-
-/* 浮遊感 */
-@keyframes dock-float{
-  0%,100% { transform: translateY(0);}
-  50%     { transform: translateY(-3px);}
-}
-/* ===== ARIA 宇宙的グラデーション背景 ===== */
-body {
-  background: linear-gradient(135deg, #0a0f1f 0%, #1a103f 100%);
-  color: #ffffff;
-  font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-
-/* ===== ガラス風ヘッダー強化 ===== */
-header {
-  background: rgba(20, 20, 30, 0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 25px rgba(120, 180, 255, 0.25); /* 青白グロー */
-}
-
-/* ヘッダー内の文字 */
-header .logo,
-header nav a {
-  color: #e0e8ff;
-  transition: color 0.3s ease;
-}
-
-header nav a:hover {
-  color: #7aa6ff;
-}
-
-/* ===== セクション見出し ===== */
-h1, h2, h3 {
-  color: #f0f4ff;
-  text-shadow: 0 0 10px rgba(180, 200, 255, 0.3);
-}
-/* ===== 強制的にヘッダーへ適用（特異性UP） ===== */
-.site-header.site-header {
-  background: rgba(20, 20, 30, 0.65);
-  backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 0 26px rgba(120, 180, 255, 0.25);
-}
-
-/* ヘアライン（微シマー） */
-.site-header.site-header::after{
-  content:"";
-  position:absolute; inset:auto 0 -1px 0; height:1px; overflow:hidden;
-  background: linear-gradient(90deg,
-    rgba(122,167,255,.28), rgba(255,255,255,.08), rgba(199,210,255,.28));
-  mask: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  animation: hairline-scan 8s linear infinite;
-}
-@keyframes hairline-scan{
-  0%  { filter: brightness(100%); }
-  50% { filter: brightness(140%); }
-  100%{ filter: brightness(100%); }
-}
-
-/* ===== Dockを常時リッチに（特異性UP） ===== */
-.right.dock.right.dock{
-  position: relative;
-  display:flex; align-items:center; gap:8px;
-  padding:6px 12px;
-  background: rgba(16,18,26,0.82);
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:16px;
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.04),
-              0 8px 24px rgba(0,0,0,.28);
-}
-.right.dock.right.dock::before{
-  content:""; position:absolute; inset:-4px; border-radius:20px;
-  background:
-    radial-gradient(120% 120% at 30% 20%, rgba(150,130,255,.28) 0%, transparent 60%),
-    radial-gradient(120% 120% at 80% 70%, rgba(80,200,255,.22) 0%, transparent 60%);
-  filter: blur(12px);
-  animation: dock-breathe 6s ease-in-out infinite;
-  z-index:-1;
-}
-@keyframes dock-breathe{
-  0%{opacity:.32; transform:scale(1)}
-  50%{opacity:.65; transform:scale(1.04)}
-  100%{opacity:.32; transform:scale(1)}
-}
-
-/* ボタンを常時見えるトーンに（面でコントラスト） */
-.right.dock .cta,
-.right.dock .iconbtn,
-.right.dock .lang-btn{
-  background: rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.18);
-}
-.right.dock .cta:hover,
-.right.dock .iconbtn:hover,
-.right.dock .lang-btn:hover{
-  background: rgba(255,255,255,.10);
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.26);
-}
-
-/* ===== ナビを“常時表示”でクッキリ ===== */
-nav.primary a{
-  color:#eef1ff;
-  opacity:.98;
-}
-nav.primary a::before{
-  content:""; position:absolute; left:10px; right:10px; bottom:8px; height:1px;
-  background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
-  border-radius:1px; opacity:.7;
-}
-nav.primary a::after{
-  /* 派手ラインは既存のまま。ここで確実に上書きされる */
-  content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
-  opacity:0; transform: translateY(4px) scaleX(.6);
-  transition: opacity .2s ease, transform .2s ease;
-  border-radius:2px;
-}
-nav.primary a:hover::after,
-nav.primary a:focus-visible::after,
-nav.primary a.is-active::after{
-  opacity:1; transform: translateY(0) scaleX(1);
-}
-/* ===== ARIA 宇宙系背景を少し明るめにしてガラスが映えるよう調整 ===== */
-body {
-  background: radial-gradient(1200px 600px at 20% 0%, rgba(122,167,255,0.08), transparent 60%),
-              radial-gradient(1200px 600px at 80% 100%, rgba(199,160,255,0.07), transparent 60%),
-              linear-gradient(135deg, #0a0f1f 0%, #1a103f 100%);
-  color: #ffffff;
-}
-
-/* ===== ガラスヘッダー（常時）＋淡いシマーライン ===== */
-.site-header.site-header {
-  background: rgba(20, 22, 32, 0.70);
-  backdrop-filter: blur(12px) saturate(140%);
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 0 26px rgba(120,180,255,0.25);
-}
-.site-header.site-header::after{
-  content:"";
-  position:absolute; inset:auto 0 -1px 0; height:1px;
-  background: linear-gradient(90deg,
-    rgba(122,167,255,.28), rgba(255,255,255,.10), rgba(199,210,255,.28));
-  mask: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-}
-
-/* ===== Dock（右上）— 常時リッチ & 視認性UP ===== */
-.right.dock.right.dock{
-  position: relative;
-  display:flex; align-items:center; gap:8px;
-  padding:6px 12px;
-  background: rgba(16,18,26,0.86);
-  border:1px solid rgba(255,255,255,0.22);
-  border-radius:16px;
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.04),
-              0 10px 28px rgba(0,0,0,.32);
-}
-.right.dock.right.dock::before{
-  content:""; position:absolute; inset:-4px; border-radius:20px; z-index:-1;
-  background:
-    radial-gradient(120% 120% at 30% 20%, rgba(150,130,255,.30) 0%, transparent 60%),
-    radial-gradient(120% 120% at 80% 70%, rgba(80,200,255,.26) 0%, transparent 60%);
-  filter: blur(12px);
-  animation: dock-breathe 6s ease-in-out infinite;
-}
-@keyframes dock-breathe{
-  0%{opacity:.34; transform:scale(1)}
-  50%{opacity:.65; transform:scale(1.04)}
-  100%{opacity:.34; transform:scale(1)}
-}
-
-/* ボタンは“面”で常時コントラスト、hoverで面積と輝度を少し増やす */
-.right.dock .cta,
-.right.dock .iconbtn,
-.right.dock .lang-btn{
-  background: rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.22);
-}
-.right.dock .cta:hover,
-.right.dock .iconbtn:hover,
-.right.dock .lang-btn:hover{
-  background: rgba(255,255,255,.12);
-  transform: translateY(-1px);
-  border-color: rgba(255,255,255,.30);
-}
-
-/* ===== ナビ（楽曲〜お問い合わせ）— 常時見える下線＋ホバー強調 ===== */
-header .nav-row nav.primary a{
-  color:#eef1ff; opacity:.98; position:relative;
-}
-header .nav-row nav.primary a::before{
-  content:""; position:absolute; left:10px; right:10px; bottom:8px; height:1px;
-  background: linear-gradient(90deg, rgba(255,255,255,.20), rgba(255,255,255,.10));
-  border-radius:1px; opacity:.85;
-}
-header .nav-row nav.primary a::after{
-  content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
-  opacity:0; transform: translateY(4px) scaleX(.6);
-  transition: opacity .2s ease, transform .2s ease;
-  border-radius:2px;
-}
-header .nav-row nav.primary a:hover::after,
-header .nav-row nav.primary a:focus-visible::after,
-header .nav-row nav.primary a.is-active::after{
-  opacity:1; transform: translateY(0) scaleX(1);
-}
-/***** ===== ARIA header/dock hard override ===== *****/
-
-/* 宇宙グラデをわずかに明度アップしてガラスを映えさせる */
-body.body--cosmic, body {
-  background:
-    radial-gradient(1200px 600px at 20% 0%, rgba(122,167,255,0.10), transparent 60%),
-    radial-gradient(1200px 600px at 80% 100%, rgba(199,160,255,0.09), transparent 60%),
-    linear-gradient(135deg, #0a0f1f 0%, #1a103f 100%);
-}
-
-/* ヘッダー：常時ガラス＋明確な面（後勝ち＆特異性強） */
-header.site-header.site-header {
-  background:
-    linear-gradient(180deg, rgba(22,26,38,0.92), rgba(22,26,38,0.78));
+  position:sticky; top:0; z-index:60;
+  background: linear-gradient(180deg, rgba(22,26,38,0.92), rgba(22,26,38,0.78));
   backdrop-filter: blur(14px) saturate(145%);
   -webkit-backdrop-filter: blur(14px) saturate(145%);
-  border-bottom: 1px solid rgba(255,255,255,0.14);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(122,167,255,0.06) inset;
+  border-bottom:1px solid var(--stroke);
+  box-shadow: var(--shadow-1), 0 0 0 1px rgba(122,167,255,0.06) inset;
 }
-header.site-header.site-header::before {
-  /* 上端のほのかなハイライト */
+header.site-header::before{
   content:""; position:absolute; left:0; right:0; top:0; height:10px;
   background: linear-gradient(180deg, rgba(255,255,255,0.07), transparent);
   pointer-events:none;
 }
-header.site-header.site-header::after {
-  /* 下端のシマー */
+header.site-header::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background: linear-gradient(90deg,
     rgba(122,167,255,.36), rgba(255,255,255,.12), rgba(199,210,255,.36));
 }
 
-/* ナビ：常時ライン＆文字色を明るく（見失わない） */
-header .nav-row nav.primary a {
-  color:#f1f4ff !important;
-  opacity:1 !important;
+/* レイアウト */
+.nav-row{
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  align-items:center;
+  gap:14px;
+  padding:12px 0;
+}
+
+/* 共通カード */
+.card{
   position:relative;
-  text-shadow: 0 0 8px rgba(122,167,255,0.18);
+  background: rgba(255,255,255,0.04);
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.03), 0 8px 24px rgba(0,0,0,.28);
 }
-header .nav-row nav.primary a::before {
+
+/* Logo Card */
+.logo-card{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 12px;
+}
+.logo-card::before{
+  /* 外側ほのかな光輪 */
+  content:""; position:absolute; inset:-5px; border-radius:20px; z-index:-1;
+  background:
+    radial-gradient(120% 120% at 25% 25%, rgba(150,130,255,.28) 0%, transparent 60%),
+    radial-gradient(120% 120% at 80% 70%, rgba(80,200,255,.22) 0%, transparent 60%);
+  filter: blur(12px);
+}
+.logo-mark{ width:28px; height:28px; display:block; }
+.logo-text{ font-weight:700; letter-spacing:.08em; }
+.tagline{ margin-left:6px; font-size:12px; color:var(--muted); }
+
+/* Nav Card */
+.nav-card{
+  justify-self:center;
+  display:none;            /* モバイル非表示 */
+  gap:16px;
+  padding:6px 10px;
+  background: rgba(255,255,255,0.03);
+}
+.nav-card a{
+  position:relative;
+  display:inline-block;
+  padding:8px 10px;
+  color:#eef1ff;
+  opacity:.98;
+}
+.nav-card a::before{
   content:""; position:absolute; left:10px; right:10px; bottom:8px; height:1px;
-  background: linear-gradient(90deg, rgba(255,255,255,.28), rgba(255,255,255,.12));
-  border-radius:1px; opacity:.9;
+  background: linear-gradient(90deg, rgba(255,255,255,.20), rgba(255,255,255,.10));
+  border-radius:1px; opacity:.85;
 }
-header .nav-row nav.primary a::after {
+.nav-card a::after{
   content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px;
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
   opacity:0; transform: translateY(4px) scaleX(.6);
   transition: opacity .2s ease, transform .2s ease;
   border-radius:2px;
 }
-header .nav-row nav.primary a:hover::after,
-header .nav-row nav.primary a:focus-visible::after,
-header .nav-row nav.primary a.is-active::after {
-  opacity:1; transform: translateY(0) scaleX(1);
-}
+.nav-card a:hover::after,
+.nav-card a:focus-visible::after,
+.nav-card a.is-active::after{ opacity:1; transform: translateY(0) scaleX(1); }
 
-/* 右上Dock：濃いめガラス＋内外グローで常時ハッキリ */
-.right.dock.right.dock {
-  position: relative;
-  display:flex; align-items:center; gap:10px;
-  padding:8px 14px;
-  background: rgba(16,22,34,0.92);
-  border:1px solid rgba(150,170,255,0.35);
-  border-radius:16px;
+/* Right Dock Card */
+.right{ display:flex; align-items:center; gap:10px; }
+.dock{
+  background: var(--glass-strong);
+  border:1px solid var(--stroke-strong);
+  padding:8px 12px;
   box-shadow:
     0 14px 32px rgba(0,0,0,0.55),
     0 0 0 1px rgba(122,167,255,0.09) inset;
 }
-.right.dock.right.dock::before {
-  /* 外側ネオングロウ（呼吸） */
+.dock::before{
   content:""; position:absolute; inset:-5px; border-radius:22px; z-index:-1;
   background:
-    radial-gradient(120% 120% at 25% 25%, rgba(150,130,255,.36) 0%, transparent 60%),
-    radial-gradient(120% 120% at 80% 70%, rgba(80,200,255,.30) 0%, transparent 60%);
+    radial-gradient(120% 120% at 30% 20%, rgba(150,130,255,.32) 0%, transparent 60%),
+    radial-gradient(120% 120% at 80% 70%, rgba(80,200,255,.26) 0%, transparent 60%);
   filter: blur(14px);
   animation: dock-breathe 6s ease-in-out infinite;
 }
-@keyframes dock-breathe {
-  0%{opacity:.35; transform:scale(1)}
-  50%{opacity:.70; transform:scale(1.05)}
-  100%{opacity:.35; transform:scale(1)}
-}
+@keyframes dock-breathe{ 0%{opacity:.34; transform:scale(1)} 50%{opacity:.65; transform:scale(1.04)} 100%{opacity:.34; transform:scale(1)} }
 
-/* Dock内のボタンを“面”で常時見えるように */
-.right.dock .cta,
-.right.dock .iconbtn,
-.right.dock .lang-btn {
+.cta{
+  height:36px; padding:0 12px;
+  border-radius:999px; display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(180,190,255,.35);
+  background: rgba(255,255,255,.10);
+  font-weight:600; font-size:13px;
+  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.cta:hover{ background: rgba(255,255,255,.18); transform: translateY(-1px); border-color: rgba(200,210,255,.6); }
+
+.icon{ width:18px; height:18px; fill:#dfe6ff; display:block; }
+.iconbtn{
+  width:36px; height:36px; display:inline-grid; place-items:center;
+  border-radius:50%;
   background: rgba(255,255,255,.10);
   border:1px solid rgba(180,190,255,.35);
   box-shadow: 0 0 10px rgba(120,150,255,0.28);
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
-.right.dock .cta:hover,
-.right.dock .iconbtn:hover,
-.right.dock .lang-btn:hover {
+.iconbtn:hover{
   background: rgba(255,255,255,.18);
   transform: translateY(-1px);
   border-color: rgba(200,210,255,.6);
+  box-shadow: 0 0 15px rgba(140,170,255,0.6);
+}
+.sep{ width:1px; height:26px; background:rgba(255,255,255,0.12); }
+.hide-mobile{}
+
+/* Lang */
+.lang{ position:relative; }
+.lang-btn{
+  height:36px; padding:0 10px;
+  border-radius:10px; border:1px solid rgba(180,190,255,.35);
+  background: rgba(255,255,255,.10); color:var(--fg);
+  cursor:pointer;
+  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.lang-btn:hover{ background: rgba(255,255,255,.18); transform: translateY(-1px); border-color: rgba(200,210,255,.6); }
+.lang-menu{
+  position:absolute; right:0; top:calc(100% + 8px);
+  display:none; min-width:180px; overflow:hidden;
+  background:#10121a; border:1px solid var(--stroke); border-radius:12px;
+  box-shadow:0 12px 30px rgba(0,0,0,.4);
+}
+.lang-menu a{ display:block; padding:12px 14px; color:#e6e6f3; font-size:14px; }
+.lang-menu a:hover{ background: rgba(122,167,255,0.12); }
+
+/* Hamburger & Drawer */
+.hamb{ display:inline-flex; flex-direction:column; gap:4px; border:1px solid var(--stroke); padding:8px; border-radius:10px; background:transparent; }
+.hamb span{ width:20px; height:2px; background:#dfe6ff; display:block; }
+.drawer{ display:none; border-top:1px solid var(--stroke); background:#0f1118; }
+.drawer a{ display:block; padding:14px 8px; border-bottom:1px solid var(--stroke); color:#e7ebff; }
+
+/* Shrink on scroll (JSで.site-headerに.shrink付与想定) */
+.site-header.shrink .nav-row{ padding:8px 0; }
+.site-header.shrink .logo-mark{ width:24px; height:24px; }
+.site-header.shrink .dock{ transform: translateY(-1px) scale(0.985); }
+
+/* ========== Responsive ========== */
+@media (min-width: 840px){
+  .nav-card{ display:flex; }
+  .social{ display:flex; gap:10px; }
+  .hamb{ display:none; }
+  .drawer{ display:none !important; }
+}
+@media (max-width: 839px){
+  .nav-card{ display:none; }
+  .hide-mobile{ display:none; }
+  .lang{ display:none; }
 }
 
-/* スクロール縮小は残しつつ視覚差を強める */
-.site-header.shrink .nav-row { padding: 8px 0; }
-.site-header.shrink .logo svg { width:24px; height:24px; }
-.site-header.shrink .right.dock { transform: translateY(-1px) scale(0.985); }
+/* ========== Hero placeholder ========== */
+.hero{ padding:56px 0 80px; }
+.hero-title{
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height:1.15;
+}
+.hero-title .brand{
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; background-clip:text; color:transparent;
+}
 
-/* モバイルではDockの濃度だけ少し下げて圧迫感を回避 */
-@media (max-width: 839px){
-  .right.dock.right.dock { background: rgba(16,22,34,0.88); padding:6px 10px; gap:8px; }
+/* ========== A11y focus ring ========== */
+a:focus-visible, button:focus-visible{
+  outline:2px solid rgba(122,167,255,.6); outline-offset:2px;
 }
