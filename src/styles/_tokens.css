@@ -1,0 +1,9 @@
+:root{
+  --bg-1:#0a0f1f; --bg-2:#1a103f;
+  --halo-1:rgba(122,167,255,.10); --halo-2:rgba(199,160,255,.09);
+  --fg:#f4f6ff; --muted:#aeb6d5;
+  --brand:#8fb0ff; --brand-2:#d8d6ff;
+  --glass:rgba(22,26,38,.78); --glass-strong:rgba(16,22,34,.92);
+  --stroke:rgba(255,255,255,.14); --stroke-strong:rgba(150,170,255,.35);
+  --shadow-1:0 20px 40px rgba(0,0,0,.45);
+}

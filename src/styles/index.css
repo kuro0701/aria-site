@@ -1,3 +1,10 @@
 @layer tokens, base, components, sections, utilities, legacy;
-/* 将来ここに分割ファイルを足していく。今は互換のため legacy のみ */
-@import "./_legacy.css" layer(legacy);
+
+@import "./_tokens.css"     layer(tokens);
+@import "./_base.css"       layer(base);
+@import "./_header.css"     layer(components);
+@import "./_hero.css"       layer(sections);
+@import "./_utilities.css"  layer(utilities);
+
+/* 互換用：今のstyle.cssをそのまま最後に。分割が進んだら中身を減らしていけばOK */
+@import "./_legacy.css"     layer(legacy);
