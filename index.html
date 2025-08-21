@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIA - 一人で、千人分。</title>
+    <meta name="description" content="Harmony Dimensionから来た、あなたの3Dボイス。Dolby Atmosネイティブ・ソロアーティストARIAの公式サイト">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@100;300;400;500;700&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Harmony Dimension Portal Effect -->
+    <div class="portal-background">
+        <div class="dimension-particles"></div>
+        <div class="sound-waves"></div>
+        <div class="harmony-grid"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="aria-header">
+        <div class="header-inner">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <div class="logo-symbol">
+                        <svg class="voice-waves" width="40" height="40" viewBox="0 0 40 40">
+                            <circle class="wave-1" cx="20" cy="20" r="3" fill="none" stroke="url(#gradient1)" stroke-width="0.5"/>
+                            <circle class="wave-2" cx="20" cy="20" r="8" fill="none" stroke="url(#gradient1)" stroke-width="0.4"/>
+                            <circle class="wave-3" cx="20" cy="20" r="13" fill="none" stroke="url(#gradient1)" stroke-width="0.3"/>
+                            <circle class="wave-4" cx="20" cy="20" r="18" fill="none" stroke="url(#gradient1)" stroke-width="0.2"/>
+                            <defs>
+                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">ARIA</span>
+                        <span class="logo-tagline">一人で、千人分。</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-navigation">
+                <ul class="nav-list">
+                    <li class="nav-item" data-dimension="home">
+                        <a href="#home" class="nav-link">
+                            <span class="nav-text">HOME</span>
+                            <span class="nav-3d-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-dimension="music">
+                        <a href="#music" class="nav-link">
+                            <span class="nav-text">MUSIC</span>
+                            <span class="nav-3d-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-dimension="live">
+                        <a href="#live" class="nav-link">
+                            <span class="nav-text">LIVE</span>
+                            <span class="nav-3d-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-dimension="story">
+                        <a href="#story" class="nav-link">
+                            <span class="nav-text">STORY</span>
+                            <span class="nav-3d-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-dimension="dimension">
+                        <a href="#dimension" class="nav-link">
+                            <span class="nav-text">DIMENSION</span>
+                            <span class="nav-3d-indicator"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Right Section -->
+            <div class="header-actions">
+                <!-- Language Selector (Multi-lingual representation) -->
+                <div class="language-selector">
+                    <button class="lang-toggle" aria-label="言語切替">
+                        <span class="lang-current">JP</span>
+                        <div class="lang-orbit">
+                            <span class="lang-option" data-lang="ko">KO</span>
+                            <span class="lang-option" data-lang="en">EN</span>
+                            <span class="lang-option" data-lang="zh">ZH</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Dolby Atmos Indicator -->
+                <div class="atmos-indicator">
+                    <div class="atmos-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" class="atmos-icon">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                            <path d="M12 7 L12 17 M7 12 L17 12" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+                        </svg>
+                        <span class="atmos-text">Dolby Atmos</span>
+                    </div>
+                </div>
+
+                <!-- Listen Now CTA -->
+                <button class="cta-listen">
+                    <span class="cta-text">Listen in 3D</span>
+                    <div class="cta-waves">
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Thousand Voices Visualization (subtle header effect) -->
+        <div class="thousand-voices">
+            <div class="voice-particle" style="--delay: 0s; --duration: 3s;"></div>
+            <div class="voice-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
+            <div class="voice-particle" style="--delay: 1s; --duration: 4s;"></div>
+            <div class="voice-particle" style="--delay: 1.5s; --duration: 3.2s;"></div>
+            <div class="voice-particle" style="--delay: 2s; --duration: 3.8s;"></div>
+        </div>
+    </header>
+
+    <!-- Main Content (placeholder) -->
+    <main class="main-content">
+        <section class="hero-section">
+            <h1>Harmony Dimensionへようこそ</h1>
+            <p>無数の声色が漂う海から、あなたの部屋へ</p>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/particles.js"></script>
+</body>
+</html>
