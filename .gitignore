@@ -1,13 +1,16 @@
-# macOS / Node / build
+# macOS
 .DS_Store
-node_modules/
-dist/
-.env
+
+# Node / tooling logs（必要なければ削ってOK）
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
 *.log
 
+# ビルド成果物（今回はCloudflare Pagesがpublicをそのまま配信）
+dist/
+.build/
+.cache/
 
-/assets/
-/img/
-!public/
-!public/**
-.gitignore.bak
+# ⚠️ public配下は決して無視しない（画像が消える原因）
+# もし過去に "public/" や "assets/" を無視していたら、その行を削除すること
