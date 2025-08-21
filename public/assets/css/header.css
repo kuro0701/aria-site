@@ -34,7 +34,7 @@ body{
   position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
   background:
     linear-gradient(180deg, rgba(11,11,12,.70), rgba(11,11,12,.50)),
-    url("/assets/img/header-bg.png") center/cover no-repeat;
+    url("../img/header-bg.png") center/cover no-repeat;
   border-bottom:1px solid rgba(230,231,235,.08);
   transition:box-shadow .2s ease, min-height .18s ease;
   min-height:var(--header-h);
@@ -101,7 +101,7 @@ body{
 
 .aria-drawer{
   position:fixed; left:0; right:0; top:calc(var(--header-h) + var(--safe-top));
-  background:rgba(11,11,12,.94) url("/assets/img/glow-accent.png") center/contain no-repeat;
+  background:rgba(11,11,12,.94) url("../img/glow-accent.png") center/contain no-repeat;
   border-top:1px solid rgba(230,231,235,.08);
   padding:12px 18px 20px; display:none;
   transform:translateY(-6px); opacity:0; transition:transform .16s ease, opacity .16s ease;

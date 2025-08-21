@@ -5,3 +5,10 @@ node_modules/
 *.map
 package.json.bak
 package.json.broken.*
+.DS_Store
+node_modules/
+dist/
+.env
+*.log
+assets/
+img/
