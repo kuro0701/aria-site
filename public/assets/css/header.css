@@ -145,3 +145,10 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--platinum);font-fam
   .aria-logo img{ width: 136px !important; }
   .aria-nav__list a{ padding-top: 4px !important; padding-bottom: 4px !important; }
 }
+/* guard: ensure hidden toggle never takes space */
+.aria-nav__toggle[hidden]{
+  display:none !important;
+  width:0 !important; height:0 !important;
+  padding:0 !important; margin:0 !important;
+  visibility:hidden !important;
+}
