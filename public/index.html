@@ -11,7 +11,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/header.css?v=14" />
@@ -23,9 +23,11 @@
   <header class="aria-header" role="banner">
     <div class="aria-header__inner">
       <nav class="aria-nav" aria-label="メイン">
-        <!-- モバイル用ハンバーガー（PCではJS/CSSで非表示） -->
-        <button class="aria-nav__toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="aria-drawer" hidden>
-          <img class="aria-nav__toggle-icon" src="assets/img/icon-menu.png" width="24" height="24" alt="">
+        <!-- モバイル用ハンバーガー（PNG→SVGに置換） -->
+        <button class="aria-nav__toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="aria-drawer">
+          <svg class="aria-nav__toggle-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="img">
+            <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path>
+          </svg>
         </button>
 
         <!-- 左ナビ -->

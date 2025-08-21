@@ -14,15 +14,9 @@
 }
 
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg); color:var(--platinum);
-  font-family:"Poppins","Noto Sans JP",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  line-height:1.55; padding-top:var(--safe-top);
-}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--platinum);font-family:"Poppins","Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
 
-/* Skip link (任意) */
+/* Skip link */
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{
   position:fixed;left:12px;top:12px;width:auto;height:auto;padding:10px 14px;z-index:9999;
@@ -43,24 +37,23 @@ body{
 
 .aria-header__inner{
   max-width:var(--container); margin:0 auto;
-  padding:8px 20px;                /* ←圧縮 */
+  padding:8px 20px;
   transition:padding .18s ease;
 }
 .aria-header.is-scrolled .aria-header__inner{ padding:6px 20px; }
 
 /* Nav */
 .aria-nav{
-  display:grid;
-  grid-template-columns:auto 1fr auto 1fr auto; /* [toggle] [left] [logo] [right] [cta] */
-  align-items:center; gap:10px;
+  display:grid; grid-template-columns:auto 1fr auto auto; gap:16px; align-items:center;
 }
 
-/* Hamburger（デスクトップは完全非表示） */
+/* Toggle（初期は非表示。モバイルで出す） */
 .aria-nav__toggle{
   display:none; background:transparent; border:0; padding:8px; justify-self:start;
 }
 .aria-nav__toggle:focus-visible{ outline:2px solid var(--accent); border-radius:10px; }
-@media (min-width:961px){ .aria-nav__toggle{ display:none !important; } } /* ←二重ロック */
+/* Inline SVG icon sizing（PNG依存をやめる） */
+.aria-nav__toggle svg{ display:block; width:24px; height:24px; }
 
 /* Lists */
 .aria-nav__list{
@@ -70,21 +63,20 @@ body{
 .aria-nav__list a{
   color:var(--platinum); text-decoration:none; font-weight:600; letter-spacing:.02em;
   padding:6px 2px; border-bottom:1px solid transparent;
-  transition:border-color .2s ease, color .2s ease, text-shadow .2s ease;
+  transition:border-color .2s ease, color .2s ease;
 }
-.aria-nav__list a:hover{ color:#fff; border-color:var(--accent-35); text-shadow:0 0 10px rgba(184,161,255,.22); }
 .aria-nav__list a.is-active,
-.aria-nav__list a[aria-current="true"]{ border-color:var(--accent-35); color:#fff; }
+.aria-nav__list a:hover{ border-bottom-color:var(--accent-35); color:#fff; }
 
 /* Logo（縮小幅を調整） */
-.aria-logo img{ display:block; width:148px; height:auto; transition:width .18s ease; } /* ←148px */
+.aria-logo img{ display:block; width:148px; height:auto; transition:width .18s ease; }
 .aria-header.is-scrolled .aria-logo img{ width:136px; }
 
 /* CTA / Lang */
 .aria-cta{ display:flex; align-items:center; gap:10px; justify-content:flex-end; }
 .aria-cta__btn{
   display:inline-flex; align-items:center; gap:8px;
-  padding:8px 14px; border-radius:999px;                /* ←少し小さく */
+  padding:8px 14px; border-radius:999px;
   background:var(--accent-18); border:1px solid var(--accent-35);
   color:var(--platinum); text-decoration:none; font-weight:700;
   box-shadow:0 0 0 0 rgba(184,161,255,0); transition:box-shadow .2s ease, transform .12s ease;
@@ -107,17 +99,26 @@ body{
   transform:translateY(-6px); opacity:0; transition:transform .16s ease, opacity .16s ease;
 }
 .aria-drawer.is-open{ display:block; transform:translateY(0); opacity:1; }
-.aria-drawer ul{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.aria-drawer ul{ list-style:none; margin:0; padding:0; }
+.aria-drawer li+li{ margin-top:10px; }
 .aria-drawer a{
-  display:block; padding:12px 10px; border-radius:10px;
+  display:block; padding:12px; border-radius:10px;
   color:var(--platinum); text-decoration:none; font-weight:700;
-  background:rgba(230,231,235,.04);
+  background:rgba(255,255,255,.02); border:1px solid rgba(230,231,235,.10);
 }
+.aria-drawer a:hover{ background:rgba(255,255,255,.05); }
 
-/* Anchor offset（固定ヘッダー下に隠れない） */
-:where(section[id]){ scroll-margin-top: var(--anchor-offset, 64px); }
+/* Demo sections（後で削除OK） */
+.dummy{
+  min-height:60vh; display:grid; place-items:center;
+  background:
+    radial-gradient(1200px 500px at 50% -300px, rgba(184,161,255,.10), transparent),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+}
+.dummy h2{ margin:0 0 6px; font-size:28px; }
+.dummy p{ margin:0; color:var(--platinum-60); }
 
-/* Mobile */
+/* ===== Responsive ===== */
 @media (max-width:960px){
   .aria-nav{ grid-template-columns:auto 1fr auto; }
   .aria-nav__toggle{ display:inline-flex; }   /* ←モバイルのみ表示 */
@@ -127,34 +128,9 @@ body{
 /* Reduce motion */
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
 
-/* Demo sections（後で削除OK） */
-.dummy{
-  min-height:60vh; display:grid; place-items:center;         /* ←少し短縮 */
-  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-  border-top:1px solid rgba(255,255,255,.06);
-}
-.dummy h2{ margin:0 6px 8px; font-size:clamp(22px,3vw,38px); }
-/* ===== Hard overrides (desktop) ===== */
+/* ===== Hard overrides for desktop (完全非表示) ===== */
 @media (min-width: 961px){
-  /* PCではハンバーガー完全に消す（ボタンごと & 中のimgも） */
-  .aria-nav__toggle,
-  .aria-nav__toggle *{
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    visibility: hidden !important;
-  }
-  /* ヘッダーの余白をさらに圧縮（万一の上書きにも勝つ） */
-  .aria-header{ min-height: 48px !important; }
-  .aria-header__inner{ padding: 6px 20px !important; }
-  .aria-logo img{ width: 136px !important; }
-}
-@media (min-width: 961px){ .aria-nav__toggle{ display:none !important; } }
-/* ===== Hard overrides for desktop (final lock) ===== */
-@media (min-width: 961px){
-  /* PC ではハンバーガー（ボタン/内部imgとも）を完全に消す */
+  /* PC ではハンバーガー（ボタン/内部要素とも）を完全に消す */
   .aria-nav__toggle, .aria-nav__toggle *{
     display: none !important;
     width: 0 !important;
