@@ -1,163 +1,81 @@
-/* ========== Atmos Halo Header – Compact Fix ========== */
-
-/* Tokens */
+/* ========== Angel Luxe Header (ARIA) ========== */
 :root{
-  --bg:#0B0B0C; --ink:#111216;
-  --platinum:#E6E7EB; --platinum-60:rgba(230,231,235,.60); --platinum-12:rgba(230,231,235,.12);
-  --accent:#B8A1FF; --accent-35:rgba(184,161,255,.35); --accent-18:rgba(184,161,255,.18);
-
-  --container:1240px;
-  --header-h:56px;                /* ←縮小 */
-  --header-h-condensed:48px;      /* ←縮小 */
-  --safe-top:env(safe-area-inset-top,0px);
-  --anchor-offset:64px;           /* JSで上書き */
+  --bg:#0A0B0E; --ink:#EDEEF6; --muted:rgba(237,238,246,.68);
+  --gold:#E7D6A5; --gold-40:rgba(231,214,165,.40);
+  --amethyst:#BFA8FF; --amethyst-18:rgba(191,168,255,.18);
+  --container:1240px; --header-h:56px; --header-h-condensed:48px; --safe-top:env(safe-area-inset-top,0px);
 }
-
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--platinum);font-family:"Poppins","Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:"Poppins","Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+img,svg{display:block} ul{margin:0;padding:0;list-style:none}
 
-/* Skip link */
-.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link:focus{
-  position:fixed;left:12px;top:12px;width:auto;height:auto;padding:10px 14px;z-index:9999;
-  background:#000;color:#fff;border-radius:10px;
+/* 紫リンク/下線の強制無効化（ヘッダー内） */
+.aria-header a, .aria-header a:link, .aria-header a:visited{
+  color:var(--ink) !important; text-decoration:none !important;
 }
 
 /* Header */
 .aria-header{
   position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
   background:
-    linear-gradient(180deg, rgba(11,11,12,.70), rgba(11,11,12,.50)),
-    url("../img/header-bg.png") center/cover no-repeat;
-  border-bottom:1px solid rgba(230,231,235,.08);
-  transition:box-shadow .2s ease, min-height .18s ease;
-  min-height:var(--header-h);
+    radial-gradient(900px 300px at 50% -200px, rgba(231,214,165,.16), transparent 60%),
+    radial-gradient(1200px 500px at 50% -320px, rgba(191,168,255,.12), transparent 70%),
+    linear-gradient(180deg, rgba(10,11,14,.85), rgba(10,11,14,.60));
+  border-bottom:1px solid rgba(255,255,255,.06);
+  min-height:var(--header-h); transition:box-shadow .2s, min-height .18s;
 }
 .aria-header.is-scrolled{ box-shadow:0 8px 22px rgba(0,0,0,.35); min-height:var(--header-h-condensed); }
-
-.aria-header__inner{
-  max-width:var(--container); margin:0 auto;
-  padding:8px 20px;
-  transition:padding .18s ease;
-}
+.aria-header__inner{ max-width:var(--container); margin:0 auto; padding:8px 20px; transition:padding .18s; }
 .aria-header.is-scrolled .aria-header__inner{ padding:6px 20px; }
 
-/* Nav */
-.aria-nav{
-  display:grid; grid-template-columns:auto 1fr auto auto; gap:16px; align-items:center;
+/* Nav layout: logo | left | right | cta */
+.aria-nav{ display:grid; grid-template-columns:auto 1fr auto auto; gap:16px; align-items:center; }
+
+/* Logo */
+.aria-logo{ display:inline-block; align-self:center; }
+.aria-logo__text{
+  display:block; font-family:"Cinzel","Noto Serif JP",serif; font-weight:700; letter-spacing:.14em; line-height:1;
+  font-size:22px; padding:4px 0 2px;
+  background:linear-gradient(180deg,#FFFFFF 0%, var(--gold) 40%, var(--amethyst) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 2px 10px var(--amethyst-18);
 }
 
-/* Toggle（初期は非表示。モバイルで出す） */
-.aria-nav__toggle{
-  display:none; background:transparent; border:0; padding:8px; justify-self:start;
-}
-.aria-nav__toggle:focus-visible{ outline:2px solid var(--accent); border-radius:10px; }
-/* Inline SVG icon sizing（PNG依存をやめる） */
-.aria-nav__toggle svg{ display:block; width:24px; height:24px; }
-
-/* Lists */
-.aria-nav__list{
-  display:flex; gap:20px; align-items:center;
-  padding:0; margin:0; list-style:none;
-}
+/* Nav links */
+.aria-nav__list{ display:flex; gap:20px; align-items:center; }
 .aria-nav__list a{
-  color:var(--platinum); text-decoration:none; font-weight:600; letter-spacing:.02em;
-  padding:6px 2px; border-bottom:1px solid transparent;
-  transition:border-color .2s ease, color .2s ease;
+  display:inline-block; color:var(--ink); font-weight:700; letter-spacing:.02em;
+  padding:6px 2px; border-bottom:1px solid transparent; transition:border-color .2s, color .2s, opacity .2s;
 }
-.aria-nav__list a.is-active,
-.aria-nav__list a:hover{ border-bottom-color:var(--accent-35); color:#fff; }
+.aria-nav__list a:hover,.aria-nav__list a.is-active{ color:#fff; border-bottom-color:var(--gold-40); }
+.aria-nav__list--left{ justify-self:start; } .aria-nav__list--right{ justify-self:end; }
 
-/* Logo（縮小幅を調整） */
-.aria-logo img{ display:block; width:148px; height:auto; transition:width .18s ease; }
-.aria-header.is-scrolled .aria-logo img{ width:136px; }
-
-/* CTA / Lang */
-.aria-cta{ display:flex; align-items:center; gap:10px; justify-content:flex-end; }
+/* CTA */
+.aria-cta{ display:flex; align-items:center; justify-content:flex-end; }
 .aria-cta__btn{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:8px 14px; border-radius:999px;
-  background:var(--accent-18); border:1px solid var(--accent-35);
-  color:var(--platinum); text-decoration:none; font-weight:700;
-  box-shadow:0 0 0 0 rgba(184,161,255,0); transition:box-shadow .2s ease, transform .12s ease;
+  display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px;
+  color:var(--ink); text-decoration:none; font-weight:700;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(231,214,165,.35); box-shadow:0 0 0 0 rgba(191,168,255,0);
+  transition:box-shadow .2s, transform .12s, background-color .2s;
 }
-.aria-cta__btn:hover{ box-shadow:0 0 18px rgba(184,161,255,.26); transform:translateY(-1px); }
-.aria-lang a img{ display:block; border-radius:2px; box-shadow:0 0 0 1px rgba(230,231,235,.18) inset; }
-
-/* Drawer & Scrim（モバイル） */
-.aria-scrim{
-  position:fixed; inset:0; background:rgba(0,0,0,.45);
-  opacity:0; pointer-events:none; transition:opacity .16s ease;
-}
-.aria-scrim.is-open{ opacity:1; pointer-events:auto; }
-
-.aria-drawer{
-  position:fixed; left:0; right:0; top:calc(var(--header-h) + var(--safe-top));
-  background:rgba(11,11,12,.94) url("../img/glow-accent.png") center/contain no-repeat;
-  border-top:1px solid rgba(230,231,235,.08);
-  padding:12px 18px 20px; display:none;
-  transform:translateY(-6px); opacity:0; transition:transform .16s ease, opacity .16s ease;
-}
-.aria-drawer.is-open{ display:block; transform:translateY(0); opacity:1; }
-.aria-drawer ul{ list-style:none; margin:0; padding:0; }
-.aria-drawer li+li{ margin-top:10px; }
-.aria-drawer a{
-  display:block; padding:12px; border-radius:10px;
-  color:var(--platinum); text-decoration:none; font-weight:700;
-  background:rgba(255,255,255,.02); border:1px solid rgba(230,231,235,.10);
-}
-.aria-drawer a:hover{ background:rgba(255,255,255,.05); }
+.aria-cta__btn:hover{ box-shadow:0 0 22px rgba(191,168,255,.28); transform:translateY(-1px); }
+.aria-cta__btn svg{ flex:0 0 auto; }
 
 /* Demo sections（後で削除OK） */
 .dummy{
   min-height:60vh; display:grid; place-items:center;
-  background:
-    radial-gradient(1200px 500px at 50% -300px, rgba(184,161,255,.10), transparent),
-    linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+  background:radial-gradient(1200px 500px at 50% -300px, rgba(191,168,255,.10), transparent),
+             linear-gradient(180deg, rgba(255,255,255,.02), transparent);
 }
-.dummy h2{ margin:0 0 6px; font-size:28px; }
-.dummy p{ margin:0; color:var(--platinum-60); }
+.dummy h2{ margin:0 0 6px; font-family:"Noto Serif JP","Cinzel",serif; font-size:28px; }
+.dummy p{ margin:0; color:var(--muted); }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width:960px){
   .aria-nav{ grid-template-columns:auto 1fr auto; }
-  .aria-nav__toggle{ display:inline-flex; }   /* ←モバイルのみ表示 */
-  .aria-nav__list--left, .aria-nav__list--right{ display:none; }
+  .aria-nav__list--right{ display:none; }
+  .aria-logo__text{ font-size:20px; }
 }
-
-/* Reduce motion */
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
-
-/* ===== Hard overrides for desktop (完全非表示) ===== */
-@media (min-width: 961px){
-  /* PC ではハンバーガー（ボタン/内部要素とも）を完全に消す */
-  .aria-nav__toggle, .aria-nav__toggle *{
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    visibility: hidden !important;
-  }
-  /* ヘッダーをギュッと圧縮 */
-  .aria-header{ min-height: 48px !important; }
-  .aria-header__inner{ padding: 6px 16px !important; }
-  .aria-logo img{ width: 136px !important; }
-  .aria-nav__list a{ padding-top: 4px !important; padding-bottom: 4px !important; }
-}
-/* guard: ensure hidden toggle never takes space */
-.aria-nav__toggle[hidden]{
-  display:none !important;
-  width:0 !important; height:0 !important;
-  padding:0 !important; margin:0 !important;
-  visibility:hidden !important;
-}
-/* text logo fallback */
-.aria-logo__text{
-  display:block;
-  font-family: "Poppins","Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  font-weight:700; letter-spacing:.08em; line-height:1;
-  font-size:20px; padding:4px 0;
-}
-/* 画像が無くても高さが暴れないように（保険） */
-.aria-logo img{ display:none !important; }
+@media (min-width:961px){ .aria-header{ min-height:48px; } .aria-nav__list a{ padding-top:4px; padding-bottom:4px; } }
