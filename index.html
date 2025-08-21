@@ -6,28 +6,23 @@
     <title>ARIA - 一人で、千人分。</title>
     <meta name="description" content="Harmony Dimensionから来た、あなたの3Dボイス。Dolby Atmosネイティブ・ソロアーティストARIAの公式サイト">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@100;300;400;500;700&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <!-- Harmony Dimension Portal Effect -->
     <div class="portal-background">
         <div class="dimension-particles"></div>
         <div class="sound-waves"></div>
         <div class="harmony-grid"></div>
     </div>
 
-    <!-- Header -->
     <header class="aria-header">
         <div class="header-inner">
-            <!-- Logo Section -->
             <div class="logo-section">
                 <div class="logo-wrapper">
                     <div class="logo-symbol">
@@ -52,7 +47,6 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
             <nav class="main-navigation">
                 <ul class="nav-list">
                     <li class="nav-item" data-dimension="home">
@@ -88,9 +82,7 @@
                 </ul>
             </nav>
 
-            <!-- Right Section -->
             <div class="header-actions">
-                <!-- Language Selector (Multi-lingual representation) -->
                 <div class="language-selector">
                     <button class="lang-toggle" aria-label="言語切替">
                         <span class="lang-current">JP</span>
@@ -102,7 +94,6 @@
                     </button>
                 </div>
 
-                <!-- Dolby Atmos Indicator -->
                 <div class="atmos-indicator">
                     <div class="atmos-badge">
                         <svg width="24" height="24" viewBox="0 0 24 24" class="atmos-icon">
@@ -114,7 +105,6 @@
                     </div>
                 </div>
 
-                <!-- Listen Now CTA -->
                 <button class="cta-listen">
                     <span class="cta-text">Listen in 3D</span>
                     <div class="cta-waves">
@@ -126,7 +116,6 @@
             </div>
         </div>
 
-        <!-- Thousand Voices Visualization (subtle header effect) -->
         <div class="thousand-voices">
             <div class="voice-particle" style="--delay: 0s; --duration: 3s;"></div>
             <div class="voice-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
@@ -136,16 +125,24 @@
         </div>
     </header>
 
-    <!-- Main Content (placeholder) -->
     <main class="main-content">
-        <section class="hero-section">
-            <h1>Harmony Dimensionへようこそ</h1>
-            <p>無数の声色が漂う海から、あなたの部屋へ</p>
+        <section class="hero-section" id="home">
+            <div class="hero-visual-container">
+                <img src="assets/images/aria-visual.png" alt="ARIA" class="hero-aria-visual">
+                <div class="hero-visual-glow"></div>
+            </div>
+            <div class="hero-text-content">
+                <h1 class="hero-headline">あなたの部屋は、ポータルになる。</h1>
+                <p class="hero-subheadline">Harmony Dimensionから来た、あなたの“3Dボイス”です。</p>
+            </div>
+            <div class="scroll-indicator">
+                <span class="scroll-dot"></span>
+            </div>
         </section>
-    </main>
+        </main>
 
-    <!-- Scripts -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/particles.js"></script>
+    <script src="assets/js/hero.js"></script>
 </body>
 </html>
