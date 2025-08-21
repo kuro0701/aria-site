@@ -1,14 +1,21 @@
-// ========== Atmos Halo Header – Polished ==========
+// ========== Atmos Halo Header – Polished (Full) ==========
 
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.aria-header');
-  const toggleBtn = document.querySelector('.aria-nav__toggle');
-  const toggleIcon = document.querySelector('.aria-nav__toggle-icon');
-  const leftList = document.querySelector('.aria-nav__list--left');
-  const rightList = document.querySelector('.aria-nav__list--right');
-  const mainEl = document.getElementById('main');
 
-  // Scrim
+  // ハンバーガーが万一重複していたら1個だけ残す
+  const toggleBtns = Array.from(document.querySelectorAll('.aria-nav__toggle'));
+  if (toggleBtns.length > 1) {
+    toggleBtns.slice(1).forEach(btn => btn.remove());
+  }
+  const toggleBtn  = document.querySelector('.aria-nav__toggle');
+  const toggleIcon = document.querySelector('.aria-nav__toggle-icon');
+
+  const leftList  = document.querySelector('.aria-nav__list--left');
+  const rightList = document.querySelector('.aria-nav__list--right');
+  const mainEl    = document.getElementById('main');
+
+  /* ---------- Scrim ---------- */
   let scrim = document.querySelector('.aria-scrim');
   if (!scrim) {
     scrim = document.createElement('div');
@@ -16,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(scrim);
   }
 
-  // Drawer
+  /* ---------- Drawer ---------- */
   let drawer = document.getElementById('aria-drawer');
   if (!drawer) {
     drawer = document.createElement('div');
@@ -28,9 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = href; a.textContent = label;
-      li.appendChild(a); return li;
+      li.appendChild(a);
+      return li;
     };
 
+    // 左右のPCナビから項目を転記 + LISTENを追加
     [
       ...Array.from(leftList?.querySelectorAll('a') || []).map(a => [a.getAttribute('href'), a.textContent]),
       ...Array.from(rightList?.querySelectorAll('a') || []).map(a => [a.getAttribute('href'), a.textContent]),
@@ -41,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     header.appendChild(drawer);
   }
 
-  // Open / Close
+  /* ---------- Open / Close with focus trap ---------- */
   const focusableSelector = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
   const getFocusable = (root) => Array.from(root.querySelectorAll(focusableSelector)).filter(el => !el.hasAttribute('disabled'));
 
@@ -52,12 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (toggleIcon) toggleIcon.src = '/assets/img/icon-close.png';
     document.body.style.overflow = 'hidden';
     if (mainEl) mainEl.setAttribute('aria-hidden', 'true');
+
     // Focus trap
     const focusables = getFocusable(drawer);
     focusables[0]?.focus();
     const trap = (e) => {
       if (e.key !== 'Tab') return;
-      const first = focusables[0], last = focusables[focusables.length - 1];
+      const first = focusables[0];
+      const last  = focusables[focusables.length - 1];
       if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
       else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
     };
@@ -82,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else openDrawer();
   });
 
-  // Scrim click
+  // Scrim click to close
   scrim.addEventListener('click', closeDrawer);
 
   // Outside click (header内でもdrawer外なら閉じる)
@@ -92,12 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!clickedToggle && !drawer.contains(e.target)) closeDrawer();
   });
 
-  // Esc
+  // Esc to close
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
   });
 
-  // Drawer link click
+  // Drawer link click closes drawer
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
   // Elevation on scroll
@@ -108,10 +119,22 @@ document.addEventListener('DOMContentLoaded', () => {
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ScrollSpy (active link highlight)
-  const navLinks = Array.from((leftList?.querySelectorAll('a') || [])).concat(Array.from(rightList?.querySelectorAll('a') || []));
+  // Close drawer on resize to desktop
+  const onResize = () => {
+    if (window.matchMedia('(min-width: 961px)').matches && drawer.classList.contains('is-open')) {
+      closeDrawer();
+    }
+  };
+  window.addEventListener('resize', onResize);
+
+  /* ---------- ScrollSpy ---------- */
+  const navLinks = Array.from((leftList?.querySelectorAll('a') || []))
+    .concat(Array.from(rightList?.querySelectorAll('a') || []));
+
   const idFromHref = (href) => (href && href.startsWith('#')) ? href.slice(1) : null;
-  const sections = navLinks.map(a => document.getElementById(idFromHref(a.getAttribute('href')))).filter(Boolean);
+  const sections = navLinks
+    .map(a => document.getElementById(idFromHref(a.getAttribute('href'))))
+    .filter(Boolean);
 
   const setActive = (id) => {
     navLinks.forEach(a => {
