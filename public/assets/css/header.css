@@ -134,3 +134,21 @@ body{
   border-top:1px solid rgba(255,255,255,.06);
 }
 .dummy h2{ margin:0 6px 8px; font-size:clamp(22px,3vw,38px); }
+/* ===== Hard overrides (desktop) ===== */
+@media (min-width: 961px){
+  /* PCではハンバーガー完全に消す（ボタンごと & 中のimgも） */
+  .aria-nav__toggle,
+  .aria-nav__toggle *{
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    visibility: hidden !important;
+  }
+  /* ヘッダーの余白をさらに圧縮（万一の上書きにも勝つ） */
+  .aria-header{ min-height: 48px !important; }
+  .aria-header__inner{ padding: 6px 20px !important; }
+  .aria-logo img{ width: 136px !important; }
+}
+@media (min-width: 961px){ .aria-nav__toggle{ display:none !important; } }
