@@ -6,15 +6,15 @@
   <title>ARIA | AIソロシンガー</title>
   <meta name="description" content="AIソロシンガー ARIA（アリア）の公式サイト。最新リリース、歌詞、ストーリー、ブログ情報をお届けします。">
   <meta name="theme-color" content="#0B0B0C">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Styles (v=5 でキャッシュ無効化) -->
-  <link rel="stylesheet" href="assets/css/header.css?v=10">
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/header.css?v=12" />
 </head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへ移動</a>
@@ -23,24 +23,29 @@
   <header class="aria-header" role="banner">
     <div class="aria-header__inner">
       <nav class="aria-nav" aria-label="メイン">
+        <!-- モバイル用ハンバーガー（PCではJS/CSSで非表示） -->
         <button class="aria-nav__toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="aria-drawer" hidden>
           <img class="aria-nav__toggle-icon" src="assets/img/icon-menu.png" width="24" height="24" alt="">
         </button>
 
+        <!-- 左ナビ -->
         <ul class="aria-nav__list aria-nav__list--left">
           <li><a href="#music">MUSIC</a></li>
           <li><a href="#lyrics">LYRICS</a></li>
         </ul>
 
+        <!-- ロゴ -->
         <a class="aria-logo" href="./" aria-label="ARIA Home">
           <img src="assets/img/aria-wordmark.png" width="148" height="28" alt="ARIA">
         </a>
 
+        <!-- 右ナビ -->
         <ul class="aria-nav__list aria-nav__list--right">
           <li><a href="#story">STORY</a></li>
           <li><a href="#blog">BLOG</a></li>
         </ul>
 
+        <!-- CTA -->
         <div class="aria-cta">
           <a class="aria-cta__btn" href="#listen">
             <img src="assets/img/icon-play.png" width="18" height="18" alt=""> 最新リリースを聴く
@@ -50,7 +55,7 @@
     </div>
   </header>
 
-  <!-- ===== Main (ダミー。後で差し替えOK) ===== -->
+  <!-- ===== Main（ダミー。後で差し替えOK） ===== -->
   <main id="main">
     <section id="music" class="dummy"><h2>MUSIC</h2><p>楽曲の一覧や埋め込みを配置。</p></section>
     <section id="lyrics" class="dummy"><h2>LYRICS</h2><p>歌詞ページへの導線。</p></section>
@@ -61,6 +66,6 @@
 
   <!-- Scripts -->
   <noscript>JavaScript が無効です。モバイルメニューの開閉が動作しません。</noscript>
-  <script defer src="assets/js/header.js?v=10"></script>
+  <script defer src="assets/js/header.js?v=12"></script>
 </body>
 </html>

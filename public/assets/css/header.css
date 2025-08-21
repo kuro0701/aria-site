@@ -152,3 +152,20 @@ body{
   .aria-logo img{ width: 136px !important; }
 }
 @media (min-width: 961px){ .aria-nav__toggle{ display:none !important; } }
+/* ===== Hard overrides for desktop (final lock) ===== */
+@media (min-width: 961px){
+  /* PC ではハンバーガー（ボタン/内部imgとも）を完全に消す */
+  .aria-nav__toggle, .aria-nav__toggle *{
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    visibility: hidden !important;
+  }
+  /* ヘッダーをギュッと圧縮 */
+  .aria-header{ min-height: 48px !important; }
+  .aria-header__inner{ padding: 6px 16px !important; }
+  .aria-logo img{ width: 136px !important; }
+  .aria-nav__list a{ padding-top: 4px !important; padding-bottom: 4px !important; }
+}
