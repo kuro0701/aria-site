@@ -241,139 +241,101 @@
                 <div class="spatial-visualizer">
                     <canvas id="spatialCanvas" class="spatial-canvas"></canvas>
                     
-                    <div class="sound-space">
-                        <div class="sound-axis axis-x"></div>
-                        <div class="sound-axis axis-y"></div>
-                        <div class="sound-axis axis-z"></div>
-                        
-                        <div class="voice-layer" data-layer="1" style="--x: -50; --y: 0; --z: 50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Main Vocal</span>
-                        </div>
-                        <div class="voice-layer" data-layer="2" style="--x: 50; --y: 0; --z: 50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Harmony</span>
-                        </div>
-                        <div class="voice-layer" data-layer="3" style="--x: 0; --y: 50; --z: 0;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Upper Voice</span>
-                        </div>
-                        <div class="voice-layer" data-layer="4" style="--x: -30; --y: -30; --z: -50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Bass</span>
-                        </div>
-                        <div class="voice-layer" data-layer="5" style="--x: 30; --y: -30; --z: -50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Rhythm</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="player-interface">
-                    <div class="track-info">
-                        <div class="track-artwork">
-                            <img src="assets/images/aria-cover.jpg" alt="Album Cover" id="trackArtworkImg">
-                            <div class="artwork-glow"></div>
-                        </div>
-                        <div class="track-details">
-                            <h3 class="track-title" id="trackTitle">Supersonic</h3>
-                            <p class="track-artist" id="trackArtist">ARIA</p>
-                            <p class="track-album" id="trackAlbum">Digital Dreams</p>
-                        </div>
-                    </div>
-
-                    <div class="progress-container">
-                        <span class="time-current" id="timeCurrent">0:00</span>
-                        <div class="progress-bar">
-                            <div class="progress-track"></div>
-                            <div class="progress-fill" id="progressFill"></div>
-                            <div class="progress-handle" id="progressHandle"></div>
-                            <canvas class="waveform" id="waveform"></canvas>
-                        </div>
-                        <span class="time-total" id="timeTotal">0:00</span>
-                    </div>
-
-                    <div class="player-controls">
-                         <button class="control-btn" id="prevBtn" aria-label="Previous Track">
-                            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"></path></svg>
-                        </button>
-                        <button class="control-btn btn-play" id="playBtn" aria-label="Play/Pause">
-                            <svg class="play-icon" width="32" height="32" viewBox="0 0 32 32">
-                                <path d="M10 6l14 10L10 26z" fill="currentColor"/>
-                            </svg>
-                            <svg class="pause-icon" width="32" height="32" viewBox="0 0 32 32" style="display: none;">
-                                <path d="M10 6h4v20h-4zm8 0h4v20h-4z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        <button class="control-btn" id="nextBtn" aria-label="Next Track">
-                            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zm-3.5 6l-8.5 6V6z" fill="currentColor"></path></svg>
-                        </button>
-                    </div>
-
-                    <div class="voice-layers-control">
-                        <h4 class="layers-title">Voice Layers</h4>
-                        <div class="layers-grid">
-                            <div class="layer-control" data-layer="1">
-                                <span class="layer-name">Main</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="100" class="layer-volume">
-                                    <div class="layer-fill" style="width: 100%;"></div>
-                                </div>
-                                <span class="layer-value">100%</span>
+                    <div class="player-interface">
+                        <div class="track-info">
+                            <div class="track-artwork">
+                                <img src="assets/images/aria-cover.jpg" alt="Album Cover" id="trackArtworkImg">
+                                <div class="artwork-glow"></div>
                             </div>
-                            <div class="layer-control" data-layer="2">
-                                <span class="layer-name">Harmony</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="80" class="layer-volume">
-                                    <div class="layer-fill" style="width: 80%;"></div>
-                                </div>
-                                <span class="layer-value">80%</span>
-                            </div>
-                            <div class="layer-control" data-layer="3">
-                                <span class="layer-name">Upper</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="60" class="layer-volume">
-                                    <div class="layer-fill" style="width: 60%;"></div>
-                                </div>
-                                <span class="layer-value">60%</span>
-                            </div>
-                            <div class="layer-control" data-layer="4">
-                                <span class="layer-name">Bass</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="70" class="layer-volume">
-                                    <div class="layer-fill" style="width: 70%;"></div>
-                                </div>
-                                <span class="layer-value">70%</span>
+                            <div class="track-details">
+                                <h3 class="track-title" id="trackTitle">Supersonic</h3>
+                                <p class="track-artist" id="trackArtist">ARIA</p>
+                                <p class="track-album" id="trackAlbum">Digital Dreams</p>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="controls-footer">
-                        <div class="spatial-control">
-                            <button class="spatial-btn active" id="atmosBtn">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                                    <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-                                </svg>
-                                <span>Dolby Atmos</span>
+                        <div class="progress-container">
+                            <span class="time-current" id="timeCurrent">0:00</span>
+                            <div class="progress-bar">
+                                <div class="progress-track"></div>
+                                <div class="progress-fill" id="progressFill"></div>
+                                <div class="progress-handle" id="progressHandle"></div>
+                                <canvas class="waveform" id="waveform"></canvas>
+                            </div>
+                            <span class="time-total" id="timeTotal">0:00</span>
+                        </div>
+
+                        <div class="player-controls">
+                            <button class="control-btn" id="prevBtn" aria-label="Previous Track">
+                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"></path></svg>
                             </button>
-                            <button class="spatial-btn" id="stereoBtn">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <circle cx="8" cy="12" r="3" fill="currentColor"/>
-                                    <circle cx="16" cy="12" r="3" fill="currentColor"/>
+                            <button class="control-btn btn-play" id="playBtn" aria-label="Play/Pause">
+                                <svg class="play-icon" width="32" height="32" viewBox="0 0 32 32">
+                                    <path d="M10 6l14 10L10 26z" fill="currentColor"/>
                                 </svg>
-                                <span>Stereo</span>
+                                <svg class="pause-icon" width="32" height="32" viewBox="0 0 32 32" style="display: none;">
+                                    <path d="M10 6h4v20h-4zm8 0h4v20h-4z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <button class="control-btn" id="nextBtn" aria-label="Next Track">
+                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zm-3.5 6l-8.5 6V6z" fill="currentColor"></path></svg>
                             </button>
                         </div>
-                         <a href="https://www.youtube.com/watch?v=pTL_XZpYDzM" 
-                           target="_blank" 
-                           class="youtube-music-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-2 17V7l8 5-8 5z" fill="currentColor"/>
-                            </svg>
-                            <span>Watch on YouTube</span>
-                        </a>
+
+                        <div class="voice-layers-control">
+                            <h4 class="layers-title">Voice Layers</h4>
+                            <div class="layers-grid">
+                                <div class="layer-control" data-layer="1">
+                                    <span class="layer-name">Main</span>
+                                    <div class="layer-slider">
+                                        <input type="range" min="0" max="100" value="100" class="layer-volume">
+                                        <div class="layer-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="layer-value">100%</span>
+                                </div>
+                                <div class="layer-control" data-layer="2">
+                                    <span class="layer-name">Harmony</span>
+                                    <div class="layer-slider">
+                                        <input type="range" min="0" max="100" value="80" class="layer-volume">
+                                        <div class="layer-fill" style="width: 80%;"></div>
+                                    </div>
+                                    <span class="layer-value">80%</span>
+                                </div>
+                                <div class="layer-control" data-layer="3">
+                                    <span class="layer-name">Upper</span>
+                                    <div class="layer-slider">
+                                        <input type="range" min="0" max="100" value="60" class="layer-volume">
+                                        <div class="layer-fill" style="width: 60%;"></div>
+                                    </div>
+                                    <span class="layer-value">60%</span>
+                                </div>
+                                <div class="layer-control" data-layer="4">
+                                    <span class="layer-name">Bass</span>
+                                    <div class="layer-slider">
+                                        <input type="range" min="0" max="100" value="70" class="layer-volume">
+                                        <div class="layer-fill" style="width: 70%;"></div>
+                                    </div>
+                                    <span class="layer-value">70%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="controls-footer">
+                            <div class="spatial-control">
+                                <button class="spatial-btn active" id="atmosBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                                    <span>Dolby Atmos</span>
+                                </button>
+                                <button class="spatial-btn" id="stereoBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="8" cy="12" r="3" fill="currentColor"/><circle cx="16" cy="12" r="3" fill="currentColor"/></svg>
+                                    <span>Stereo</span>
+                                </button>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=pTL_XZpYDzM" target="_blank" class="youtube-music-link">
+                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-2 17V7l8 5-8 5z" fill="currentColor"/></svg>
+                                <span>Watch on YouTube</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
