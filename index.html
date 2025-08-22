@@ -3,349 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARIA - 一人で、千人分。</title>
-    <meta name="description" content="Harmony Dimensionから来た、あなたの3Dボイス。Dolby Atmosネイティブ・ソロアーティストARIAの公式サイト">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@100;300;400;500;700&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/hero.css">
-    <link rel="stylesheet" href="assets/css/music-player.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Music Player</title>
+    <style>
+        /* 基本設定と色の定義 */
+        :root {
+            --bg-color: #121212;
+            --player-bg: #282828;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-color: #a747f7;
+            --button-bg: #414141;
+            --button-red: #e53935;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* 音楽プレイヤー全体のコンテナ */
+        .music-player {
+            background-color: var(--player-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 350px; /* スマホでの最大幅 */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        /* === 1. 背景画像の修正 === */
+        /* 画像コンテナ */
+        .artwork-container {
+            width: 100%;
+            position: relative;
+            padding-top: 100%; /* 正方形を維持 */
+        }
+
+        /* 画像 */
+        .artwork-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 画像の比率を維持したまま、コンテナ全体を覆うように調整します。
+              これが潰れを防ぐための重要なプロパティです。
+            */
+            object-fit: cover; 
+            border-radius: 8px;
+        }
+        
+        /* 曲情報とコントロールのコンテナ */
+        .player-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        /* 曲名とアーティスト */
+        .track-info {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .track-info h2 {
+            font-size: 20px;
+            margin: 0 0 4px 0;
+            font-weight: 600;
+        }
+
+        .track-info p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* 再生コントロール */
+        .playback-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .play-button {
+            background-color: var(--accent-color);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-button svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--text-primary);
+        }
+
+        /* シークバー */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #4d4d4d;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        /* その他のコントロール (仮) */
+        .other-controls {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+        .control-slider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        .control-slider input[type="range"] {
+            flex-grow: 1;
+        }
+
+        /* 下部のボタン */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto; /* 残りのスペースを埋める */
+        }
+        
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: var(--text-primary);
+        }
+
+        .btn-danger {
+            background-color: var(--button-red);
+            color: var(--text-primary);
+        }
+
+
+        /* === 2. PC版レイアウト (横長) === */
+        /* 画面幅が768px以上の場合に適用 */
+        @media screen and (min-width: 768px) {
+            .music-player {
+                flex-direction: row; /* 横並びに変更 */
+                max-width: 800px; /* PCでの最大幅を広げる */
+                height: 300px; /* 高さを固定 */
+            }
+
+            .artwork-container {
+                width: 300px; /* 画像コンテナの幅を固定 */
+                height: 300px;
+                padding-top: 0; /* 正方形維持のpaddingをリセット */
+                flex-shrink: 0; /* コンテナが縮まないようにする */
+            }
+            
+            .artwork-image {
+                border-radius: 0; /* PC版では角丸をなくす (デザインによる) */
+            }
+
+            .player-content {
+                justify-content: center; /* 中央揃えにする */
+                padding: 32px;
+            }
+            
+            .track-info {
+                text-align: left; /* テキストを左揃えに */
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <div class="portal-background">
-        <div class="dimension-particles"></div>
-        <div class="sound-waves"></div>
-        <div class="harmony-grid"></div>
-    </div>
 
-    <header class="aria-header">
-        <div class="header-inner">
-            <div class="logo-section">
-                <div class="logo-wrapper">
-                    <div class="logo-symbol">
-                        <svg class="voice-waves" width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="wave-1" cx="20" cy="20" r="3" fill="none" stroke="url(#gradient1)" stroke-width="0.5"/>
-                            <circle class="wave-2" cx="20" cy="20" r="8" fill="none" stroke="url(#gradient1)" stroke-width="0.4"/>
-                            <circle class="wave-3" cx="20" cy="20" r="13" fill="none" stroke="url(#gradient1)" stroke-width="0.3"/>
-                            <circle class="wave-4" cx="20" cy="20" r="18" fill="none" stroke="url(#gradient1)" stroke-width="0.2"/>
-                            <defs>
-                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-main">ARIA</span>
-                        <span class="logo-tagline">一人で、千人分。</span>
-                    </div>
-                </div>
+    <div class="music-player">
+        <div class="artwork-container">
+            <img class="artwork-image" src="https://picsum.photos/seed/music/600/600" alt="Album Art">
+        </div>
+
+        <div class="player-content">
+            <div class="track-info">
+                <h2>Broken-Hearted</h2>
+                <p>Ujico*/Snail's House</p>
             </div>
 
-            <nav class="main-navigation">
-                <ul class="nav-list">
-                    <li class="nav-item" data-dimension="home">
-                        <a href="#home" class="nav-link">
-                            <span class="nav-text">HOME</span>
-                            <span class="nav-3d-indicator"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-dimension="music">
-                        <a href="#music" class="nav-link">
-                            <span class="nav-text">MUSIC</span>
-                            <span class="nav-3d-indicator"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-dimension="live">
-                        <a href="#live" class="nav-link">
-                            <span class="nav-text">LIVE</span>
-                            <span class="nav-3d-indicator"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-dimension="story">
-                        <a href="#story" class="nav-link">
-                            <span class="nav-text">STORY</span>
-                            <span class="nav-3d-indicator"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-dimension="dimension">
-                        <a href="#dimension" class="nav-link">
-                            <span class="nav-text">DIMENSION</span>
-                            <span class="nav-3d-indicator"></span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <div class="language-selector">
-                    <button class="lang-toggle" aria-label="言語切替">
-                        <span class="lang-current">JP</span>
-                        <div class="lang-orbit">
-                            <span class="lang-option" data-lang="ko">KO</span>
-                            <span class="lang-option" data-lang="en">EN</span>
-                            <span class="lang-option" data-lang="zh">ZH</span>
-                        </div>
-                    </button>
-                </div>
-
-                <div class="atmos-indicator">
-                    <div class="atmos-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" class="atmos-icon">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                            <path d="M12 7 L12 17 M7 12 L17 12" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
-                        </svg>
-                        <span class="atmos-text">Dolby Atmos</span>
-                    </div>
-                </div>
-
-                <button class="cta-listen">
-                    <span class="cta-text">Listen in 3D</span>
-                    <div class="cta-waves">
-                        <span class="wave"></span>
-                        <span class="wave"></span>
-                        <span class="wave"></span>
-                    </div>
+            <div class="playback-controls">
+                <button class="play-button" aria-label="Play/Pause">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
                 </button>
             </div>
-        </div>
 
-        <div class="thousand-voices">
-            <div class="voice-particle" style="--delay: 0s; --duration: 3s;"></div>
-            <div class="voice-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
-            <div class="voice-particle" style="--delay: 1s; --duration: 4s;"></div>
-            <div class="voice-particle" style="--delay: 1.5s; --duration: 3.2s;"></div>
-            <div class="voice-particle" style="--delay: 2s; --duration: 3.8s;"></div>
-        </div>
-    </header>
+            <div class="progress-bar">
+                </div>
 
-    <section class="hero-section" id="home">
-        <div class="hero-background">
-            <div class="hero-gradient"></div>
-            <div class="hero-noise"></div>
-            <canvas class="voice-field" id="voiceField"></canvas>
-        </div>
-
-        <div class="hero-content">
-            <div class="aria-presence">
-                <div class="aria-silhouette">
-                    <div class="voice-orb" id="centralOrb">
-                        <div class="orb-core"></div>
-                        <div class="orb-glow"></div>
-                        <div class="orb-pulse"></div>
-                    </div>
-                    
-                    <div class="floating-voices">
-                        <div class="voice" data-lang="jp" style="--index: 1;">音</div>
-                        <div class="voice" data-lang="ko" style="--index: 2;">소리</div>
-                        <div class="voice" data-lang="en" style="--index: 3;">Voice</div>
-                        <div class="voice" data-lang="zh" style="--index: 4;">聲</div>
-                        <div class="voice" data-lang="jp" style="--index: 5;">響</div>
-                        <div class="voice" data-lang="ko" style="--index: 6;">목소리</div>
-                        <div class="voice" data-lang="en" style="--index: 7;">Sound</div>
-                        <div class="voice" data-lang="zh" style="--index: 8;">音</div>
-                    </div>
+            <div class="other-controls">
+                <div class="control-slider">
+                    <span>LOW</span>
+                    <input type="range" min="0" max="100" value="50">
+                    <span>HIGH</span>
+                </div>
+                 <div class="control-slider">
+                    <span>VOCAL</span>
+                    <input type="range" min="0" max="100" value="70">
+                    <span>INST</span>
                 </div>
             </div>
 
-            <div class="hero-message">
-                <div class="dimension-label">
-                    <span class="label-text">FROM HARMONY DIMENSION</span>
-                    <div class="label-line"></div>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="title-line" data-text="私は">私は</span>
-                    <span class="title-main" data-text="ARIA">ARIA</span>
-                    <span class="title-sub">
-                        <span class="thousand-voices-text">千の声を織る者</span>
-                    </span>
-                </h1>
-
-                <p class="hero-description">
-                    <span class="desc-line">Dolby Atmosの空間に響く、</span>
-                    <span class="desc-line">7オクターブ×多言語の立体音響体験</span>
-                </p>
-
-                <div class="hero-actions">
-                    <button class="btn-primary" id="experienceBtn">
-                        <span class="btn-text">体験を始める</span>
-                        <div class="btn-ripple"></div>
-                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20">
-                            <polygon points="6,2 16,10 6,18" fill="currentColor"/>
-                        </svg>
-                    </button>
-                    
-                    <button class="btn-secondary" id="dimensionBtn">
-                        <span class="btn-text">Dimensionを探索</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                </div>
-
-                <div class="scroll-indicator">
-                    <div class="scroll-text">SCROLL</div>
-                    <div class="scroll-line"></div>
-                    <div class="scroll-dot"></div>
-                </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary">DOWNLOAD</button>
+                <button class="btn btn-danger">SUBSCRIBE</button>
             </div>
         </div>
+    </div>
 
-        <div class="audio-visualizer">
-            <div class="visualizer-container">
-                <div class="frequency-bars">
-                    <div class="bar" style="--index: 1;"></div>
-                    <div class="bar" style="--index: 2;"></div>
-                    <div class="bar" style="--index: 3;"></div>
-                    <div class="bar" style="--index: 4;"></div>
-                    <div class="bar" style="--index: 5;"></div>
-                    <div class="bar" style="--index: 6;"></div>
-                    <div class="bar" style="--index: 7;"></div>
-                    <div class="bar" style="--index: 8;"></div>
-                    <div class="bar" style="--index: 9;"></div>
-                    <div class="bar" style="--index: 10;"></div>
-                </div>
-
-                <div class="spatial-indicators">
-                    <div class="indicator front">FRONT</div>
-                    <div class="indicator left">LEFT</div>
-                    <div class="indicator right">RIGHT</div>
-                    <div class="indicator top">TOP</div>
-                    <div class="indicator back">BACK</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="interactive-particles" id="interactiveParticles"></div>
-    </section>
-
-    <section class="music-player-section" id="music">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-en">MUSIC</span>
-                    <span class="title-jp">千の声の調べ</span>
-                </h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="music-player-wrapper">
-                <div class="spatial-visualizer">
-                    <div id="youtube-player-container"></div>
-                    
-                    <canvas id="spatialCanvas" class="spatial-canvas"></canvas>
-                    
-                    <div class="player-interface">
-                        <div class="track-info">
-                            <div class="track-artwork">
-                                <img src="assets/images/aria-cover.jpg" alt="Album Cover" id="trackArtworkImg">
-                                <div class="artwork-glow"></div>
-                            </div>
-                            <div class="track-details">
-                                <h3 class="track-title" id="trackTitle">Supersonic</h3>
-                                <p class="track-artist" id="trackArtist">ARIA</p>
-                                <p class="track-album" id="trackAlbum">Digital Dreams</p>
-                            </div>
-                        </div>
-
-                        <div class="progress-container">
-                            <span class="time-current" id="timeCurrent">0:00</span>
-                            <div class="progress-bar">
-                                <div class="progress-track"></div>
-                                <div class="progress-fill" id="progressFill"></div>
-                                <div class="progress-handle" id="progressHandle"></div>
-                                <canvas class="waveform" id="waveform"></canvas>
-                            </div>
-                            <span class="time-total" id="timeTotal">0:00</span>
-                        </div>
-
-                        <div class="player-controls">
-                            <button class="control-btn" id="prevBtn" aria-label="Previous Track">
-                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"></path></svg>
-                            </button>
-                            <button class="control-btn btn-play" id="playBtn" aria-label="Play/Pause">
-                                <svg class="play-icon" width="32" height="32" viewBox="0 0 32 32">
-                                    <path d="M10 6l14 10L10 26z" fill="currentColor"/>
-                                </svg>
-                                <svg class="pause-icon" width="32" height="32" viewBox="0 0 32 32" style="display: none;">
-                                    <path d="M10 6h4v20h-4zm8 0h4v20h-4z" fill="currentColor"/>
-                                </svg>
-                            </button>
-                            <button class="control-btn" id="nextBtn" aria-label="Next Track">
-                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zm-3.5 6l-8.5 6V6z" fill="currentColor"></path></svg>
-                            </button>
-                        </div>
-
-                        <div class="voice-layers-control">
-                            <h4 class="layers-title">Voice Layers</h4>
-                            <div class="layers-grid">
-                                <div class="layer-control" data-layer="1">
-                                    <span class="layer-name">Main</span>
-                                    <div class="layer-slider">
-                                        <input type="range" min="0" max="100" value="100" class="layer-volume">
-                                        <div class="layer-fill" style="width: 100%;"></div>
-                                    </div>
-                                    <span class="layer-value">100%</span>
-                                </div>
-                                <div class="layer-control" data-layer="2">
-                                    <span class="layer-name">Harmony</span>
-                                    <div class="layer-slider">
-                                        <input type="range" min="0" max="100" value="80" class="layer-volume">
-                                        <div class="layer-fill" style="width: 80%;"></div>
-                                    </div>
-                                    <span class="layer-value">80%</span>
-                                </div>
-                                <div class="layer-control" data-layer="3">
-                                    <span class="layer-name">Upper</span>
-                                    <div class="layer-slider">
-                                        <input type="range" min="0" max="100" value="60" class="layer-volume">
-                                        <div class="layer-fill" style="width: 60%;"></div>
-                                    </div>
-                                    <span class="layer-value">60%</span>
-                                </div>
-                                <div class="layer-control" data-layer="4">
-                                    <span class="layer-name">Bass</span>
-                                    <div class="layer-slider">
-                                        <input type="range" min="0" max="100" value="70" class="layer-volume">
-                                        <div class="layer-fill" style="width: 70%;"></div>
-                                    </div>
-                                    <span class="layer-value">70%</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="controls-footer">
-                            <div class="spatial-control">
-                                <button class="spatial-btn active" id="atmosBtn">
-                                    <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-                                    <span>Dolby Atmos</span>
-                                </button>
-                                <button class="spatial-btn" id="stereoBtn">
-                                    <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="8" cy="12" r="3" fill="currentColor"/><circle cx="16" cy="12" r="3" fill="currentColor"/></svg>
-                                    <span>Stereo</span>
-                                </button>
-                            </div>
-                            <a href="https://www.youtube.com/watch?v=pTL_XZpYDzM" target="_blank" class="youtube-music-link">
-                                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-2 17V7l8 5-8 5z" fill="currentColor"/></svg>
-                                <span>Watch on YouTube</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="assets/js/header.js"></script>
-    <script src="assets/js/particles.js"></script>
-    <script src="assets/js/hero.js"></script>
-    <script src="assets/js/music-player.js"></script>
 </body>
 </html>
