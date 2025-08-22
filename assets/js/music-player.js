@@ -1,4 +1,4 @@
-// ARIA Music Player - 3D Spatial Audio Visualizer with YouTube Integration
+// ARIA Music Player - 3D Spatial Audio Visualizer with Local Audio Support
 
 class ARIAMusicPlayer {
     constructor() {
@@ -8,25 +8,42 @@ class ARIAMusicPlayer {
         this.duration = 0;
         this.isAtmos = true;
         
-        // YouTube Player
-        this.youtubePlayer = null;
-        this.playerReady = false;
+        // Audio Elements
+        this.audioElement = null;
+        this.currentTrackIndex = 0;
         
-        // Track Data (Single track)
-        this.track = {
-            id: 1,
-            title: 'Supersonic',
-            artist: 'ARIA',
-            album: 'Digital Dreams',
-            youtubeId: 'pTL_XZpYDzM'
-        };
-        
-        // Voice Layers
-        this.voiceLayers = [
-            { id: 1, name: 'Main', volume: 100, x: -50, y: 0, z: 50 },
-            { id: 2, name: 'Harmony', volume: 80, x: 50, y: 0, z: 50 },
-            { id: 3, name: 'Upper', volume: 60, x: 0, y: 50, z: 0 },
-            { id: 4, name: 'Bass', volume: 70, x: -30, y: -30, z: -50 }
+        // Track Data - Multiple tracks with local files
+        this.tracks = [
+            {
+                id: 1,
+                title: 'Supersonic',
+                artist: 'ARIA',
+                album: 'Digital Dreams',
+                audioFile: 'supersonic.mp3',
+                audioFileAtmos: 'supersonic_atmos.mp3',
+                image: 'supersonic.jpg',
+                youtubeLink: 'https://www.youtube.com/watch?v=pTL_XZpYDzM'
+            },
+            {
+                id: 2,
+                title: 'Harmony Dimension',
+                artist: 'ARIA',
+                album: 'Spatial Voices',
+                audioFile: 'harmony.mp3',
+                audioFileAtmos: 'harmony_atmos.mp3',
+                image: 'harmony.jpg',
+                youtubeLink: 'https://www.youtube.com/watch?v=example2'
+            },
+            {
+                id: 3,
+                title: 'Thousand Voices',
+                artist: 'ARIA',
+                album: 'Echo Chamber',
+                audioFile: 'thousand.mp3',
+                audioFileAtmos: 'thousand_atmos.mp3',
+                image: 'thousand.jpg',
+                youtubeLink: 'https://www.youtube.com/watch?v=example3'
+            }
         ];
         
         // Canvas Elements
@@ -40,110 +57,189 @@ class ARIAMusicPlayer {
         this.particles = [];
         this.updateInterval = null;
         
+        // Audio Context for visualization
+        this.audioContext = null;
+        this.analyser = null;
+        this.dataArray = null;
+        
         this.init();
     }
     
     init() {
+        this.setupAudio();
         this.setupCanvas();
-        this.setupYouTubePlayer();
         this.setupControls();
-        this.setupVoiceLayers();
         this.setupProgressBar();
+        this.setupTrackNavigation();
         this.createSpatialParticles();
         this.animate();
-        this.updateTrackInfo();
+        this.loadTrack(0);
     }
     
-    // YouTube Player Setup
-    setupYouTubePlayer() {
-        // Create YouTube iframe container
-        const playerContainer = document.getElementById('youtube-player-container');
-        if (!playerContainer) {
-            const container = document.createElement('div');
-            container.id = 'youtube-player-container';
-            container.style.cssText = `
-                position: absolute;
-                top: -1000px;
-                left: -1000px;
-                width: 1px;
-                height: 1px;
-                opacity: 0;
-                pointer-events: none;
-            `;
-            document.body.appendChild(container);
-        }
+    // Audio Setup
+    setupAudio() {
+        // Create audio element
+        this.audioElement = new Audio();
+        this.audioElement.crossOrigin = 'anonymous';
         
-        // Load YouTube IFrame API
-        if (!window.YT) {
-            const tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            
-            // Wait for API to load
-            window.onYouTubeIframeAPIReady = () => {
-                this.createYouTubePlayer();
-            };
-        } else {
-            this.createYouTubePlayer();
-        }
-    }
-    
-    createYouTubePlayer() {
-        this.youtubePlayer = new YT.Player('youtube-player-container', {
-            height: '1',
-            width: '1',
-            videoId: this.track.youtubeId,
-            playerVars: {
-                'autoplay': 0,
-                'controls': 0,
-                'showinfo': 0,
-                'modestbranding': 1,
-                'loop': 1,
-                'playlist': this.track.youtubeId,
-                'fs': 0,
-                'cc_load_policy': 0,
-                'iv_load_policy': 3,
-                'autohide': 1
-            },
-            events: {
-                'onReady': (event) => this.onPlayerReady(event),
-                'onStateChange': (event) => this.onPlayerStateChange(event)
-            }
+        // Audio event listeners
+        this.audioElement.addEventListener('loadedmetadata', () => {
+            this.duration = this.audioElement.duration;
+            this.updateTimeDisplay();
         });
-    }
-    
-    onPlayerReady(event) {
-        console.log('YouTube Player ready');
-        this.playerReady = true;
-        this.duration = this.youtubePlayer.getDuration();
-        this.updateTimeDisplay();
-    }
-    
-    onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING) {
+        
+        this.audioElement.addEventListener('timeupdate', () => {
+            this.currentTime = this.audioElement.currentTime;
+            this.updateProgressBar();
+            this.updateTimeDisplay();
+        });
+        
+        this.audioElement.addEventListener('play', () => {
             this.isPlaying = true;
-            this.startProgressUpdate();
             this.updatePlayButton();
             document.querySelector('.spatial-visualizer').classList.add('playing');
-        } else if (event.data === YT.PlayerState.PAUSED) {
+        });
+        
+        this.audioElement.addEventListener('pause', () => {
             this.isPlaying = false;
-            this.stopProgressUpdate();
             this.updatePlayButton();
             document.querySelector('.spatial-visualizer').classList.remove('playing');
-        } else if (event.data === YT.PlayerState.ENDED) {
-            this.isPlaying = false;
-            this.currentTime = 0;
-            this.updateProgressBar();
-            this.updatePlayButton();
+        });
+        
+        this.audioElement.addEventListener('ended', () => {
+            this.nextTrack();
+        });
+        
+        // Setup Web Audio API for visualization
+        try {
+            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            this.analyser = this.audioContext.createAnalyser();
+            this.analyser.fftSize = 256;
+            
+            const bufferLength = this.analyser.frequencyBinCount;
+            this.dataArray = new Uint8Array(bufferLength);
+            
+            const source = this.audioContext.createMediaElementSource(this.audioElement);
+            source.connect(this.analyser);
+            this.analyser.connect(this.audioContext.destination);
+        } catch (e) {
+            console.log('Web Audio API not supported:', e);
+        }
+    }
+    
+    // Load Track
+    loadTrack(index) {
+        if (index < 0 || index >= this.tracks.length) return;
+        
+        this.currentTrackIndex = index;
+        const track = this.tracks[index];
+        
+        // Update audio source based on Atmos mode
+        const audioFile = this.isAtmos ? track.audioFileAtmos : track.audioFile;
+        const audioPath = `assets/audio/${audioFile}`;
+        
+        // Check if file exists, if not use placeholder
+        this.audioElement.src = audioPath;
+        
+        // Update track info
+        this.updateTrackInfo(track);
+        
+        // Update artwork
+        this.updateArtwork(track);
+        
+        // Update YouTube link
+        this.updateYouTubeLink(track);
+        
+        // Reset progress
+        this.currentTime = 0;
+        this.updateProgressBar();
+        
+        // Auto-play if was playing
+        if (this.isPlaying) {
+            this.audioElement.play().catch(e => {
+                console.log('Auto-play prevented:', e);
+            });
         }
     }
     
     // Update Track Info
-    updateTrackInfo() {
-        document.getElementById('trackTitle').textContent = this.track.title;
-        document.getElementById('trackArtist').textContent = this.track.artist;
-        document.getElementById('trackAlbum').textContent = this.track.album;
+    updateTrackInfo(track) {
+        document.getElementById('trackTitle').textContent = track.title;
+        document.getElementById('trackArtist').textContent = track.artist;
+        document.getElementById('trackAlbum').textContent = track.album;
+        
+        // Update mini player info
+        const trackNameMini = document.querySelector('.track-name-mini');
+        const trackInfoMini = document.querySelector('.track-info-mini');
+        if (trackNameMini) trackNameMini.textContent = track.title;
+        if (trackInfoMini) trackInfoMini.textContent = `${track.artist} • ${track.album}`;
+        
+        // Update track indicator
+        const trackCurrent = document.querySelector('.track-current');
+        const trackTotal = document.querySelector('.track-total');
+        if (trackCurrent) trackCurrent.textContent = this.currentTrackIndex + 1;
+        if (trackTotal) trackTotal.textContent = this.tracks.length;
+    }
+    
+    // Update Artwork
+    updateArtwork(track) {
+        const artworkContainer = document.querySelector('.track-artwork');
+        if (!artworkContainer) return;
+        
+        // Check if image exists, otherwise use generated SVG
+        const imagePath = `assets/images/${track.image}`;
+        
+        // Try to load image
+        const img = new Image();
+        img.onload = () => {
+            // Image exists, use it
+            artworkContainer.innerHTML = `
+                <img src="${imagePath}" alt="${track.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                <div class="artwork-glow"></div>
+            `;
+        };
+        img.onerror = () => {
+            // Image doesn't exist, use generated artwork
+            artworkContainer.innerHTML = `
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="coverGradient${track.id}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:${this.getTrackColor(track.id, 0)};stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:${this.getTrackColor(track.id, 1)};stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:${this.getTrackColor(track.id, 2)};stop-opacity:1" />
+                        </linearGradient>
+                        <radialGradient id="centerGlow${track.id}">
+                            <stop offset="0%" style="stop-color:#fff;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
+                        </radialGradient>
+                    </defs>
+                    <rect width="120" height="120" fill="url(#coverGradient${track.id})"/>
+                    <circle cx="60" cy="60" r="30" fill="url(#centerGlow${track.id})" opacity="0.3"/>
+                    <text x="60" y="55" font-family="Cinzel" font-size="20" fill="white" text-anchor="middle" dominant-baseline="middle">ARIA</text>
+                    <text x="60" y="75" font-family="Arial" font-size="8" fill="white" text-anchor="middle" opacity="0.8">${track.title}</text>
+                </svg>
+                <div class="artwork-glow"></div>
+            `;
+        };
+        img.src = imagePath;
+    }
+    
+    // Get track-specific colors for artwork
+    getTrackColor(trackId, index) {
+        const colors = [
+            ['#a78bfa', '#818cf8', '#c084fc'], // Purple gradient
+            ['#f472b6', '#ec4899', '#db2777'], // Pink gradient
+            ['#60a5fa', '#3b82f6', '#2563eb'], // Blue gradient
+        ];
+        return colors[(trackId - 1) % colors.length][index];
+    }
+    
+    // Update YouTube Link
+    updateYouTubeLink(track) {
+        const youtubeLink = document.querySelector('.youtube-music-link');
+        if (youtubeLink) {
+            youtubeLink.href = track.youtubeLink;
+        }
     }
     
     // Canvas Setup
@@ -175,7 +271,7 @@ class ARIAMusicPlayer {
     
     // Create Spatial Particles
     createSpatialParticles() {
-        const particleCount = 50;
+        const particleCount = this.isAtmos ? 70 : 30;
         
         for (let i = 0; i < particleCount; i++) {
             this.particles.push({
@@ -188,8 +284,7 @@ class ARIAMusicPlayer {
                 radius: Math.random() * 2 + 1,
                 opacity: Math.random() * 0.5 + 0.2,
                 color: this.getRandomColor(),
-                pulsePhase: Math.random() * Math.PI * 2,
-                layerId: Math.floor(Math.random() * 4) + 1
+                pulsePhase: Math.random() * Math.PI * 2
             });
         }
     }
@@ -218,11 +313,8 @@ class ARIAMusicPlayer {
         this.updateParticles();
         this.drawParticles();
         
-        // Draw voice connections
-        this.drawVoiceConnections();
-        
         // Draw frequency visualization if playing
-        if (this.isPlaying) {
+        if (this.isPlaying && this.analyser) {
             this.drawFrequencyVisualization();
         }
         
@@ -283,13 +375,11 @@ class ARIAMusicPlayer {
             // Pulse effect
             particle.pulsePhase += 0.05;
             
-            // Voice layer influence
-            if (this.isPlaying) {
-                const layer = this.voiceLayers.find(l => l.id === particle.layerId);
-                if (layer) {
-                    particle.radius = (Math.sin(particle.pulsePhase) * 0.5 + 1) * 2 * (layer.volume / 100);
-                    particle.opacity = 0.2 + (layer.volume / 100) * 0.5;
-                }
+            // Audio reactive
+            if (this.isPlaying && this.dataArray) {
+                const audioLevel = this.dataArray[Math.floor(Math.random() * this.dataArray.length)] / 255;
+                particle.radius = (Math.sin(particle.pulsePhase) * 0.5 + 1) * 2 * (0.5 + audioLevel * 0.5);
+                particle.opacity = 0.2 + audioLevel * 0.5;
             }
         });
     }
@@ -322,54 +412,38 @@ class ARIAMusicPlayer {
         });
     }
     
-    drawVoiceConnections() {
-        const centerX = this.spatialCanvas.width / 2;
-        const centerY = this.spatialCanvas.height / 2;
-        
-        this.voiceLayers.forEach((layer, index) => {
-            const angle = (index / this.voiceLayers.length) * Math.PI * 2;
-            const distance = 100 + Math.sin(Date.now() * 0.001 + index) * 20;
-            
-            const x = centerX + Math.cos(angle) * distance;
-            const y = centerY + Math.sin(angle) * distance;
-            
-            // Draw connection line
-            this.spatialCtx.strokeStyle = `rgba(167, 139, 250, ${layer.volume / 100 * 0.3})`;
-            this.spatialCtx.lineWidth = layer.volume / 100 * 2;
-            this.spatialCtx.beginPath();
-            this.spatialCtx.moveTo(centerX, centerY);
-            this.spatialCtx.lineTo(x, y);
-            this.spatialCtx.stroke();
-            
-            // Draw voice point
-            const pointSize = 5 + (layer.volume / 100) * 5;
-            this.spatialCtx.fillStyle = `rgba(167, 139, 250, ${layer.volume / 100})`;
-            this.spatialCtx.beginPath();
-            this.spatialCtx.arc(x, y, pointSize, 0, Math.PI * 2);
-            this.spatialCtx.fill();
-        });
-    }
-    
     drawFrequencyVisualization() {
+        if (!this.analyser || !this.dataArray) return;
+        
+        this.analyser.getByteFrequencyData(this.dataArray);
+        
         const centerX = this.spatialCanvas.width / 2;
         const centerY = this.spatialCanvas.height / 2;
         const maxRadius = Math.min(centerX, centerY) - 50;
         
-        // Simulate frequency data
-        const frequencies = 32;
-        for (let i = 0; i < frequencies; i++) {
-            const angle = (i / frequencies) * Math.PI * 2;
-            const frequency = Math.random() * 0.5 + 0.5;
-            const radius = maxRadius * frequency;
+        const bars = this.isAtmos ? 64 : 32;
+        const barWidth = (Math.PI * 2) / bars;
+        
+        for (let i = 0; i < bars; i++) {
+            const dataIndex = Math.floor(i * this.dataArray.length / bars);
+            const amplitude = this.dataArray[dataIndex] / 255;
+            const barHeight = amplitude * maxRadius;
             
-            const x = centerX + Math.cos(angle) * radius;
-            const y = centerY + Math.sin(angle) * radius;
+            const angle = i * barWidth;
+            const x1 = centerX + Math.cos(angle) * 50;
+            const y1 = centerY + Math.sin(angle) * 50;
+            const x2 = centerX + Math.cos(angle) * (50 + barHeight);
+            const y2 = centerY + Math.sin(angle) * (50 + barHeight);
             
-            this.spatialCtx.strokeStyle = `rgba(167, 139, 250, ${frequency * 0.5})`;
-            this.spatialCtx.lineWidth = 1;
+            const gradient = this.spatialCtx.createLinearGradient(x1, y1, x2, y2);
+            gradient.addColorStop(0, `rgba(167, 139, 250, ${amplitude})`);
+            gradient.addColorStop(1, `rgba(192, 132, 252, ${amplitude * 0.5})`);
+            
+            this.spatialCtx.strokeStyle = gradient;
+            this.spatialCtx.lineWidth = this.isAtmos ? 2 : 3;
             this.spatialCtx.beginPath();
-            this.spatialCtx.moveTo(centerX, centerY);
-            this.spatialCtx.lineTo(x, y);
+            this.spatialCtx.moveTo(x1, y1);
+            this.spatialCtx.lineTo(x2, y2);
             this.spatialCtx.stroke();
         }
     }
@@ -408,6 +482,17 @@ class ARIAMusicPlayer {
             playBtn.addEventListener('click', () => this.togglePlay());
         }
         
+        // Track Navigation Buttons
+        const prevBtn = document.getElementById('prevTrack');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.previousTrack());
+        }
+        
+        const nextBtn = document.getElementById('nextTrack');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.nextTrack());
+        }
+        
         // Spatial Audio Buttons
         const atmosBtn = document.getElementById('atmosBtn');
         if (atmosBtn) {
@@ -420,18 +505,48 @@ class ARIAMusicPlayer {
         }
     }
     
+    // Setup Track Navigation
+    setupTrackNavigation() {
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case ' ':
+                    e.preventDefault();
+                    this.togglePlay();
+                    break;
+                case 'ArrowRight':
+                    this.nextTrack();
+                    break;
+                case 'ArrowLeft':
+                    this.previousTrack();
+                    break;
+            }
+        });
+    }
+    
     // Playback Controls
     togglePlay() {
-        if (!this.playerReady) {
-            console.log('Player not ready yet');
-            return;
+        if (this.audioContext && this.audioContext.state === 'suspended') {
+            this.audioContext.resume();
         }
         
         if (this.isPlaying) {
-            this.youtubePlayer.pauseVideo();
+            this.audioElement.pause();
         } else {
-            this.youtubePlayer.playVideo();
+            this.audioElement.play().catch(e => {
+                console.log('Playback prevented:', e);
+            });
         }
+    }
+    
+    nextTrack() {
+        const nextIndex = (this.currentTrackIndex + 1) % this.tracks.length;
+        this.loadTrack(nextIndex);
+    }
+    
+    previousTrack() {
+        const prevIndex = this.currentTrackIndex === 0 ? this.tracks.length - 1 : this.currentTrackIndex - 1;
+        this.loadTrack(prevIndex);
     }
     
     updatePlayButton() {
@@ -453,6 +568,9 @@ class ARIAMusicPlayer {
         document.getElementById('atmosBtn').classList.add('active');
         document.getElementById('stereoBtn').classList.remove('active');
         
+        // Reload current track with Atmos version
+        this.loadTrack(this.currentTrackIndex);
+        
         // Enhance spatial effect
         this.enhanceSpatialVisualization();
     }
@@ -462,6 +580,9 @@ class ARIAMusicPlayer {
         document.getElementById('atmosBtn').classList.remove('active');
         document.getElementById('stereoBtn').classList.add('active');
         
+        // Reload current track with stereo version
+        this.loadTrack(this.currentTrackIndex);
+        
         // Simplify to stereo visualization
         this.simplifyStereoVisualization();
     }
@@ -469,7 +590,7 @@ class ARIAMusicPlayer {
     enhanceSpatialVisualization() {
         // Add more particles for Atmos mode
         if (this.particles.length < 70) {
-            for (let i = 0; i < 20; i++) {
+            for (let i = this.particles.length; i < 70; i++) {
                 this.particles.push({
                     x: Math.random() * this.spatialCanvas.width,
                     y: Math.random() * this.spatialCanvas.height,
@@ -480,8 +601,7 @@ class ARIAMusicPlayer {
                     radius: Math.random() * 2 + 1,
                     opacity: Math.random() * 0.5 + 0.2,
                     color: this.getRandomColor(),
-                    pulsePhase: Math.random() * Math.PI * 2,
-                    layerId: Math.floor(Math.random() * 4) + 1
+                    pulsePhase: Math.random() * Math.PI * 2
                 });
             }
         }
@@ -490,46 +610,6 @@ class ARIAMusicPlayer {
     simplifyStereoVisualization() {
         // Reduce particles for stereo mode
         this.particles = this.particles.slice(0, 30);
-    }
-    
-    // Voice Layers Setup
-    setupVoiceLayers() {
-        const layerControls = document.querySelectorAll('.layer-control');
-        
-        layerControls.forEach(control => {
-            const slider = control.querySelector('.layer-volume');
-            const fill = control.querySelector('.layer-fill');
-            const value = control.querySelector('.layer-value');
-            
-            if (slider) {
-                slider.addEventListener('input', (e) => {
-                    const layerId = parseInt(control.dataset.layer);
-                    const volume = parseInt(e.target.value);
-                    
-                    // Update layer volume
-                    const layer = this.voiceLayers.find(l => l.id === layerId);
-                    if (layer) {
-                        layer.volume = volume;
-                    }
-                    
-                    // Update UI
-                    fill.style.width = `${volume}%`;
-                    value.textContent = `${volume}%`;
-                    
-                    // Update 3D visualization
-                    this.updateVoiceLayerPosition(layerId, volume);
-                });
-            }
-        });
-    }
-    
-    updateVoiceLayerPosition(layerId, volume) {
-        const layerElement = document.querySelector(`.voice-layer[data-layer="${layerId}"]`);
-        if (layerElement) {
-            const scale = 0.5 + (volume / 100) * 0.5;
-            layerElement.style.transform = `scale(${scale})`;
-            layerElement.style.opacity = 0.3 + (volume / 100) * 0.7;
-        }
     }
     
     // Progress Bar Setup
@@ -541,7 +621,6 @@ class ARIAMusicPlayer {
             let isDragging = false;
             
             progressBar.addEventListener('click', (e) => {
-                if (!this.playerReady) return;
                 const rect = progressBar.getBoundingClientRect();
                 const percent = (e.clientX - rect.left) / rect.width;
                 this.seekTo(percent);
@@ -552,7 +631,7 @@ class ARIAMusicPlayer {
             });
             
             document.addEventListener('mousemove', (e) => {
-                if (isDragging && this.playerReady) {
+                if (isDragging) {
                     const rect = progressBar.getBoundingClientRect();
                     const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
                     this.seekTo(percent);
@@ -566,29 +645,8 @@ class ARIAMusicPlayer {
     }
     
     seekTo(percent) {
-        if (this.youtubePlayer && this.playerReady) {
-            const time = percent * this.duration;
-            this.youtubePlayer.seekTo(time, true);
-        }
-    }
-    
-    startProgressUpdate() {
-        this.stopProgressUpdate();
-        
-        this.updateInterval = setInterval(() => {
-            if (this.youtubePlayer && this.playerReady) {
-                this.currentTime = this.youtubePlayer.getCurrentTime();
-                this.duration = this.youtubePlayer.getDuration();
-                this.updateProgressBar();
-                this.updateTimeDisplay();
-            }
-        }, 100);
-    }
-    
-    stopProgressUpdate() {
-        if (this.updateInterval) {
-            clearInterval(this.updateInterval);
-            this.updateInterval = null;
+        if (this.audioElement && this.duration > 0) {
+            this.audioElement.currentTime = percent * this.duration;
         }
     }
     
@@ -632,9 +690,12 @@ class ARIAMusicPlayer {
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
         }
-        this.stopProgressUpdate();
-        if (this.youtubePlayer) {
-            this.youtubePlayer.destroy();
+        if (this.audioElement) {
+            this.audioElement.pause();
+            this.audioElement.src = '';
+        }
+        if (this.audioContext) {
+            this.audioContext.close();
         }
     }
 }
@@ -649,15 +710,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add CSS animation
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes voiceLayerFloat {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-10px) scale(1.1);
-            }
-        }
-        
         .spatial-visualizer.playing {
             animation: visualizerGlow 2s ease-in-out infinite;
         }
@@ -670,9 +722,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 box-shadow: 0 0 40px rgba(167, 139, 250, 0.6);
             }
         }
+        
+        .track-artwork img {
+            animation: rotate 20s linear infinite;
+        }
+        
+        .spatial-visualizer.playing .track-artwork img {
+            animation-play-state: running;
+        }
+        
+        .spatial-visualizer:not(.playing) .track-artwork img {
+            animation-play-state: paused;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     `;
     document.head.appendChild(style);
     
-    console.log('ARIA Music Player initialized with YouTube');
-    console.log('Loading Supersonic...');
+    console.log('ARIA Music Player initialized with local audio support');
+    console.log('Ready to play local audio files');
 });

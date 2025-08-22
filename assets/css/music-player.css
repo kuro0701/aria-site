@@ -150,53 +150,41 @@
     transform: rotateY(90deg);
 }
 
-/* Voice Layers in 3D */
-.voice-layer {
+/* 3D Audio Sphere */
+.audio-sphere {
     position: absolute;
-    transform: translate3d(
-        calc(var(--x) * 1px),
-        calc(var(--y) * 1px),
-        calc(var(--z) * 1px)
-    );
-    transition: all 0.5s ease;
-}
-
-.voice-point {
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(
-        circle,
-        var(--color-primary) 0%,
-        transparent 70%
-    );
-    border: 2px solid var(--color-primary);
-    border-radius: 50%;
-    animation: voicePointPulse 2s ease-in-out infinite;
-    animation-delay: calc(var(--layer) * 0.2s);
-    box-shadow: 0 0 30px var(--color-primary);
-}
-
-@keyframes voicePointPulse {
-    0%, 100% { 
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% { 
-        transform: scale(1.5);
-        opacity: 1;
-    }
-}
-
-.voice-label {
-    position: absolute;
-    top: -25px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-primary);
-    font-size: 0.8rem;
-    color: var(--color-text-secondary);
-    white-space: nowrap;
-    opacity: 0.8;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: rotateSphere 20s linear infinite;
+}
+
+@keyframes rotateSphere {
+    0% { transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+.sphere-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    border-radius: 50%;
+}
+
+.ring-x {
+    transform: rotateX(90deg);
+}
+
+.ring-y {
+    transform: rotateY(90deg);
+}
+
+.ring-z {
+    transform: rotateZ(90deg);
 }
 
 /* Player Interface */
@@ -411,12 +399,12 @@
     background: rgba(167, 139, 250, 0.2);
 }
 
-/* Voice Layers Control */
-.voice-layers-control {
+/* Track Navigation */
+.track-navigation {
     margin-bottom: 3rem;
 }
 
-.layers-title {
+.nav-title {
     font-family: var(--font-primary);
     font-size: 1.2rem;
     font-weight: 500;
@@ -425,62 +413,53 @@
     letter-spacing: 0.1em;
 }
 
-.layers-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-}
-
-.layer-control {
+.track-controls {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
 }
 
-.layer-name {
-    font-family: var(--font-primary);
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    min-width: 60px;
-}
-
-.layer-slider {
-    position: relative;
-    flex: 1;
-    height: 4px;
-    background: rgba(167, 139, 250, 0.2);
-    border-radius: 2px;
-}
-
-.layer-volume {
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
+.track-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    border-radius: 50%;
+    color: var(--color-text-primary);
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.layer-fill {
-    position: absolute;
-    height: 100%;
-    width: var(--value, 50%);
-    background: linear-gradient(
-        90deg,
-        var(--color-primary),
-        var(--color-accent)
-    );
-    border-radius: 2px;
-    pointer-events: none;
+.track-btn:hover {
+    background: rgba(167, 139, 250, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
 }
 
-.layer-value {
+.track-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: var(--font-primary);
-    font-size: 0.8rem;
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+}
+
+.track-current {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.track-separator {
     color: var(--color-text-secondary);
-    min-width: 40px;
-    text-align: right;
+}
+
+.track-total {
+    color: var(--color-text-secondary);
 }
 
 /* Spatial Audio Control */
@@ -680,8 +659,8 @@
 }
 
 @media (max-width: 768px) {
-    .layers-grid {
-        grid-template-columns: 1fr;
+    .track-controls {
+        gap: 1rem;
     }
     
     .player-controls {

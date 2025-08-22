@@ -274,26 +274,11 @@
                         <div class="sound-axis axis-y"></div>
                         <div class="sound-axis axis-z"></div>
                         
-                        <!-- Voice Layers in 3D Space -->
-                        <div class="voice-layer" data-layer="1" style="--x: -50; --y: 0; --z: 50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Main Vocal</span>
-                        </div>
-                        <div class="voice-layer" data-layer="2" style="--x: 50; --y: 0; --z: 50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Harmony</span>
-                        </div>
-                        <div class="voice-layer" data-layer="3" style="--x: 0; --y: 50; --z: 0;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Upper Voice</span>
-                        </div>
-                        <div class="voice-layer" data-layer="4" style="--x: -30; --y: -30; --z: -50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Bass</span>
-                        </div>
-                        <div class="voice-layer" data-layer="5" style="--x: 30; --y: -30; --z: -50;">
-                            <div class="voice-point"></div>
-                            <span class="voice-label">Rhythm</span>
+                        <!-- 3D Audio Sphere -->
+                        <div class="audio-sphere">
+                            <div class="sphere-ring ring-x"></div>
+                            <div class="sphere-ring ring-y"></div>
+                            <div class="sphere-ring ring-z"></div>
                         </div>
                     </div>
                 </div>
@@ -355,42 +340,25 @@
                         </button>
                     </div>
 
-                    <!-- Voice Layers Control -->
-                    <div class="voice-layers-control">
-                        <h4 class="layers-title">Voice Layers</h4>
-                        <div class="layers-grid">
-                            <div class="layer-control" data-layer="1">
-                                <span class="layer-name">Main</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="100" class="layer-volume">
-                                    <div class="layer-fill"></div>
-                                </div>
-                                <span class="layer-value">100%</span>
+                    <!-- Track Navigation -->
+                    <div class="track-navigation">
+                        <h4 class="nav-title">Playlist</h4>
+                        <div class="track-controls">
+                            <button class="track-btn prev-track" id="prevTrack">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <div class="track-indicator">
+                                <span class="track-current">1</span>
+                                <span class="track-separator">/</span>
+                                <span class="track-total">3</span>
                             </div>
-                            <div class="layer-control" data-layer="2">
-                                <span class="layer-name">Harmony</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="80" class="layer-volume">
-                                    <div class="layer-fill"></div>
-                                </div>
-                                <span class="layer-value">80%</span>
-                            </div>
-                            <div class="layer-control" data-layer="3">
-                                <span class="layer-name">Upper</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="60" class="layer-volume">
-                                    <div class="layer-fill"></div>
-                                </div>
-                                <span class="layer-value">60%</span>
-                            </div>
-                            <div class="layer-control" data-layer="4">
-                                <span class="layer-name">Bass</span>
-                                <div class="layer-slider">
-                                    <input type="range" min="0" max="100" value="70" class="layer-volume">
-                                    <div class="layer-fill"></div>
-                                </div>
-                                <span class="layer-value">70%</span>
-                            </div>
+                            <button class="track-btn next-track" id="nextTrack">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="currentColor"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
