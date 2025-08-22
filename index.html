@@ -6,12 +6,10 @@
     <title>ARIA - 一人で、千人分。</title>
     <meta name="description" content="Harmony Dimensionから来た、あなたの3Dボイス。Dolby Atmosネイティブ・ソロアーティストARIAの公式サイト">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@100;300;400;500;700&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/hero.css">
@@ -19,17 +17,14 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <!-- Harmony Dimension Portal Effect -->
     <div class="portal-background">
         <div class="dimension-particles"></div>
         <div class="sound-waves"></div>
         <div class="harmony-grid"></div>
     </div>
 
-    <!-- Header -->
     <header class="aria-header">
         <div class="header-inner">
-            <!-- Logo Section -->
             <div class="logo-section">
                 <div class="logo-wrapper">
                     <div class="logo-symbol">
@@ -54,7 +49,6 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
             <nav class="main-navigation">
                 <ul class="nav-list">
                     <li class="nav-item" data-dimension="home">
@@ -90,9 +84,7 @@
                 </ul>
             </nav>
 
-            <!-- Right Section -->
             <div class="header-actions">
-                <!-- Language Selector (Multi-lingual representation) -->
                 <div class="language-selector">
                     <button class="lang-toggle" aria-label="言語切替">
                         <span class="lang-current">JP</span>
@@ -104,7 +96,6 @@
                     </button>
                 </div>
 
-                <!-- Dolby Atmos Indicator -->
                 <div class="atmos-indicator">
                     <div class="atmos-badge">
                         <svg width="24" height="24" viewBox="0 0 24 24" class="atmos-icon">
@@ -116,7 +107,6 @@
                     </div>
                 </div>
 
-                <!-- Listen Now CTA -->
                 <button class="cta-listen">
                     <span class="cta-text">Listen in 3D</span>
                     <div class="cta-waves">
@@ -128,7 +118,6 @@
             </div>
         </div>
 
-        <!-- Thousand Voices Visualization (subtle header effect) -->
         <div class="thousand-voices">
             <div class="voice-particle" style="--delay: 0s; --duration: 3s;"></div>
             <div class="voice-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
@@ -138,28 +127,22 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section" id="home">
-        <!-- Background Effects Layer -->
         <div class="hero-background">
             <div class="hero-gradient"></div>
             <div class="hero-noise"></div>
             <canvas class="voice-field" id="voiceField"></canvas>
         </div>
 
-        <!-- Main Hero Content -->
         <div class="hero-content">
-            <!-- ARIA Visual Representation -->
             <div class="aria-presence">
                 <div class="aria-silhouette">
-                    <!-- Abstract representation of ARIA -->
                     <div class="voice-orb" id="centralOrb">
                         <div class="orb-core"></div>
                         <div class="orb-glow"></div>
                         <div class="orb-pulse"></div>
                     </div>
                     
-                    <!-- Floating voice representations -->
                     <div class="floating-voices">
                         <div class="voice" data-lang="jp" style="--index: 1;">音</div>
                         <div class="voice" data-lang="ko" style="--index: 2;">소리</div>
@@ -173,7 +156,6 @@
                 </div>
             </div>
 
-            <!-- Main Message -->
             <div class="hero-message">
                 <div class="dimension-label">
                     <span class="label-text">FROM HARMONY DIMENSION</span>
@@ -193,7 +175,6 @@
                     <span class="desc-line">7オクターブ×多言語の立体音響体験</span>
                 </p>
 
-                <!-- CTA Buttons -->
                 <div class="hero-actions">
                     <button class="btn-primary" id="experienceBtn">
                         <span class="btn-text">体験を始める</span>
@@ -209,7 +190,6 @@
                     </button>
                 </div>
 
-                <!-- Scroll Indicator -->
                 <div class="scroll-indicator">
                     <div class="scroll-text">SCROLL</div>
                     <div class="scroll-line"></div>
@@ -218,10 +198,8 @@
             </div>
         </div>
 
-        <!-- 3D Audio Visualizer -->
         <div class="audio-visualizer">
             <div class="visualizer-container">
-                <!-- Frequency Bars -->
                 <div class="frequency-bars">
                     <div class="bar" style="--index: 1;"></div>
                     <div class="bar" style="--index: 2;"></div>
@@ -235,7 +213,6 @@
                     <div class="bar" style="--index: 10;"></div>
                 </div>
 
-                <!-- Spatial Sound Indicators -->
                 <div class="spatial-indicators">
                     <div class="indicator front">FRONT</div>
                     <div class="indicator left">LEFT</div>
@@ -246,14 +223,12 @@
             </div>
         </div>
 
-        <!-- Interactive Particles -->
         <div class="interactive-particles" id="interactiveParticles"></div>
     </section>
 
-    <!-- Music Player Section -->
     <section class="music-player-section" id="music">
+        <div id="youtube-player-container"></div>
         <div class="section-container">
-            <!-- Section Header -->
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-en">MUSIC</span>
@@ -262,19 +237,15 @@
                 <div class="section-line"></div>
             </div>
 
-            <!-- 3D Music Player -->
             <div class="music-player-wrapper">
-                <!-- 3D Spatial Visualizer -->
                 <div class="spatial-visualizer">
                     <canvas id="spatialCanvas" class="spatial-canvas"></canvas>
                     
-                    <!-- 3D Sound Position Indicators -->
                     <div class="sound-space">
                         <div class="sound-axis axis-x"></div>
                         <div class="sound-axis axis-y"></div>
                         <div class="sound-axis axis-z"></div>
                         
-                        <!-- Voice Layers in 3D Space -->
                         <div class="voice-layer" data-layer="1" style="--x: -50; --y: 0; --z: 50;">
                             <div class="voice-point"></div>
                             <span class="voice-label">Main Vocal</span>
@@ -298,66 +269,35 @@
                     </div>
                 </div>
 
-                <!-- Player Interface -->
                 <div class="player-interface">
-                    <!-- Current Track Info -->
                     <div class="track-info">
                         <div class="track-artwork">
-                            <!-- Placeholder SVG for album cover -->
-                            <svg width="120" height="120" viewBox="0 0 120 120" id="trackArtwork">
-                                <defs>
-                                    <linearGradient id="coverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
-                                        <stop offset="50%" style="stop-color:#818cf8;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
-                                    </linearGradient>
-                                    <radialGradient id="centerGlow">
-                                        <stop offset="0%" style="stop-color:#fff;stop-opacity:0.8" />
-                                        <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
-                                    </radialGradient>
-                                </defs>
-                                <rect width="120" height="120" fill="url(#coverGradient)"/>
-                                <circle cx="60" cy="60" r="30" fill="url(#centerGlow)" opacity="0.3"/>
-                                <text x="60" y="55" font-family="Cinzel" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">ARIA</text>
-                                <text x="60" y="75" font-family="Arial" font-size="8" fill="white" text-anchor="middle" opacity="0.8">千の声</text>
-                            </svg>
+                            <img src="assets/images/aria-cover.jpg" alt="Album Cover" id="trackArtworkImg">
                             <div class="artwork-glow"></div>
                         </div>
                         <div class="track-details">
-                            <h3 class="track-title" id="trackTitle">千の声のアリア</h3>
-                            <p class="track-artist">ARIA</p>
-                            <p class="track-album">Harmony Dimension</p>
+                            <h3 class="track-title" id="trackTitle">Supersonic</h3>
+                            <p class="track-artist" id="trackArtist">ARIA</p>
+                            <p class="track-album" id="trackAlbum">Digital Dreams</p>
                         </div>
                     </div>
 
-                    <!-- Progress Bar -->
                     <div class="progress-container">
                         <span class="time-current" id="timeCurrent">0:00</span>
                         <div class="progress-bar">
                             <div class="progress-track"></div>
                             <div class="progress-fill" id="progressFill"></div>
                             <div class="progress-handle" id="progressHandle"></div>
-                            <!-- Voice Waveform -->
                             <canvas class="waveform" id="waveform"></canvas>
                         </div>
-                        <span class="time-total" id="timeTotal">3:47</span>
+                        <span class="time-total" id="timeTotal">0:00</span>
                     </div>
 
-                    <!-- Control Buttons -->
                     <div class="player-controls">
-                        <button class="control-btn btn-shuffle" id="shuffleBtn">
-                            <svg width="20" height="20" viewBox="0 0 20 20">
-                                <path d="M2 7h12l2-2v4l-2-2H2zm0 6h12l2 2v-4l-2 2H2z" fill="currentColor"/>
-                            </svg>
+                         <button class="control-btn" id="prevBtn" aria-label="Previous Track">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"></path></svg>
                         </button>
-                        
-                        <button class="control-btn btn-prev" id="prevBtn">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        
-                        <button class="control-btn btn-play" id="playBtn">
+                        <button class="control-btn btn-play" id="playBtn" aria-label="Play/Pause">
                             <svg class="play-icon" width="32" height="32" viewBox="0 0 32 32">
                                 <path d="M10 6l14 10L10 26z" fill="currentColor"/>
                             </svg>
@@ -365,21 +305,11 @@
                                 <path d="M10 6h4v20h-4zm8 0h4v20h-4z" fill="currentColor"/>
                             </svg>
                         </button>
-                        
-                        <button class="control-btn btn-next" id="nextBtn">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M16 18h2V6h-2zM6 18l8.5-6L6 6z" fill="currentColor"/>
-                            </svg>
-                        </button>
-                        
-                        <button class="control-btn btn-repeat" id="repeatBtn">
-                            <svg width="20" height="20" viewBox="0 0 20 20">
-                                <path d="M5 7h10v3l4-4-4-4v3H3v6h2zm10 6H5v-3l-4 4 4 4v-3h12V9h-2z" fill="currentColor"/>
-                            </svg>
+                        <button class="control-btn" id="nextBtn" aria-label="Next Track">
+                            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zm-3.5 6l-8.5 6V6z" fill="currentColor"></path></svg>
                         </button>
                     </div>
 
-                    <!-- Voice Layers Control -->
                     <div class="voice-layers-control">
                         <h4 class="layers-title">Voice Layers</h4>
                         <div class="layers-grid">
@@ -387,7 +317,7 @@
                                 <span class="layer-name">Main</span>
                                 <div class="layer-slider">
                                     <input type="range" min="0" max="100" value="100" class="layer-volume">
-                                    <div class="layer-fill"></div>
+                                    <div class="layer-fill" style="width: 100%;"></div>
                                 </div>
                                 <span class="layer-value">100%</span>
                             </div>
@@ -395,7 +325,7 @@
                                 <span class="layer-name">Harmony</span>
                                 <div class="layer-slider">
                                     <input type="range" min="0" max="100" value="80" class="layer-volume">
-                                    <div class="layer-fill"></div>
+                                    <div class="layer-fill" style="width: 80%;"></div>
                                 </div>
                                 <span class="layer-value">80%</span>
                             </div>
@@ -403,7 +333,7 @@
                                 <span class="layer-name">Upper</span>
                                 <div class="layer-slider">
                                     <input type="range" min="0" max="100" value="60" class="layer-volume">
-                                    <div class="layer-fill"></div>
+                                    <div class="layer-fill" style="width: 60%;"></div>
                                 </div>
                                 <span class="layer-value">60%</span>
                             </div>
@@ -411,102 +341,45 @@
                                 <span class="layer-name">Bass</span>
                                 <div class="layer-slider">
                                     <input type="range" min="0" max="100" value="70" class="layer-volume">
-                                    <div class="layer-fill"></div>
+                                    <div class="layer-fill" style="width: 70%;"></div>
                                 </div>
                                 <span class="layer-value">70%</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Spatial Audio Control -->
-                    <div class="spatial-control">
-                        <button class="spatial-btn active" id="atmosBtn">
+                    <div class="controls-footer">
+                        <div class="spatial-control">
+                            <button class="spatial-btn active" id="atmosBtn">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                    <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                                </svg>
+                                <span>Dolby Atmos</span>
+                            </button>
+                            <button class="spatial-btn" id="stereoBtn">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="8" cy="12" r="3" fill="currentColor"/>
+                                    <circle cx="16" cy="12" r="3" fill="currentColor"/>
+                                </svg>
+                                <span>Stereo</span>
+                            </button>
+                        </div>
+                         <a href="https://www.youtube.com/watch?v=pTL_XZpYDzM" 
+                           target="_blank" 
+                           class="youtube-music-link">
                             <svg width="24" height="24" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-                                <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-2 17V7l8 5-8 5z" fill="currentColor"/>
                             </svg>
-                            <span>Dolby Atmos</span>
-                        </button>
-                        <button class="spatial-btn" id="stereoBtn">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <circle cx="8" cy="12" r="3" fill="currentColor"/>
-                                <circle cx="16" cy="12" r="3" fill="currentColor"/>
-                            </svg>
-                            <span>Stereo</span>
-                        </button>
+                            <span>Watch on YouTube</span>
+                        </a>
                     </div>
-                </div>
-
-                <!-- Playlist -->
-                <div class="playlist-container">
-                    <h4 class="playlist-title">Tracks</h4>
-                    <div class="playlist-tracks">
-                        <div class="playlist-track active" data-track="1">
-                            <span class="track-number">01</span>
-                            <div class="track-info-mini">
-                                <span class="track-name">千の声のアリア</span>
-                                <span class="track-duration">3:47</span>
-                            </div>
-                            <div class="track-playing-indicator">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="playlist-track" data-track="2">
-                            <span class="track-number">02</span>
-                            <div class="track-info-mini">
-                                <span class="track-name">Dimensional Echo</span>
-                                <span class="track-duration">4:12</span>
-                            </div>
-                            <div class="track-playing-indicator">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="playlist-track" data-track="3">
-                            <span class="track-number">03</span>
-                            <div class="track-info-mini">
-                                <span class="track-name">Harmony Synthesis</span>
-                                <span class="track-duration">3:35</span>
-                            </div>
-                            <div class="track-playing-indicator">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="playlist-track" data-track="4">
-                            <span class="track-number">04</span>
-                            <div class="track-info-mini">
-                                <span class="track-name">Virtual Resonance</span>
-                                <span class="track-duration">4:28</span>
-                            </div>
-                            <div class="track-playing-indicator">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- YouTube Music Link -->
-                    <a href="https://music.youtube.com/playlist?list=OLAK5uy_kBVSW_Vi-oZbMNwHke38GmKhpKXaKqBQQ" 
-                       target="_blank" 
-                       class="youtube-music-link">
-                        <svg width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-2 17V7l8 5-8 5z" fill="currentColor"/>
-                        </svg>
-                        <span>Listen on YouTube Music</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Scripts -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/hero.js"></script>
