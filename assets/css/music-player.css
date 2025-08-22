@@ -105,6 +105,7 @@
     height: 100%;
     opacity: 0.5;
     filter: blur(2px); /* 背景を少しぼかす */
+    z-index: 5;
 }
 
 /* Player Interface (Embedded) */
@@ -486,4 +487,34 @@
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- ★ここから追記 --- */
+
+/* 親コンテナにビデオを内包させる設定 */
+.spatial-visualizer {
+    background: #0a0a0f; /* ビデオ読み込み中の背景色 */
+}
+
+/* YouTubeプレイヤーコンテナのスタイリング */
+#youtube-player-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%; /* コンテナより少し大きくして黒帯を隠す */
+    padding-top: 67.5%; /* 120% * (9/16) = 67.5% */
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* UIの操作を可能にするためクリックを無効化 */
+    z-index: 1; /* UIより下に配置 */
+    opacity: 0.5; /* UIとのバランス調整。お好みで変更 */
+    transition: opacity 0.5s ease;
+}
+
+#youtube-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

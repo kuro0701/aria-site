@@ -60,14 +60,7 @@ class ARIAMusicPlayer {
         if (!document.getElementById('youtube-player-container')) {
             const container = document.createElement('div');
             container.id = 'youtube-player-container';
-            // Keep it off-screen and non-interactive
-            container.style.cssText = `
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-                width: 1px;
-                height: 1px;
-            `;
+            // ★変更点：画面外に隠すスタイルを削除
             document.body.appendChild(container);
         }
 
@@ -92,8 +85,8 @@ class ARIAMusicPlayer {
     
     createYouTubePlayer() {
         this.youtubePlayer = new YT.Player('youtube-player-container', {
-            height: '360', // A minimal height is sometimes required
-            width: '640',  // A minimal width is sometimes required
+            height: '100%',
+            width: '100%',
             videoId: this.track.youtubeId,
             playerVars: {
                 'autoplay': 0,
