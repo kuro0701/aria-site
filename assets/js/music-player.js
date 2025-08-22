@@ -16,32 +16,32 @@ class ARIAMusicPlayer {
         this.tracks = [
             {
                 id: 1,
-                title: 'Supersonic',
+                title: 'DIGITAL ANGEL',
                 artist: 'ARIA',
-                album: 'Digital Dreams',
-                audioFile: 'supersonic.mp3',
-                audioFileAtmos: 'supersonic_atmos.mp3',
-                image: 'supersonic.jpg',
+                album: 'Harmony Dimension',
+                audioFile: 'digital_angel_ver1.wav',
+                audioFileAtmos: 'digital_angel_ver2.wav',
+                image: 'digital_angel.png',
                 youtubeLink: 'https://www.youtube.com/watch?v=pTL_XZpYDzM'
             },
             {
                 id: 2,
-                title: 'Harmony Dimension',
+                title: 'Digital Harmony',
                 artist: 'ARIA',
-                album: 'Spatial Voices',
-                audioFile: 'harmony.mp3',
-                audioFileAtmos: 'harmony_atmos.mp3',
-                image: 'harmony.jpg',
+                album: 'Harmony Dimension',
+                audioFile: 'digital_harmony_ver1.wav',
+                audioFileAtmos: 'digital_harmony_ver2.wav',
+                image: 'digital_harmony.png',
                 youtubeLink: 'https://www.youtube.com/watch?v=example2'
             },
             {
                 id: 3,
-                title: 'Thousand Voices',
+                title: 'Neon Dreams',
                 artist: 'ARIA',
-                album: 'Echo Chamber',
-                audioFile: 'thousand.mp3',
-                audioFileAtmos: 'thousand_atmos.mp3',
-                image: 'thousand.jpg',
+                album: 'Harmony Dimension',
+                audioFile: 'neon_dreams_ver1.wav',
+                audioFileAtmos: 'neon_dreams_ver2.wav',
+                image: 'neon_dreams.png',
                 youtubeLink: 'https://www.youtube.com/watch?v=example3'
             }
         ];
@@ -568,6 +568,16 @@ class ARIAMusicPlayer {
         document.getElementById('atmosBtn').classList.add('active');
         document.getElementById('stereoBtn').classList.remove('active');
         
+        // Update button text to show version
+        const atmosBtn = document.getElementById('atmosBtn');
+        if (atmosBtn) {
+            atmosBtn.querySelector('span').textContent = 'Ver.2 (Dolby Atmos)';
+        }
+        const stereoBtn = document.getElementById('stereoBtn');
+        if (stereoBtn) {
+            stereoBtn.querySelector('span').textContent = 'Ver.1';
+        }
+        
         // Reload current track with Atmos version
         this.loadTrack(this.currentTrackIndex);
         
@@ -579,6 +589,16 @@ class ARIAMusicPlayer {
         this.isAtmos = false;
         document.getElementById('atmosBtn').classList.remove('active');
         document.getElementById('stereoBtn').classList.add('active');
+        
+        // Update button text to show version
+        const atmosBtn = document.getElementById('atmosBtn');
+        if (atmosBtn) {
+            atmosBtn.querySelector('span').textContent = 'Ver.2';
+        }
+        const stereoBtn = document.getElementById('stereoBtn');
+        if (stereoBtn) {
+            stereoBtn.querySelector('span').textContent = 'Ver.1 (Stereo)';
+        }
         
         // Reload current track with stereo version
         this.loadTrack(this.currentTrackIndex);
@@ -747,5 +767,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
     
     console.log('ARIA Music Player initialized with local audio support');
-    console.log('Ready to play local audio files');
+    console.log('Ready to play WAV files');
+    console.log('Tracks loaded:', window.ariaMusicPlayer.tracks.map(t => t.title).join(', '));
 });

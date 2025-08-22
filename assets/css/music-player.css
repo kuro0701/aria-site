@@ -474,13 +474,14 @@
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background: rgba(167, 139, 250, 0.1);
     border: 1px solid rgba(167, 139, 250, 0.3);
     border-radius: 10px;
     color: var(--color-text-secondary);
     font-family: var(--font-primary);
     font-size: 0.9rem;
+    white-space: nowrap;
     cursor: pointer;
     transition: all 0.3s ease;
 }
