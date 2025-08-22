@@ -12,13 +12,16 @@ aria_site/
 │   │   ├── reset.css      # CSSリセット
 │   │   ├── header.css     # ヘッダースタイル
 │   │   ├── hero.css       # ヒーローセクションスタイル
+│   │   ├── music-player.css # 音楽プレイヤースタイル
 │   │   └── main.css       # メインスタイル
 │   ├── js/
 │   │   ├── header.js      # ヘッダーインタラクション
 │   │   ├── hero.js        # ヒーローセクションインタラクション
-│   │   └── particles.js   # パーティクルシステム
+│   │   ├── particles.js   # パーティクルシステム
+│   │   └── music-player.js # YouTube音楽プレイヤー
 │   ├── images/            # 画像ファイル
 │   └── fonts/            # カスタムフォント
+├── YOUTUBE_SETUP_GUIDE.md  # YouTube統合ガイド
 └── README.md
 
 ```
@@ -46,6 +49,14 @@ aria_site/
 - **3Dオーディオビジュアライザー**：周波数バーと空間インジケーター
 - **CTAボタン**：「体験を始める」「Dimensionを探索」
 - **パララックススクロール**：スクロール時の視差効果
+
+### ✅ 音楽プレイヤー（完成）
+- **YouTube統合**：@NexusAriaチャンネルの音楽を再生
+- **APIキー不要**：YouTube IFrame APIのみで動作
+- **3Dビジュアライザー**：音楽に反応するパーティクルエフェクト
+- **プレイリスト管理**：複数曲の連続再生
+- **管理者モード**：Ctrl+Shift+Uで曲リスト更新（簡易版）
+- **キーボードショートカット**：スペース（再生/一時停止）、矢印キー（曲切替）
 
 ## 必要な画像素材（Midjourney用プロンプト）
 
@@ -159,6 +170,42 @@ npx serve
 http://localhost:8000
 ```
 
+## YouTube音楽プレイヤーの設定
+
+### 簡単セットアップ（APIキー不要）
+
+1. **動画IDの取得**
+   - YouTubeの動画URLから動画IDをコピー
+   - 例: `https://www.youtube.com/watch?v=pTL_XZpYDzM` → `pTL_XZpYDzM`
+
+2. **曲の追加方法**
+
+   **オプション1: 管理者モードを使用（推奨）**
+   - サイトを開いて `Ctrl + Shift + U` を押す
+   - 動画IDとタイトルを入力して追加
+
+   **オプション2: コードを編集**
+   - `assets/js/music-player.js` の `videos` 配列に追加
+   ```javascript
+   {
+       videoId: 'YOUR_VIDEO_ID',
+       title: '曲名',
+       artist: 'ARIA',
+       album: '@NexusAria',
+       publishedAt: '2024-12-01'
+   }
+   ```
+
+3. **プレイリストを使用する場合**
+   - YouTubeで公開プレイリストを作成
+   - プレイリストIDを `music-player.js` に設定
+
+### 操作方法
+- **スペースキー**: 再生/一時停止
+- **→**: 次の曲
+- **←**: 前の曲
+- **クリック**: プログレスバーでシーク
+
 ## Gitコマンド（Cloudflare Pages用）
 
 ```bash
@@ -180,7 +227,7 @@ git push origin subsub
 - [x] パーティクルシステム
 
 ### フェーズ2（コンテンツエリア）
-- [ ] 音楽プレイヤー（3D Audio対応）
+- [x] 音楽プレイヤー（YouTube統合・3Dビジュアライザー付き）
 - [ ] ディスコグラフィー
 - [ ] ライブスケジュール
 - [ ] ストーリーセクション
