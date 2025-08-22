@@ -83,13 +83,9 @@
 .spatial-visualizer {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Or adjust as needed */
-    height: 700px; /* Adjust height for the embedded player */
-    background: radial-gradient(
-        ellipse at center,
-        rgba(167, 139, 250, 0.05) 0%,
-        transparent 70%
-    );
+    max-width: 600px;
+    height: 700px;
+    background: linear-gradient(135deg, var(--color-dimension-deep), var(--color-dimension-mid));
     border: 1px solid rgba(167, 139, 250, 0.2);
     border-radius: 20px;
     overflow: hidden;
@@ -98,6 +94,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .spatial-canvas {
@@ -107,6 +104,7 @@
     width: 100%;
     height: 100%;
     opacity: 0.5;
+    filter: blur(2px); /* 背景を少しぼかす */
 }
 
 /* Player Interface (Embedded) */
@@ -115,15 +113,17 @@
     z-index: 10;
     width: 90%;
     max-width: 400px;
-    background: rgba(16, 21, 38, 0.7);
+    /* ガラス風エフェクト */
+    background: rgba(10, 10, 15, 0.6); 
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(167, 139, 250, 0.2);
     border-radius: 20px;
     padding: 2rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* 浮遊感を出す影 */
 }
 
 /* Track Info */
@@ -142,6 +142,7 @@
     border-radius: 10px;
     overflow: hidden;
     flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .track-artwork img {
@@ -212,7 +213,7 @@
     height: 4px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(167, 139, 250, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
 }
 
@@ -272,8 +273,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: var(--color-text-primary);
     cursor: pointer;
@@ -284,11 +285,11 @@
     opacity: 0.4;
     cursor: not-allowed;
     transform: none;
-    background: rgba(167, 139, 250, 0.05);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .control-btn:not(:disabled):hover {
-    background: rgba(167, 139, 250, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     transform: scale(1.1);
 }
 
@@ -349,7 +350,7 @@
     appearance: none;
     width: 100%;
     height: 4px;
-    background: rgba(167, 139, 250, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
     outline: none;
     cursor: pointer;
@@ -415,8 +416,8 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem;
-    background: rgba(167, 139, 250, 0.1);
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     color: var(--color-text-secondary);
     font-family: var(--font-primary);
@@ -431,12 +432,12 @@
 }
 
 .spatial-btn:hover {
-    background: rgba(167, 139, 250, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--color-text-primary);
 }
 
 .spatial-btn.active {
-    background: linear-gradient(135deg, rgba(167, 139, 250, 0.3), rgba(192, 132, 252, 0.3));
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(192, 132, 252, 0.2));
     border-color: var(--color-primary);
     color: var(--color-text-primary);
 }
