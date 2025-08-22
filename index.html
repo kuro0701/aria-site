@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -136,16 +137,121 @@
         </div>
     </header>
 
-    <!-- Main Content (placeholder) -->
-    <main class="main-content">
-        <section class="hero-section">
-            <h1>Harmony Dimensionへようこそ</h1>
-            <p>無数の声色が漂う海から、あなたの部屋へ</p>
-        </section>
-    </main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <!-- Background Effects Layer -->
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-noise"></div>
+            <canvas class="voice-field" id="voiceField"></canvas>
+        </div>
+
+        <!-- Main Hero Content -->
+        <div class="hero-content">
+            <!-- ARIA Visual Representation -->
+            <div class="aria-presence">
+                <div class="aria-silhouette">
+                    <!-- Abstract representation of ARIA -->
+                    <div class="voice-orb" id="centralOrb">
+                        <div class="orb-core"></div>
+                        <div class="orb-glow"></div>
+                        <div class="orb-pulse"></div>
+                    </div>
+                    
+                    <!-- Floating voice representations -->
+                    <div class="floating-voices">
+                        <div class="voice" data-lang="jp" style="--index: 1;">音</div>
+                        <div class="voice" data-lang="ko" style="--index: 2;">소리</div>
+                        <div class="voice" data-lang="en" style="--index: 3;">Voice</div>
+                        <div class="voice" data-lang="zh" style="--index: 4;">聲</div>
+                        <div class="voice" data-lang="jp" style="--index: 5;">響</div>
+                        <div class="voice" data-lang="ko" style="--index: 6;">목소리</div>
+                        <div class="voice" data-lang="en" style="--index: 7;">Sound</div>
+                        <div class="voice" data-lang="zh" style="--index: 8;">音</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Message -->
+            <div class="hero-message">
+                <div class="dimension-label">
+                    <span class="label-text">FROM HARMONY DIMENSION</span>
+                    <div class="label-line"></div>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line" data-text="私は">私は</span>
+                    <span class="title-main" data-text="ARIA">ARIA</span>
+                    <span class="title-sub">
+                        <span class="thousand-voices-text">千の声を織る者</span>
+                    </span>
+                </h1>
+
+                <p class="hero-description">
+                    <span class="desc-line">Dolby Atmosの空間に響く、</span>
+                    <span class="desc-line">7オクターブ×多言語の立体音響体験</span>
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="hero-actions">
+                    <button class="btn-primary" id="experienceBtn">
+                        <span class="btn-text">体験を始める</span>
+                        <div class="btn-ripple"></div>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20">
+                            <polygon points="6,2 16,10 6,18" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="btn-secondary" id="dimensionBtn">
+                        <span class="btn-text">Dimensionを探索</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-text">SCROLL</div>
+                    <div class="scroll-line"></div>
+                    <div class="scroll-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Audio Visualizer -->
+        <div class="audio-visualizer">
+            <div class="visualizer-container">
+                <!-- Frequency Bars -->
+                <div class="frequency-bars">
+                    <div class="bar" style="--index: 1;"></div>
+                    <div class="bar" style="--index: 2;"></div>
+                    <div class="bar" style="--index: 3;"></div>
+                    <div class="bar" style="--index: 4;"></div>
+                    <div class="bar" style="--index: 5;"></div>
+                    <div class="bar" style="--index: 6;"></div>
+                    <div class="bar" style="--index: 7;"></div>
+                    <div class="bar" style="--index: 8;"></div>
+                    <div class="bar" style="--index: 9;"></div>
+                    <div class="bar" style="--index: 10;"></div>
+                </div>
+
+                <!-- Spatial Sound Indicators -->
+                <div class="spatial-indicators">
+                    <div class="indicator front">FRONT</div>
+                    <div class="indicator left">LEFT</div>
+                    <div class="indicator right">RIGHT</div>
+                    <div class="indicator top">TOP</div>
+                    <div class="indicator back">BACK</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Particles -->
+        <div class="interactive-particles" id="interactiveParticles"></div>
+    </section>
 
     <!-- Scripts -->
     <script src="assets/js/header.js"></script>
     <script src="assets/js/particles.js"></script>
+    <script src="assets/js/hero.js"></script>
 </body>
 </html>
