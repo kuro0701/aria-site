@@ -1,0 +1,121 @@
+/* --- 基本設定 --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #0a0a14; /* Harmony Dimensionの基本色 */
+    color: #f0f0f0;
+}
+
+/* --- ヘッダー全体 --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+/* スクロール時に背景を少し暗くする（JSでクラスを付与する想定） */
+.site-header.scrolled {
+    background-color: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 2; /* Canvasより手前に配置 */
+}
+
+/* --- パーティクル用Canvas --- */
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* ロゴやナビより後ろに配置 */
+}
+
+
+/* --- ロゴ --- */
+.logo {
+    cursor: pointer;
+}
+
+.logo img {
+    /* ロゴの高さを指定します。40pxは一般的な高さですが、お好みで調整してください */
+    height: 40px; 
+    width: auto; /* 高さに合わせて幅を自動調整 */
+    display: block; /* 画像の下にできる余分な隙間をなくします */
+    transition: opacity 0.3s ease;
+}
+
+.logo img:hover {
+    opacity: 0.85; /* マウスを乗せると少しだけ透明にする演出 */
+}
+
+/* --- ナビゲーション --- */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #ffffff;
+}
+
+/* ホバー時の "サウンドウェーブ" アニメーション */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #00f2ff, #ff00c8, #00f2ff);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: wave-flow 2s linear infinite;
+    opacity: 0;
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* グラデーションを流すアニメーション */
+@keyframes wave-flow {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
