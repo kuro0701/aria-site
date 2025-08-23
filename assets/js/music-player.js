@@ -17,51 +17,63 @@ class ARIAMusicPlayer {
         this.channelHandle = '@NexusAria';
         this.channelUrl = 'https://www.youtube.com/@NexusAria';
         
-        // 手動で管理する動画リスト
+        // 手動で管理する動画リスト - 最新リリースに更新
         // @NexusAria チャンネルの楽曲
         // 新しい曲を追加する場合: YouTube URLから watch?v=XXXXX のXXXXX部分をコピー
         this.videos = [
+            {
+                videoId: 'Aethelburg_ID',  // 実際のIDに置き換えてください
+                title: 'Aethelburg',
+                artist: 'Aria Nexus',
+                album: 'アルバム',
+                publishedAt: new Date().toISOString().split('T')[0],
+                status: '本日更新',
+                isDolby: false
+            },
+            {
+                videoId: 'Singularity_ID',  // 実際のIDに置き換えてください
+                title: 'Singularity Genesis',
+                artist: 'Aria Nexus',
+                album: 'アルバム',
+                publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                status: '更新: 2日前',
+                isDolby: false
+            },
+            {
+                videoId: 'Divine_ID',  // 実際のIDに置き換えてください
+                title: 'Divine Realms',
+                artist: 'Aria Nexus',
+                album: 'アルバム',
+                publishedAt: '2024-12-20',
+                status: '再生リストの全体を見る',
+                isDolby: false
+            },
+            {
+                videoId: 'Crypto_ID',  // 実際のIDに置き換えてください
+                title: 'Crypto assets',
+                artist: 'Aria Nexus',
+                album: 'アルバム',
+                publishedAt: '2024-12-19',
+                status: '再生リストの全体を見る',
+                isDolby: false
+            },
+            {
+                videoId: 'QUANTUM_ID',  // 実際のIDに置き換えてください
+                title: 'QUANTUM HEART',
+                artist: 'Aria Nexus',
+                album: 'アルバム',
+                publishedAt: '2024-12-18',
+                status: '再生リストの全体を見る',
+                isDolby: false
+            },
+            // 追加の楽曲（必要に応じて）
             {
                 videoId: '7hXsZkmDaic',
                 title: 'DIGITAL ANGEL',
                 artist: 'ARIA',
                 album: '@NexusAria',
-                publishedAt: '2024-12-10'
-            },
-            {
-                videoId: 'TmhnNetBtMs',
-                title: 'DIGITAL ANGEL (Dolby Atmos)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10'
-            },
-            {
-                videoId: '4-oAxJiFDmo',
-                title: 'Digital Harmony',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10'
-            },
-            {
-                videoId: 'GqR9XtmLNHY',
-                title: 'Digital Harmony (Dolby Atmos)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10'
-            },
-            {
-                videoId: 'fl09mV_RFjk',
-                title: 'Neon Dreams',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10'
-            },
-            {
-                videoId: 'ChslBhbSYpE',
-                title: 'Neon Dreams (Dolby Atmos)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10'
+                publishedAt: '2024-12-10',
+                isDolby: false
             }
         ];
         
@@ -82,8 +94,9 @@ class ARIAMusicPlayer {
         this.setupCanvas();
         this.setupControls();
         this.setupProgressBar();
-        this.setupVideoItems();
         this.sortVideosByDate();
+        this.renderYouTubeGrid();  // グリッドを描画
+        this.setupVideoItems();
         
         // YouTube IFrame API の準備ができたら呼ばれる
         window.onYouTubeIframeAPIReady = () => {
@@ -97,6 +110,50 @@ class ARIAMusicPlayer {
         
         // 動画リスト更新ボタンの追加
         this.addUpdateButton();
+    }
+    
+    // Render YouTube videos grid
+    renderYouTubeGrid() {
+        const gridContainer = document.getElementById('youtube-videos-grid');
+        if (!gridContainer) return;
+        
+        // 最新6件を表示
+        const latestVideos = this.videos.slice(0, 6);
+        
+        gridContainer.innerHTML = latestVideos.map((video, index) => {
+            const isDolby = video.isDolby || video.title.includes('Dolby');
+            const displayTitle = isDolby && !video.title.includes('Dolby') ? 
+                `${video.title} <span class="dolby-tag">Dolby</span>` : video.title;
+            
+            // プレースホルダー画像（実際のYouTubeサムネイルが取得できない場合）
+            const thumbnailUrl = video.videoId.includes('_ID') ? 
+                `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='360' viewBox='0 0 480 360'%3E%3Crect fill='%23333' width='480' height='360'/%3E%3Ctext x='50%25' y='50%25' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='24'%3E${encodeURIComponent(video.title)}%3C/text%3E%3C/svg%3E` :
+                `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`;
+            
+            return `
+                <div class="video-item" data-video-id="${video.videoId}" data-index="${index}">
+                    <div class="video-thumbnail">
+                        <img src="${thumbnailUrl}" 
+                             alt="${video.title}"
+                             onerror="this.src='https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg'">
+                        <div class="play-overlay">
+                            <svg width="48" height="48" viewBox="0 0 24 24">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        ${isDolby ? '<div class="dolby-badge">DOLBY ATMOS</div>' : ''}
+                        ${video.status && video.status !== '再生リストの全体を見る' ? 
+                            `<div class="update-badge">${video.status}</div>` : ''}
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">${displayTitle}</h4>
+                        <p class="video-meta">${video.artist} • ${video.album}</p>
+                        ${video.status === '再生リストの全体を見る' ? 
+                            '<p class="video-status">再生リストの全体を見る</p>' : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
     
     // 動画を日付順にソート
@@ -151,6 +208,8 @@ class ARIAMusicPlayer {
         };
         
         this.videos.unshift(newVideo); // 最新として先頭に追加
+        this.renderYouTubeGrid(); // グリッドを再描画
+        this.setupVideoItems(); // イベントリスナーを再設定
         this.displayVideoList();
         
         // 入力フィールドをクリア
@@ -335,7 +394,7 @@ class ARIAMusicPlayer {
         if (!artworkContainer) return;
         
         // YouTubeのサムネイルを使用
-        if (video.videoId) {
+        if (video.videoId && !video.videoId.includes('_ID')) {
             const thumbnailUrl = `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`;
             const fallbackUrl = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
             
@@ -425,7 +484,8 @@ class ARIAMusicPlayer {
     // Setup video items for YouTube section
     setupVideoItems() {
         const videoItems = document.querySelectorAll('.video-item');
-        videoItems.forEach((item, index) => {
+        videoItems.forEach((item) => {
+            const index = parseInt(item.dataset.index);
             item.addEventListener('click', () => {
                 this.loadVideo(index);
                 // スクロールしてプレーヤーを表示
@@ -739,15 +799,6 @@ document.addEventListener('DOMContentLoaded', () => {
             transform: scale(1.05);
         }
         
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
         /* Wave bars animation */
         .wave-bar {
             display: inline-block;
@@ -771,6 +822,29 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Pause icon fix */
         .pause-icon {
             display: none;
+        }
+        
+        /* Update Badge Styles */
+        .update-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.3rem 0.7rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            border-radius: 5px;
+            color: white;
+            font-family: var(--font-primary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+        
+        /* Video Status Style */
+        .video-status {
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            color: rgba(167, 139, 250, 0.8);
+            margin-top: 0.3rem;
         }
         
         /* Update interface styles */
