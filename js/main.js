@@ -32,6 +32,7 @@ window.addEventListener('mousemove', (event) => {
 function setCanvasSize() {
     canvas.width = header.offsetWidth;
     canvas.height = header.offsetHeight;
+    init(); // ウィンドウサイズ変更時にパーティクルを再生成
 }
 setCanvasSize();
 window.addEventListener('resize', setCanvasSize);
@@ -48,7 +49,6 @@ class Particle {
         this.color = color;
     }
 
-    // パーティクルを描画
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
@@ -56,7 +56,6 @@ class Particle {
         ctx.fill();
     }
 
-    // パーティクルの位置を更新
     update() {
         if (this.x > canvas.width || this.x < 0) {
             this.directionX = -this.directionX;
@@ -65,22 +64,21 @@ class Particle {
             this.directionY = -this.directionY;
         }
 
-        // マウスとの衝突判定
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
         if (distance < mouse.radius + this.size) {
             if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                this.x += 5;
+                this.x += 3;
             }
             if (mouse.x > this.x && this.x > this.size * 10) {
-                this.x -= 5;
+                this.x -= 3;
             }
             if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                this.y += 5;
+                this.y += 3;
             }
             if (mouse.y > this.y && this.y > this.size * 10) {
-                this.y -= 5;
+                this.y -= 3;
             }
         }
 
@@ -90,26 +88,24 @@ class Particle {
     }
 }
 
-// パーティクルを生成
 function init() {
     particlesArray = [];
     let numberOfParticles = (canvas.width * canvas.height) / 9000;
     for (let i = 0; i < numberOfParticles; i++) {
         let size = (Math.random() * 2) + 1;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
         let directionX = (Math.random() * 0.4) - 0.2;
         let directionY = (Math.random() * 0.4) - 0.2;
-        let color = 'rgba(0, 242, 255, 0.5)'; // ARIAのテーマカラー（シアン）
+        let color = 'rgba(0, 242, 255, 0.5)';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
 }
 
-// アニメーションループ
 function animate() {
     requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();

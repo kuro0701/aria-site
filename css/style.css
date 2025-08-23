@@ -21,7 +21,6 @@ body {
     transition: background-color 0.3s ease;
 }
 
-/* スクロール時に背景を少し暗くする（JSでクラスを付与する想定） */
 .site-header.scrolled {
     background-color: rgba(10, 10, 20, 0.8);
     backdrop-filter: blur(10px);
@@ -35,19 +34,17 @@ body {
     margin: 0 auto;
     padding: 20px 40px;
     position: relative;
-    z-index: 2; /* Canvasより手前に配置 */
+    z-index: 2;
 }
 
-/* --- パーティクル用Canvas --- */
 #particle-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* ロゴやナビより後ろに配置 */
+    z-index: 1;
 }
-
 
 /* --- ロゴ --- */
 .logo {
@@ -55,15 +52,14 @@ body {
 }
 
 .logo img {
-    /* ロゴの高さを指定します。40pxは一般的な高さですが、お好みで調整してください */
     height: 40px; 
-    width: auto; /* 高さに合わせて幅を自動調整 */
-    display: block; /* 画像の下にできる余分な隙間をなくします */
+    width: auto;
+    display: block;
     transition: opacity 0.3s ease;
 }
 
 .logo img:hover {
-    opacity: 0.85; /* マウスを乗せると少しだけ透明にする演出 */
+    opacity: 0.85;
 }
 
 /* --- ナビゲーション --- */
@@ -88,7 +84,6 @@ body {
     color: #ffffff;
 }
 
-/* ホバー時の "サウンドウェーブ" アニメーション */
 .main-nav a::after {
     content: '';
     position: absolute;
@@ -110,12 +105,49 @@ body {
     opacity: 1;
 }
 
-/* グラデーションを流すアニメーション */
 @keyframes wave-flow {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- ▼▼▼ ヒーローセクション（追加） ▼▼▼ --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/main_visual.png'); /* 画像ファイルを指定 */
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    filter: brightness(0.8); /* 少しだけ画像を暗くして文字を読みやすくする */
+    z-index: -1;
+}
+
+.hero-tagline {
+    text-align: center;
+    color: white;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-tagline h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.hero-tagline p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
 }
