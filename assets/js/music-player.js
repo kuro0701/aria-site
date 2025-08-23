@@ -68,20 +68,12 @@ class ARIAMusicPlayer {
         // YouTubeプレイリストを使用する場合（オプション）
         this.playlistId = null; // 'YOUR_PLAYLIST_ID' を設定可能
         
-        // Canvas Elements
-        this.spatialCanvas = null;
-        this.spatialCtx = null;
+        // Waveform Canvas
         this.waveformCanvas = null;
         this.waveformCtx = null;
         
-        // Animation
-        this.animationId = null;
-        this.particles = [];
+        // Update interval
         this.updateInterval = null;
-        
-        // Visualization data
-        this.visualizationIntensity = 0;
-        this.targetIntensity = 0;
         
         this.init();
     }
@@ -90,12 +82,8 @@ class ARIAMusicPlayer {
         this.setupCanvas();
         this.setupControls();
         this.setupProgressBar();
-        this.createSpatialParticles();
+        this.setupVideoItems();
         this.sortVideosByDate();
-        // アニメーションを遅延して開始
-        setTimeout(() => {
-            this.animate();
-        }, 100);
         
         // YouTube IFrame API の準備ができたら呼ばれる
         window.onYouTubeIframeAPIReady = () => {
@@ -239,13 +227,7 @@ class ARIAMusicPlayer {
             case YT.PlayerState.PLAYING:
                 this.isPlaying = true;
                 this.updatePlayButton();
-                document.querySelector('.spatial-visualizer')?.classList.add('playing');
-                this.targetIntensity = 1;
-                
-                // Canvasを再初期化してアニメーションを確実に継続
-                if (!this.animationId) {
-                    this.animate();
-                }
+                this.highlightCurrentVideo();
                 
                 // 現在の動画情報を取得して表示
                 if (this.playlistId && this.player.getVideoData) {
@@ -256,8 +238,6 @@ class ARIAMusicPlayer {
             case YT.PlayerState.PAUSED:
                 this.isPlaying = false;
                 this.updatePlayButton();
-                document.querySelector('.spatial-visualizer')?.classList.remove('playing');
-                this.targetIntensity = 0;
                 break;
             case YT.PlayerState.ENDED:
                 this.nextTrack();
@@ -432,14 +412,6 @@ class ARIAMusicPlayer {
     
     // Canvas Setup
     setupCanvas() {
-        // Spatial Canvas
-        this.spatialCanvas = document.getElementById('spatialCanvas');
-        if (this.spatialCanvas) {
-            this.spatialCtx = this.spatialCanvas.getContext('2d');
-            this.resizeCanvas();
-            window.addEventListener('resize', () => this.resizeCanvas());
-        }
-        
         // Waveform Canvas
         this.waveformCanvas = document.getElementById('waveform');
         if (this.waveformCanvas) {
@@ -450,215 +422,31 @@ class ARIAMusicPlayer {
         }
     }
     
-    resizeCanvas() {
-        if (this.spatialCanvas) {
-            this.spatialCanvas.width = this.spatialCanvas.offsetWidth;
-            this.spatialCanvas.height = this.spatialCanvas.offsetHeight;
-        }
-    }
-    
-    // Create Spatial Particles
-    createSpatialParticles() {
-        const particleCount = 50;
-        
-        for (let i = 0; i < particleCount; i++) {
-            this.particles.push({
-                x: Math.random() * (this.spatialCanvas?.width || 400),
-                y: Math.random() * (this.spatialCanvas?.height || 400),
-                z: Math.random() * 100 - 50,
-                vx: (Math.random() - 0.5) * 1,
-                vy: (Math.random() - 0.5) * 1,
-                vz: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 2 + 1,
-                opacity: Math.random() * 0.5 + 0.2,
-                color: this.getRandomColor(),
-                pulsePhase: Math.random() * Math.PI * 2
+    // Setup video items for YouTube section
+    setupVideoItems() {
+        const videoItems = document.querySelectorAll('.video-item');
+        videoItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                this.loadVideo(index);
+                // スクロールしてプレーヤーを表示
+                document.querySelector('.player-interface')?.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
             });
-        }
-    }
-    
-    getRandomColor() {
-        const colors = [
-            'rgba(167, 139, 250,',
-            'rgba(129, 140, 248,',
-            'rgba(192, 132, 252,',
-            'rgba(232, 121, 249,',
-            'rgba(244, 114, 182,',
-            'rgba(96, 165, 250,'
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-    
-    // Animation Loop
-    animate() {
-        // Canvasが存在しない場合は再試行
-        if (!this.spatialCtx || !this.spatialCanvas) {
-            // Canvasを再取得
-            this.spatialCanvas = document.getElementById('spatialCanvas');
-            if (this.spatialCanvas) {
-                this.spatialCtx = this.spatialCanvas.getContext('2d');
-                this.resizeCanvas();
-            }
-            this.animationId = requestAnimationFrame(() => this.animate());
-            return;
-        }
-        
-        // 背景を半透明で塗りつぶしてトレイル効果を作る
-        this.spatialCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-        this.spatialCtx.fillRect(0, 0, this.spatialCanvas.width, this.spatialCanvas.height);
-        
-        // Smooth intensity transition
-        this.visualizationIntensity += (this.targetIntensity - this.visualizationIntensity) * 0.1;
-        
-        // Draw center point
-        this.drawCenterPoint();
-        
-        // Update and draw particles
-        this.updateParticles();
-        this.drawParticles();
-        
-        // Draw frequency visualization if playing
-        if (this.isPlaying) {
-            this.drawFrequencyVisualization();
-        }
-        
-        this.animationId = requestAnimationFrame(() => this.animate());
-    }
-    
-    drawCenterPoint() {
-        if (!this.spatialCanvas || !this.spatialCtx) return;
-        
-        const centerX = this.spatialCanvas.width / 2;
-        const centerY = this.spatialCanvas.height / 2;
-        
-        // Center glow with pulsing effect
-        const pulseSize = 50 + (Math.sin(Date.now() * 0.002) * 10 * this.visualizationIntensity);
-        const gradient = this.spatialCtx.createRadialGradient(
-            centerX, centerY, 0,
-            centerX, centerY, pulseSize
-        );
-        gradient.addColorStop(0, `rgba(167, 139, 250, ${0.3 + this.visualizationIntensity * 0.3})`);
-        gradient.addColorStop(1, 'rgba(167, 139, 250, 0)');
-        
-        this.spatialCtx.fillStyle = gradient;
-        this.spatialCtx.beginPath();
-        this.spatialCtx.arc(centerX, centerY, pulseSize, 0, Math.PI * 2);
-        this.spatialCtx.fill();
-        
-        // Center point
-        this.spatialCtx.fillStyle = `rgba(167, 139, 250, ${0.8 + this.visualizationIntensity * 0.2})`;
-        this.spatialCtx.beginPath();
-        this.spatialCtx.arc(centerX, centerY, 3 + this.visualizationIntensity * 2, 0, Math.PI * 2);
-        this.spatialCtx.fill();
-    }
-    
-    updateParticles() {
-        if (!this.spatialCanvas) return;
-        
-        const centerX = this.spatialCanvas.width / 2;
-        const centerY = this.spatialCanvas.height / 2;
-        
-        this.particles.forEach(particle => {
-            // Update position
-            particle.x += particle.vx * (1 + this.visualizationIntensity * 0.5);
-            particle.y += particle.vy * (1 + this.visualizationIntensity * 0.5);
-            particle.z += particle.vz * (1 + this.visualizationIntensity * 0.5);
-            
-            // 3D to 2D projection
-            const scale = 1 + particle.z / 100;
-            const projectedX = centerX + (particle.x - centerX) * scale;
-            const projectedY = centerY + (particle.y - centerY) * scale;
-            
-            particle.projectedX = projectedX;
-            particle.projectedY = projectedY;
-            particle.projectedScale = scale;
-            
-            // Wrap around
-            if (particle.x < 0) particle.x = this.spatialCanvas.width;
-            if (particle.x > this.spatialCanvas.width) particle.x = 0;
-            if (particle.y < 0) particle.y = this.spatialCanvas.height;
-            if (particle.y > this.spatialCanvas.height) particle.y = 0;
-            if (particle.z < -50) particle.z = 50;
-            if (particle.z > 50) particle.z = -50;
-            
-            // Pulse effect
-            particle.pulsePhase += 0.05;
-            
-            // Music reactive
-            if (this.isPlaying) {
-                const audioLevel = Math.sin(Date.now() * 0.001 + particle.pulsePhase) * 0.5 + 0.5;
-                particle.radius = (Math.sin(particle.pulsePhase) * 0.5 + 1) * 2 * (0.5 + audioLevel * 0.5 * this.visualizationIntensity);
-                particle.opacity = 0.2 + audioLevel * 0.5 * this.visualizationIntensity;
-            }
         });
     }
     
-    drawParticles() {
-        if (!this.spatialCtx) return;
-        
-        // Sort by z-index (far to near)
-        const sortedParticles = [...this.particles].sort((a, b) => a.z - b.z);
-        
-        sortedParticles.forEach(particle => {
-            const size = particle.radius * particle.projectedScale;
-            
-            // Draw glow
-            const gradient = this.spatialCtx.createRadialGradient(
-                particle.projectedX, particle.projectedY, 0,
-                particle.projectedX, particle.projectedY, size * 3
-            );
-            gradient.addColorStop(0, particle.color + particle.opacity + ')');
-            gradient.addColorStop(1, particle.color + '0)');
-            
-            this.spatialCtx.fillStyle = gradient;
-            this.spatialCtx.beginPath();
-            this.spatialCtx.arc(particle.projectedX, particle.projectedY, size * 3, 0, Math.PI * 2);
-            this.spatialCtx.fill();
-            
-            // Draw core
-            this.spatialCtx.fillStyle = particle.color + (particle.opacity * 1.5) + ')';
-            this.spatialCtx.beginPath();
-            this.spatialCtx.arc(particle.projectedX, particle.projectedY, size, 0, Math.PI * 2);
-            this.spatialCtx.fill();
+    // Highlight current video in the grid
+    highlightCurrentVideo() {
+        const videoItems = document.querySelectorAll('.video-item');
+        videoItems.forEach((item, index) => {
+            if (index === this.currentTrackIndex) {
+                item.classList.add('playing');
+            } else {
+                item.classList.remove('playing');
+            }
         });
-    }
-    
-    drawFrequencyVisualization() {
-        if (!this.spatialCanvas || !this.spatialCtx) return;
-        
-        const centerX = this.spatialCanvas.width / 2;
-        const centerY = this.spatialCanvas.height / 2;
-        const maxRadius = Math.min(centerX, centerY) - 50;
-        
-        const bars = 48;
-        const barWidth = (Math.PI * 2) / bars;
-        
-        for (let i = 0; i < bars; i++) {
-            // シミュレートされた周波数データ
-            const time = Date.now() * 0.001;
-            const amplitude = (Math.sin(time * 2 + i * 0.5) * 0.3 + 
-                             Math.sin(time * 3 + i * 0.3) * 0.2 + 
-                             Math.sin(time * 5 + i * 0.1) * 0.1 + 0.4) * this.visualizationIntensity;
-            
-            const barHeight = amplitude * maxRadius;
-            
-            const angle = i * barWidth;
-            const x1 = centerX + Math.cos(angle) * 50;
-            const y1 = centerY + Math.sin(angle) * 50;
-            const x2 = centerX + Math.cos(angle) * (50 + barHeight);
-            const y2 = centerY + Math.sin(angle) * (50 + barHeight);
-            
-            const gradient = this.spatialCtx.createLinearGradient(x1, y1, x2, y2);
-            gradient.addColorStop(0, `rgba(167, 139, 250, ${amplitude})`);
-            gradient.addColorStop(1, `rgba(192, 132, 252, ${amplitude * 0.5})`);
-            
-            this.spatialCtx.strokeStyle = gradient;
-            this.spatialCtx.lineWidth = 2;
-            this.spatialCtx.beginPath();
-            this.spatialCtx.moveTo(x1, y1);
-            this.spatialCtx.lineTo(x2, y2);
-            this.spatialCtx.stroke();
-        }
     }
     
     // Generate Waveform
@@ -885,9 +673,6 @@ class ARIAMusicPlayer {
     
     // Cleanup
     destroy() {
-        if (this.animationId) {
-            cancelAnimationFrame(this.animationId);
-        }
         if (this.updateInterval) {
             clearInterval(this.updateInterval);
         }
@@ -917,28 +702,41 @@ document.addEventListener('DOMContentLoaded', () => {
             overflow: hidden;
         }
         
-        /* Playing state animations */
-        .spatial-visualizer.playing {
-            animation: visualizerGlow 2s ease-in-out infinite;
+        /* Playing state for video items */
+        .video-item.playing {
+            position: relative;
         }
         
-        @keyframes visualizerGlow {
+        .video-item.playing::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #a78bfa, #c084fc);
+            border-radius: 14px;
+            z-index: -1;
+            animation: playingGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes playingGlow {
             0%, 100% {
-                box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+                opacity: 0.5;
             }
             50% {
-                box-shadow: 0 0 40px rgba(167, 139, 250, 0.6);
+                opacity: 1;
             }
         }
         
-        /* Track artwork rotation */
+        /* Track artwork animation */
         .track-artwork img {
-            animation: rotate 20s linear infinite paused;
             border-radius: 8px;
+            transition: transform 0.3s ease;
         }
         
-        .spatial-visualizer.playing .track-artwork img {
-            animation-play-state: running;
+        .track-artwork:hover img {
+            transform: scale(1.05);
         }
         
         @keyframes rotate {
