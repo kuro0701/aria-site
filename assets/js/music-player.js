@@ -29,6 +29,13 @@ class ARIAMusicPlayer {
                 publishedAt: '2024-12-10'
             },
             {
+                videoId: 'TmhnNetBtMs',
+                title: 'DIGITAL ANGEL (Dolby Atmos)',
+                artist: 'ARIA',
+                album: '@NexusAria',
+                publishedAt: '2024-12-10'
+            },
+            {
                 videoId: '4-oAxJiFDmo',
                 title: 'Digital Harmony',
                 artist: 'ARIA',
@@ -36,8 +43,22 @@ class ARIAMusicPlayer {
                 publishedAt: '2024-12-10'
             },
             {
+                videoId: 'GqR9XtmLNHY',
+                title: 'Digital Harmony (Dolby Atmos)',
+                artist: 'ARIA',
+                album: '@NexusAria',
+                publishedAt: '2024-12-10'
+            },
+            {
                 videoId: 'fl09mV_RFjk',
                 title: 'Neon Dreams',
+                artist: 'ARIA',
+                album: '@NexusAria',
+                publishedAt: '2024-12-10'
+            },
+            {
+                videoId: 'ChslBhbSYpE',
+                title: 'Neon Dreams (Dolby Atmos)',
                 artist: 'ARIA',
                 album: '@NexusAria',
                 publishedAt: '2024-12-10'
@@ -70,8 +91,11 @@ class ARIAMusicPlayer {
         this.setupControls();
         this.setupProgressBar();
         this.createSpatialParticles();
-        this.animate();
         this.sortVideosByDate();
+        // アニメーションを遅延して開始
+        setTimeout(() => {
+            this.animate();
+        }, 100);
         
         // YouTube IFrame API の準備ができたら呼ばれる
         window.onYouTubeIframeAPIReady = () => {
@@ -217,6 +241,11 @@ class ARIAMusicPlayer {
                 this.updatePlayButton();
                 document.querySelector('.spatial-visualizer')?.classList.add('playing');
                 this.targetIntensity = 1;
+                
+                // Canvasを再初期化してアニメーションを確実に継続
+                if (!this.animationId) {
+                    this.animate();
+                }
                 
                 // 現在の動画情報を取得して表示
                 if (this.playlistId && this.player.getVideoData) {
@@ -464,12 +493,18 @@ class ARIAMusicPlayer {
     animate() {
         // Canvasが存在しない場合は再試行
         if (!this.spatialCtx || !this.spatialCanvas) {
+            // Canvasを再取得
+            this.spatialCanvas = document.getElementById('spatialCanvas');
+            if (this.spatialCanvas) {
+                this.spatialCtx = this.spatialCanvas.getContext('2d');
+                this.resizeCanvas();
+            }
             this.animationId = requestAnimationFrame(() => this.animate());
             return;
         }
         
-        // Clear canvas with very transparent background for smoother trail effect
-        this.spatialCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        // 背景を半透明で塗りつぶしてトレイル効果を作る
+        this.spatialCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
         this.spatialCtx.fillRect(0, 0, this.spatialCanvas.width, this.spatialCanvas.height);
         
         // Smooth intensity transition
@@ -491,7 +526,7 @@ class ARIAMusicPlayer {
     }
     
     drawCenterPoint() {
-        if (!this.spatialCanvas) return;
+        if (!this.spatialCanvas || !this.spatialCtx) return;
         
         const centerX = this.spatialCanvas.width / 2;
         const centerY = this.spatialCanvas.height / 2;
@@ -559,6 +594,8 @@ class ARIAMusicPlayer {
     }
     
     drawParticles() {
+        if (!this.spatialCtx) return;
+        
         // Sort by z-index (far to near)
         const sortedParticles = [...this.particles].sort((a, b) => a.z - b.z);
         
@@ -587,7 +624,7 @@ class ARIAMusicPlayer {
     }
     
     drawFrequencyVisualization() {
-        if (!this.spatialCanvas) return;
+        if (!this.spatialCanvas || !this.spatialCtx) return;
         
         const centerX = this.spatialCanvas.width / 2;
         const centerY = this.spatialCanvas.height / 2;
