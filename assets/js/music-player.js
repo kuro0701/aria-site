@@ -23,51 +23,24 @@ class ARIAMusicPlayer {
         this.videos = [
             {
                 videoId: '7hXsZkmDaic',
-                title: 'DIGITAL ANGEL (Ver.1)',
+                title: 'DIGITAL ANGEL',
                 artist: 'ARIA',
                 album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.1'
-            },
-            {
-                videoId: 'TmhnNetBtMs',
-                title: 'DIGITAL ANGEL (Ver.2)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.2 - Dolby Atmos'
+                publishedAt: '2024-12-10'
             },
             {
                 videoId: '4-oAxJiFDmo',
-                title: 'Digital Harmony (Ver.1)',
+                title: 'Digital Harmony',
                 artist: 'ARIA',
                 album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.1'
-            },
-            {
-                videoId: 'GqR9XtmLNHY',
-                title: 'Digital Harmony (Ver.2)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.2 - Dolby Atmos'
+                publishedAt: '2024-12-10'
             },
             {
                 videoId: 'fl09mV_RFjk',
-                title: 'Neon Dreams (Ver.1)',
+                title: 'Neon Dreams',
                 artist: 'ARIA',
                 album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.1'
-            },
-            {
-                videoId: 'ChslBhbSYpE',
-                title: 'Neon Dreams (Ver.2)',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                version: 'Ver.2 - Dolby Atmos'
+                publishedAt: '2024-12-10'
             }
         ];
         
@@ -343,17 +316,7 @@ class ARIAMusicPlayer {
         const trackInfoMini = document.querySelector('.track-info-mini');
         if (trackNameMini) trackNameMini.textContent = video.title || 'Loading...';
         if (trackInfoMini) {
-            const versionInfo = video.version ? ` [${video.version}]` : '';
-            trackInfoMini.textContent = `${video.artist || 'ARIA'} • ${video.album || '@NexusAria'}${versionInfo}`;
-        }
-        
-        // Ver.2の場合はAtmosボタンをアクティブに
-        if (video.version && video.version.includes('Ver.2')) {
-            document.getElementById('atmosBtn')?.classList.add('active');
-            document.getElementById('stereoBtn')?.classList.remove('active');
-        } else {
-            document.getElementById('stereoBtn')?.classList.add('active');
-            document.getElementById('atmosBtn')?.classList.remove('active');
+            trackInfoMini.textContent = `${video.artist || 'ARIA'} • ${video.album || '@NexusAria'}`;
         }
     }
     
@@ -499,13 +462,15 @@ class ARIAMusicPlayer {
     
     // Animation Loop
     animate() {
+        // Canvasが存在しない場合は再試行
         if (!this.spatialCtx || !this.spatialCanvas) {
             this.animationId = requestAnimationFrame(() => this.animate());
             return;
         }
         
-        // Clear canvas
-        this.spatialCtx.clearRect(0, 0, this.spatialCanvas.width, this.spatialCanvas.height);
+        // Clear canvas with very transparent background for smoother trail effect
+        this.spatialCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        this.spatialCtx.fillRect(0, 0, this.spatialCanvas.width, this.spatialCanvas.height);
         
         // Smooth intensity transition
         this.visualizationIntensity += (this.targetIntensity - this.visualizationIntensity) * 0.1;
@@ -704,20 +669,19 @@ class ARIAMusicPlayer {
             nextBtn.addEventListener('click', () => this.nextTrack());
         }
         
-        // Spatial Audio Buttons - Ver.1/Ver.2切り替え
-        const atmosBtn = document.getElementById('atmosBtn');
-        if (atmosBtn) {
-            atmosBtn.addEventListener('click', () => {
-                this.switchToVersion('Ver.2');
+        // 音楽プラットフォームのリンクを設定
+        // リンクは後でユーザーから提供される予定
+        const platformLinks = document.querySelectorAll('.platform-link');
+        platformLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href === '#') {
+                    e.preventDefault();
+                    console.log(`Platform link clicked: ${link.dataset.platform}`);
+                    // ユーザーにリンクが未設定であることを通知
+                    alert('音楽プラットフォームのリンクはまもなく設定されます');
+                }
             });
-        }
-        
-        const stereoBtn = document.getElementById('stereoBtn');
-        if (stereoBtn) {
-            stereoBtn.addEventListener('click', () => {
-                this.switchToVersion('Ver.1');
-            });
-        }
+        });
         
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -789,49 +753,6 @@ class ARIAMusicPlayer {
                 }
             }
         }, 100);
-    }
-    
-    // Version切り替え機能
-    switchToVersion(targetVersion) {
-        const currentVideo = this.videos[this.currentTrackIndex];
-        if (!currentVideo) return;
-        
-        // 現在の曲名からバージョン情報を除去
-        const baseName = currentVideo.title.replace(/\s*\(Ver\.\d\)/i, '');
-        
-        // 同じ曲の別バージョンを探す
-        const targetVideoIndex = this.videos.findIndex(video => {
-            const videoBaseName = video.title.replace(/\s*\(Ver\.\d\)/i, '');
-            return videoBaseName === baseName && video.version && video.version.includes(targetVersion);
-        });
-        
-        // 対象バージョンが見つかった場合は切り替え
-        if (targetVideoIndex !== -1 && targetVideoIndex !== this.currentTrackIndex) {
-            const wasPlaying = this.isPlaying;
-            const currentTime = this.player.getCurrentTime();
-            
-            // 新しいバージョンをロード
-            this.loadVideo(targetVideoIndex);
-            
-            // 同じ位置から再生を継続
-            setTimeout(() => {
-                if (this.playerReady && this.player.seekTo) {
-                    this.player.seekTo(currentTime, true);
-                    if (wasPlaying) {
-                        this.player.playVideo();
-                    }
-                }
-            }, 500);
-        }
-        
-        // ボタンの状態を更新
-        if (targetVersion === 'Ver.2') {
-            document.getElementById('atmosBtn')?.classList.add('active');
-            document.getElementById('stereoBtn')?.classList.remove('active');
-        } else {
-            document.getElementById('stereoBtn')?.classList.add('active');
-            document.getElementById('atmosBtn')?.classList.remove('active');
-        }
     }
     
     // Playback Controls
