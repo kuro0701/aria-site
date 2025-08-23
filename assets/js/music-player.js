@@ -20,65 +20,38 @@ class ARIAMusicPlayer {
         // 手動で管理する動画リスト - 最新リリースに更新
         // @NexusAria チャンネルの楽曲
         // 新しい曲を追加する場合: YouTube URLから watch?v=XXXXX のXXXXX部分をコピー
-        this.videos = [
-            {
-                videoId: 'Aethelburg_ID',  // 実際のIDに置き換えてください
-                title: 'Aethelburg',
-                artist: 'Aria Nexus',
-                album: 'アルバム',
-                publishedAt: new Date().toISOString().split('T')[0],
-                status: '本日更新',
-                isDolby: false
-            },
-            {
-                videoId: 'Singularity_ID',  // 実際のIDに置き換えてください
-                title: 'Singularity Genesis',
-                artist: 'Aria Nexus',
-                album: 'アルバム',
-                publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-                status: '更新: 2日前',
-                isDolby: false
-            },
-            {
-                videoId: 'Divine_ID',  // 実際のIDに置き換えてください
-                title: 'Divine Realms',
-                artist: 'Aria Nexus',
-                album: 'アルバム',
-                publishedAt: '2024-12-20',
-                status: '再生リストの全体を見る',
-                isDolby: false
-            },
-            {
-                videoId: 'Crypto_ID',  // 実際のIDに置き換えてください
-                title: 'Crypto assets',
-                artist: 'Aria Nexus',
-                album: 'アルバム',
-                publishedAt: '2024-12-19',
-                status: '再生リストの全体を見る',
-                isDolby: false
-            },
-            {
-                videoId: 'QUANTUM_ID',  // 実際のIDに置き換えてください
-                title: 'QUANTUM HEART',
-                artist: 'Aria Nexus',
-                album: 'アルバム',
-                publishedAt: '2024-12-18',
-                status: '再生リストの全体を見る',
-                isDolby: false
-            },
-            // 追加の楽曲（必要に応じて）
-            {
-                videoId: '7hXsZkmDaic',
-                title: 'DIGITAL ANGEL',
-                artist: 'ARIA',
-                album: '@NexusAria',
-                publishedAt: '2024-12-10',
-                isDolby: false
-            }
-        ];
+        this.videos = this.loadVideoList();
         
         // YouTubeプレイリストを使用する場合（オプション）
         this.playlistId = null; // 'YOUR_PLAYLIST_ID' を設定可能
+        
+        // 右側のプレーヤー専用の楽曲リスト
+        this.playerTracks = [
+            {
+                videoId: 'dQw4w9WgXcQ', // サンプル動画ID - 実際のIDに置き換えてください
+                title: 'DIGITAL ANGEL',
+                artist: 'ARIA',
+                album: 'Harmony Dimension',
+                duration: '3:47'
+            },
+            {
+                videoId: 'pTL_XZpYDzM', // サンプル動画ID - 実際のIDに置き換えてください
+                title: 'QUANTUM HEART',
+                artist: 'ARIA',
+                album: 'Nexus Collection',
+                duration: '4:12'
+            },
+            {
+                videoId: '7hXsZkmDaic', // サンプル動画ID - 実際のIDに置き換えてください
+                title: 'Singularity Genesis',
+                artist: 'ARIA',
+                album: 'Beyond Dimensions',
+                duration: '5:23'
+            }
+        ];
+        
+        // 現在のプレーヤートラックインデックス
+        this.currentPlayerTrackIndex = 0;
         
         // Waveform Canvas
         this.waveformCanvas = null;
@@ -97,6 +70,8 @@ class ARIAMusicPlayer {
         this.sortVideosByDate();
         this.renderYouTubeGrid();  // グリッドを描画
         this.setupVideoItems();
+        this.setupPlayerTrackControls(); // プレーヤートラックコントロールのセットアップ
+        this.updatePlayerTrackInfo(0); // 最初のトラック情報を表示
         
         // YouTube IFrame API の準備ができたら呼ばれる
         window.onYouTubeIframeAPIReady = () => {
@@ -110,6 +85,9 @@ class ARIAMusicPlayer {
         
         // 動画リスト更新ボタンの追加
         this.addUpdateButton();
+        
+        // ローカルストレージに動画リストを保存する機能
+        this.setupVideoListStorage();
     }
     
     // Render YouTube videos grid
@@ -161,6 +139,181 @@ class ARIAMusicPlayer {
         this.videos.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
     }
     
+    // 動画リストを読み込む（ローカルストレージから）
+    loadVideoList() {
+        // デフォルトの動画リスト
+        const defaultVideos = [
+            {
+                videoId: 'dQw4w9WgXcQ',  // サンプルID - 実際のIDに置き換え
+                title: 'Aethelburg',
+                artist: 'Aria Nexus',
+                album: 'Harmony Collection',
+                publishedAt: new Date().toISOString().split('T')[0],
+                status: '本日更新',
+                isDolby: false
+            },
+            {
+                videoId: 'pTL_XZpYDzM',  // サンプルID - 実際のIDに置き換え
+                title: 'Singularity Genesis',
+                artist: 'Aria Nexus',
+                album: 'Nexus Album',
+                publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                status: '更新: 2日前',
+                isDolby: true
+            },
+            {
+                videoId: '7hXsZkmDaic',  // サンプルID - 実際のIDに置き換え
+                title: 'Divine Realms',
+                artist: 'Aria Nexus',
+                album: 'Crystal Voice',
+                publishedAt: '2024-12-20',
+                status: '再生リストの全体を見る',
+                isDolby: false
+            },
+            {
+                videoId: 'kJQP7kiw5Fk',  // サンプルID - 実際のIDに置き換え
+                title: 'Crypto assets',
+                artist: 'Aria Nexus',
+                album: 'Digital Dreams',
+                publishedAt: '2024-12-19',
+                status: '再生リストの全体を見る',
+                isDolby: false
+            },
+            {
+                videoId: 'JGwWNGJdvx8',  // サンプルID - 実際のIDに置き換え
+                title: 'QUANTUM HEART',
+                artist: 'Aria Nexus',
+                album: 'Quantum Collection',
+                publishedAt: '2024-12-18',
+                status: '再生リストの全体を見る',
+                isDolby: true
+            },
+            {
+                videoId: '9bZkp7q19f0',  // サンプルID - 実際のIDに置き換え
+                title: 'DIGITAL ANGEL',
+                artist: 'ARIA',
+                album: '@NexusAria',
+                publishedAt: '2024-12-10',
+                isDolby: false
+            }
+        ];
+        
+        // ローカルストレージから読み込み
+        try {
+            const stored = localStorage.getItem('ariaVideoList');
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    return parsed;
+                }
+            }
+        } catch (e) {
+            console.log('Using default video list');
+        }
+        
+        return defaultVideos;
+    }
+    
+    // ローカルストレージのセットアップ
+    setupVideoListStorage() {
+        // 現在のリストを保存
+        this.saveVideoList();
+    }
+    
+    // 動画リストを保存
+    saveVideoList() {
+        try {
+            localStorage.setItem('ariaVideoList', JSON.stringify(this.videos));
+        } catch (e) {
+            console.error('Failed to save video list:', e);
+        }
+    }
+    
+    // プレーヤートラックコントロールのセットアップ
+    setupPlayerTrackControls() {
+        // プレーヤー用のトラックナビゲーション
+        const prevBtn = document.getElementById('prevTrack');
+        const nextBtn = document.getElementById('nextTrack');
+        
+        if (prevBtn) {
+            prevBtn.removeEventListener('click', this.previousTrack);
+            prevBtn.addEventListener('click', () => this.previousPlayerTrack());
+        }
+        
+        if (nextBtn) {
+            nextBtn.removeEventListener('click', this.nextTrack);
+            nextBtn.addEventListener('click', () => this.nextPlayerTrack());
+        }
+    }
+    
+    // プレーヤートラック情報を更新
+    updatePlayerTrackInfo(index) {
+        if (index < 0 || index >= this.playerTracks.length) return;
+        
+        const track = this.playerTracks[index];
+        this.currentPlayerTrackIndex = index;
+        
+        // トラック情報を更新
+        const trackTitle = document.getElementById('trackTitle');
+        const trackArtist = document.getElementById('trackArtist');
+        const trackAlbum = document.getElementById('trackAlbum');
+        
+        if (trackTitle) trackTitle.textContent = track.title;
+        if (trackArtist) trackArtist.textContent = track.artist;
+        if (trackAlbum) trackAlbum.textContent = track.album;
+        
+        // トラックインジケーターを更新
+        const trackCurrent = document.querySelector('.track-current');
+        const trackTotal = document.querySelector('.track-total');
+        if (trackCurrent) trackCurrent.textContent = index + 1;
+        if (trackTotal) trackTotal.textContent = this.playerTracks.length;
+        
+        // YouTube動画をロード
+        if (this.player && this.playerReady) {
+            this.player.loadVideoById(track.videoId);
+        }
+        
+        // アートワークを更新
+        this.updatePlayerArtwork(track);
+        
+        // YouTube リンクを更新
+        const youtubeLink = document.querySelector('.youtube-music-link');
+        if (youtubeLink && track.videoId) {
+            youtubeLink.href = `https://www.youtube.com/watch?v=${track.videoId}`;
+        }
+    }
+    
+    // プレーヤー用アートワークを更新
+    updatePlayerArtwork(track) {
+        const artworkContainer = document.querySelector('.track-artwork');
+        if (!artworkContainer) return;
+        
+        // YouTubeのサムネイルを使用
+        const thumbnailUrl = `https://img.youtube.com/vi/${track.videoId}/maxresdefault.jpg`;
+        const fallbackUrl = `https://img.youtube.com/vi/${track.videoId}/hqdefault.jpg`;
+        
+        artworkContainer.innerHTML = `
+            <img src="${thumbnailUrl}" 
+                 onerror="this.src='${fallbackUrl}'" 
+                 alt="${track.title}" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+            <div class="artwork-glow"></div>
+        `;
+    }
+    
+    // 次のプレーヤートラック
+    nextPlayerTrack() {
+        const nextIndex = (this.currentPlayerTrackIndex + 1) % this.playerTracks.length;
+        this.updatePlayerTrackInfo(nextIndex);
+    }
+    
+    // 前のプレーヤートラック
+    previousPlayerTrack() {
+        const prevIndex = this.currentPlayerTrackIndex === 0 ? 
+            this.playerTracks.length - 1 : this.currentPlayerTrackIndex - 1;
+        this.updatePlayerTrackInfo(prevIndex);
+    }
+    
     // 動画リスト更新用のUIを追加
     addUpdateButton() {
         const playerSection = document.querySelector('.music-player-section');
@@ -208,6 +361,7 @@ class ARIAMusicPlayer {
         };
         
         this.videos.unshift(newVideo); // 最新として先頭に追加
+        this.saveVideoList(); // ローカルストレージに保存
         this.renderYouTubeGrid(); // グリッドを再描画
         this.setupVideoItems(); // イベントリスナーを再設定
         this.displayVideoList();
@@ -218,6 +372,18 @@ class ARIAMusicPlayer {
         
         console.log('新しい動画を追加:', newVideo);
         console.log('現在のリスト:', this.videos);
+        
+        // プレーヤートラックリストにも追加するか確認
+        if (confirm('この曲をプレーヤーリストにも追加しますか？')) {
+            this.playerTracks.push({
+                videoId: newVideo.videoId,
+                title: newVideo.title,
+                artist: newVideo.artist,
+                album: newVideo.album,
+                duration: 'Unknown'
+            });
+            this.updatePlayerTrackInfo(this.playerTracks.length - 1);
+        }
     }
     
     // 動画リストを表示（管理者用）
@@ -233,10 +399,13 @@ class ARIAMusicPlayer {
     
     // YouTube Player の初期化
     initYouTubePlayer() {
+        // プレーヤー用のトラックを使用
+        const initialVideoId = this.playerTracks[0]?.videoId || this.videos[0]?.videoId || '';
+        
         const playerOptions = {
             height: '0',
             width: '0',
-            videoId: this.videos[0]?.videoId || '',
+            videoId: initialVideoId,
             playerVars: {
                 'autoplay': 0,
                 'controls': 0,

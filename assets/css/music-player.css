@@ -594,72 +594,191 @@
 }
 
 .platform-icon-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    transition: all 0.3s ease;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.08)
+    );
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
 }
 
-.platform-icon-wrapper svg {
-    width: 48px;
-    height: 48px;
-    transition: transform 0.3s ease;
+.platform-icon-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.05),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.platform-icon {
+    width: 56px;
+    height: 56px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    z-index: 1;
+    position: relative;
 }
 
 .platform-name {
     font-family: var(--font-primary);
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--color-text-primary);
     text-align: center;
     white-space: nowrap;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+    opacity: 0.85;
+    transition: all 0.4s ease;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    z-index: 1;
+    position: relative;
 }
 
 /* Platform hover effects */
 .platform-link:hover .platform-icon-wrapper {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.15)
+    );
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
-.platform-link:hover .platform-icon-wrapper svg {
-    transform: scale(1.15);
+.platform-link:hover .platform-icon-bg {
+    opacity: 1;
+}
+
+.platform-link:hover .platform-icon {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .platform-link:hover .platform-name {
     opacity: 1;
+    transform: translateY(-2px);
+    color: white;
 }
 
-/* Platform specific hover effects with glow */
+/* Platform specific hover effects with enhanced glow */
 .platform-link[data-platform="apple-music"]:hover .platform-icon-wrapper {
-    background: rgba(252, 60, 68, 0.15);
+    background: linear-gradient(
+        135deg,
+        rgba(252, 60, 68, 0.2),
+        rgba(250, 35, 60, 0.1)
+    );
     border-color: #fc3c44;
-    box-shadow: 0 8px 25px rgba(252, 60, 68, 0.4);
+    box-shadow: 
+        0 10px 40px rgba(252, 60, 68, 0.5),
+        0 0 60px rgba(252, 60, 68, 0.3),
+        inset 0 0 20px rgba(252, 60, 68, 0.1);
+}
+
+.platform-link[data-platform="apple-music"]:hover .platform-icon {
+    filter: drop-shadow(0 6px 20px rgba(252, 60, 68, 0.6));
 }
 
 .platform-link[data-platform="youtube-music"]:hover .platform-icon-wrapper {
-    background: rgba(255, 0, 0, 0.15);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.2),
+        rgba(204, 0, 0, 0.1)
+    );
     border-color: #ff0000;
-    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+    box-shadow: 
+        0 10px 40px rgba(255, 0, 0, 0.5),
+        0 0 60px rgba(255, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 0, 0, 0.1);
+}
+
+.platform-link[data-platform="youtube-music"]:hover .platform-icon {
+    filter: drop-shadow(0 6px 20px rgba(255, 0, 0, 0.6));
 }
 
 .platform-link[data-platform="amazon-music"]:hover .platform-icon-wrapper {
-    background: rgba(0, 168, 225, 0.15);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 168, 225, 0.2),
+        rgba(0, 153, 220, 0.1)
+    );
     border-color: #00a8e1;
-    box-shadow: 0 8px 25px rgba(0, 168, 225, 0.4);
+    box-shadow: 
+        0 10px 40px rgba(0, 168, 225, 0.5),
+        0 0 60px rgba(0, 168, 225, 0.3),
+        inset 0 0 20px rgba(0, 168, 225, 0.1);
+}
+
+.platform-link[data-platform="amazon-music"]:hover .platform-icon {
+    filter: drop-shadow(0 6px 20px rgba(0, 168, 225, 0.6));
 }
 
 .platform-link[data-platform="spotify"]:hover .platform-icon-wrapper {
-    background: rgba(30, 215, 96, 0.15);
+    background: linear-gradient(
+        135deg,
+        rgba(30, 215, 96, 0.2),
+        rgba(29, 185, 84, 0.1)
+    );
     border-color: #1ed760;
-    box-shadow: 0 8px 25px rgba(30, 215, 96, 0.4);
+    box-shadow: 
+        0 10px 40px rgba(30, 215, 96, 0.5),
+        0 0 60px rgba(30, 215, 96, 0.3),
+        inset 0 0 20px rgba(30, 215, 96, 0.1);
+}
+
+.platform-link[data-platform="spotify"]:hover .platform-icon {
+    filter: drop-shadow(0 6px 20px rgba(30, 215, 96, 0.6));
+}
+
+/* Active/Playing state for platforms */
+.platform-link.active .platform-icon-wrapper {
+    animation: platformPulse 2s ease-in-out infinite;
+}
+
+@keyframes platformPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Icon animation on hover */
+.platform-link:hover .platform-icon {
+    animation: iconBounce 0.6s ease-in-out;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotate(-3deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(5deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(-2deg);
+    }
 }
 
 /* Playlist Container */

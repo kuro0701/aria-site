@@ -22,28 +22,48 @@ https://www.youtube.com/watch?v=pTL_XZpYDzM
                                 この部分が動画ID
 ```
 
-### 2. 曲の追加方法
+### 2. 曲の追加方法（2つのリストを管理）
 
-#### 方法A: コードを直接編集
-`music-player.js`の`videos`配列に追加：
+#### 🎵 左側のグリッド表示用（videos配列）
+最新リリースや人気曲を表示するためのリスト：
 
 ```javascript
-this.videos = [
+// music-player.js の loadVideoList() 関数内
+const defaultVideos = [
     {
-        videoId: 'pTL_XZpYDzM',  // YouTube動画ID
-        title: 'DIGITAL ANGEL',   // 曲名
-        artist: 'ARIA',           // アーティスト名
-        album: 'Latest Release',  // アルバム名
-        publishedAt: '2024-12-01' // 公開日
+        videoId: 'dQw4w9WgXcQ',   // YouTube動画ID
+        title: 'Aethelburg',      // 曲名
+        artist: 'Aria Nexus',     // アーティスト名
+        album: 'Harmony Collection', // アルバム名
+        publishedAt: '2024-12-22', // 公開日
+        status: '本日更新',       // ステータス表示
+        isDolby: true            // Dolby Atmosかどうか
     },
-    // 新しい曲を追加
+    // 他の動画を追加...
+];
+```
+
+#### 🎧 右側のプレーヤー用（playerTracks配列）
+実際に再生する楽曲のリスト：
+
+```javascript
+// music-player.js のコンストラクタ内
+this.playerTracks = [
     {
-        videoId: 'YOUR_NEW_VIDEO_ID',
-        title: 'New Song Title',
+        videoId: 'dQw4w9WgXcQ',    // YouTube動画ID（必須）
+        title: 'DIGITAL ANGEL',    // 曲名
+        artist: 'ARIA',            // アーティスト名
+        album: 'Harmony Dimension', // アルバム名
+        duration: '3:47'           // 再生時間（オプション）
+    },
+    {
+        videoId: 'pTL_XZpYDzM',    // 別の曲のID
+        title: 'QUANTUM HEART',
         artist: 'ARIA',
-        album: '@NexusAria',
-        publishedAt: '2024-12-15'
-    }
+        album: 'Nexus Collection',
+        duration: '4:12'
+    },
+    // 最大10曲程度を推奨
 ];
 ```
 
@@ -54,6 +74,20 @@ this.videos = [
 3. 管理画面が表示される
 4. 動画IDとタイトルを入力
 5. 「追加」ボタンをクリック
+6. プレーヤーリストにも追加するか確認ダイアログが表示される
+
+#### 方法C: ローカルストレージを利用（自動保存）
+
+動画リストは自動的にブラウザのローカルストレージに保存されます：
+- 追加した動画は自動保存
+- ブラウザを閉じても保持
+- 別のブラウザでは別管理
+
+リセットしたい場合：
+```javascript
+localStorage.removeItem('ariaVideoList');
+location.reload();
+```
 
 ### 3. YouTubeプレイリストを使用する場合
 
@@ -163,14 +197,36 @@ createSpatialParticles() {
    - 異なるチャンネルの動画IDも追加可能
    - artistフィールドでアーティスト名を変更
 
-## 🚀 今後の拡張案
+## 🚀 実装済み機能と今後の拡張案
 
-- localStorage で曲リストを保存
+### ✅ 実装済み
+- ✓ localStorage で曲リストを保存
+- ✓ 2つの独立したプレイリスト管理
+- ✓ YouTube動画IDによる楽曲管理
+- ✓ 自動サムネイル取得
+- ✓ リッチな音楽プラットフォームアイコン
+
+### 📋 今後の拡張案
 - お気に入り機能
 - 再生履歴
 - シャッフル再生
 - リピート機能
 - 音量コントロール
+- プレイリストのエクスポート/インポート
+
+## 🎨 音楽プラットフォームアイコン
+
+各音楽プラットフォームへのリンクは、以下のように設定できます：
+
+```javascript
+// 音楽プラットフォームのリンクを設定
+const platformLinks = {
+    'apple-music': 'https://music.apple.com/jp/artist/your-artist-id',
+    'youtube-music': 'https://music.youtube.com/channel/your-channel-id',
+    'amazon-music': 'https://music.amazon.co.jp/artists/your-artist-id',
+    'spotify': 'https://open.spotify.com/artist/your-artist-id'
+};
+```
 
 ## 📞 サポート
 
