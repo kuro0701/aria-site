@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARIA Official Website</title>
-    
+    <title>Music - ARIA Official Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contents.css">
 </head>
 <body>
 
-    <header class="site-header">
+    <header class="site-header scrolled"> {/* 最初から背景を表示 */}
         <canvas id="particle-canvas"></canvas>
         <div class="header-container">
             <div class="logo">
@@ -21,24 +20,21 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    {/* ▼▼▼ リンク先を更新 ▼▼▼ */}
                     <li><a href="music.html">音楽</a></li>
                     <li><a href="blog.html">ブログ</a></li>
                     <li><a href="lyrics.html">歌詞</a></li>
-                    {/* ▲▲▲ リンク先を更新 ▲▲▲ */}
                 </ul>
             </nav>
-            </div>
+        </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="hero-image-container"></div>
-            <div class="hero-tagline">
-                <h1>一人で、千の声を織る。</h1>
-                <p>Atmosネイティブ・ソロアーティスト</p>
-            </div>
-        </section>
+        <div class="contents-page">
+            <h1 class="page-title">MUSIC</h1>
+            <section class="contents-section">
+                <p>ここに音楽コンテンツが入ります。</p>
+            </section>
+        </div>
     </main>
 
     <script src="js/main.js"></script>

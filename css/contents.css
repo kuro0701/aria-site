@@ -1,0 +1,24 @@
+/* --- 下層ページ共通スタイル --- */
+.contents-page {
+    padding: 150px 40px 50px; /* ヘッダーの高さ分 + 余白 */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.contents-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 8px;
+    min-height: 50vh;
+}
