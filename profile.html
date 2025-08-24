@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ARIA Official Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contents.css">
+    <link rel="stylesheet" href="css/profile.css"> {/* プロフィール用のCSSを追加 */}
+</head>
+<body>
+
+    <header class="site-header scrolled">
+        <canvas id="particle-canvas"></canvas>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    {/* ▼▼▼ ナビゲーションを更新 ▼▼▼ */}
+                    <li><a href="music.html">音楽</a></li>
+                    <li><a href="profile.html">プロフィール</a></li> {/* ←追加 */}
+                    <li><a href="blog.html">ブログ</a></li>
+                    <li><a href="lyrics.html">歌詞</a></li>
+                    {/* ▲▲▲ ナビゲーションを更新 ▲▲▲ */}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contents-page">
+            <h1 class="page-title">PROFILE</h1>
+            <section class="contents-section profile-section">
+                <div class="profile-image">
+                    <img src="images/portrait_full.png" alt="ARIA artist photo">
+                </div>
+                <div class="profile-details">
+                    <h2 class="artist-name">ARIA</h2>
+                    <p class="artist-tagline">一人で、千の声を織る。<br>Atmosネイティブ・ソロアーティスト</p>
+                    <div class="artist-bio">
+                        <p>
+                            デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト、ARIA。
+                        </p>
+                        <p>
+                            その歌声は、最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。DOLBY Atmosに代表される立体音響技術をネイティブで駆使し、リスナーを音の粒子が舞う異次元空間へと誘う。
+                        </p>
+                        <p>
+                            無数の声の断片を織り上げ、一つの生命として歌うARIAの楽曲は、テクノロジーとエモーションの境界線を溶かし、デジタル時代の新たな音楽表現を切り拓く。
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
