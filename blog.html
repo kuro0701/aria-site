@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contents.css">
+    <link rel="stylesheet" href="css/blog.css"> {/* ブログ一覧用のCSSを新たに追加 */}
 </head>
 <body>
 
@@ -21,6 +22,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="music.html">音楽</a></li>
+                    <li><a href="profile.html">プロフィール</a></li>
                     <li><a href="blog.html">ブログ</a></li>
                     <li><a href="lyrics.html">歌詞</a></li>
                 </ul>
@@ -32,7 +34,20 @@
         <div class="contents-page">
             <h1 class="page-title">BLOG</h1>
             <section class="contents-section">
-                <p>ここにブログコンテンツが入ります。</p>
+                <ul class="blog-list">
+                    <li class="blog-item">
+                        <a href="blog/post-20250826.html" class="blog-link">
+                            <div class="blog-thumbnail">
+                                <img src="images/blog_interview_header.png" alt="">
+                            </div>
+                            <div class="blog-info">
+                                <time class="blog-date" datetime="2025-08-26">2025.08.26</time>
+                                <h2 class="blog-title">ARIA独占インタビュー：一人で千の声を織る、Atmosネイティブ・アーティストの素顔に迫る</h2>
+                                <p class="blog-excerpt">新世代ヴァーチャルアーティストARIAの独占インタビュー。彼女の音楽の核心である「千の声」「Atmosネイティブ」の秘密、そしてその素顔に迫ります。</p>
+                            </div>
+                        </a>
+                    </li>
+                    </ul>
             </section>
         </div>
     </main>
