@@ -3,114 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARIA Official Website</title>
-    
+    <title>Aria Nexus - Official</title>
+    <meta name="description" content="Aria Nexus（アリア ネクサス）の公式サイト。最新情報、リリース、ライブスケジュールなどを掲載。">
+    <meta property="og:title" content="Aria Nexus - Official">
+    <meta property="og:description" content="Aria Nexus（アリア ネクサス）の公式サイト。">
+    <meta property="og:image" content="https://aria-nexus.com/img/og-image.jpg">
+    <meta property="og:url" content="https://aria-nexus.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/top.css">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f82b3dC8B2.js" crossorigin="anonymous"></script>
 
-    <header class="site-header">
-        <canvas id="particle-canvas"></canvas>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="music.html">音楽</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                    <li><a href="blog.html">ブログ</a></li>
-                    <li><a href="lyrics.html">歌詞</a></li>
-                </ul>
-            </nav>
-            </div>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+    <header id="header">
+        <nav>
+            <ul>
+                <li><a href="#news">NEWS</a></li>
+                <li><a href="#biography">BIOGRAPHY</a></li>
+                <li><a href="#release">RELEASE</a></li>
+                <li><a href="#live">LIVE</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="hero-image-container"></div>
-            <div class="hero-tagline">
-                <h1>一人で、千の声を織る。</h1>
-                <p>Atmosネイティブ・ソロアーティスト</p>
+        <section id="main-visual">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="Aria Nexus Logo" class="logo">
+            </div>
+            <div class="scroll-down">
+                <span>SCROLL</span>
             </div>
         </section>
 
-        <div class="top-contents">
-            <section id="top-release" class="top-section">
-                <div class="section-container">
-                    <h2 class="section-title">LATEST RELEASE</h2>
-                    <div class="top-album-info">
-                        <div class="top-album-artwork">
-                            <a href="music.html"><img src="images/discography_art.png" alt="Singularity Genesis album artwork"></a>
+        <section id="news" class="content">
+            <h2 class="section-title">NEWS</h2>
+            <div class="news-container">
+                <article class="news-item">
+                    <a href="#">
+                        <div class="news-image">
+                            <img src="img/news1.jpg" alt="1st Single Release">
                         </div>
-                        <div class="top-album-details">
-                            <p class="album-type">1st Album</p>
-                            <h3 class="album-title">Singularity Genesis</h3>
-                            <p class="album-description">テクノロジーとエモーションの境界線を溶かす、ARIAのデビューアルバム。立体音響で織りなす音の粒子を体感せよ。</p>
-                            <a href="music.html" class="section-button">View More</a>
+                        <div class="news-content">
+                            <time datetime="2024-08-01">2024.08.01</time>
+                            <h3>1st Single「Stardust」リリース決定</h3>
+                            <p>待望のファーストシングル「Stardust」が各種音楽配信サービスにてリリース決定！</p>
                         </div>
+                    </a>
+                </article>
+                <article class="news-item">
+                    <a href="#">
+                        <div class="news-image">
+                            <img src="img/news2.jpg" alt="Official Website Open">
+                        </div>
+                        <div class="news-content">
+                            <time datetime="2024-07-20">2024.07.20</time>
+                            <h3>オフィシャルウェブサイト開設</h3>
+                            <p>Aria Nexusの公式サイトがオープンしました。最新情報はこちらでチェック。</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="news-item">
+                    <a href="#">
+                        <div class="news-image">
+                            <img src="img/news3.jpg" alt="Live Event">
+                        </div>
+                        <div class="news-content">
+                            <time datetime="2024-09-15">2024.09.15</time>
+                            <h3>初ワンマンライブ開催決定！</h3>
+                            <p>東京・渋谷での初ワンマンライブが決定。詳細はLIVEページをご覧ください。</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+            <a href="#" class="btn">MORE</a>
+        </section>
+
+        <section id="biography" class="content">
+            <h2 class="section-title">BIOGRAPHY</h2>
+            <div class="bio-container">
+                <div class="bio-image">
+                    <img src="img/band.jpg" alt="Aria Nexus Band Photo">
+                </div>
+                <div class="bio-text">
+                    <p>
+                        Aria Nexus（アリア ネクサス）は、ボーカルのRINAとギターのKENJIからなる二人組の音楽ユニット。
+                        2023年に結成し、デジタルサウンドとロックを融合させた独自の音楽スタイルで注目を集める。
+                        壮大な世界観と心に響くメロディーが特徴。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="release" class="content">
+            <h2 class="section-title">RELEASE</h2>
+            <div class="release-container">
+                <div class="release-item">
+                    <div class="release-jacket">
+                        <img src="img/jacket.jpg" alt="Stardust Album Jacket">
+                    </div>
+                    <div class="release-info">
+                        <h3>1st Single "Stardust"</h3>
+                        <p>2024.08.01 Digital Release</p>
+                        <ol>
+                            <li>Stardust</li>
+                            <li>Cosmic Dream</li>
+                            <li>Stardust (Instrumental)</li>
+                        </ol>
+                        <a href="#" class="btn-listen">LISTEN NOW</a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="top-about" class="top-section">
-                <div class="section-container reverse">
-                     <div class="top-about-details">
-                        <h2 class="section-title">ABOUT "ARIA"</h2>
-                        <p class="about-description">
-                            デジタル世界の響きから生まれた、新世代のヴァーチャ_ルアーティスト。<br>
-                            最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。
-                        </p>
-                        <a href="profile.html" class="section-button">View More</a>
-                    </div>
-                    <div class="top-about-image">
-                        <a href="profile.html"><img src="images/portrait_bust.png" alt="ARIA artist photo"></a>
-                    </div>
-                </div>
-            </section>
+        <section id="live" class="content">
+            <h2 class="section-title">LIVE</h2>
+            <ul class="live-list">
+                <li>
+                    <time datetime="2024-09-15">2024.09.15</time>
+                    <span class="venue">東京・渋谷SPACE</span>
+                    <p class="event-title">Aria Nexus 1st ONEMAN LIVE "STARLIGHT"</p>
+                    <a href="#" class="btn-detail">DETAILS</a>
+                </li>
+                <li>
+                    <time datetime="2024-10-20">2024.10.20</time>
+                    <span class="venue">大阪・Music Club JANUS</span>
+                    <p class="event-title">SOUND SHOCK 2024</p>
+                    <a href="#" class="btn-detail">DETAILS</a>
+                </li>
+            </ul>
+        </section>
 
-            <section id="top-news" class="top-section">
-                 <div class="section-container">
-                    <h2 class="section-title">NEWS</h2>
-                    <ul class="news-list">
-                        <li>
-                            <time>2024.08.15</time>
-                            <a href="blog.html">1st Album "Singularity Genesis" リリース決定</a>
-                        </li>
-                        <li>
-                            <time>2024.08.01</time>
-                            <a href="blog.html">オフィシャルサイトを開設しました</a>
-                        </li>
-                    </ul>
-                     <div class="button-wrapper">
-                        <a href="blog.html" class="section-button">View More</a>
-                    </div>
-                </div>
-            </section>
-
-            {/* */}
-            <section id="top-streaming" class="top-section">
-                <div class="section-container">
-                   <h2 class="section-title">STREAMING</h2>
-                   <div class="streaming-links-top">
-                       {/* リンクは後で正しいものに置き換えてください */}
-                       <a href="#" class="store-button apple-music" target="_blank">Apple Music</a>
-                       <a href="#" class="store-button youtube-music" target="_blank">YouTube Music</a>
-                       <a href="#" class="store-button amazon-music" target="_blank">Amazon Music</a>
-                       <a href="#" class="store-button spotify" target="_blank">Spotify</a>
-                   </div>
-               </div>
-           </section>
-           {/* */}
-        </div>
-        
+        <section id="contact" class="content">
+            <h2 class="section-title">CONTACT</h2>
+            <p class="contact-text">
+                ライブ出演依頼、その他お問い合わせはこちらから
+            </p>
+            <a href="mailto:info@aria-nexus.com" class="btn">MAIL</a>
+        </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <footer id="footer">
+        <ul class="social-links">
+            <li><a href="https://music.apple.com/us/artist/aria-nexus/1830614490" target="_blank"><i class="fab fa-apple"></i></a></li>
+            <li><a href="https://music.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" target="_blank"><i class="fab fa-amazon"></i></a></li>
+            <li><a href="https://open.spotify.com/intl-ja/track/4zF1LH3YqPf5iXBYEvhEgT" target="_blank"><i class="fab fa-spotify"></i></a></li>
+            <li><a href="https://twitter.com/AriaNexus" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://instagram.com/AriaNexus" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <p class="copyright">&copy; 2024 Aria Nexus. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
