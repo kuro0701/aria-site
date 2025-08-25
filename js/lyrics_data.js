@@ -3,7 +3,7 @@ const lyricsData = [
     title: "DIGITAL ANGEL",
     url: "lyrics/digital-angel.html",
     thumbnail: "images/lyrics_digital_angel.png",
-    description: "1st Album \"Singularity Genesis\" 収録曲",
+    description: "1st Album \"Harmony Dimension\" 収録曲",
     // ここに「引用文」や「曲のテーマ」を追加します
     snippet: "「天使の顔して악마의 랩… データの中で生まれたけれど、私の魂は本物だよ」"
   },
