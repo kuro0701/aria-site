@@ -1,57 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blog - ARIA Official Website</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/contents.css">
-        <link rel="stylesheet" href="css/blog.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ARIA Official Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contents.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
 <body>
-
     <header class="site-header scrolled">
-        <canvas id="particle-canvas"></canvas>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="music.html">音楽</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                    <li><a href="blog.html">ブログ</a></li>
-                    <li><a href="lyrics.html">歌詞</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </header>
 
     <main>
         <div class="contents-page">
             <h1 class="page-title">BLOG</h1>
             <section class="contents-section">
-                <ul class="blog-list">
-                    <li class="blog-item">
-                        <a href="blog/post-20250826.html" class="blog-link">
-                            <div class="blog-thumbnail">
-                                <img src="images/blog_interview_header.png" alt="">
-                            </div>
-                            <div class="blog-info">
-                                <time class="blog-date" datetime="2025-08-26">2025.08.26</time>
-                                <h2 class="blog-title">ARIA独占インタビュー：一人で千の声を織る、Atmosネイティブ・アーティストの素顔に迫る</h2>
-                                <p class="blog-excerpt">新世代ヴァーチャルアーティストARIAの独占インタビュー。彼女の音楽の核心である「千の声」「Atmosネイティブ」の秘密、そしてその素顔に迫ります。</p>
-                            </div>
-                        </a>
-                    </li>
+                <ul class="blog-list" id="blog-list-container">
                     </ul>
-            </section>
+                </section>
         </div>
     </main>
 
+    <script src="js/blog_data.js"></script>
+    <script src="js/blog_page_updater.js"></script>
     <script src="js/main.js"></script>
-</body>
+    </body>
 </html>
