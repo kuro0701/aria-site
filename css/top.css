@@ -1,184 +1,52 @@
-/* --- トップページ コンテンツエリア --- */
-.top-contents {
-    padding: 80px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex; /* ▼▼▼ 追加 ▼▼▼ */
-    flex-direction: column; /* ▼▼▼ 追加 ▼▼▼ */
-    gap: 80px; /* ▼▼▼ 'margin-bottom' から 'gap' に変更 ▼▼▼ */
+/* --- LATEST RELEASE セクション --- */
+/* (...既存のスタイル...) */
+
+/* --- ABOUT セクション --- */
+/* (..既存のスタイル...) */
+
+/* --- NEWS セクション --- */
+/* (...既存のスタイル...) */
+
+
+/* --- ▼▼▼ ここから追加 ▼▼▼ --- */
+/* --- STREAMING セクション --- */
+#top-streaming .section-container {
+    display: block;
 }
 
-.top-section {
-    /* margin-bottom: 100px; */ /* ← 不要になるので削除 */
-    background-color: rgba(255, 255, 255, 0.05); /* ▼▼▼ 追加 ▼▼▼ */
-    padding: 60px; /* ▼▼▼ 追加 ▼▼▼ */
-    border-radius: 8px; /* ▼▼▼ 追加 ▼▼▼ */
-}
-
-.section-container {
+.streaming-links-top {
     display: flex;
-    gap: 50px;
-    align-items: center;
-}
-/* 画像とテキストを左右反転させるための設定 */
-.section-container.reverse {
-    flex-direction: row-reverse;
+    justify-content: center;
+    flex-wrap: wrap; /* ボタンが多くなった時に折り返す */
+    gap: 20px;
 }
 
-.section-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    margin-bottom: 40px;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-align: center;
-    margin-top: 0; /* ▼▼▼ 追加 ▼▼▼ */
-}
-
-.section-button {
+/* contents.cssからスタイルを一部拝借・調整 */
+.store-button {
     display: inline-block;
-    padding: 12px 35px;
-    border: 2px solid #00f2ff;
+    padding: 12px 30px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    color: #00f2ff;
     transition: all 0.3s ease;
-    letter-spacing: 1px;
-    margin-top: 30px;
-}
-
-.section-button:hover {
-    background-color: #00f2ff;
-    color: #0a0a14;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-}
-
-/* --- LATEST RELEASE セクション --- */
-.top-album-artwork {
-    flex: 1;
-    max-width: 400px;
-}
-.top-album-artwork img {
-    width: 100%;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.top-album-artwork a:hover img {
-    transform: scale(1.03);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-}
-
-.top-album-details {
-    flex: 1.2;
-}
-.album-type {
-    font-size: 1.1rem;
-    color: #a0a0b0;
-}
-.album-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 2.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #00f2ff, #c18cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-}
-.album-description {
-    color: #e0e0e0;
-    line-height: 1.8;
-}
-
-/* --- ABOUT セクション --- */
-.top-about-details {
-    flex: 1.2;
-}
-.top-about-image {
-    flex: 1;
-    max-width: 400px;
-}
-.top-about-image img {
-    width: 100%;
-    border-radius: 50%; /* 円形に切り抜き */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.top-about-image a:hover img {
-     transform: scale(1.05);
-     box-shadow: 0 0 40px rgba(193, 140, 255, 0.5);
-}
-.about-description {
-    color: #e0e0e0;
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-/* --- NEWS セクション --- */
-#top-news .section-container {
-    display: block; /* Flexboxを使わず縦並びに */
-}
-.news-list {
-    list-style: none;
-    padding: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.news-list li {
-    padding: 25px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-.news-list time {
-    font-family: 'Rajdhani', sans-serif;
-    color: #808090;
+    border: 2px solid transparent;
     font-size: 1rem;
+    letter-spacing: 1px;
 }
-.news-list a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-.news-list a:hover {
-    color: #00f2ff;
-}
-.button-wrapper {
-    text-align: center;
-}
+
+.apple-music { background-color: #ffffff; color: #000000; }
+.apple-music:hover { background-color: transparent; color: #ffffff; border-color: #ffffff; }
+
+.youtube-music { background-color: #ff0000; color: #ffffff; }
+.youtube-music:hover { background-color: transparent; color: #ff0000; border-color: #ff0000; }
+
+.amazon-music { background-color: #00A8E1; color: #ffffff; }
+.amazon-music:hover { background-color: transparent; color: #00A8E1; border-color: #00A8E1; }
+
+.spotify { background-color: #1DB954; color: #ffffff; }
+.spotify:hover { background-color: transparent; color: #1DB954; border-color: #1DB954; }
+/* --- ▲▲▲ ここまで追加 ▲▲▲ --- */
 
 
 /* --- レスポンス対応 --- */
-@media (max-width: 820px) {
-    /* ▼▼▼ paddingを調整 ▼▼▼ */
-    .top-contents {
-        padding: 60px 20px;
-        gap: 60px;
-    }
-    .top-section {
-        padding: 40px 25px;
-    }
-    /* ▲▲▲ paddingを調整 ▲▲▲ */
-
-    .section-container, .section-container.reverse {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .top-album-artwork, .top-about-image {
-        max-width: 100%;
-    }
-    .section-title, .album-title {
-        text-align: center;
-    }
-    .top-album-details, .top-about-details {
-       text-align: center;
-    }
-    .news-list li {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-}
+/* (...既存のスタイル...) */
