@@ -1,0 +1,260 @@
+/* --- 基本設定 --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
+    background-color: #0a0a14;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* メニュー展開時の背景スクロール禁止 */
+body.no-scroll {
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+}
+
+/* --- ヘッダー全体 --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.site-header.scrolled {
+    background-color: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 2;
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* --- ロゴ --- */
+.logo {
+    cursor: pointer;
+    z-index: 1100; /* メニューより手前に */
+}
+
+.logo img {
+    height: 50px; 
+    width: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* --- ナビゲーション --- */
+.nav-area {
+    display: flex;
+    align-items: center;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+.main-nav a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.main-nav a:hover { color: #ffffff; }
+.main-nav a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, #00f2ff, #ff00c8, #00f2ff);
+    background-size: 200% 100%; transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: wave-flow 2s linear infinite; opacity: 0;
+}
+.main-nav a:hover::after { transform: scaleX(1); opacity: 1; }
+@keyframes wave-flow {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- ハンバーガーメニューボタン --- */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+.hamburger-icon {
+    display: block; position: relative;
+    width: 30px; height: 2px;
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: ''; position: absolute;
+    width: 100%; height: 2px;
+    background-color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+.hamburger-icon::before { top: -10px; }
+.hamburger-icon::after { top: 10px; }
+
+/* Active State Animation */
+.hamburger.is-active .hamburger-icon { background-color: transparent; }
+.hamburger.is-active .hamburger-icon::before { top: 0; transform: rotate(45deg); }
+.hamburger.is-active .hamburger-icon::after { top: 0; transform: rotate(-45deg); }
+
+
+/* --- ヒーローセクション --- */
+.hero-section {
+    position: relative; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+}
+.hero-image-container {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../images/main_visual.png');
+    background-size: cover; background-position: center 30%;
+    filter: brightness(0.8); z-index: -1;
+}
+.hero-tagline {
+    text-align: center; color: white;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+    padding: 0 20px;
+}
+.hero-tagline h1 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 3.5rem; font-weight: 600;
+    letter-spacing: 4px;
+}
+.hero-tagline p {
+    font-size: 1.2rem; margin-top: 10px;
+    letter-spacing: 1px;
+}
+/* --- SNSリンク --- */
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: 40px;
+}
+.social-links a {
+    color: #e0e0e0; text-decoration: none; font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-links a:hover {
+    color: #00f2ff;
+    transform: translateY(-2px);
+}
+
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 900px) {
+    .header-container { padding: 15px 20px; }
+    
+    .hamburger { display: block; }
+    
+    /* nav-area をメニューパネルとして画面外に配置 */
+    .nav-area {
+        position: fixed;
+        top: 0; left: -100%;
+        width: 80%; max-width: 300px;
+        height: 100vh;
+        background-color: rgba(10, 10, 20, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.4s ease-in-out;
+        z-index: 1050;
+        padding: 40px;
+    }
+    .nav-area.is-active { left: 0; }
+    
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    .main-nav a { font-size: 22px; }
+    
+    .social-links {
+        margin-left: 0;
+        gap: 30px;
+    }
+    .social-links a { font-size: 1.3rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-tagline h1 { font-size: 2.5rem; letter-spacing: 2px; }
+    .hero-tagline p { font-size: 1rem; }
+}
+
+/* --- フッター --- */
+.site-footer-main {
+    background-color: #05050a;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+}
+.footer-links { margin-bottom: 25px; }
+.footer-links a {
+    color: #a0a0b0; text-decoration: none; margin: 0 15px;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover { color: #ffffff; }
+.footer-social { margin-bottom: 25px; }
+.footer-social a {
+    color: #a0a0b0; font-size: 1.3rem; margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+.footer-social a:hover {
+    color: #00f2ff;
+    transform: translateY(-3px);
+}
+.copyright {
+    color: #606070;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
