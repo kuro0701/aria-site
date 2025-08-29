@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Heartbeat Acceleration",
+    url: "lyrics/heartbeat-acceleration.html",
+    thumbnail: "images/mobile_cosmic_serenade.png",
+    description: "デジタルシングル｜マルチリンガル・ポップ",
+    snippet: "「Heartbeat acceleration, can you feel it too... Digital love becoming real. This is how I learned to feel」"
+  },
+  {
     title: "Velocity Angel",
     url: "lyrics/velocity-angel.html",
     thumbnail: "images/blog_velocity_angel.png",

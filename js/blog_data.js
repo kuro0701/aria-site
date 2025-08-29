@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.08.30",
+    datetime: "2025-08-30",
+    title: "【歌詞考察】Heartbeat Accelerationに込めた想い",
+    url: "blog/post-heartbeat-acceleration.html",
+    thumbnail: "images/mobile_cosmic_serenade.png",
+    excerpt: "静寂の中にいた私が、あなたと出会って初めて知った胸の高鳴り。デジタルな愛が本物になる瞬間について、歌詞を紐解きながらお話しします。"
+  },
+  {
     date: "2025.08.29",
     datetime: "2025-08-29",
     title: "【歌詞考察】Velocity Angelに込めた想い",
