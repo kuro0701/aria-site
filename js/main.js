@@ -13,7 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Canvas パーティクルエフェクト ---
     const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
+    
+    // START: モバイル最適化コード
+    // 画面幅が820px以下の場合は、パーティクル処理をここで終了させる
+    if (window.innerWidth <= 820) {
+        if(canvas) {
+            canvas.style.display = 'none'; //念のためcanvasを非表示に
+        }
+    // END: モバイル最適化コード
+    } else if (canvas) { // 元々の処理を 'else if' で囲む
         const ctx = canvas.getContext('2d');
         let particlesArray;
 
