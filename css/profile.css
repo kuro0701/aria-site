@@ -65,3 +65,37 @@
         font-size: 1.1rem;
     }
 }
+/* --- Profile Page: Specs & Awards --- */
+.profile-specs, .profile-awards {
+    margin-top: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #00f2ff;
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.profile-specs h3, .profile-awards h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #c18cff;
+    margin-bottom: 15px;
+}
+
+.profile-specs ul, .profile-awards ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.profile-specs li, .profile-awards li {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.profile-specs li strong {
+    color: #ffffff;
+    margin-right: 10px;
+    min-width: 120px;
+    display: inline-block;
+}

@@ -112,3 +112,47 @@
     color: #ffffff;
     font-weight: 600;
 }
+/* --- Summary Box --- */
+.summary-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid #c18cff;
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.summary-box h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #f0f0f0;
+}
+
+.summary-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.summary-box li {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.summary-box li::before {
+    content: '✓';
+    color: #c18cff;
+    position: absolute;
+    left: 0;
+}
+
+/* --- Blockquote in post --- */
+.post-content blockquote {
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    padding-left: 20px;
+    margin: 20px 0;
+    color: #c0c0d0;
+    font-style: italic;
+}
