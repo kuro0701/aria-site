@@ -18,6 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARIA Official Website</title>
+    <meta name="description" content="デジタル世界の響きから生まれた、新世代のヴァーチャルアーティストARIA。最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出します。">
+    <link rel="canonical" href="https://www.aria-project.com/index.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
@@ -33,10 +35,10 @@
                 <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
             </div>
 
-            <button class="hamburger" aria-label="メニューを開く">
+            <button class="hamburger" aria-label="メニューを開く" aria-controls="navigation">
                 <span class="hamburger-icon"></span>
             </button>
-            <div class="nav-area">
+            <div class="nav-area" id="navigation">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="music.html">音楽</a></li>
@@ -47,80 +49,78 @@
                     </ul>
                 </nav>
                 <div class="social-links">
-                    <a href="https://x.com/NexusAria" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/arianexus2/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@arianexus" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
+        <section class="hero-section" aria-labelledby="hero-title">
             <div class="hero-image-container"></div>
             <div class="hero-tagline">
-                <h1>一人で、千の声を織る。</h1>
+                <h1 id="hero-title">一人で、千の声を織る。</h1>
                 <p>Atmosネイティブ・ソロアーティスト</p>
             </div>
         </section>
 
-        <div class="top-contents">
-            <section id="top-release" class="top-section">
-                <div class="section-container">
-                    <div class="top-album-info">
-                        <div class="top-album-artwork">
-                            <a href="music.html"><img src="images/discography_art.png" alt="Singularity Genesis album artwork"></a>
-                        </div>
-                        <div class="top-album-details">
-                            <p class="album-type">New Album</p>
-                            <h3 class="album-title">Singularity Genesis</h3>
-                            <p class="album-description">テクノロジーとエモーションの境界線を溶かす、ARIAのデビューアルバム。立体音響で織りなす音の粒子を体感せよ。</p>
-                            <a href="music.html" class="section-button">View More</a>
-                        </div>
+        <section id="top-release" class="top-section" aria-labelledby="release-title">
+            <div class="section-container">
+                <div class="top-album-info">
+                    <div class="top-album-artwork">
+                        <a href="music.html"><img src="images/discography_art.png" alt="Singularity Genesis album artwork"></a>
+                    </div>
+                    <div class="top-album-details">
+                        <p class="album-type">New Album</p>
+                        <h2 id="release-title" class="album-title">Singularity Genesis</h2>
+                        <p class="album-description">テクノロジーとエモーションの境界線を溶かす、ARIAのデビューアルバム。立体音響で織りなす音の粒子を体感せよ。</p>
+                        <a href="music.html" class="section-button">View More</a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="top-about" class="top-section">
-                <div class="section-container reverse">
-                     <div class="top-about-details">
-                        <h2 class="section-title">ABOUT "ARIA"</h2>
-                        <p class="about-description">
-                            デジタル世界の響きから生まれた、新世代のヴァーチャ_ルアーティスト。<br>
-                            最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。
-                        </p>
-                        <a href="profile.html" class="section-button">View More</a>
-                    </div>
-                    <div class="top-about-image">
-                        <a href="profile.html"><img src="images/portrait_bust.png" alt="ARIA artist photo"></a>
-                    </div>
+        <section id="top-about" class="top-section" aria-labelledby="about-title">
+            <div class="section-container reverse">
+                 <div class="top-about-details">
+                    <h2 id="about-title" class="section-title">ABOUT "ARIA"</h2>
+                    <p class="about-description">
+                        デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト。<br>
+                        最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。
+                    </p>
+                    <a href="profile.html" class="section-button">View More</a>
                 </div>
-            </section>
-
-            <section id="top-news" class="top-section">
-                 <div class="section-container">
-                    <h2 class="section-title">NEWS</h2>
-                    <ul class="news-list" id="news-list-container">
-                        </ul>
-                     <div class="button-wrapper">
-                        <a href="blog.html" class="section-button">View More</a>
-                    </div>
+                <div class="top-about-image">
+                    <a href="profile.html"><img src="images/portrait_bust.png" alt="ARIA artist photo"></a>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="top-streaming" class="top-section">
-                <div class="section-container">
-                   <h2 class="section-title">STREAMING</h2>
-                   <div class="streaming-links-top">
-                       <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" class="store-button apple-music" target="_blank">Apple Music</a>
-                       <a href="https://music.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" class="store-button youtube-music" target="_blank">YouTube Music</a>
-                       <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" class="store-button amazon-music" target="_blank">Amazon Music</a>
-                       <a href="https://open.spotify.com/intl-ja/track/4zF1LH3YqPf5iXBYEvhEgT" class="store-button spotify" target="_blank">Spotify</a>
-                   </div>
+        <section id="top-news" class="top-section" aria-labelledby="news-title">
+             <div class="section-container">
+                <h2 id="news-title" class="section-title">NEWS</h2>
+                <ul class="news-list" id="news-list-container">
+                    </ul>
+                 <div class="button-wrapper">
+                    <a href="blog.html" class="section-button">View More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="top-streaming" class="top-section" aria-labelledby="streaming-title">
+            <div class="section-container">
+               <h2 id="streaming-title" class="section-title">STREAMING</h2>
+               <div class="streaming-links-top">
+                   <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" class="store-button apple-music" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                   <a href="https://music.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" class="store-button youtube-music" target="_blank" rel="noopener noreferrer">YouTube Music</a>
+                   <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" class="store-button amazon-music" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+                   <a href="https://open.spotify.com/intl-ja/track/4zF1LH3YqPf5iXBYEvhEgT" class="store-button spotify" target="_blank" rel="noopener noreferrer">Spotify</a>
                </div>
-           </section>
-        </div>
+           </div>
+       </section>
     </main>
     
     <footer class="site-footer-main">
@@ -130,13 +130,13 @@
                 <a href="contact.html">お問い合わせ</a>
             </div>
             <div class="footer-social">
-                <a href="https://x.com/NexusAria" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/arianexus2/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@arianexus" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                © 2025 ARIA Project
+                <small>&copy; 2025 ARIA Project</small>
             </div>
         </div>
     </footer>

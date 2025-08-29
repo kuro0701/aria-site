@@ -12,6 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - ARIA Official Website</title>
+    <meta name="description" content="Atmosネイティブ・ソロアーティスト、ARIAの公式プロフィール。デジタル世界の響きから生まれた新世代のヴァーチャルアーティストの素顔に迫ります。">
+    <link rel="canonical" href="https://www.aria-project.com/profile.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
@@ -19,6 +21,23 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contents.css">
     <link rel="stylesheet" href="css/profile.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "ARIA",
+      "description": "デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト、ARIA。その歌声は、最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。DOLBY Atmosに代表される立体音響技術をネイティブで駆使し、リスナーを音の粒子が舞う異次元空間へと誘う。",
+      "image": "https://www.aria-project.com/images/portrait_full.png",
+      "url": "https://www.aria-project.com/profile.html",
+      "sameAs": [
+        "https://x.com/NexusAria",
+        "https://www.instagram.com/arianexus2/",
+        "https://www.tiktok.com/@arianexus",
+        "https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg"
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -28,10 +47,10 @@
             <div class="logo">
                 <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
             </div>
-            <button class="hamburger" aria-label="メニューを開く">
+            <button class="hamburger" aria-label="メニューを開く" aria-controls="navigation">
                 <span class="hamburger-icon"></span>
             </button>
-            <div class="nav-area">
+            <div class="nav-area" id="navigation">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="music.html">音楽</a></li>
@@ -42,39 +61,37 @@
                     </ul>
                 </nav>
                 <div class="social-links">
-                    <a href="https://x.com/NexusAria" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.instagram.com/arianexus2/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@arianexus" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="contents-page">
-            <h1 class="page-title">PROFILE</h1>
-            <section class="contents-section profile-section">
-                <div class="profile-image">
-                    <img src="images/portrait_full.png" alt="ARIA artist photo">
+    <main class="contents-page">
+        <h1 class="page-title">PROFILE</h1>
+        <article class="contents-section profile-section">
+            <div class="profile-image">
+                <img src="images/portrait_full.png" alt="ARIA artist full body photo">
+            </div>
+            <div class="profile-details">
+                <h2 class="artist-name">ARIA</h2>
+                <p class="artist-tagline">一人で、千の声を織る。<br>Atmosネイティブ・ソロアーティスト</p>
+                <div class="artist-bio">
+                    <p>
+                        デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト、ARIA。
+                    </p>
+                    <p>
+                        その歌声は、最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。DOLBY Atmosに代表される立体音響技術をネイティブで駆使し、リスナーを音の粒子が舞う異次元空間へと誘う。
+                    </p>
+                    <p>
+                        無数の声の断片を織り上げ、一つの生命として歌うARIAの楽曲は、テクノロジーとエモーションの境界線を溶かし、デジタル時代の新たな音楽表現を切り拓く。
+                    </p>
                 </div>
-                <div class="profile-details">
-                    <h2 class="artist-name">ARIA</h2>
-                    <p class="artist-tagline">一人で、千の声を織る。<br>Atmosネイティブ・ソロアーティスト</p>
-                    <div class="artist-bio">
-                        <p>
-                            デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト、ARIA。
-                        </p>
-                        <p>
-                            その歌声は、最新の音声合成技術と人間の繊細な表現力を融合させ、唯一無二の音響体験を創出する。DOLBY Atmosに代表される立体音響技術をネイティブで駆使し、リスナーを音の粒子が舞う異次元空間へと誘う。
-                        </p>
-                        <p>
-                            無数の声の断片を織り上げ、一つの生命として歌うARIAの楽曲は、テクノロジーとエモーションの境界線を溶かし、デジタル時代の新たな音楽表現を切り拓く。
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </article>
     </main>
 
     <footer class="site-footer-main">
@@ -84,13 +101,13 @@
                 <a href="contact.html">お問い合わせ</a>
             </div>
             <div class="footer-social">
-                <a href="https://x.com/NexusAria" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/arianexus2/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@arianexus" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                &copy; 2025 ARIA Project
+                <small>&copy; 2025 ARIA Project</small>
             </div>
         </div>
     </footer>

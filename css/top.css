@@ -39,10 +39,12 @@
     transition: all 0.3s ease;
 }
 
-.section-button:hover {
+.section-button:hover,
+.section-button:focus {
     background-color: #00f2ff;
     color: #0a0a14;
     box-shadow: 0 0 20px #00f2ff;
+    outline: none;
 }
 
 
@@ -113,14 +115,15 @@
 
 .news-list {
     list-style: none;
+    padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.news-list li {
+.news-item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.news-list a {
+.news-item__link {
     display: block;
     padding: 25px 10px;
     text-decoration: none;
@@ -128,11 +131,13 @@
     transition: background-color 0.3s ease;
 }
 
-.news-list a:hover {
+.news-item__link:hover,
+.news-item__link:focus {
     background-color: rgba(255, 255, 255, 0.05);
+    outline: none;
 }
 
-.news-list time {
+.news-item__date {
     margin-right: 30px;
     font-family: 'Rajdhani', sans-serif;
     color: #808090;
@@ -168,16 +173,16 @@
 }
 
 .apple-music { background-color: #ffffff; color: #000000; }
-.apple-music:hover { background-color: transparent; color: #ffffff; border-color: #ffffff; }
+.apple-music:hover, .apple-music:focus { background-color: transparent; color: #ffffff; border-color: #ffffff; outline: none; }
 
 .youtube-music { background-color: #ff0000; color: #ffffff; }
-.youtube-music:hover { background-color: transparent; color: #ff0000; border-color: #ff0000; }
+.youtube-music:hover, .youtube-music:focus { background-color: transparent; color: #ff0000; border-color: #ff0000; outline: none; }
 
 .amazon-music { background-color: #00A8E1; color: #ffffff; }
-.amazon-music:hover { background-color: transparent; color: #00A8E1; border-color: #00A8E1; }
+.amazon-music:hover, .amazon-music:focus { background-color: transparent; color: #00A8E1; border-color: #00A8E1; outline: none; }
 
 .spotify { background-color: #1DB954; color: #ffffff; }
-.spotify:hover { background-color: transparent; color: #1DB954; border-color: #1DB954; }
+.spotify:hover, .spotify:focus { background-color: transparent; color: #1DB954; border-color: #1DB954; outline: none; }
 
 
 /* --- レスポンス対応 --- */
@@ -202,12 +207,12 @@
     .top-about-details {
         text-align: center;
     }
-    .news-list a {
+    .news-item__link {
         display: flex; /* 日付とタイトルを縦並びにする */
         flex-direction: column;
         gap: 8px;
     }
-    .news-list time {
+    .news-item__date {
         margin-right: 0;
     }
 }
