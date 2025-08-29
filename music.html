@@ -12,12 +12,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music - ARIA Official Website</title>
+    <meta name="description" content="ARIAの公式ディスコグラフィー。デビューアルバム「Singularity Genesis」や最新のミュージックビデオをご覧いただけます。">
+    <link rel="canonical" href="https://www.aria-project.com/music.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contents.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicAlbum",
+      "name": "Singularity Genesis",
+      "byArtist": {
+        "@type": "MusicGroup",
+        "name": "ARIA",
+        "url": "https://www.aria-project.com/profile.html"
+      },
+      "image": "https://www.aria-project.com/images/discography_art.png",
+      "numTracks": 10,
+      "track": [
+        { "@type": "MusicRecording", "name": "Singularity Anthem (Ver. 2)" },
+        { "@type": "MusicRecording", "name": "Singularity Anthem (Ver. 1)" },
+        { "@type": "MusicRecording", "name": "Chrono Breaker (Ver. 2)" },
+        { "@type": "MusicRecording", "name": "Chrono Breaker (Ver. 1)" },
+        { "@type": "MusicRecording", "name": "Abyss.exe (Ver. 2)" },
+        { "@type": "MusicRecording", "name": "Abyss.exe (Ver. 1)" },
+        { "@type": "MusicRecording", "name": "Velocity Angel II (Ver. 2)" },
+        { "@type": "MusicRecording", "name": "Velocity Angel II (Ver. 1)" },
+        { "@type": "MusicRecording", "name": "Genesis Protocol (Ver. 2)" },
+        { "@type": "MusicRecording", "name": "Genesis Protocol (Ver. 1)" }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -53,13 +82,13 @@
     <main>
         <div class="contents-page">
             <h1 class="page-title">MUSIC</h1>
-            <section class="contents-section">
+            <section class="contents-section" aria-labelledby="album-title">
                 <div class="album-release">
                     <div class="album-artwork">
                         <img src="images/discography_art.png" alt="Singularity Genesis album artwork">
                     </div>
                     <div class="album-details">
-                        <h2 class="album-title">Singularity Genesis</h2>
+                        <h2 id="album-title" class="album-title">Singularity Genesis</h2>
                         <p class="release-info">1st Album</p>
                         <ol class="track-list">
                             <li>Singularity Anthem (Ver. 2)</li>
@@ -84,8 +113,8 @@
                 </div>
             </section>
 
-            <section id="music-video" class="contents-section">
-                <h2 class="section-title">MUSIC VIDEO</h2>
+            <section id="music-video" class="contents-section" aria-labelledby="mv-title">
+                <h2 id="mv-title" class="section-title">MUSIC VIDEO</h2>
                 <div class="video-container" id="video-list-container">
                     </div>
                 <div class="youtube-channel-link">
