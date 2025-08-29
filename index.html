@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script>
+        // 画面の横幅が820px以下だったら、スマホ版ページ (mobile.html) に強制的に移動させる
+        if (window.innerWidth <= 820) {
+            location.href = 'mobile.html';
+        }
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-3Z6FZB7SW7');
     </script>
     <meta charset="UTF-8">
@@ -18,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/top.css">
 
     <script type="application/ld+json">
     {
@@ -40,6 +48,7 @@
             <div class="logo">
                 <a href="index.html"><img src="images/logo.png" alt="ARIA Official Logo"></a>
             </div>
+
             <button class="hamburger" aria-label="メニューを開く" aria-controls="navigation">
                 <span class="hamburger-icon"></span>
             </button>
@@ -74,14 +83,16 @@
 
         <section id="top-release" class="top-section" aria-labelledby="release-title">
             <div class="section-container">
-                <div class="top-album-artwork">
-                    <a href="music.html"><img src="images/discography_art.png" alt="Singularity Genesis album artwork"></a>
-                </div>
-                <div class="top-album-details">
-                    <p class="album-type">1st Album</p>
-                    <h2 id="release-title" class="album-title">Singularity Genesis</h2>
-                    <p class="album-description">テクノロジーとエモーションの境界線をテーマにした、ARIAのデビューアルバム。立体音響で織りなす音の粒子と、無数の声が織りなすハーモニーを体感せよ。</p>
-                    <a href="music.html" class="section-button">ディスコグラフィーを見る</a>
+                <div class="top-album-info">
+                    <div class="top-album-artwork">
+                        <a href="music.html"><img src="images/discography_art.png" alt="Singularity Genesis album artwork"></a>
+                    </div>
+                    <div class="top-album-details">
+                        <p class="album-type">1st Album</p>
+                        <h2 id="release-title" class="album-title">Singularity Genesis</h2>
+                        <p class="album-description">テクノロジーとエモーションの境界線をテーマにした、ARIAのデビューアルバム。立体音響で織りなす音の粒子と、無数の声が織りなすハーモニーを体感せよ。</p>
+                        <a href="music.html" class="section-button">ディスコグラフィーを見る</a>
+                    </div>
                 </div>
             </div>
         </section>

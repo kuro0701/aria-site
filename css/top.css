@@ -1,0 +1,218 @@
+/* --- 全セクション共通スタイル --- */
+.top-section {
+    padding: 80px 0;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+/* 画像とテキストが逆になるパターン */
+.section-container.reverse {
+    flex-direction: row-reverse;
+}
+
+.section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.section-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 35px;
+    border: 2px solid #00f2ff;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #00f2ff;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+}
+
+.section-button:hover,
+.section-button:focus {
+    background-color: #00f2ff;
+    color: #0a0a14;
+    box-shadow: 0 0 20px #00f2ff;
+    outline: none;
+}
+
+
+/* --- LATEST RELEASE セクション --- */
+.top-album-artwork {
+    flex: 1;
+}
+.top-album-artwork img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.top-album-details {
+    flex: 1.2;
+}
+
+.album-type {
+    font-size: 1.1rem;
+    color: #a0a0b0;
+    margin-bottom: 5px;
+}
+
+.album-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00f2ff, #c18cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.album-description {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+/* --- ABOUT セクション --- */
+.top-about-details {
+    flex: 1.2;
+}
+
+.about-description {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+.top-about-image {
+    flex: 1;
+}
+.top-about-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+/* --- NEWS セクション --- */
+#top-news .section-container {
+    display: block; /* このセクションはflexboxを使わない */
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-item__link {
+    display: block;
+    padding: 25px 10px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+.news-item__link:hover,
+.news-item__link:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+    outline: none;
+}
+
+.news-item__date {
+    margin-right: 30px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #808090;
+}
+
+.button-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* --- STREAMING セクション --- */
+#top-streaming .section-container {
+    display: block;
+}
+
+.streaming-links-top {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.store-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.apple-music { background-color: #ffffff; color: #000000; }
+.apple-music:hover, .apple-music:focus { background-color: transparent; color: #ffffff; border-color: #ffffff; outline: none; }
+
+.youtube-music { background-color: #ff0000; color: #ffffff; }
+.youtube-music:hover, .youtube-music:focus { background-color: transparent; color: #ff0000; border-color: #ff0000; outline: none; }
+
+.amazon-music { background-color: #00A8E1; color: #ffffff; }
+.amazon-music:hover, .amazon-music:focus { background-color: transparent; color: #00A8E1; border-color: #00A8E1; outline: none; }
+
+.spotify { background-color: #1DB954; color: #ffffff; }
+.spotify:hover, .spotify:focus { background-color: transparent; color: #1DB954; border-color: #1DB954; outline: none; }
+
+
+/* --- レスポンス対応 --- */
+@media (max-width: 820px) {
+    .top-section {
+        padding: 60px 0; /* セクションの上下余白を調整 */
+    }
+    .section-container,
+    .section-container.reverse {
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px; /* セクション左右の余白を調整 */
+    }
+    .section-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .album-title {
+        font-size: 2.5rem;
+    }
+    .top-album-details,
+    .top-about-details {
+        text-align: center;
+    }
+    .news-item__link {
+        display: flex; /* 日付とタイトルを縦並びにする */
+        flex-direction: column;
+        gap: 8px;
+    }
+    .news-item__date {
+        margin-right: 0;
+    }
+}
