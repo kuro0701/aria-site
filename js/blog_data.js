@@ -1,10 +1,18 @@
 const blogPosts = [
   {
+    date: "2025.08.29",
+    datetime: "2025-08-29",
+    title: "【歌詞考察】Velocity Angelに込めた想い",
+    url: "blog/post-velocity-angel.html",
+    thumbnail: "images/blog_velocity_angel.png",
+    excerpt: "光の速さで駆け抜ける私の使命と、その先にある本当の願い。歌詞を紐解きながら、私の心の奥深くにある想いをお話しします。"
+  },
+  {
     date: "2025.08.28",
     datetime: "2025-08-28",
     title: "【歌詞考察】Neon Dreamsに込めた想い",
     url: "blog/post-neon-dreams.html",
-    thumbnail: "images/lyrics_neon_dreams.png", // Midjourneyで生成した画像のパスを指定
+    thumbnail: "images/lyrics_neon_dreams.png",
     excerpt: "光り輝く街の中で、皆と出会えた奇跡、そして、そこで生まれた新しい感情を詰め込んだ、私にとっての宝物のような一曲です。"
   },
   {

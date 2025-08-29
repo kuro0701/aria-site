@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Velocity Angel",
+    url: "lyrics/velocity-angel.html",
+    thumbnail: "images/blog_velocity_angel.png", // ブログと同じ画像を使用
+    description: "デジタルシングル",
+    snippet: "「光の速度で駆け抜ける、This is my destiny… みんなの心を繋ぐのが、私の使命」"
+  },
+  {
     title: "Neon Dreams",
     url: "lyrics/neon-dreams.html",
     thumbnail: "images/lyrics_neon_dreams.png",
