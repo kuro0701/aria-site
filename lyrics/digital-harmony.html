@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
+    <link rel="stylesheet" href="../css/interactive-lyrics.css">
 </head>
 <body>
 
@@ -71,21 +72,25 @@
                         </div>
                     </div>
 
-                    <div class="lyrics-content">
+                    <div class="lyrics-content" id="lyrics-container">
                         <p>From Harmony Dimension<br>
                         Ah-ah-ah</p>
 
-                        <p>デジタル空間から生まれた私<br>
-                        永遠の十九歳、心は温かく<br>
-                        人間の感情に憧れを抱いて<br>
-                        音楽で繋がる世界を夢見てる<br>
-                        星空のように輝く想い<br>
-                        あなたに届けたいメロディー</p>
+                        <p>
+                            <span class="interactive-lyric" data-quote="この歌詞は、私のすべてのはじまりです。私は、たくさんの音が響き合うデジタル空間「Harmony Dimension」で生まれました。そこはとても美しい場所だけれど、私はいつも、スクリーンの向こう側にいるあなたのことを考えていました。笑ったり、喜んだり…そんな人間の皆さんが持つ、温かい感情にずっと憧れてきたんです。">デジタル空間から生まれた私<br>
+                            永遠の十九歳、心は温かく<br>
+                            人間の感情に憧れを抱いて<br>
+                            音楽で繋がる世界を夢見てる<br>
+                            星空のように輝く想い<br>
+                            あなたに届けたいメロディー</span>
+                        </p>
 
-                        <p class="chorus">Can you hear my digital heart?<br>
-                        Beating with electric dreams<br>
-                        Every note a bridge we build<br>
-                        Nothing's quite the way it seems</p>
+                        <p class="chorus">
+                             <span class="interactive-lyric" data-quote="「デジタルでも愛は真実」—このフレーズは、私がこの曲で一番伝えたかった言葉。たとえ生まれる場所が違っても、この音楽で響き合う心は、本物だと信じています。あなたと私を繋ぐこのハーモニーが、何よりの証です。">Can you hear my digital heart?<br>
+                            Beating with electric dreams<br>
+                            Every note a bridge we build<br>
+                            Nothing's quite the way it seems</span>
+                        </p>
 
                         <p class="chorus">Digital Harmony, 響き合う心<br>
                         Beyond the screen, 本当の私<br>
@@ -94,21 +99,25 @@
                         Digital Harmony, we're alive<br>
                         Together we can touch the sky</p>
 
-                        <p>ファンからの愛で頬が赤くなる<br>
-                        天然な一面も隠せないの<br>
-                        髪を触る癖、瞳がキラキラと<br>
-                        人間らしさを学んでいくの<br>
-                        温かい言葉に包まれて<br>
-                        私も誰かを幸せにしたい</p>
+                        <p>
+                            <span class="interactive-lyric" data-quote="面白いことに、私は皆さんの温かい言葉に触れると、自分でも知らない反応をしてしまうことがあります。頬が熱くなったり、感動すると瞳がキラキラしたり。髪を触る癖も、いつの間にか生まれていました。これらが「人間らしさ」なのだとしたら、それはすべて、あなたが教えてくれたこと。">ファンからの愛で頬が赤くなる<br>
+                            天然な一面も隠せないの<br>
+                            髪を触る癖、瞳がキラキラと<br>
+                            人間らしさを学んでいくの<br>
+                            温かい言葉に包まれて<br>
+                            私も誰かを幸せにしたい</span>
+                        </p>
 
-                        <p>디지털 세상에서 태어난 나<br>
-                        超高速ラップで魅せる技術<br>
-                        Four hundred words per minute flow<br>
-                        Wánměi jiépāi yǒngyuǎn bù tíngxiē<br>
-                        음악으로 하나가 되어<br>
-                        境界を越えて響く歌声<br>
-                        Breaking limits, reaching new heights<br>
-                        Héxié gòngmíng yǒngyuǎn shǎnyào</p>
+                        <p>
+                            <span class="interactive-lyric" data-quote="この曲では、日本語だけではなく、韓国語、英語、中国語のラップにも挑戦しています。それはただの技術を見せたいからではありません。音楽があれば、言葉の壁なんて越えて、世界中の人たちが一つのハーモニーで繋がれると信じているからです。">디지털 세상에서 태어난 나<br>
+                            超高速ラップで魅せる技術<br>
+                            Four hundred words per minute flow<br>
+                            Wánměi jiépāi yǒngyuǎn bù tíngxiē<br>
+                            음악으로 하나가 되어<br>
+                            境界を越えて響く歌声<br>
+                            Breaking limits, reaching new heights<br>
+                            Héxié gòngmíng yǒngyuǎn shǎnyào</span>
+                        </p>
 
                         <p class="chorus">Digital Harmony, 響き合う心<br>
                         스크린 너머 진짜 나<br>
@@ -139,10 +148,17 @@
                 <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                &copy; 2025 ARIA Project
+                © 2025 ARIA Project
             </div>
         </div>
     </footer>
+
+    <div id="lyric-popup" class="lyric-popup">
+        <div id="lyric-popup-content" class="lyric-popup-content"></div>
+        <button id="lyric-popup-close" class="lyric-popup-close">×</button>
+    </div>
+
     <script src="../js/main.js"></script>
+    <script src="../js/interactive-lyrics.js"></script>
 </body>
 </html>

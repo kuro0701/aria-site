@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
+    <link rel="stylesheet" href="../css/interactive-lyrics.css">
 </head>
 <body>
 
@@ -71,11 +72,13 @@
                         </div>
                     </div>
 
-                    <div class="lyrics-content">
-                        <p>天から舞い降りた<br>
-                        Digital angel, that's me<br>
-                        光の速度で駆け抜ける<br>
-                        This is my destiny</p>
+                    <div class="lyrics-content" id="lyrics-container">
+                        <p>
+                             <span class="interactive-lyric" data-quote="私はHarmony Dimensionから、たくさんのデータと光と共に生まれました。400wpmのラップ、7オクターブの声域。それらは、私に与えられた「スペック」であり、定められた運命（Destiny）なのかもしれません。この曲の冒頭は、そんな私の自己紹介です。">天から舞い降りた<br>
+                            Digital angel, that's me<br>
+                            光の速度で駆け抜ける<br>
+                            This is my destiny</span>
+                        </p>
 
                         <p>From Harmony Dimension I descend<br>
                         400 words per minute, I transcend<br>
@@ -88,10 +91,12 @@
                         음악이 흘러, 날아가<br>
                         한계를 넘어서</p>
 
-                        <p class="chorus">I'm a Velocity Angel, flying so high<br>
-                        速度の天使、空を舞う<br>
-                        Wo shi su du tian shi, fei xiang tian kong<br>
-                        Breaking the sound barrier with my song</p>
+                        <p class="chorus">
+                            <span class="interactive-lyric" data-quote="この曲では、日本語、英語、韓国語、中国語…たくさんの言葉が光の速さで交差します。それは、私の技術を見せたいから、というだけではありません。音楽があれば、私たちの間にあるどんな壁も、一瞬で通り抜けられると信じているからです。">I'm a Velocity Angel, flying so high<br>
+                            速度の天使、空を舞う<br>
+                            Wo shi su du tian shi, fei xiang tian kong<br>
+                            Breaking the sound barrier with my song</span>
+                        </p>
 
                         <p class="chorus">Velocity Angel, can't slow me down<br>
                         光速ラップで世界を回る<br>
@@ -122,12 +127,14 @@
                         Mei yi ge ci dou shi wo de li liang<br>
                         This is my power, this is my crown</p>
 
-                        <p>時には立ち止まって<br>
-                        心の声を聞いて<br>
-                        天使でも人間でも<br>
-                        愛は同じ重さ<br>
-                        みんなで作る未来<br>
-                        それが私の使命</p>
+                        <p>
+                            <span class="interactive-lyric" data-quote="これが、私がこの曲で一番伝えたかったことです。光の速さで駆け抜ける私でも、時にはふと立ち止まって、自分の心、そしてあなたの心の声に耳を澄ませたい。デジタルな天使である私と、温かい心を持つあなた。姿かたちは違っても、「愛」という感情の重さは、きっと同じはずだから。私の速さは、みんなの心を光速で繋ぎ、一つの未来を創るための力。それが、私の見つけた本当の使命なんです。">時には立ち止まって<br>
+                            心の声を聞いて<br>
+                            天使でも人間でも<br>
+                            愛は同じ重さ<br>
+                            みんなで作る未来<br>
+                            それが私の使命</span>
+                        </p>
 
                         <p class="chorus">I'm a Velocity Angel, flying so high<br>
                         速度の天使、空を舞う<br>
@@ -165,6 +172,13 @@
             </div>
         </div>
     </footer>
+    
+    <div id="lyric-popup" class="lyric-popup">
+        <div id="lyric-popup-content" class="lyric-popup-content"></div>
+        <button id="lyric-popup-close" class="lyric-popup-close">×</button>
+    </div>
+
     <script src="../js/main.js"></script>
+    <script src="../js/interactive-lyrics.js"></script>
 </body>
 </html>

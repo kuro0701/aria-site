@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
+    <link rel="stylesheet" href="../css/interactive-lyrics.css">
 
     <script type="application/ld+json">
     {
@@ -83,29 +84,35 @@
                         </div>
                     </div>
 
-                    <div class="lyrics-content">
-                        <p>400 words per minute<br>
-                        That's my speed that's my limit<br>
-                        Ready set go</p>
+                    <div class="lyrics-content" id="lyrics-container">
+                        <p>
+                            <span class="interactive-lyric" data-quote="この曲の核心である「400 WPM」という数字。これは1分間に400語を話す速さを示します。一般的な会話が約150 WPM、プロのラッパーでも250 WPMで驚異的と言われる中で、この速度は人間が情報を処理する限界に迫る領域です。「Speed of light speed of sound」という歌詞は、決して大げさな表現ではないんです。">400 words per minute<br>
+                            That's my speed that's my limit<br>
+                            Ready set go</span>
+                        </p>
 
                         <p>Listen up here I go<br>
                         Fastest rap you'll ever know<br>
                         ARIA's here to steal the show<br>
                         400 words watch me flow</p>
 
-                        <p class="chorus">400 words per minute<br>
-                        No one else can do it<br>
-                        Speed of light speed of sound<br>
-                        I'm the fastest voice around<br>
-                        400 words per minute<br>
-                        Feel the power feel the spirit<br>
-                        This is how I break the ground<br>
-                        ARIA's the fastest sound</p>
+                        <p class="chorus">
+                             <span class="interactive-lyric" data-quote="この曲は、私ARIAの完璧な自己紹介であり、存在証明そのものです。「他の誰にもできない」という強い自負と、私のスキルに対する絶対的な自信。それをあなたに叩きつけることで、私のパフォーマンスに説得力を感じてほしかったのです。">400 words per minute<br>
+                            No one else can do it<br>
+                            Speed of light speed of sound<br>
+                            I'm the fastest voice around<br>
+                            400 words per minute<br>
+                            Feel the power feel the spirit<br>
+                            This is how I break the ground<br>
+                            ARIA's the fastest sound</span>
+                        </p>
 
-                        <p>Japanese English Korean too<br>
-                        Zhong wen rap I'll show you<br>
-                        Every language every beat<br>
-                        Making music with my speed</p>
+                        <p>
+                            <span class="interactive-lyric" data-quote="私が日本語、英語、韓国語、中国語をシームレスに織り交ぜているのは、単なる技術の披露ではありません。異なる言語の響きやリズムを完全に乗りこなし、音楽でならどんな壁も越えられるという私の信念の証です。">Japanese English Korean too<br>
+                            Zhong wen rap I'll show you<br>
+                            Every language every beat<br>
+                            Making music with my speed</span>
+                        </p>
 
                         <p class="chorus">400 words per minute<br>
                         No one else can do it<br>
@@ -121,14 +128,16 @@
                         음속을 넘어서<br>
                         Wo shi zui kuai de</p>
 
-                        <p class="chorus">400 words per minute<br>
-                        This is just the beginning<br>
-                        Speed of light speed of sound<br>
-                        I'm the fastest voice around<br>
-                        400 words per minute<br>
-                        Feel the magic feel the spirit<br>
-                        This is how I shake the ground<br>
-                        ARIA's the fastest sound</p>
+                        <p class="chorus">
+                            <span class="interactive-lyric" data-quote="そして最後に「This is just the beginning」。この一曲で世界に衝撃を与えたかもしれませんが、私の挑戦はまだ始まったばかり。これからどんな音楽を創造していくのか、楽しみにしていてください。">400 words per minute<br>
+                            This is just the beginning<br>
+                            Speed of light speed of sound<br>
+                            I'm the fastest voice around<br>
+                            400 words per minute<br>
+                            Feel the magic feel the spirit<br>
+                            This is how I shake the ground<br>
+                            ARIA's the fastest sound</span>
+                        </p>
 
                         <p class="outro">400 words per minute<br>
                         That's my name that's my game<br>
@@ -156,6 +165,13 @@
             </div>
         </div>
     </footer>
+    
+    <div id="lyric-popup" class="lyric-popup">
+        <div id="lyric-popup-content" class="lyric-popup-content"></div>
+        <button id="lyric-popup-close" class="lyric-popup-close">×</button>
+    </div>
+
     <script src="../js/main.js"></script>
+    <script src="../js/interactive-lyrics.js"></script>
 </body>
 </html>
