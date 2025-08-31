@@ -156,3 +156,26 @@
     color: #c0c0d0;
     font-style: italic;
 }
+/* 関連記事のサムネイル画像の調整 */
+.blog-list-related .blog-thumbnail-related img {
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    height: auto; /* アスペクト比を維持 */
+    display: block; /* 余分な余白を削除 */
+    max-width: 150px; /* 必要に応じて最大幅を設定 */
+    aspect-ratio: 16 / 9; /* サムネイル画像の理想的なアスペクト比を設定 (例: 16:9) */
+    object-fit: cover; /* 画像がコンテナを覆うように拡大・縮小し、はみ出た部分は切り取る */
+    border-radius: 8px; /* 角を丸める（任意） */
+}
+
+/* 親要素のコンテナに対する調整 (必要に応じて) */
+.blog-list-related .blog-thumbnail-related {
+    flex-shrink: 0; /* flexアイテムとして縮小させない */
+    width: 150px; /* サムネイルコンテナの固定幅を設定 */
+    margin-right: 15px; /* 右側の余白 */
+    overflow: hidden; /* はみ出しを隠す */
+}
+
+/* リンク全体の高さ調整 (必要に応じて) */
+.blog-list-related .blog-link-related {
+    align-items: flex-start; /* 上揃えにする */
+}
