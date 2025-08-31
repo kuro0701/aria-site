@@ -2,10 +2,7 @@
 .lyrics-section {
     display: flex;
     gap: 50px;
-<<<<<<< HEAD
     align-items: flex-start;
-=======
->>>>>>> e85092c67ac14e83d730f4ccd9c3a9f415df9a26
 }
 
 .lyrics-artwork {
@@ -53,8 +50,6 @@
     opacity: 0.8;
 }
 
-<<<<<<< HEAD
-=======
 /* --- 歌詞ページ内の配信リンク --- */
 .post-streaming-links {
     text-align: center;
@@ -79,7 +74,6 @@
     margin: 5px 8px;
 }
 
->>>>>>> e85092c67ac14e83d730f4ccd9c3a9f415df9a26
 
 /* --- レスポンス対応 --- */
 @media (max-width: 820px) {

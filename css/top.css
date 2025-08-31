@@ -124,7 +124,8 @@
 }
 
 .news-item__link {
-    display: block;
+    display: flex; /* ★修正: flexに変更 */
+    align-items: center; /* ★追加: 縦方向中央揃え */
     padding: 25px 10px;
     text-decoration: none;
     color: #e0e0e0;
@@ -141,7 +142,13 @@
     margin-right: 30px;
     font-family: 'Rajdhani', sans-serif;
     color: #808090;
+    flex-shrink: 0; /* ★追加: 日付が縮まないようにする */
 }
+/* ★追加: タイトル部分のスタイル */
+.news-item__title {
+    flex-grow: 1; /* タイトル部分が残りの幅を埋めるようにする */
+}
+
 
 .button-wrapper {
     text-align: center;
@@ -208,8 +215,8 @@
         text-align: center;
     }
     .news-item__link {
-        display: flex; /* 日付とタイトルを縦並びにする */
-        flex-direction: column;
+        flex-direction: column; /* ★修正: SPでは縦並びに戻す */
+        align-items: flex-start; /* ★追加: SPでは左揃え */
         gap: 8px;
     }
     .news-item__date {
