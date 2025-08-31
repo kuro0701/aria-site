@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const newsContainer = document.getElementById('news-list-container');
-    
-    // blog_data.js の blogPosts が存在するか確認
+
     if (newsContainer && typeof blogPosts !== 'undefined') {
-        // 表示する記事の数を設定（ここでは最新3件）
         const postsToShow = blogPosts.slice(0, 3);
 
         if (postsToShow.length === 0) {
@@ -13,10 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let newsHTML = '';
         postsToShow.forEach(post => {
+            // スマートフォン版のHTML構造に統一
             newsHTML += `
-                <li>
-                    <time datetime="${post.datetime}">${post.date}</time>
-                    <a href="${post.url}">${post.title}</a>
+                <li class="news-item">
+                    <a href="${post.url}" class="news-item__link">
+                        <div>
+                            <time datetime="${post.datetime}" class="news-item__date">${post.date}</time>
+                            <span class="news-item__title">${post.title}</span>
+                        </div>
+                    </a>
                 </li>
             `;
         });
