@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "400 Words Per Minute",
+    url: "lyrics/400-words-per-minute.html",
+    thumbnail: "images/blog_400wpm_hero.png",
+    description: "デジタルシングル｜超高速多言語ラップ",
+    snippet: "「400 words per minute, No one else can do it... Speed of light speed of sound, I'm the fastest voice around」"
+  },
+  {
     title: "Heartbeat Acceleration",
     url: "lyrics/heartbeat-acceleration.html",
     thumbnail: "images/mobile_cosmic_serenade.png",
