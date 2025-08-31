@@ -13,9 +13,10 @@
     transition: background-image 1.5s ease-in-out, opacity 1.5s ease-in-out;
 }
 
-/* --- 再生ボタン --- */
+/* --- 再生ボタン (今回は未使用) --- */
+/*
 .lyrics-artwork {
-    position: relative; /* ボタンを画像の上に配置するため */
+    position: relative;
 }
 
 #play-pause-btn {
@@ -40,7 +41,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    /* 再生マーク（三角形） */
     width: 0;
     height: 0;
     border-top: 15px solid transparent;
@@ -51,7 +51,6 @@
 }
 
 #play-pause-btn.playing::before {
-    /* 一時停止マーク（二本線） */
     width: 25px;
     height: 30px;
     border: none;
@@ -64,8 +63,9 @@
     background-color: rgba(0, 242, 255, 0.5);
     border-color: #00f2ff;
 }
+*/
 
-/* --- 隠しYouTubeプレーヤー --- */
+/* --- 隠しYouTubeプレーヤー (今回は未使用) --- */
 #youtube-player {
     position: absolute;
     top: -9999px;
@@ -74,17 +74,19 @@
     height: 1px;
 }
 
-/* --- 歌詞のハイライト --- */
+/* --- 歌詞のハイライト (今回は未使用) --- */
+/*
 .lyrics-content span {
     transition: color 0.5s ease, text-shadow 0.5s ease;
-    opacity: 0.5; /* 通常の歌詞は少し薄く */
+    opacity: 0.5;
 }
 
 .lyrics-content span.current {
     color: #ffffff;
-    opacity: 1; /* 現在の行をハイライト */
+    opacity: 1;
     text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
 }
+*/
 
 /* --- インタラクティブな歌詞 --- */
 .interactive-lyric {

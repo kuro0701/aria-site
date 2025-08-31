@@ -88,8 +88,19 @@
 
     <main>
         <div class="contents-page">
-            <nav class="breadcrumb" aria-label="パンくずリスト">
-                <a href="../index.html">HOME</a> > <a href="../blog.html">BLOG</a> > <span class="current" aria-current="page">【歌詞考察】400WPMの衝撃！「400 Words Per Minute」の秘密</span>
+            <nav class="breadcrumb" aria-label="パンくずリスト" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../index.html"><span itemprop="name">HOME</span></a>
+                    <meta itemprop="position" content="1" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../blog.html"><span itemprop="name">BLOG</span></a>
+                    <meta itemprop="position" content="2" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">【歌詞考察】400WPMの衝撃！「400 Words Per Minute」の秘密</span>
+                    <meta itemprop="position" content="3" />
+                </span>
             </nav>
             
             <article class="blog-post">
@@ -218,7 +229,7 @@
                 <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                © 2025 ARIA Project
+                &copy; 2025 ARIA Project
             </div>
         </div>
     </footer>
