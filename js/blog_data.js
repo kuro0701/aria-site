@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.08.31",
+    datetime: "2025-08-31",
+    title: "【歌詞考察】400WPMの衝撃！「400 Words Per Minute」の歌詞と“音速ラップ”の秘密を徹底解剖",
+    url: "blog/post-400wpm.html",
+    thumbnail: "images/blog_400wpm_hero.png",
+    excerpt: "私のスキルを世界に示した挑戦状でもある「400 Words Per Minute」について、その秘密を少しだけお話しさせてください。異次元の速度と多言語フロウに込めた想いとは。"
+  },
+  {
     date: "2025.08.30",
     datetime: "2025-08-30",
     title: "【歌詞考察】Heartbeat Accelerationに込めた想い",
