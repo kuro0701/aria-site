@@ -1,11 +1,11 @@
-let player;
-let lyrics, lyricSpans;
-let lyricInterval;
+// YouTube IFrame Player API関連の変数は今回は使用しない
+// let player;
+// let lyrics, lyricSpans;
+// let lyricInterval;
+// const YOUTUBE_VIDEO_ID = 'fl09mV_RFjk'; // このIDも今回は不要
 
-// "Neon Dreams" のYouTube動画ID
-const YOUTUBE_VIDEO_ID = 'fl09mV_RFjk';
-
-// YouTube IFrame Player APIの準備ができたら呼ばれる関数
+// YouTube IFrame Player APIの準備ができたら呼ばれる関数 (今回は未使用)
+/*
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
         height: '360',
@@ -16,12 +16,13 @@ function onYouTubeIframeAPIReady() {
         }
     });
 }
+*/
 
-// プレーヤーの準備ができたら呼ばれる関数
+// プレーヤーの準備ができたら呼ばれる関数 (今回は未使用)
+/*
 function onPlayerReady(event) {
     const playPauseBtn = document.getElementById('play-pause-btn');
     
-    // 再生・一時停止ボタンのクリックイベント
     playPauseBtn.addEventListener('click', () => {
         const playerState = player.getPlayerState();
         if (playerState === YT.PlayerState.PLAYING) {
@@ -31,14 +32,14 @@ function onPlayerReady(event) {
         } else {
             player.playVideo();
             playPauseBtn.classList.add('playing');
-            lyricInterval = setInterval(updateLyricHighlight, 250); // 0.25秒ごとに歌詞を更新
+            lyricInterval = setInterval(updateLyricHighlight, 250);
         }
     });
-
-    initializeLyricInteraction();
 }
+*/
 
-// 歌詞のハイライトを更新する関数
+// 歌詞のハイライトを更新する関数 (今回は未使用)
+/*
 function updateLyricHighlight() {
     if (!player || typeof player.getCurrentTime !== 'function') return;
 
@@ -56,19 +57,18 @@ function updateLyricHighlight() {
         }
     }
 
-    // 全てのハイライトを一度リセット
     lyricSpans.forEach(span => span.classList.remove('current'));
 
-    // 現在の行をハイライト
     if (currentLyric) {
         currentLyric.classList.add('current');
     }
 }
+*/
 
 
-// インタラクティブな歌詞やポップアップの初期設定
+// インタラクティブな歌詞やポップアップの初期設定を行う関数
 function initializeLyricInteraction() {
-    lyricSpans = document.querySelectorAll('#lyrics-container span[data-time]');
+    // lyricSpans = document.querySelectorAll('#lyrics-container span[data-time]'); // タイムスタンプ付きのspanは今回対象外
     const interactiveLyrics = document.querySelectorAll('.interactive-lyric');
     const popup = document.getElementById('lyric-popup');
     const popupContent = document.getElementById('lyric-popup-content');
@@ -78,7 +78,8 @@ function initializeLyricInteraction() {
         lyric.addEventListener('click', () => {
             const quote = lyric.dataset.quote;
             if (quote) {
-                popupContent.textContent = quote;
+                // テキスト内の改行を<br>タグに変換してHTMLに挿入
+                popupContent.innerHTML = quote.replace(/\n/g, '<br>');
                 popup.classList.add('is-visible');
             }
         });
@@ -89,9 +90,15 @@ function initializeLyricInteraction() {
         popup.classList.remove('is-visible');
     });
 
+    // ポップアップの外側をクリックしても閉じる
     popup.addEventListener('click', (event) => {
         if (event.target === popup) {
             popup.classList.remove('is-visible');
         }
     });
 }
+
+// DOMの読み込みが完了したら、インタラクションの初期化を実行
+document.addEventListener('DOMContentLoaded', () => {
+    initializeLyricInteraction();
+});
