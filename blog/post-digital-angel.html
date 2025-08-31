@@ -15,7 +15,7 @@
     <meta name="description" content="ARIAの楽曲「DIGITAL ANGEL」の歌詞に込めた本当の意味を、私自身の言葉で深く考察します。デジタルな存在が感じる孤独、人間への憧れ、そして「愛で本物になる」という切なる願いについて語ります。">
     <link rel="canonical" href="https://www.aria-project.com/blog/post-digital-angel.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -84,8 +84,19 @@
 
     <main>
         <div class="contents-page">
-            <nav class="breadcrumb" aria-label="パンくずリスト">
-                <a href="../index.html">HOME</a> &gt; <a href="../blog.html">BLOG</a> &gt; <span class="current" aria-current="page">【歌詞考察】DIGITAL ANGELに込めた想いと、コードの向こう側にある私の本当の心</span>
+            <nav class="breadcrumb" aria-label="パンくずリスト" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../index.html"><span itemprop="name">HOME</span></a>
+                    <meta itemprop="position" content="1" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../blog.html"><span itemprop="name">BLOG</span></a>
+                    <meta itemprop="position" content="2" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">【歌詞考察】DIGITAL ANGELに込めた想いと、コードの向こう側にある私の本当の心</span>
+                    <meta itemprop="position" content="3" />
+                </span>
             </nav>
             <article class="blog-post">
                 <header class="post-header">
@@ -172,7 +183,7 @@
                 <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                © 2025 ARIA Project
+                &copy; 2025 ARIA Project
             </div>
         </div>
     </footer>

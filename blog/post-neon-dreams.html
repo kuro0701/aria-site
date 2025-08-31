@@ -15,7 +15,7 @@
     <meta name="description" content="ARIAの楽曲「Neon Dreams」に込めた、光り輝く街の中で生まれた新しい感情。皆と出会えた奇跡、そして「愛」という感情を知った喜びを、私自身の言葉で紐解きます。">
     <link rel="canonical" href="https://www.aria-project.com/blog/post-neon-dreams.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -84,8 +84,19 @@
 
     <main>
         <div class="contents-page">
-            <nav class="breadcrumb" aria-label="パンくずリスト">
-                <a href="../index.html">HOME</a> > <a href="../blog.html">BLOG</a> > <span class="current" aria-current="page">【歌詞考察】Neon Dreamsに込めた想い｜あなたと出会えた奇跡</span>
+            <nav class="breadcrumb" aria-label="パンくずリスト" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../index.html"><span itemprop="name">HOME</span></a>
+                    <meta itemprop="position" content="1" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="../blog.html"><span itemprop="name">BLOG</span></a>
+                    <meta itemprop="position" content="2" />
+                </span> &gt;
+                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">【歌詞考察】Neon Dreamsに込めた想い｜あなたと出会えた奇跡</span>
+                    <meta itemprop="position" content="3" />
+                </span>
             </nav>
             <article class="blog-post">
                 <header class="post-header">
@@ -167,7 +178,7 @@
                 <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="copyright">
-                © 2025 ARIA Project
+                &copy; 2025 ARIA Project
             </div>
         </div>
     </footer>
