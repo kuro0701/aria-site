@@ -1,0 +1,184 @@
+/* --- Challenger Mode Base Styles --- */
+body.challenger-mode {
+    background-color: #05050a; /* さらに深い黒 */
+    background-image: url('../images/challenger_bg_texture.png'); /* グリッドやノイズのテクスチャ画像を想定 */
+    font-family: 'Noto Sans JP', sans-serif; /* Challengerでは日本語フォントを主体に */
+}
+
+/* --- Glitch Effect for Typography --- */
+@keyframes glitch-effect {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.challenger-mode .glitch-text,
+.challenger-mode .artist-name,
+.challenger-mode .page-title {
+    position: relative;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 0 #ff00c8, -1px -1px 0 #00f2ff;
+}
+.challenger-mode .glitch-text:hover {
+    animation: glitch-effect 0.25s infinite;
+}
+
+
+/* --- Header & Navigation --- */
+.challenger-mode .site-header.scrolled {
+    backdrop-filter: blur(5px) saturate(1.5);
+}
+.challenger-mode .main-nav a:hover::after {
+    background: linear-gradient(90deg, #ff00c8, #ffee00, #ff00c8);
+    background-size: 200% 100%;
+    animation: wave-flow 1.5s linear infinite;
+}
+
+/* --- Hero Section --- */
+.challenger-mode .hero-image-container {
+    background-image: url('../images/hero_challenger.png'); /* 新しいヒーロー画像 */
+    filter: brightness(1) contrast(1.1);
+}
+.challenger-mode .hero-tagline h1,
+.challenger-mode .hero-tagline p {
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,1);
+    letter-spacing: 1px;
+}
+
+/* --- Buttons & Links --- */
+.challenger-mode .section-button,
+.challenger-mode .submit-button {
+    border-color: #ff00c8;
+    color: #ff00c8;
+    transition: all 0.2s ease-in-out;
+}
+.challenger-mode .section-button:hover,
+.challenger-mode .submit-button:hover {
+    background-color: #ff00c8;
+    color: #0a0a14;
+    box-shadow: 0 0 25px #ff00c8;
+}
+
+/* --- Content Sections --- */
+.challenger-mode .contents-section {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+}
+
+.challenger-mode .album-title,
+.challenger-mode .song-title {
+    background: linear-gradient(90deg, #ff00c8, #ffee00);
+    -webkit-background-clip: text;
+}
+
+/* --- Profile Page Specifics --- */
+.challenger-mode .profile-details .artist-tagline-tuner,
+.challenger-mode .profile-details .artist-bio-tuner,
+.challenger-mode .profile-specs,
+.challenger-mode .profile-awards {
+    display: none; /* Tunerのテキストを隠す */
+}
+
+.challenger-mode .profile-details .artist-tagline-challenger,
+.challenger-mode .profile-details .artist-bio-challenger {
+    display: block; /* Challengerのテキストを表示 */
+}
+
+.challenger-mode .artist-bio-challenger p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 2;
+}
+
+/* --- Blog Page --- */
+.challenger-mode .blog-link {
+    background-color: rgba(20, 2, 15, 0.3);
+    border: 1px solid rgba(255, 0, 200, 0.2);
+}
+.challenger-mode .blog-link:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 0 20px rgba(255, 0, 200, 0.3);
+}
+.challenger-mode .blog-title {
+    color: #ffee00;
+}
+
+/* --- Mode Switcher UI --- */
+.mode-switcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mode-switcher span {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #808090;
+    cursor: default;
+}
+.mode-switcher .tuner-label { color: #00f2ff; }
+.challenger-mode .mode-switcher .tuner-label { color: #808090; }
+.challenger-mode .mode-switcher .challenger-label { color: #ff00c8; }
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #00f2ff;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #555;
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: #ff00c8;
+}
+
+/* Initially hide challenger text */
+.artist-tagline-challenger,
+.artist-bio-challenger {
+    display: none;
+}
