@@ -1,8 +1,8 @@
 /* --- Challenger Mode Base Styles --- */
 body.challenger-mode {
-    background-color: #05050a; /* さらに深い黒 */
-    background-image: url('../images/challenger_bg_texture.png'); /* グリッドやノイズのテクスチャ画像を想定 */
+    background: linear-gradient(180deg, #100a14 0%, #05050a 100%);
     font-family: 'Noto Sans JP', sans-serif; /* Challengerでは日本語フォントを主体に */
+    min-height: 100vh;
 }
 
 /* --- Glitch Effect for Typography --- */
