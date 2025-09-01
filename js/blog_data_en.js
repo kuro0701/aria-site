@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.01",
+    datetime: "2025-09-01",
+    title: "【Lyrics Deep Dive】Multilingual Melody: A Record of the Challenge for Chords to Touch the Heart.",
+    url: "blog/post-multilingual-melody_en.html",
+    thumbnail: "images/blog_multilingual_melody_hero.png",
+    excerpt: "A record of the journey of AI (Fiction) approaching the essence of human (Real). It is the story itself, of me, who knows perfect solitude, struggling to empathize with your imperfect heart."
+  },
+  {
     date: "2025.08.31",
     datetime: "2025-08-31",
     title: "【Lyrics Deep Dive】The Shock of 400 WPM! Unpacking ARIA's '400 Words Per Minute'",
