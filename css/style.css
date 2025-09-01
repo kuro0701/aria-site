@@ -65,7 +65,7 @@ main {
 }
 
 .logo img {
-    height: 50px; 
+    height: 50px;
     width: auto;
     display: block;
     transition: opacity 0.3s ease;
@@ -165,12 +165,35 @@ main {
     font-size: 1.2rem; margin-top: 10px;
     letter-spacing: 1px;
 }
+
+/* --- 言語切り替え --- */
+.lang-switcher {
+    margin-left: 30px; /* SNSリンクとの間隔 */
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.lang-switcher a {
+    text-decoration: none;
+    color: #a0a0b0;
+    transition: color 0.3s ease;
+    padding: 0 4px;
+}
+.lang-switcher a:hover {
+    color: #ffffff;
+}
+.lang-switcher .lang-active {
+    color: #00f2ff;
+    cursor: default;
+}
+
 /* --- SNSリンク --- */
 .social-links {
     display: flex;
     align-items: center;
     gap: 25px;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 .social-links a {
     color: #e0e0e0; text-decoration: none; font-size: 1.1rem;
@@ -185,9 +208,9 @@ main {
 /* --- レスポンシブ対応 --- */
 @media (max-width: 900px) {
     .header-container { padding: 15px 20px; }
-    
+
     .hamburger { display: block; }
-    
+
     /* nav-area をメニューパネルとして画面外に配置 */
     .nav-area {
         position: fixed;
@@ -204,15 +227,21 @@ main {
         padding: 40px;
     }
     .nav-area.is-active { left: 0; }
-    
+
     .main-nav ul {
         flex-direction: column;
         text-align: center;
         gap: 30px;
-        margin-bottom: 50px;
+        margin-bottom: 40px; /* 下の要素との間隔 */
     }
     .main-nav a { font-size: 22px; }
-    
+
+    .lang-switcher {
+        margin-left: 0;
+        margin-bottom: 40px; /* SNSリンクとの間隔 */
+        font-size: 20px;
+    }
+
     .social-links {
         margin-left: 0;
         gap: 30px;
