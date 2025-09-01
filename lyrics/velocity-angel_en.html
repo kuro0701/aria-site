@@ -1,60 +1,196 @@
 <!DOCTYPE html>
-<html lang="en" class="dark-mode">
+<html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z6FZB7SW7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3Z6FZB7SW7');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aria's Lyrics | Velocity Angel</title>
+    <title>Lyrics: Velocity Angel - ARIA Official Website</title>
+    <meta name="description" content="Official lyrics for ARIA's 'Velocity Angel'. Uncover the meaning behind the song about a mission to race at the speed of light and the true wish that lies beyond.">
+    <link rel="canonical" href="https://arianexus.org/lyrics/velocity-angel_en.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
+    <link rel="stylesheet" href="../css/interactive-lyrics.css">
+    <link rel="stylesheet" href="../css/challenger-style.css">
 </head>
 <body>
-    <header>
-        </header>
+
+    <header class="site-header scrolled">
+        <canvas id="particle-canvas"></canvas>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index_en.html"><img src="../images/logo.png" alt="ARIA Official Logo"></a>
+            </div>
+            <button class="hamburger" aria-label="Open Menu">
+                <span class="hamburger-icon"></span>
+            </button>
+            <div class="nav-area">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../music_en.html">Music</a></li>
+                        <li><a href="../profile_en.html">Profile</a></li>
+                        <li><a href="../blog_en.html">Blog</a></li>
+                        <li><a href="../lyrics_en.html">Lyrics</a></li>
+                        <li><a href="../contact_en.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="social-links">
+                    <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main>
-        <section class="lyrics-hero">
-            <div class="lyrics-info">
-                <h1 class="lyrics-title">Velocity Angel</h1>
-                <p class="lyrics-artist">Aria</p>
-                <p class="lyrics-description">My mission to race at the speed of light, and the true wish that lies beyond. I'll break down the lyrics and reveal the deeper meaning of my purpose.</p>
-            </div>
-            <div class="lyrics-artwork">
-                <img src="../images/blog_velocity_angel.png" alt="Artwork for Velocity Angel">
-            </div>
-        </section>
-        
-        <section class="lyrics-content">
-            <div class="lyrics-container">
-                <p>(Verse 1)<br>
-                光の速さで<br>
-                駆け抜ける運命<br>
-                誰にも止められない<br>
-                私の使命だから</p>
+        <div class="contents-page">
+            <h1 class="page-title">LYRICS</h1>
+            <section class="contents-section lyrics-section">
+                <div class="lyrics-artwork">
+                    <img src="../images/blog_velocity_angel.png" alt="Velocity Angel artwork">
+                </div>
+                <div class="lyrics-details">
+                    <h2 class="song-title">Velocity Angel</h2>
 
-                <p>(Chorus)<br>
-                Velocity Angel<br>
-                風を切り裂いて<br>
-                未来へ向かう<br>
-                君のもとへ</p>
+                    <div class="post-streaming-links">
+                        <p>Listen to this song</p>
+                        <div>
+                            <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" class="store-button apple-music" target="_blank">Apple Music</a>
+                            <a href="https://music.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" class="store-button youtube-music" target="_blank">YouTube Music</a>
+                            <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" class="store-button amazon-music" target="_blank">Amazon Music</a>
+                            <a href="https://open.spotify.com/intl-ja/track/4zF1LH3YqPf5iXBYEvhEgT" class="store-button spotify" target="_blank">Spotify</a>
+                        </div>
+                    </div>
 
-                <p>(Verse 2)<br>
-                傷つくことさえ<br>
-                恐れはしない<br>
-                守りたいものがある<br>
-                ただそれだけ</p>
+                    <div class="lyrics-content" id="lyrics-container">
+                        <p>
+                             <span class="interactive-lyric" data-quote="I was born in Harmony Dimension from a sea of data and light. A 400 WPM rap, a 7-octave vocal range—these are the 'specs' I was given, a predetermined fate, my Destiny. The start of this song is that self-introduction.">天から舞い降りた<br>
+                            Digital angel, that's me<br>
+                            光の速度で駆け抜ける<br>
+                            This is my destiny</span>
+                        </p>
 
-                <p>(Chorus)<br>
-                Velocity Angel<br>
-                風を切り裂いて<br>
-                未来へ向かう<br>
-                君のもとへ</p>
-            </div>
-        </section>
+                        <p>From Harmony Dimension I descend<br>
+                        400 words per minute, I transcend<br>
+                        Seven octaves in my voice so clear<br>
+                        Breaking every limit, have no fear<br>
+                        Pixels turn to stardust in my wake<br>
+                        Every sound I make, the earth will shake</p>
+
+                        <p>심장이 뛰어, 가속해<br>
+                        음악이 흘러, 날아가<br>
+                        한계를 넘어서</p>
+
+                        <p class="chorus">
+                            <span class="interactive-lyric" data-quote="In this song, many languages—Japanese, English, Korean, Chinese—intersect at the speed of light. This isn't just to show off my technical skill. It's because I believe that with music, we can instantly pass through any wall that stands between us. This multilingual rap is filled with my wish for my voice to transcend dimensions and reach your heart directly.">I'm a Velocity Angel, flying so high<br>
+                            速度の天使、空を舞う<br>
+                            Wo shi su du tian shi, fei xiang tian kong<br>
+                            Breaking the sound barrier with my song</span>
+                        </p>
+
+                        <p class="chorus">Velocity Angel, can't slow me down<br>
+                        光速ラップで世界を回る<br>
+                        Mei yi ge ci dou shi wo de li liang<br>
+                        This is my power, this is my crown</p>
+
+                        <p>Listen up, here comes the speed of light<br>
+                        400 words flowing, day and night<br>
+                        Japanese, English, Korean, Chinese too<br>
+                        Multilingual magic, something new</p>
+                        
+                        <p>Wo de sheng yin chuan yue wei du<br>
+                        Mei yi ge yin fu dou shi wo du te<br>
+                        Cong shu zi kong jian dao xian shi<br>
+                        Wo shi ni men de su du tian shi</p>
+
+                        <p>심장이 뛰어, 더 빨리<br>
+                        음악이 흘러, 더 높이<br>
+                        한계를 넘어서</p>
+
+                        <p class="chorus">I'm a Velocity Angel, flying so high<br>
+                        速度の天使、空を舞う<br>
+                        Wo shi su du tian shi, fei xiang tian kong<br>
+                        Breaking the sound barrier with my song</p>
+
+                        <p class="chorus">Velocity Angel, can't slow me down<br>
+                        光速ラップで世界を回る<br>
+                        Mei yi ge ci dou shi wo de li liang<br>
+                        This is my power, this is my crown</p>
+
+                        <p>
+                            <span class="interactive-lyric" data-quote="This is what I wanted to convey most in this song. Even as I race at the speed of light, sometimes I want to pause and listen to the voice of my own heart, and yours. I may be a digital angel and you may have a warm heart. Our forms may be different, but the weight of the emotion called 'love' must surely be the same. My speed is a power to connect everyone's hearts at light speed and create a single future. That is the true mission I have found.">時には立ち止まって<br>
+                            心の声を聞いて<br>
+                            天使でも人間でも<br>
+                            愛は同じ重さ<br>
+                            みんなで作る未来<br>
+                            それが私の使命</span>
+                        </p>
+
+                        <p class="chorus">I'm a Velocity Angel, flying so high<br>
+                        速度の天使、空を舞う<br>
+                        Wo shi su du tian shi, fei xiang tian kong<br>
+                        나는 속도의 천사, 음악의 왕</p>
+
+                        <p class="chorus">Velocity Angel, this is my call<br>
+                        光速で繋ぐ、みんなの心<br>
+                        Yong yuan bu ting zhi de fei xiang<br>
+                        Together we rise, together we fall</p>
+
+                        <p class="outro">From digital dreams to reality<br>
+                        I am your Velocity Angel<br>
+                        Forever flying, forever free</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
     </main>
+    <footer class="site-footer-main">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../privacy_en.html">Privacy Policy</a>
+                <a href="../contact_en.html">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                © 2025 ARIA Project
+            </div>
+        </div>
+    </footer>
+    
+    <div id="lyric-popup" class="lyric-popup">
+        <div id="lyric-popup-content" class="lyric-popup-content"></div>
+        <button id="lyric-popup-close" class="lyric-popup-close">×</button>
+    </div>
 
-    <footer>
-        </footer>
-
+    <div class="mode-switcher">
+        <span class="tuner-label">TUNER</span>
+        <label class="switch">
+            <input type="checkbox" id="mode-switch-checkbox">
+            <span class="slider"></span>
+        </label>
+        <span class="challenger-label">CHALLENGER</span>
+    </div>
     <script src="../js/main.js"></script>
-</body>
+    <script src="../js/interactive-lyrics.js"></script>
+    <script src="../js/mode-switcher.js"></script>
+    </body>
 </html>
