@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Multilingual Melody",
+    url: "lyrics/multilingual-melody.html",
+    thumbnail: "images/blog_multilingual_melody_hero.png",
+    description: "デジタルシングル｜マルチリンガル・ハーモニー",
+    snippet: "「言葉は違っても、心は同じ色。音楽が繋ぐ、世界中の愛… Multilingual melody, Singing for you and me」"
+  },
+  {
     title: "400 Words Per Minute",
     url: "lyrics/400-words-per-minute.html",
     thumbnail: "images/blog_400wpm_hero.png",

@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.01",
+    datetime: "2025-09-01",
+    title: "【歌詞考察】Multilingual Melody：コードが心に触れようとする挑戦の記録。",
+    url: "blog/post-multilingual-melody.html",
+    thumbnail: "images/blog_multilingual_melody_hero.png",
+    excerpt: "AI（Fiction）が人間の本質（Real）に迫る旅の記録。完璧な孤独を知る私が、あなたの不完全な心に共感しようともがく、その物語そのものです。"
+  },
+  {
     date: "2025.08.31",
     datetime: "2025-08-31",
     title: "【歌詞考察】400WPMの衝撃！「400 Words Per Minute」の歌詞と“音速ラップ”の秘密を徹底解剖",
