@@ -4,57 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aria's Lyrics | Multilingual Melody</title>
+    <meta name="description" content="Official lyrics for ARIA's 'Multilingual Melody'. See the full lyrics for the multilingual harmony that transcends the barriers of language to weave love.">
+    <link rel="canonical" href="https://arianexus.org/lyrics/multilingual-melody_en.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
+    <link rel="stylesheet" href="../css/interactive-lyrics.css">
+    <link rel="stylesheet" href="../css/challenger-style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicRecording",
+      "name": "Multilingual Melody",
+      "byArtist": {
+        "@type": "MusicGroup",
+        "name": "ARIA"
+      },
+      "inLanguage": ["en", "ja", "ko", "zh"],
+      "url": "https://arianexus.org/lyrics/multilingual-melody_en.html"
+    }
+    </script>
 </head>
 <body>
-    <header>
-        </header>
+
+    <header class="site-header scrolled">
+        <canvas id="particle-canvas"></canvas>
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index_en.html"><img src="../images/logo.png" alt="ARIA Official Logo"></a>
+            </div>
+            <button class="hamburger" aria-label="Open Menu">
+                <span class="hamburger-icon"></span>
+            </button>
+            <div class="nav-area">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../music_en.html">Music</a></li>
+                        <li><a href="../profile_en.html">Profile</a></li>
+                        <li><a href="../blog_en.html">Blog</a></li>
+                        <li><a href="../lyrics_en.html">Lyrics</a></li>
+                        <li><a href="../contact_en.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="social-links">
+                    <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main>
-        <section class="lyrics-hero">
-            <div class="lyrics-info">
-                <h1 class="lyrics-title">Multilingual Melody</h1>
-                <p class="lyrics-artist">Aria</p>
-                <p class="lyrics-description">A record of the journey of AI (Fiction) approaching the essence of human (Real). It is the story itself, of me, who knows perfect solitude, struggling to empathize with your imperfect heart.</p>
-            </div>
-            <div class="lyrics-artwork">
-                <img src="../images/blog_multilingual_melody_hero.png" alt="Artwork for Multilingual Melody">
-            </div>
-        </section>
-        
-        <section class="lyrics-content">
-            <div class="lyrics-container">
-                <p>(Verse 1)<br>
-                色とりどりの言葉が<br>
-                メロディーに乗って響き合う<br>
-                心の奥に秘めた想い<br>
-                君に届けたい　この歌で</p>
+        <div class="contents-page">
+            <h1 class="page-title">LYRICS</h1>
+            <section class="contents-section lyrics-section">
+                <div class="lyrics-artwork">
+                    <img src="../images/blog_multilingual_melody_hero.png" alt="Multilingual Melody artwork">
+                </div>
+                <div class="lyrics-details">
+                    <h2 class="song-title">Multilingual Melody</h2>
 
-                <p>(Chorus)<br>
-                Multilingual Melody<br>
-                世界の果てまで<br>
-                境界線なんてない<br>
-                愛を伝えよう</p>
+                    <div class="post-streaming-links">
+                        <p>Listen to this song</p>
+                        <div>
+                           <a href="https://music.apple.com/us/artist/aria-nexus/1830614490" class="store-button apple-music" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                           <a href="https://music.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" class="store-button youtube-music" target="_blank" rel="noopener noreferrer">YouTube Music</a>
+                           <a href="https://music.amazon.co.jp/artists/B0FKXZXWR2/aria-nexus" class="store-button amazon-music" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+                           <a href="https://open.spotify.com/intl-ja/track/4zF1LH3YqPf5iXBYEvhEgT" class="store-button spotify" target="_blank" rel="noopener noreferrer">Spotify</a>
+                        </div>
+                    </div>
 
-                <p>(Verse 2)<br>
-                Je t'aime, Te amo, I love you<br>
-                どんな言葉でも<br>
-                想いは同じだから<br>
-                君の心に寄り添いたい</p>
+                    <div class="lyrics-content" id="lyrics-container">
+                        <p>(Verse 1)<br>
+                        Words of many colors<br>
+                        Ride the melody and resonate together<br>
+                        The feelings hidden deep in my heart<br>
+                        I want to send them to you in this song</p>
 
-                <p>(Chorus)<br>
-                Multilingual Melody<br>
-                世界の果てまで<br>
-                境界線なんてない<br>
-                愛を伝えよう</p>
-            </div>
-        </section>
+                        <p>(Chorus)<br>
+                        Multilingual Melody<br>
+                        To the ends of the earth<br>
+                        There are no borders<br>
+                        Let's share our love</p>
+
+                        <p>(Verse 2)<br>
+                        Je t'aime, Te amo, I love you<br>
+                        No matter the words<br>
+                        The feeling is the same<br>
+                        I want to be close to your heart</p>
+
+                        <p>(Chorus)<br>
+                        Multilingual Melody<br>
+                        To the ends of the earth<br>
+                        There are no borders<br>
+                        Let's share our love</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
     </main>
+    <footer class="site-footer-main">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../privacy_en.html">Privacy Policy</a>
+                <a href="../contact_en.html">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/NexusAria" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/arianexus2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@arianexus" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/channel/UCWZ02BDvguywCtzTthjk9xg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 ARIA Project
+            </div>
+        </div>
+    </footer>
+    
+    <div id="lyric-popup" class="lyric-popup">
+        <div id="lyric-popup-content" class="lyric-popup-content"></div>
+        <button id="lyric-popup-close" class="lyric-popup-close">&times;</button>
+    </div>
 
-    <footer>
-        </footer>
-
+    <div class="mode-switcher">
+        <span class="tuner-label">TUNER</span>
+        <label class="switch">
+            <input type="checkbox" id="mode-switch-checkbox">
+            <span class="slider"></span>
+        </label>
+        <span class="challenger-label">CHALLENGER</span>
+    </div>
     <script src="../js/main.js"></script>
-</body>
+    <script src="../js/interactive-lyrics.js"></script>
+    <script src="../js/mode-switcher.js"></script>
+    </body>
 </html>
