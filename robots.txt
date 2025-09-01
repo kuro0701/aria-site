@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /js/blog_data.js
+Disallow: /js/lyrics_data.js
+Disallow: /images/.DS_Store
+Disallow: /css/.DS_Store
+Disallow: /js/.DS_Store
+Disallow: /lyrics/.DS_Store
+Disallow: /blog/.DS_Store
+Disallow: /.DS_Store
