@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../css/contents.css">
     <link rel="stylesheet" href="../css/lyrics.css">
     <link rel="stylesheet" href="../css/interactive-lyrics.css">
-</head>
+    <link rel="stylesheet" href="../css/challenger-style.css"> </head>
 <body>
 
     <header class="site-header scrolled">
@@ -158,7 +158,16 @@
         <button id="lyric-popup-close" class="lyric-popup-close">×</button>
     </div>
 
+    <div class="mode-switcher">
+        <span class="tuner-label">TUNER</span>
+        <label class="switch">
+            <input type="checkbox" id="mode-switch-checkbox">
+            <span class="slider"></span>
+        </label>
+        <span class="challenger-label">CHALLENGER</span>
+    </div>
     <script src="../js/main.js"></script>
     <script src="../js/interactive-lyrics.js"></script>
-</body>
+    <script src="../js/mode-switcher.js"></script>
+    </body>
 </html>

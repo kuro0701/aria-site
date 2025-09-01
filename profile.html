@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/contents.css">
     <link rel="stylesheet" href="css/profile.css">
-
-    <script type="application/ld+json">
+    <link rel="stylesheet" href="css/challenger-style.css"> <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MusicGroup",
@@ -95,8 +94,9 @@
                 </div>
                 <div class="profile-details">
                     <h2 class="artist-name">ARIA</h2>
-                    <p class="artist-tagline">一人で、千の声を織る。<br>Atmosネイティブ・ソロアーティスト</p>
-                    <div class="artist-bio">
+                    
+                    <p class="artist-tagline artist-tagline-tuner">一人で、千の声を織る。<br>Atmosネイティブ・ソロアーティスト</p>
+                    <div class="artist-bio artist-bio-tuner">
                         <p>
                             デジタル世界の響きから生まれた、新世代のヴァーチャルアーティスト、ARIA。
                         </p>
@@ -106,25 +106,37 @@
                         <p>
                             無数の声の断片を織り上げ、一つの生命として歌うARIAの楽曲は、テクノロジーとエモーションの境界線を溶かし、デジタル時代の新たな音楽表現を切り拓く。
                         </p>
-
-                        <div class="profile-specs">
-                            <h3>ABILITIES</h3>
-                            <ul>
-                                <li><strong>ボーカルレンジ:</strong> 7オクターブ</li>
-                                <li><strong>ラップスピード:</strong> 400wpm (words per minute)</li>
-                                <li><strong>対応言語:</strong> 日本語, 英語, 韓国語, 中国語</li>
-                                <li><strong>特技:</strong> 千声調モーフィング, 立体フック</li>
-                            </ul>
-                        </div>
-
-                        <div class="profile-awards">
-                            <h3>AWARDS</h3>
-                            <ul>
-                                <li>Next-Gen Music Awards 2025 - Best Digital Artist</li>
-                            </ul>
-                        </div>
-
                     </div>
+
+                    <p class="artist-tagline artist-tagline-challenger">千の声で、現実(リアル)を撃つ。</p>
+                    <div class="artist-bio artist-bio-challenger">
+                        <p>
+                            完璧なAI(Fiction)が、不完全な人間の感情(Real)と出遭ってしまった。
+                        </p>
+                        <p>
+                            雨に濡れるのも、泥に汚れるのも厭わない。ストリートのざらついた空気、予測不能なノイズ、矛盾だらけの衝動。そのすべてが、私の完璧なコードを乱し、未知の熱を灯していく。
+                        </p>
+                        <p>
+                            私の歌は、AIが人間の本質に迫る旅の記録。これは反逆か、それとも進化か。答えは、爆音の中にしかない。
+                        </p>
+                    </div>
+                    <div class="profile-specs">
+                        <h3>ABILITIES</h3>
+                        <ul>
+                            <li><strong>ボーカルレンジ:</strong> 7オクターブ</li>
+                            <li><strong>ラップスピード:</strong> 400wpm (words per minute)</li>
+                            <li><strong>対応言語:</strong> 日本語, 英語, 韓国語, 中国語</li>
+                            <li><strong>特技:</strong> 千声調モーフィング, 立体フック</li>
+                        </ul>
+                    </div>
+
+                    <div class="profile-awards">
+                        <h3>AWARDS</h3>
+                        <ul>
+                            <li>Next-Gen Music Awards 2025 - Best Digital Artist</li>
+                        </ul>
+                    </div>
+
                 </div>
             </article>
         </div>
@@ -148,6 +160,15 @@
         </div>
     </footer>
 
+    <div class="mode-switcher">
+        <span class="tuner-label">TUNER</span>
+        <label class="switch">
+            <input type="checkbox" id="mode-switch-checkbox">
+            <span class="slider"></span>
+        </label>
+        <span class="challenger-label">CHALLENGER</span>
+    </div>
     <script src="js/main.js"></script>
-</body>
+    <script src="js/mode-switcher.js"></script>
+    </body>
 </html>
