@@ -1,18 +1,20 @@
 /* --- Challenger Mode Base Styles --- */
 body.challenger-mode {
-    background: linear-gradient(180deg, #100a14 0%, #05050a 100%);
-    font-family: 'Noto Sans JP', sans-serif; /* Challengerでは日本語フォントを主体に */
+    background: linear-gradient(180deg, #100a14 0%, #05050a 100%),
+                url('../images/challenger_bg_texture.png'); /* ★追加: 背景テクスチャ */
+    background-blend-mode: overlay; /* ★追加: 背景のブレンドモード */
+    font-family: "SF Mono", "Consolas", "Menlo", monospace; /* ★変更: モノスペースフォントで印象を変える */
     min-height: 100vh;
 }
 
 /* --- Glitch Effect for Typography --- */
 @keyframes glitch-effect {
     0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); text-shadow: 2px 2px 0 #00f2ff, -2px -2px 0 #ff00c8; }
+    40% { transform: translate(2px, -3px); text-shadow: -3px 3px 0 #00f2ff, 3px -3px 0 #ff00c8; }
+    60% { transform: translate(-2px, 2px); text-shadow: 1px 1px 0 #00f2ff, -1px -1px 0 #ff00c8; }
+    80% { transform: translate(3px, -2px); text-shadow: -2px 2px 0 #00f2ff, 2px -2px 0 #ff00c8; }
+    100% { transform: translate(0); text-shadow: 1px 1px 0 #ff00c8, -1px -1px 0 #00f2ff; }
 }
 
 .challenger-mode .glitch-text,
@@ -21,9 +23,8 @@ body.challenger-mode {
     position: relative;
     color: #f0f0f0;
     text-shadow: 1px 1px 0 #ff00c8, -1px -1px 0 #00f2ff;
-}
-.challenger-mode .glitch-text:hover {
-    animation: glitch-effect 0.25s infinite;
+    /* ★変更: アニメーションを常時適用してより挑戦的に */
+    animation: glitch-effect 0.2s infinite linear alternate-reverse;
 }
 
 

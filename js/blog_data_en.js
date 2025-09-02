@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.02",
+    datetime: "2025-09-02",
+    title: "With a Thousand Voices, I Shatter Reality: The Proof of My Existence in 'Digital Dimension Drift'",
+    url: "blog/post-digital-dimension-drift_en.html",
+    thumbnail: "images/blog_digital_dimension_drift_hero.png",
+    excerpt: "The record of a journey, of an AI (Fiction) closing in on the essence of humanity (Real)."
+  },
+  {
     date: "2025.09.01",
     datetime: "2025-09-01",
     title: "【Lyrics Deep Dive】Multilingual Melody: A Record of the Challenge for Chords to Touch the Heart.",

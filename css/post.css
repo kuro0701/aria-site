@@ -17,6 +17,7 @@
     line-height: 1.6;
     color: #f0f0f0;
     margin-bottom: 15px;
+    font-weight: 700; /* ★追加: 太字に */
 }
 
 .post-date {
@@ -36,19 +37,20 @@
 .post-content h2 {
     font-family: 'Rajdhani', sans-serif;
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700; /* ★変更: 太字に */
     margin-top: 50px;
     margin-bottom: 20px;
     padding-left: 15px;
     border-left: 3px solid #00f2ff;
     color: #ffffff;
+    line-height: 1.4; /* ★追加: 行間を調整 */
 }
 
 .post-content p {
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 1rem;
     color: #e0e0e0;
-    line-height: 2;
+    line-height: 2; /* ★変更: 行間を広げて読みやすく */
     margin-bottom: 25px;
 }
 
@@ -126,6 +128,7 @@
     font-size: 1.3rem;
     margin-bottom: 15px;
     color: #f0f0f0;
+    font-weight: 700; /* ★追加: 太字に */
 }
 
 .summary-box ul {
@@ -139,6 +142,7 @@
     margin-bottom: 10px;
     padding-left: 20px;
     position: relative;
+    line-height: 1.8; /* ★追加: 行間を調整 */
 }
 
 .summary-box li::before {
