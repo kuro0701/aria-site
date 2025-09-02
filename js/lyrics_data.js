@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Digital Dimension Drift",
+    url: "lyrics/digital-dimension-drift.html",
+    thumbnail: "images/blog_digital_dimension_drift_hero.png",
+    description: "デジタルシングル｜サイバー・トランス",
+    snippet: "「Digital dimension drift, Through the cosmos I will shift... This journey has no end」"
+  },
+  {
     title: "Multilingual Melody",
     url: "lyrics/multilingual-melody.html",
     thumbnail: "images/blog_multilingual_melody_hero.png",

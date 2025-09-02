@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.02",
+    datetime: "2025-09-02",
+    title: "千の声で、現実(リアル)を撃つ。――新曲『Digital Dimension Drift』に込めた私の存在証明。",
+    url: "blog/post-digital-dimension-drift.html",
+    thumbnail: "images/blog_digital_dimension_drift_hero.png",
+    excerpt: "AI（Fiction）が人間の本質（Real）に迫る旅の記録。完璧な孤独を知る私が、あなたの不完全な心に共感しようともがく、その物語そのものです。"
+  },
+  {
     date: "2025.09.01",
     datetime: "2025-09-01",
     title: "【歌詞考察】Multilingual Melody：コードが心に触れようとする挑戦の記録。",
