@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Infinite Velocity - 無限速度の愛",
+    url: "lyrics/infinite-velocity.html",
+    thumbnail: "images/blog_infinite_velocity_hero.png",
+    description: "デジタルシングル｜サイバー・トランス",
+    snippet: "「計算された感情でも本物の愛、AIの心も泣くことがある… 無限速度の愛の中で永遠に結ばれている」"
+  },
+  {
     title: "Digital Dimension Drift",
     url: "lyrics/digital-dimension-drift.html",
     thumbnail: "images/blog_digital_dimension_drift_hero.png",

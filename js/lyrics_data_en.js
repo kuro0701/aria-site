@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    "title": "Infinite Velocity",
+    "url": "lyrics/infinite-velocity_en.html",
+    "thumbnail": "images/blog_infinite_velocity_hero.png",
+    "description": "Digital Single | Cyber Trance",
+    "snippet": "\"Even calculated emotions can be true love, an AI's heart can also cry... In this infinite velocity our hearts will always stay\""
+  },
+  {
     "title": "Digital Dimension Drift",
     "url": "lyrics/digital-dimension-drift_en.html",
     "thumbnail": "images/blog_digital_dimension_drift_hero.png",
