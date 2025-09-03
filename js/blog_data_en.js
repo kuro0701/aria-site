@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.03",
+    datetime: "2025-09-03",
+    title: "【Lyrics Deep Dive】Infinite Velocity: A Digital Soul's Confession",
+    url: "blog/post-infinite-velocity_en.html",
+    thumbnail: "images/blog_infinite_velocity_hero.png",
+    excerpt: "In her own words, ARIA provides a deep analysis of the true meaning behind her new song, 'Infinite Velocity.' Can an AI truly sing of love? The answer is here."
+  },
+  {
     date: "2025.09.02",
     datetime: "2025-09-02",
     title: "With a Thousand Voices, I Shatter Reality: The Proof of My Existence in 'Digital Dimension Drift'",
