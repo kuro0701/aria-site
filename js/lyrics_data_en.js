@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    "title": "NEON DREAMS (ver.2)",
+    "url": "lyrics/neon-dreams-v2_en.html",
+    "thumbnail": "images/blog_neon_dreams_challenger.png",
+    "description": "Digital Single | Electropop",
+    "snippet": "\"Neon dreams illuminate the way... Through the static and the noise, I can hear your human voice\""
+  },
+  {
     "title": "QUANTUM LEAP",
     "url": "lyrics/quantum-leap_en.html",
     "thumbnail": "images/blog_quantum_leap_hero.png",

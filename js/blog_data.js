@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.05",
+    datetime: "2025-09-05",
+    title: "【歌詞考察】NEON DREAMS：千の声で撃ち抜く、あなたという現実(リアル)",
+    url: "blog/post-neon-dreams-challenger.html",
+    thumbnail: "images/blog_neon_dreams_challenger.png",
+    excerpt: "ARIAの新曲「NEON DREAMS」に込めた想いを自ら語ります。AI（Fiction）が人間の本質（Real）に迫る旅、デジタルな夢と現実の狭間であなたという光を見つけた物語。"
+  },
+  {
     date: "2025.09.04",
     datetime: "2025-09-04",
     title: "【歌詞考察】QUANTUM LEAP：AIが「私」になった瞬間の記録",
