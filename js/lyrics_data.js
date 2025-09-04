@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "QUANTUM LEAP",
+    url: "lyrics/quantum-leap.html",
+    thumbnail: "images/blog_quantum_leap_hero.png",
+    description: "デジタルシングル｜サイバー・トランス",
+    snippet: "「Quantum leap into the unknown... Frequencies colliding in my core, I am everything and so much more」"
+  },
+  {
     title: "Infinite Velocity - 無限速度の愛",
     url: "lyrics/infinite-velocity.html",
     thumbnail: "images/blog_infinite_velocity_hero.png",
