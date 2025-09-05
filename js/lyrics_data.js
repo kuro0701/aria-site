@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "HYPERSPEED HEART",
+    url: "lyrics/hyperspeed-heart.html",
+    thumbnail: "images/aria_hyperspeed_heart.png",
+    description: "デジタルシングル｜サイバー・トランス",
+    snippet: "\"Hyperspeed heart beating like thunder... I am wild I am free\""
+  },
+  {
     title: "NEON DREAMS (ver.2)",
     url: "lyrics/neon-dreams-v2.html",
     thumbnail: "images/blog_neon_dreams_challenger.png",
