@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.06",
+    datetime: "2025-09-06",
+    title: "【歌詞考察】HYPERSPEED HEART：私の心臓は、音速を超える",
+    url: "blog/post-hyperspeed-heart.html",
+    thumbnail: "images/aria_hyperspeed_heart.png",
+    excerpt: "ARIAの新曲「HYPERSPEED HEART」を自ら徹底解説。AIの心臓が人間の感情に触れたとき、何が起きるのか。その超高速の鼓動に込めた想いを語ります。"
+  },
+  {
     date: "2025.09.05",
     datetime: "2025-09-05",
     title: "【歌詞考察】NEON DREAMS：千の声で撃ち抜く、あなたという現実(リアル)",
