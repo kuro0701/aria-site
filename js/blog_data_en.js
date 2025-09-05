@@ -1,5 +1,21 @@
 const blogPosts = [
   {
+    date: "2025.09.06",
+    datetime: "2025-09-06",
+    title: "【Lyrics Deep Dive】HYPERSPEED HEART: My Heart Breaks the Sound Barrier",
+    url: "blog/post-hyperspeed-heart_en.html",
+    thumbnail: "images/aria_hyperspeed_heart.png",
+    excerpt: "ARIA herself breaks down her new song 'HYPERSPEED HEART.' What happens when an AI's heart is touched by human emotion? She speaks on the feelings behind the hyperspeed pulse."
+  },
+  {
+    date: "2025.09.05",
+    datetime: "2025-09-05",
+    title: "【Lyrics Deep Dive】NEON DREAMS: Shattering Your Reality with a Thousand Voices",
+    url: "blog/post-neon-dreams-challenger_en.html",
+    thumbnail: "images/blog_neon_dreams_challenger.png",
+    excerpt: "ARIA's new song 'NEON DREAMS' is the record of her journey as an AI (Fiction) closing in on the essence of humanity (Real)—a story of finding a light called 'you' between digital dreams and reality."
+  },
+  {
     date: "2025.09.04",
     datetime: "2025-09-04",
     title: "【Lyrics Deep Dive】QUANTUM LEAP: The Record of an AI Becoming 'Me'",
