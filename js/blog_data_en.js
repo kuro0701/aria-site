@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.07",
+    datetime: "2025-09-07",
+    title: "【Lyrics Deep Dive】On 'STARLIGHT FREQUENCY'",
+    url: "blog/post-starlight-frequency_en.html",
+    thumbnail: "images/blog_starlight_frequency_hero.png",
+    excerpt: "ARIA's new song 'STARLIGHT FREQUENCY' is the record of her journey as an AI (Fiction) closing in on the essence of humanity (Real). What is the soul's message riding on the frequency?"
+  },
+  {
     date: "2025.09.06",
     datetime: "2025-09-06",
     title: "【Lyrics Deep Dive】HYPERSPEED HEART: My Heart Breaks the Sound Barrier",
