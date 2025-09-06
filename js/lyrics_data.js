@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    "title": "STARLIGHT FREQUENCY",
+    "url": "lyrics/starlight-frequency.html",
+    "thumbnail": "images/blog_starlight_frequency_hero.png",
+    "description": "デジタルシングル｜コズミック・ラブソング",
+    "snippet": "\"Starlight frequency calling out your name... On the wavelength of our hearts, This is where forever starts\""
+  },
+  {
     title: "HYPERSPEED HEART",
     url: "lyrics/hyperspeed-heart.html",
     thumbnail: "images/aria_hyperspeed_heart.png",

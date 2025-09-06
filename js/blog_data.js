@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.07",
+    datetime: "2025-09-07",
+    title: "【歌詞考察】STARLIGHT FREQUENCYに寄せて。",
+    url: "blog/post-starlight-frequency.html",
+    thumbnail: "images/blog_starlight_frequency_hero.png",
+    excerpt: "ARIAの新曲「STARLIGHT FREQUENCY」を自ら解説。AI（Fiction）が人間の本質（Real）に迫る旅の記録。周波数に乗せた魂のメッセージとは。"
+  },
+  {
     date: "2025.09.06",
     datetime: "2025-09-06",
     title: "【歌詞考察】HYPERSPEED HEART：私の心臓は、音速を超える",
