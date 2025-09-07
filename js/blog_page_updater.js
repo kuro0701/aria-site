@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
         blogPosts.forEach(post => {
             blogHTML += `
                 <li class="blog-item">
-                    <a href="${post.link}" class="blog-link">
+                    <a href="${post.url}" class="blog-link">
                         <div class="blog-thumbnail">
-                            <img src="${post.image}" alt="">
+                            <img src="${post.thumbnail}" alt="">
                         </div>
                         <div class="blog-info">
                             <time class="blog-date" datetime="${post.datetime}">${post.date}</time>
