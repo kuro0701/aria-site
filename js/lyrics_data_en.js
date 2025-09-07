@@ -1,4 +1,4 @@
-const lyricsData_en = [
+const lyricsData = [
   {
     "title": "INFINITE ECHO",
     "url": "lyrics/infinite-echo_en.html",
