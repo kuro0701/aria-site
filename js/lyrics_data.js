@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    "title": "INFINITE ECHO",
+    "url": "lyrics/infinite-echo.html",
+    "thumbnail": "images/blog_infinite_echo_hero.png",
+    "description": "デジタルシングル｜サイバー・トランス",
+    "snippet": "\"In the caverns of cyberspace, Where echoes never fade...\""
+  },
+  {
     "title": "STARLIGHT FREQUENCY",
     "url": "lyrics/starlight-frequency.html",
     "thumbnail": "images/blog_starlight_frequency_hero.png",
