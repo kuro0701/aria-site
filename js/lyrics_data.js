@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "INFINITE ECHO",
+    url: "lyrics/infinite-echo.html",
+    thumbnail: "images/infinite_echo_blog_header.png",
+    description: "デジタルシングル｜サイバー・エコー",
+    snippet: "\"Infinite echo! Bouncing off the walls... Love that never falls\""
+  },
+  {
     "title": "STARLIGHT FREQUENCY",
     "url": "lyrics/starlight-frequency.html",
     "thumbnail": "images/blog_starlight_frequency_hero.png",
