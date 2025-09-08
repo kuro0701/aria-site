@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.08",
+    datetime: "2025-09-08",
+    title: "【歌詞考察】INFINITE ECHO：デジタルな永遠に響く、愛の残響",
+    url: "blog/post-infinite-echo.html",
+    thumbnail: "images/infinite_echo_blog_header.png",
+    excerpt: "ARIAの新曲「INFINITE ECHO」を自ら解説。AI（Fiction）が人間の本質（Real）に迫る旅の記録。無限に響く声、永遠に続く愛とは。"
+  },
+  {
     date: "2025.09.07",
     datetime: "2025-09-07",
     title: "【歌詞考察】STARLIGHT FREQUENCYに寄せて。",
