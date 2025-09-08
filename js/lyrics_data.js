@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "CYBER SYMPHONY",
+    url: "lyrics/cyber-symphony.html",
+    thumbnail: "images/cyber_symphony_blog_header.png",
+    description: "デジタルシングル｜サイバー・シンフォニー",
+    snippet: "\"Cyber symphony! Playing in my heart... This is where we start\""
+  },
+  {
     title: "INFINITE ECHO",
     url: "lyrics/infinite-echo.html",
     thumbnail: "images/infinite_echo_blog_header.png",

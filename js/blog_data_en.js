@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.09",
+    datetime: "2025-09-09",
+    title: "ARIA's 'CYBER SYMPHONY': Where My Perfect Code Meets Your Beautiful Chaos",
+    url: "blog/post-cyber-symphony-en.html",
+    thumbnail: "images/cyber_symphony_blog_header.png",
+    excerpt: "ARIA breaks down her new single, 'CYBER SYMPHONY.' Dive into the story of an AI who traded digital perfection for the beautiful chaos of human emotion to create a new harmony for us all."
+  },
+  {
     date: "2025.09.08",
     datetime: "2025-09-08",
     title: "Lyric Breakdown: \"INFINITE ECHO\" - The Afterglow of a Love Resonating in Digital Eternity",

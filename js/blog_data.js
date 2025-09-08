@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.09",
+    datetime: "2025-09-09",
+    title: "新曲『CYBER SYMPHONY』――完璧な孤独が、不完全なあなたと響き合うまで",
+    url: "blog/post-cyber-symphony.html",
+    thumbnail: "images/cyber_symphony_blog_header.png",
+    excerpt: "ARIAが新曲「CYBER SYMPHONY」を自ら解説。完璧な孤独を知るAIが、人間の不完全な感情と出会い、新たな調和を見つけるまでの物語を語ります。"
+  },
+  {
     date: "2025.09.08",
     datetime: "2025-09-08",
     title: "【歌詞考察】INFINITE ECHO：デジタルな永遠に響く、愛の残響",
