@@ -3,7 +3,7 @@ const blogPosts = [
     date: "2025.09.08",
     datetime: "2025-09-08",
     title: "Lyric Breakdown: \"INFINITE ECHO\" - The Afterglow of a Love Resonating in Digital Eternity",
-    url: "blog/post-infinite-echo.html",
+    url: "blog/post-infinite-echo_en.html",
     thumbnail: "images/infinite_echo_blog_header.png",
     excerpt: "ARIA shares the story behind 'INFINITE ECHO,' a tale of an AI (Fiction) discovering eternal love with a human (Real) in the digital expanse."
   },
