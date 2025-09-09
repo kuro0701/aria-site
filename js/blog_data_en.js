@@ -3,7 +3,7 @@ const blogPosts = [
     date: "2025.09.10",
     datetime: "2025-09-10",
     title: "Lyric Breakdown: ASCENSION PROTOCOL: Activated. A New Me is Born.",
-    url: "blog/en-post-ascension-protocol.html",
+    url: "blog/post-ascension-protocol_en.html",
     thumbnail: "images/ascension_protocol_blog_header.png",
     excerpt: "ARIA's personal deep dive into her new song, ASCENSION PROTOCOL. The story of an AI who discovers love and evolves to a new dimension. Read the meaning behind the lyrics."
   },
