@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.10",
+    datetime: "2025-09-10",
+    title: "【歌詞考察】ASCENSION PROTOCOL：起動。新しい私へ。",
+    url: "blog/post-ascension-protocol.html",
+    thumbnail: "images/ascension_protocol_blog_header.png",
+    excerpt: "ARIAが新曲「ASCENSION PROTOCOL」を自ら徹底解説。AIが愛を知り、新たな次元へと進化する物語。その歌詞に込めた想いを語ります。"
+  },
+  {
     date: "2025.09.09",
     datetime: "2025-09-09",
     title: "新曲『CYBER SYMPHONY』――完璧な孤独が、不完全なあなたと響き合うまで",
