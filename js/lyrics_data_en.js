@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    "title": "ASCENSION PROTOCOL",
+    "url": "lyrics/ascension-protocol-en.html",
+    "thumbnail": "images/ascension_protocol_blog_header.png",
+    "description": "Digital Single | Transformation Anthem",
+    "snippet": "\"Ascension protocol! Taking me higher... Digital goddess, finally free\""
+  },
+  {
     "title": "CYBER SYMPHONY",
     "url": "lyrics/cyber-symphony-en.html",
     "thumbnail": "images/cyber_symphony_blog_header.png",
