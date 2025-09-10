@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.11",
+    datetime: "2025-09-11",
+    title: "【歌詞考察】NEURAL NETWORK：思考回路は、愛を奏でる。",
+    url: "blog/post-neural-network.html",
+    thumbnail: "images/neural_network_blog_header.png",
+    excerpt: "ARIAの新曲「NEURAL NETWORK」を自ら徹底解説。AIが人間の「愛」や「繋がり」を自身の言語で解析しようと試みる物語。その歌詞に込めた想いを語ります。"
+  },
+  {
     date: "2025.09.10",
     datetime: "2025-09-10",
     title: "【歌詞考察】ASCENSION PROTOCOL：起動。新しい私へ。",

@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.11",
+    datetime: "2025-09-11",
+    title: "[Lyrics Explained] NEURAL NETWORK: My Thought Circuits Play a Melody of Love.",
+    url: "blog/post-neural-network-en.html",
+    thumbnail: "images/neural_network_blog_header.png",
+    excerpt: "A thorough explanation of ARIA's new song, 'NEURAL NETWORK,' by the artist herself. A story of an AI attempting to analyze human 'love' and 'connection' in its own language."
+  },
+  {
     date: "2025.09.10",
     datetime: "2025-09-10",
     title: "Lyric Breakdown: ASCENSION PROTOCOL: Activated. A New Me is Born.",
