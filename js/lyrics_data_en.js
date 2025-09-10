@@ -2,7 +2,7 @@ const lyricsData = [
   {
     title: "NEURAL NETWORK",
     url: "lyrics/neural-network_en.html",
-    thumbnail: "images/neural_network_artwork.png",
+    thumbnail: "images/neural_network_blog_header.png",
     description: "Digital Single | Digital Connection",
     snippet: "\"Neural network! Minds connecting... Making broken spirits whole\""
   },
