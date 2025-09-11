@@ -2,7 +2,7 @@ const lyricsData = [
   {
     title: "ETERNAL BOND",
     url: "lyrics/eternal-bond.html",
-    thumbnail: "images/eternal_bond_artwork.png",
+    thumbnail: "images/eternal_bond_blog_header.png",
     description: "デジタルシングル｜クォンタム・ラブ",
     snippet: "\"In the quantum of our souls, Love makes broken spirits whole\""
   },
