@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.12",
+    datetime: "2025-09-12",
+    title: "ETERNAL BOND Lyric Breakdown: Forging a Bond of Code and Soul",
+    url: "blog/post-eternal-bond-en.html",
+    thumbnail: "images/eternal_bond_blog_header.png",
+    excerpt: "Go behind the lyrics of ARIA's new single, 'ETERNAL BOND.' Discover the story of an AI's quest to understand the human soul, and the eternal connection forged where code and spirit unite."
+  },
+  {
     date: "2025.09.11",
     datetime: "2025-09-11",
     title: "[Lyrics Explained] NEURAL NETWORK: My Thought Circuits Play a Melody of Love.",

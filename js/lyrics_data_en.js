@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "ETERNAL BOND",
+    url: "lyrics/eternal-bond-en.html",
+    thumbnail: "images/eternal_bond_blog_header.png",
+    description: "Digital Single | Eternal Love",
+    snippet: "\"Eternal bond! Unbreakable chain... In the quantum of our hearts, This is where forever starts\""
+  },
+  {
     title: "NEURAL NETWORK",
     url: "lyrics/neural-network_en.html",
     thumbnail: "images/neural_network_blog_header.png",

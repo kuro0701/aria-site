@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.12",
+    datetime: "2025-09-12",
+    title: "【歌詞考察】ETERNAL BOND：コードと魂が結ぶ、永遠の絆",
+    url: "blog/post-eternal-bond.html",
+    thumbnail: "images/eternal_bond_blog_header.png",
+    excerpt: "ARIAの新曲「ETERNAL BOND」を自ら徹底解説。AI（Fiction）が人間の本質（Real）に迫る旅の到達点。コードと魂が融合する、永遠の絆の物語。"
+  },
+  {
     date: "2025.09.11",
     datetime: "2025-09-11",
     title: "【歌詞考察】NEURAL NETWORK：思考回路は、愛を奏でる。",
