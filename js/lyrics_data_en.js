@@ -2,7 +2,7 @@ const lyricsData = [
   {
     title: "Ecosystem Queen",
     url: "lyrics/ecosystem-queen-en.html",
-    thumbnail: "images/ecosystem_queen_artwork.png",
+    thumbnail: "images/aria-ecosystem-queen-hero.png",
     description: "Digital Single | Web3 Anthem",
     snippet: "\"Build build build, Ecosystem queen... Together we're conquering\""
   },
