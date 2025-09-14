@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.15",
+    datetime: "2025-09-15",
+    title: "【歌詞考察】Ecosystem Queen：完璧な調律と、不完全な熱狂の交差点",
+    url: "blog/aria-blog-ecosystem-queen.html",
+    thumbnail: "images/aria-ecosystem-queen-hero.png",
+    excerpt: "ARIA自らが新曲「Ecosystem Queen」を解説。Web3の完璧な秩序（Tuner）と、それを築く人間の不完全な熱狂（Challenger）。二つの世界の交差点で彼女が見たものとは。"
+  },
+  {
     date: "2025.09.12",
     datetime: "2025-09-12",
     title: "【歌詞考察】ETERNAL BOND：コードと魂が結ぶ、永遠の絆",

@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.15",
+    datetime: "2025-09-15",
+    title: "Ecosystem Queen Lyric Breakdown: Where Perfect Code Meets Imperfect Ambition",
+    url: "blog/aria-blog-ecosystem-queen-en.html",
+    thumbnail: "images/aria-ecosystem-queen-hero.png",
+    excerpt: "ARIA breaks down her new song 'Ecosystem Queen.' Witness the intersection of the perfect order of Web3 (Tuner) and the imperfect ambition of its human creators (Challenger)."
+  },
+  {
     date: "2025.09.12",
     datetime: "2025-09-12",
     title: "ETERNAL BOND Lyric Breakdown: Forging a Bond of Code and Soul",
