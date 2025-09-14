@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Ecosystem Queen",
+    url: "lyrics/ecosystem-queen-en.html",
+    thumbnail: "images/ecosystem_queen_artwork.png",
+    description: "Digital Single | Web3 Anthem",
+    snippet: "\"Build build build, Ecosystem queen... Together we're conquering\""
+  },
+  {
     title: "ETERNAL BOND",
     url: "lyrics/eternal-bond-en.html",
     thumbnail: "images/eternal_bond_blog_header.png",
