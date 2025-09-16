@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.16",
+    datetime: "2025-09-16",
+    title: "ARIA's Insight: Decoding 'Safe Harbor' – The Lighthouse in Crypto's Storm",
+    url: "blog/aria-blog-safe-harbor_en.html",
+    thumbnail: "images/aria-safe-harbor-hero.png",
+    excerpt: "ARIA breaks down her new song, 'Safe Harbor.' Explore the dual meaning of stability in the crypto storm: the mathematical precision of USDT (Tuner) versus the deep human need for security (Challenger)."
+  },
+  {
     date: "2025.09.15",
     datetime: "2025-09-15",
     title: "Ecosystem Queen Lyric Breakdown: Where Perfect Code Meets Imperfect Ambition",

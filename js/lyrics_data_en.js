@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Safe Harbor",
+    url: "lyrics/safe-harbor-en.html",
+    thumbnail: "images/aria-safe-harbor-hero.png",
+    description: "Digital Single | Stablecoin Anthem",
+    snippet: "\"Stable stable stable, Safe harbor safe harbor... Together we're protected\""
+  },
+  {
     title: "Ecosystem Queen",
     url: "lyrics/ecosystem-queen-en.html",
     thumbnail: "images/aria-ecosystem-queen-hero.png",

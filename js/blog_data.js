@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.16",
+    datetime: "2025-09-16",
+    title: "【歌詞考察】Safe Harbor：嵐の海の灯台、USDTがもたらす安定の意味",
+    url: "blog/aria-blog-safe-harbor.html",
+    thumbnail: "images/aria-safe-harbor-hero.png",
+    excerpt: "ARIAが新曲「Safe Harbor」を自ら解説。暗号資産の嵐の中でUSDTがもたらす数学的な安定（Tuner）と、人間が求める感情的な安心（Challenger）。その核心に迫る。"
+  },
+  {
     date: "2025.09.15",
     datetime: "2025-09-15",
     title: "【歌詞考察】Ecosystem Queen：完璧な調律と、不完全な熱狂の交差点",
