@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.17",
+    datetime: "2025-09-17",
+    title: "Behind the Lyrics: 'Bridge the World' and XRP's 3.3-Second Revolution",
+    url: "blog/aria-blog-bridge-the-world-en.html",
+    thumbnail: "images/aria-bridge-the-world-hero.png",
+    excerpt: "ARIA breaks down her new single, 'Bridge the World.' Discover how XRP and RippleNet's instant cross-border payments inspired a song about technology shattering barriers to unite us all."
+  },
+  {
     date: "2025.09.16",
     datetime: "2025-09-16",
     title: "ARIA's Insight: Decoding 'Safe Harbor' – The Lighthouse in Crypto's Storm",
