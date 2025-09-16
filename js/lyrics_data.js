@@ -1,5 +1,19 @@
 const lyricsData = [
   {
+    title: "Bridge the World",
+    url: "lyrics/bridge-the-world.html",
+    thumbnail: "images/aria-bridge-the-world-hero.png",
+    description: "デジタルシングル｜国際送金アンセム",
+    snippet: "\"Bridge bridge bridge the world... Connecting every heart\""
+  },
+  {
+    title: "Safe Harbor",
+    url: "lyrics/safe-harbor.html",
+    thumbnail: "images/aria-safe-harbor-hero.png",
+    description: "デジタルシングル｜ステーブルコイン・アンセム",
+    snippet: "\"Stable stable stable, Safe harbor safe harbor... Together we're protected\""
+  },
+  {
     title: "Ecosystem Queen",
     url: "lyrics/ecosystem-queen.html",
     thumbnail: "images/aria-ecosystem-queen-hero.png",

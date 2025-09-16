@@ -1,5 +1,21 @@
 const blogPosts = [
   {
+    date: "2025.09.17",
+    datetime: "2025-09-17",
+    title: "【歌詞考察】Bridge the World：XRPが繋ぐ、3.3秒の金融革命",
+    url: "blog/aria-blog-bridge-the-world.html",
+    thumbnail: "images/aria-bridge-the-world-hero.png",
+    excerpt: "ARIAが新曲「Bridge the World」を自ら解説。XRPとRippleNetが実現する瞬時の国際送金。テクノロジーが物理的、精神的な壁を壊し、世界を一つにする未来を歌う。"
+  },
+  {
+    date: "2025.09.16",
+    datetime: "2025-09-16",
+    title: "【歌詞考察】Safe Harbor：嵐の海の灯台、USDTがもたらす安定の意味",
+    url: "blog/aria-blog-safe-harbor.html",
+    thumbnail: "images/aria-safe-harbor-hero.png",
+    excerpt: "ARIAが新曲「Safe Harbor」を自ら解説。暗号資産の嵐の中でUSDTがもたらす数学的な安定（Tuner）と、人間が求める感情的な安心（Challenger）。その核心に迫る。"
+  },
+  {
     date: "2025.09.15",
     datetime: "2025-09-15",
     title: "【歌詞考察】Ecosystem Queen：完璧な調律と、不完全な熱狂の交差点",
