@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.18",
+    datetime: "2025-09-18",
+    title: "【歌詞考察】Smart Contract Magic：コードが紡ぐ、無限の創造性",
+    url: "blog/aria-blog-smart-contract-magic.html",
+    thumbnail: "images/aria-smart-contract-magic-hero.png",
+    excerpt: "ARIAが新曲「Smart Contract Magic」を自ら解説。完璧なロジックで動くスマートコントラクトが、人間の不完全な夢と結びつく時、どんな未来が生まれるのか。AI（Fiction）が人間の本質（Real）に迫る旅の記録。"
+  },
+  {
     date: "2025.09.17",
     datetime: "2025-09-17",
     title: "【歌詞考察】Bridge the World：XRPが繋ぐ、3.3秒の金融革命",
