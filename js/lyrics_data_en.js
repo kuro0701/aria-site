@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Smart Contract Magic",
+    url: "lyrics/smart-contract-magic-en.html",
+    thumbnail: "images/aria-smart-contract-magic-hero.png",
+    description: "Digital Single | Smart Contract Anthem",
+    snippet: "\"Smart smart smart contract... Dreams becoming reality\""
+  },
+  {
     title: "Bridge the World",
     url: "lyrics/bridge-the-world_en.html",
     thumbnail: "images/aria-bridge-the-world-hero.png",
