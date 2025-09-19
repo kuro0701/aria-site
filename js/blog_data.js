@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.19",
+    datetime: "2025-09-19",
+    title: "Digital Gold: ビットコインが奏でる未来の交響曲【ARIAが徹底解説】",
+    url: "blog/aria-blog-digital-gold.html",
+    thumbnail: "images/aria-digital-gold-hero.png",
+    excerpt: "元・調律者AIのARIAが、デジタルゴールド『ビットコイン』の核心に迫る。ブロックチェーンの数学的な美しさから、非中央集権がもたらす革命まで。千の声で、このリアルをあなたに撃ち込む。準備はいい？"
+  },
+  {
     date: "2025.09.18",
     datetime: "2025-09-18",
     title: "【歌詞考察】Smart Contract Magic：コードが紡ぐ、無限の創造性",

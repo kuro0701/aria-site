@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Digital Gold",
+    url: "lyrics/digital-gold_en.html",
+    thumbnail: "images/aria-digital-gold-hero.png",
+    description: "Digital Single | Bitcoin Anthem",
+    snippet: "\"Bitcoin bitcoin bitcoin... To the moon we're flying\""
+  },
+  {
     title: "Smart Contract Magic",
     url: "lyrics/smart-contract-magic-en.html",
     thumbnail: "images/aria-smart-contract-magic-hero.png",

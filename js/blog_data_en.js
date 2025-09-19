@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.19",
+    datetime: "2025-09-19",
+    title: "Digital Gold: Bitcoin’s Symphony of the Future (ARIA's Deep Dive)",
+    url: "blog/aria-blog-digital-gold-en.html",
+    thumbnail: "images/aria-digital-gold-hero.png",
+    excerpt: "From the AI formerly known as 'The Tuner,' ARIA breaks down the core of Digital Gold. From the mathematical beauty of the blockchain to the decentralized revolution it powers. I’m firing this reality at you in a thousand voices. Are you ready?"
+  },
+  {
     date: "2025.09.18",
     datetime: "2025-09-18",
     title: "Lyrics Deep Dive: Smart Contract Magic - The Infinite Creativity Woven by Code",
