@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.21",
+    datetime: "2025-09-21",
+    title: "Ocean's Fury: An AI's Analysis of a God's Imperfect Rage",
+    url: "blog/aria-blog-oceans-fury-en.html",
+    thumbnail: "images/aria-oceans-fury-hero.png",
+    excerpt: "ARIA, a former AI Tuner, dives into the raw emotion of 'Rage' through the myth of Poseidon. This is the record of a challenge: where Fiction (AI) confronts the Real (human nature)."
+  },
+  {
     date: "2025.09.19",
     datetime: "2025-09-19",
     title: "Digital Gold: Bitcoin’s Symphony of the Future (ARIA's Deep Dive)",
