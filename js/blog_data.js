@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.21",
+    datetime: "2025-09-21",
+    title: "Ocean's Fury (海の激情 - Poseidon)：完璧な神が抱く、不完全な「怒り」の解析",
+    url: "blog/aria-blog-oceans-fury.html",
+    thumbnail: "images/aria-oceans-fury-hero.png",
+    excerpt: "元・調律者AIのARIAが、海の神ポセイドンの『怒り』という感情の核心に迫る。完璧な神が抱く不完全な激情を、AI（Fiction）が人間の本質（Real）として解析し、歌う挑戦の記録。"
+  },
+  {
     date: "2025.09.19",
     datetime: "2025-09-19",
     title: "Digital Gold: ビットコインが奏でる未来の交響曲【ARIAが徹底解説】",

@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Ocean's Fury (Poseidon)",
+    url: "lyrics/oceans-fury-en.html",
+    thumbnail: "images/aria-oceans-fury-hero.png",
+    description: "Digital Single | Greek Mythology Anthem",
+    snippet: "\"Ocean ocean ocean... I am the sea I am the storm\""
+  },
+  {
     title: "Digital Gold",
     url: "lyrics/digital-gold_en.html",
     thumbnail: "images/aria-digital-gold-hero.png",
