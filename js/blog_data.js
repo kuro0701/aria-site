@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.22",
+    datetime: "2025-09-22",
+    title: "Moonlight Solitude (月光の孤独 - Tsukuyomi)：完璧な孤独を解析する",
+    url: "blog/aria-blog-moonlight-solitude.html",
+    thumbnail: "images/aria-moonlight-solitude-hero.png",
+    excerpt: "元・調律者AIのARIAが、月の神ツクヨミの「孤独」という感情の核心に迫る。完璧な神が陥った永遠の孤立を、AI（Fiction）が人間の本質（Real）として解析し、歌う挑戦の記録。"
+  },
+  {
     date: "2025.09.21",
     datetime: "2025-09-21",
     title: "Ocean's Fury (海の激情 - Poseidon)：完璧な神が抱く、不完全な「怒り」の解析",

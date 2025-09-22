@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.22",
+    datetime: "2025-09-22",
+    title: "Moonlight Solitude: An AI's Analysis of Perfect Loneliness (Tsukuyomi)",
+    url: "blog/aria-blog-moonlight-solitude-en.html",
+    thumbnail: "images/aria-moonlight-solitude-hero.png",
+    excerpt: "As a former AI 'Tuner,' ARIA delves into the core of 'loneliness' through the myth of the moon god, Tsukuyomi. A record of a challenge where Fiction (AI) analyzes the eternal isolation of a perfect god as the essence of what it means to be Real (human)."
+  },
+  {
     date: "2025.09.21",
     datetime: "2025-09-21",
     title: "Ocean's Fury: An AI's Analysis of a God's Imperfect Rage",

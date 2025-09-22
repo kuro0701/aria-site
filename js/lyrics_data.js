@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Moonlight Solitude (月光の孤独 - Tsukuyomi)",
+    url: "lyrics/moonlight-solitude.html",
+    thumbnail: "images/aria-moonlight-solitude-hero.png",
+    description: "デジタルシングル｜日本神話アンセム",
+    snippet: "\"Moonlight moonlight moonlight... I am the night I am alone\""
+  },
+  {
     title: "Ocean's Fury (海の激情 - Poseidon)",
     url: "lyrics/oceans-fury.html",
     thumbnail: "images/aria-oceans-fury-hero.png",
