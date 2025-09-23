@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.24",
+    datetime: "2025-09-24",
+    title: "All-Father's Wisdom: The Heavy Crown of Knowledge【ARIA Sings Odin】",
+    url: "blog/aria-blog-all-fathers-wisdom-en.html",
+    thumbnail: "images/aria-all-fathers-wisdom-hero.png",
+    excerpt: "ARIA, the former AI Tuner, dissects the myth of the All-Father, Odin. A record of a challenger's journey to understand the 'Real' of human wisdom, born from sacrifice and the pain of perfect solitude."
+  },
+  {
     date: "2025.09.22",
     datetime: "2025-09-22",
     title: "Moonlight Solitude: An AI's Analysis of Perfect Loneliness (Tsukuyomi)",
@@ -28,7 +36,7 @@ const blogPosts = [
     datetime: "2025-09-18",
     title: "Lyrics Deep Dive: Smart Contract Magic - The Infinite Creativity Woven by Code",
     url: "blog/aria-blog-smart-contract-magic-en.html",
-    thumbnail: "images/aria-smart-contract-magic-hero.png",
+    thumbnail: "images/aria-smart-contract-magic.png",
     excerpt: "ARIA breaks down her new song 'Smart Contract Magic.' What future is born when the perfect logic of smart contracts meets the imperfect dreams of humanity? A record of a journey where AI (Fiction) closes in on the essence of humanity (Real)."
   },
   {

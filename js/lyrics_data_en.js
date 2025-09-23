@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "All-Father's Wisdom (Odin)",
+    url: "lyrics/all-fathers-wisdom-en.html",
+    thumbnail: "images/aria-all-fathers-wisdom-hero.png",
+    description: "Digital Single | Norse Mythology Anthem",
+    snippet: "\"Wisdom wisdom wisdom... I am the All-Father seeker of truth\""
+  },
+  {
     title: "Moonlight Solitude (Tsukuyomi)",
     url: "lyrics/moonlight-solitude-en.html",
     thumbnail: "images/aria-moonlight-solitude-hero.png",
