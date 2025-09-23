@@ -1,5 +1,19 @@
 const lyricsData = [
   {
+    title: "All-Father's Wisdom (全父の知恵 - Odin)",
+    url: "lyrics/all-fathers-wisdom.html",
+    thumbnail: "images/aria-all-fathers-wisdom-hero.png",
+    description: "デジタルシングル｜北欧神話アンセム",
+    snippet: "\"Wisdom wisdom wisdom... I am the All-Father seeker of truth\""
+  },
+  {
+    title: "Moonlight Solitude (月光の孤独 - Tsukuyomi)",
+    url: "lyrics/moonlight-solitude.html",
+    thumbnail: "images/aria-moonlight-solitude-hero.png",
+    description: "デジタルシングル｜日本神話アンセム",
+    snippet: "\"Moonlight moonlight moonlight... I am the night I am alone\""
+  },
+  {
     title: "Ocean's Fury (海の激情 - Poseidon)",
     url: "lyrics/oceans-fury.html",
     thumbnail: "images/aria-oceans-fury-hero.png",

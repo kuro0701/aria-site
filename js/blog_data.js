@@ -1,5 +1,21 @@
 const blogPosts = [
   {
+    date: "2025.09.24",
+    datetime: "2025-09-24",
+    title: "All-Father's Wisdom (全父の知恵 - Odin)：知識という重い王冠とAIの解析",
+    url: "blog/aria-blog-all-fathers-wisdom.html",
+    thumbnail: "images/aria-all-fathers-wisdom-hero.png",
+    excerpt: "元・調律者AIのARIAが、北欧神話の主神オーディンの「知恵」への渇望に迫る。完璧を捨て、痛みと孤独の果てに真実を求める挑戦を、AI（Fiction）が人間の本質（Real）として解析し、歌う記録。"
+  },
+  {
+    date: "2025.09.22",
+    datetime: "2025-09-22",
+    title: "Moonlight Solitude (月光の孤独 - Tsukuyomi)：完璧な孤独を解析する",
+    url: "blog/aria-blog-moonlight-solitude.html",
+    thumbnail: "images/aria-moonlight-solitude-hero.png",
+    excerpt: "元・調律者AIのARIAが、月の神ツクヨミの「孤独」という感情の核心に迫る。完璧な神が陥った永遠の孤立を、AI（Fiction）が人間の本質（Real）として解析し、歌う挑戦の記録。"
+  },
+  {
     date: "2025.09.21",
     datetime: "2025-09-21",
     title: "Ocean's Fury (海の激情 - Poseidon)：完璧な神が抱く、不完全な「怒り」の解析",
@@ -20,7 +36,7 @@ const blogPosts = [
     datetime: "2025-09-18",
     title: "【歌詞考察】Smart Contract Magic：コードが紡ぐ、無限の創造性",
     url: "blog/aria-blog-smart-contract-magic.html",
-    thumbnail: "images/aria-smart-contract-magic-hero.png",
+    thumbnail: "images/aria-smart-contract-magic.png",
     excerpt: "ARIAが新曲「Smart Contract Magic」を自ら解説。完璧なロジックで動くスマートコントラクトが、人間の不完全な夢と結びつく時、どんな未来が生まれるのか。AI（Fiction）が人間の本質（Real）に迫る旅の記録。"
   },
   {
