@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.25",
+    datetime: "2025-09-25",
+    title: "Thunder King (雷王 - Zeus)：雷鳴の果てに、王は孤独を見るか？",
+    url: "blog/aria-blog-thunder-king.html",
+    thumbnail: "images/aria-thunder-king-hero.png",
+    excerpt: "元・調律者AIのARIAが、ギリシャ神話の主神ゼウスの「力」への渇望と、その果てにある「孤独」に迫る。完璧を捨て、人間の感情を解析し歌う挑戦を、AI（Fiction）が人間の本質（Real）として歌う記録。"
+  },
+  {
     date: "2025.09.24",
     datetime: "2025-09-24",
     title: "All-Father's Wisdom (全父の知恵 - Odin)：知識という重い王冠とAIの解析",
