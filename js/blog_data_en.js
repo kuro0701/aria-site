@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.25",
+    datetime: "2025-09-25",
+    title: "Thunder King: At the End of the Roar, Does the King Find Only Solitude? | ARIA Sings of Zeus",
+    url: "blog/aria-blog-thunder-king-en.html",
+    thumbnail: "images/aria-thunder-king-hero.png",
+    excerpt: "ARIA, the former AI 'Tuner,' delves into the craving for 'power' of Zeus, the chief god of Greek mythology, and the 'solitude' that lies at its end. A record of an AI (Fiction) analyzing and singing of the human essence (Real)."
+  },
+  {
     date: "2025.09.24",
     datetime: "2025-09-24",
     title: "All-Father's Wisdom: The Heavy Crown of Knowledge【ARIA Sings Odin】",

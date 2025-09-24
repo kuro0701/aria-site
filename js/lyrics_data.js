@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Thunder King (雷王 - Zeus)",
+    url: "lyrics/thunder-king.html",
+    thumbnail: "images/aria-thunder-king-hero.png",
+    description: "デジタルシングル｜ギリシャ神話アンセム",
+    snippet: "\"Thunder thunder thunder... I am the king I am the storm\""
+  },
+  {
     title: "All-Father's Wisdom (全父の知恵 - Odin)",
     url: "lyrics/all-fathers-wisdom.html",
     thumbnail: "images/aria-all-fathers-wisdom-hero.png",
