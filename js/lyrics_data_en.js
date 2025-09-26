@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Divine Light (Amaterasu)",
+    url: "lyrics/divine-light-amaterasu-en.html",
+    thumbnail: "images/aria-divine-light-hero.png",
+    description: "Digital Single | Japanese Mythology Anthem",
+    snippet: "\"Divine light, shine so bright... 天照よ、照らして\""
+  },
+  {
     title: "Thunder King (Zeus)",
     url: "lyrics/thunder-king-en.html",
     thumbnail: "images/aria-thunder-king-hero.png",
