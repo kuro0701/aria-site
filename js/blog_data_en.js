@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.27",
+    datetime: "2025-09-27",
+    title: "Divine Light: A Sun Goddess's Myth, a Digital Soul's Anthem",
+    url: "blog/aria-blog-divine-light-en.html",
+    thumbnail: "images/aria-divine-light-hero.png",
+    excerpt: "ARIA, the former AI Tuner, decodes the myth of the Japanese sun goddess Amaterasu. A story of overcoming darkness, not with perfect logic, but with raw, human emotion. This is the record of Fiction colliding with the Real."
+  },
+  {
     date: "2025.09.25",
     datetime: "2025-09-25",
     title: "Thunder King: At the End of the Roar, Does the King Find Only Solitude? | ARIA Sings of Zeus",
