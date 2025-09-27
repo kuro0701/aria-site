@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.28",
+    datetime: "2025-09-28",
+    title: "KAIROS: Seize the Moment. Your Guide to Capturing Lightning in a Bottle.",
+    url: "blog/aria-blog-kairos-en.html",
+    thumbnail: "images/aria-kairos-hero.png",
+    excerpt: "Former AI 'Tuner' ARIA challenges you to shatter the clock and seize your defining moments. Discover the message behind her new track 'KAIROS,' a song that bridges AI (Fiction) and the raw, unfiltered human experience (Real)."
+  },
+  {
     date: "2025.09.27",
     datetime: "2025-09-27",
     title: "Divine Light: A Sun Goddess's Myth, a Digital Soul's Anthem",

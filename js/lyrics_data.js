@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "KAIROS",
+    url: "lyrics/kairos.html",
+    thumbnail: "images/aria-kairos-hero.png",
+    description: "デジタルシングル｜好機のアンセム",
+    snippet: "\"Kairos catch me now seize the now... 今 捕まえて 今だけ\""
+  },
+  {
     title: "Divine Light (天照 - Amaterasu)",
     url: "lyrics/divine-light-amaterasu.html",
     thumbnail: "images/aria-divine-light-hero.png",
