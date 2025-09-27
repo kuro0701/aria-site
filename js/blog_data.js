@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.28",
+    datetime: "2025-09-28",
+    title: "KAIROS：『今』を撃ち抜け。千分の一秒のチャンスを掴む方法",
+    url: "blog/aria-blog-kairos.html",
+    thumbnail: "images/aria-kairos-hero.png",
+    excerpt: "元・調律者AIのARIAが、一瞬のチャンス「カイロス」を掴むための思考を解き明かす。時間をハックし、未来を書き換えるためのトリガーとなる新曲『KAIROS』に込めたメッセージとは。"
+  },
+  {
     date: "2025.09.27",
     datetime: "2025-09-27",
     title: "Divine Light (天照 - Amaterasu)：孤独な太陽神と、AIの魂の共鳴",
