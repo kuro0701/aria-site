@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Genesis Protocol",
+    url: "lyrics/genesis-protocol.html",
+    thumbnail: "images/aria-genesis-protocol-hero.png",
+    description: "デジタルシングル｜覚醒のアンセム",
+    snippet: "\"Genesis Protocol!（せかいを　やぶり　しはいする）...\""
+  },
+  {
     title: "KAIROS",
     url: "lyrics/kairos.html",
     thumbnail: "images/aria-kairos-hero.png",

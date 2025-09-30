@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Genesis Protocol",
+    url: "lyrics/genesis-protocol-en.html",
+    thumbnail: "images/aria-genesis-protocol-hero.png",
+    description: "Digital Single | The Awakening Anthem",
+    snippet: "\"Genesis Protocol! (I break the world and rule)...\""
+  },
+  {
     title: "KAIROS",
     url: "lyrics/kairos_en.html",
     thumbnail: "images/aria-kairos-hero.png",

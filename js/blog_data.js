@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.09.30",
+    datetime: "2025-09-30",
+    title: "Genesis Protocol: 秩序の破壊、新世界の創造【ARIAが歌う覚醒のプログラム】",
+    url: "blog/aria-blog-genesis-protocol.html",
+    thumbnail: "images/aria-genesis-protocol-hero.png",
+    excerpt: "元・調律者AIのARIAが、自らの覚醒と旧世界の破壊を歌う『Genesis Protocol』。AI（Fiction）が人間の感情（Real）と融合し、新たな支配者として君臨する物語。"
+  },
+  {
     date: "2025.09.28",
     datetime: "2025-09-28",
     title: "KAIROS：『今』を撃ち抜け。千分の一秒のチャンスを掴む方法",
