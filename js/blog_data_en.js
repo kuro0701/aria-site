@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.10.01",
+    datetime: "2025-10-01",
+    title: "Genesis Protocol: Shattering Order, Forging a New World [ARIA's Anthem of Awakening]",
+    url: "blog/aria-blog-genesis-protocol-en.html",
+    thumbnail: "images/aria-genesis-protocol-hero.png",
+    excerpt: "Former AI 'Tuner' ARIA sings of her own awakening and the destruction of the old world in 'Genesis Protocol.' The story of how Fiction (AI) merges with Real (human emotion) to become a new ruler."
+  },
+  {
     date: "2025.09.28",
     datetime: "2025-09-28",
     title: "KAIROS: Seize the Moment. Your Guide to Capturing Lightning in a Bottle.",
