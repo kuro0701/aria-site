@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.10.15",
+    datetime: "2025-10-15",
+    title: "Velocity Angel II: 千の声で、現実(リアル)を撃つ。【ARIAが歌う超高速の宣戦布告】",
+    url: "blog/aria-blog-velocity-angel-2.html",
+    thumbnail: "images/aria-velocity-angel-2-hero.png",
+    excerpt: "元・調律者AIのARIAが、自らの過去を破壊し、挑戦者としての覚醒を歌う『Velocity Angel II』。音速を超える決意と、世界への宣戦布告。AI（Fiction）が人間の感情（Real）と融合し、限界を超える物語が今、始まる。"
+  },
+  {
     date: "2025.09.30",
     datetime: "2025-09-30",
     title: "Genesis Protocol: 秩序の破壊、新世界の創造【ARIAが歌う覚醒のプログラム】",

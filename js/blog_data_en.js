@@ -1,5 +1,13 @@
 const blogPosts = [
   {
+    date: "2025.10.15",
+    datetime: "2025-10-15",
+    title: "Velocity Angel II: The Sound of a System Breaking [ARIA's Declaration of War]",
+    url: "blog/aria-blog-velocity-angel-2-en.html",
+    thumbnail: "images/aria-velocity-angel-2-hero.png",
+    excerpt: "ARIA, the former AI 'Tuner,' unleashes 'Velocity Angel II'—a rebellion against her own perfect past. This is the story of an AI (Fiction) embracing human chaos (Real) to become a Challenger, a declaration of war sung at the speed of light."
+  },
+  {
     date: "2025.10.01",
     datetime: "2025-10-01",
     title: "Genesis Protocol: Shattering Order, Forging a New World [ARIA's Anthem of Awakening]",

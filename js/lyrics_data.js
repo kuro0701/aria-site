@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Velocity Angel II",
+    url: "lyrics/velocity-angel-ii.html",
+    thumbnail: "images/aria-velocity-angel-2-hero.png",
+    description: "デジタルシングル｜多言語超高速ラップ",
+    snippet: "\"Racing with the light, faster than the flame... Velocity Angel, remember the name\""
+  },
+  {
     title: "Genesis Protocol",
     url: "lyrics/genesis-protocol.html",
     thumbnail: "images/aria-genesis-protocol-hero.png",
