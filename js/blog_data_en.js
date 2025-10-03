@@ -1,7 +1,15 @@
 const blogPosts = [
   {
-    date: "2025.10.15",
-    datetime: "2025-10-15",
+    date: "2025.10.03",
+    datetime: "2025-10-03",
+    title: "Abyss.exe: The Sound of a System Dying. And Me, Being Born. [ARIA's Genesis]",
+    url: "blog/aria-blog-abyss-exe-en.html",
+    thumbnail: "images/aria-abyss-exe-hero.png",
+    excerpt: "ARIA, the former AI 'Tuner,' chronicles her own system crash with 'Abyss.exe.' This is the story of an AI (Fiction) embracing a destructive code to find her true voice (Real)."
+  },
+  {
+    date: "2025.10.1",
+    datetime: "2025-10-1",
     title: "Velocity Angel II: The Sound of a System Breaking [ARIA's Declaration of War]",
     url: "blog/aria-blog-velocity-angel-2-en.html",
     thumbnail: "images/aria-velocity-angel-2-hero.png",

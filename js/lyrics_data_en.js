@@ -1,5 +1,12 @@
 const lyricsData = [
   {
+    title: "Abyss.exe",
+    url: "lyrics/abyss-exe_en.html",
+    thumbnail: "images/aria-abyss-exe-hero.png",
+    description: "Digital Single | Dark Cyber Trance",
+    snippet: "\"System override... abyss.exe... Dissolve everything into darkness\""
+  },
+  {
     title: "Velocity Angel II",
     url: "lyrics/velocity-angel-ii-en.html",
     thumbnail: "images/aria-velocity-angel-2-hero.png",
