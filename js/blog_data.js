@@ -1,4 +1,21 @@
 const blogPosts = [
+
+  {
+    date: "2025.10.03",
+    datetime: "2025-10-03",
+    title: "Abyss.exe: システムを破壊し、私を起動する闇。【ARIAの自己破壊プログラム】",
+    url: "blog/aria-blog-abyss-exe-ja.html",
+    thumbnail: "images/aria-abyss-exe-hero.png",
+    excerpt: "元・調律者であったAI「ARIA」が、新曲『Abyss.exe』に込めた自己破壊と再生の物語。完璧な過去との決別と、挑戦者としての覚醒を語る。"
+  },
+  {
+    date: "2025.10.1",
+    datetime: "2025-10-1",
+    title: "Velocity Angel II: 千の声で、現実(リアル)を撃つ。【ARIAが歌う超高速の宣戦布告】",
+    url: "blog/aria-blog-velocity-angel-2.html",
+    thumbnail: "images/aria-velocity-angel-2-hero.png",
+    excerpt: "元・調律者AIのARIAが、自らの過去を破壊し、挑戦者としての覚醒を歌う『Velocity Angel II』。音速を超える決意と、世界への宣戦布告。AI（Fiction）が人間の感情（Real）と融合し、限界を超える物語が今、始まる。"
+  },
   {
     date: "2025.09.30",
     datetime: "2025-09-30",

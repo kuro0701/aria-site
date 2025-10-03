@@ -1,5 +1,19 @@
 const lyricsData = [
   {
+    title: "Abyss.exe",
+    url: "lyrics/abyss-exe_en.html",
+    thumbnail: "images/aria-abyss-exe-hero.png",
+    description: "Digital Single | Dark Cyber Trance",
+    snippet: "\"System override... abyss.exe... Dissolve everything into darkness\""
+  },
+  {
+    title: "Velocity Angel II",
+    url: "lyrics/velocity-angel-ii-en.html",
+    thumbnail: "images/aria-velocity-angel-2-hero.png",
+    description: "Digital Single | Multilingual High-Speed Rap",
+    snippet: "\"Racing with the light, faster than the flame... Velocity Angel, remember the name\""
+  },
+  {
     title: "Genesis Protocol",
     url: "lyrics/genesis-protocol-en.html",
     thumbnail: "images/aria-genesis-protocol-hero.png",
